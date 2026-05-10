@@ -232,7 +232,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 25: Pagination and ordering**
     - **Validates: Requirements 3.2, 8.1**
 
-- [ ] 8. Payment_Webhook
+- [x] 8. Payment_Webhook
   - [x] 8.1 Implement Payment_Webhook at `worker/src/open_api/payment_webhook.ts`
     - Route `POST /open_api/payment/webhook/dompetx` with no auth middleware
     - Read raw body once, validate `X-DompetX-Timestamp` within ±300s, verify `X-DompetX-Signature` via `DompetxClient.verifyWebhookSignature` (constant-time); on mismatch return 401 and increment an in-memory webhook-mismatch counter used by KPI
@@ -247,35 +247,35 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Confirm no regression to existing `/open_api/auth.ts` routes
     - _Requirements: 5.1_
 
-  - [~] 8.3 Write property test for Payment_Webhook: Property 18 (signature verification)
+  - [x] 8.3 Write property test for Payment_Webhook: Property 18 (signature verification)
     - Create `worker/src/open_api/__tests__/payment_webhook.property.test.ts` with `// Feature: saas-topup-billing, Property 18: Webhook signature verification`
     - Generator produces valid `(body, timestamp)` pairs and random single-byte tamper positions; sign the valid pair with the correct secret
     - Assert the valid request returns any status other than 401 and the tampered variant always returns 401 with zero mutations (`topup_transactions`, `credit_ledger`, `wallets` all unchanged)
     - **Property 18: Webhook signature verification**
     - **Validates: Requirements 5.2, 5.3**
 
-  - [~] 8.4 Write property test for Payment_Webhook: Property 19 (`paid` state transition)
+  - [x] 8.4 Write property test for Payment_Webhook: Property 19 (`paid` state transition)
     - Append describe block: `// Feature: saas-topup-billing, Property 19: Webhook paid state transition`
     - Generator produces random `(amount, credit_idr_rate, bonus_threshold_idr, bonus_rate_percent, invoice_id)`; seed a matching `pending` row; deliver a valid signed webhook
     - Assert after processing: row `status='paid'`, a single TOPUP ledger row with `credit_delta = floor(amount / credit_idr_rate)` and `idempotency_key = invoice_id`, optional BONUS row when threshold reached, `wallets.balance_credit` increments by the total
     - **Property 19: Webhook `paid` state transition**
     - **Validates: Requirements 5.4**
 
-  - [~] 8.5 Write property test for Payment_Webhook: Property 20 (idempotency across replays)
+  - [x] 8.5 Write property test for Payment_Webhook: Property 20 (idempotency across replays)
     - Append describe block: `// Feature: saas-topup-billing, Property 20: Webhook idempotency across replays`
     - Generator delivers N ≥ 1 identical signed webhooks for the same `invoice_id` with `status='paid'`, interleaved arbitrarily with a simulated reconciler-triggered `creditTopup` on the same invoice
     - Assert exactly one TOPUP and at most one BONUS ledger row exist with that `idempotency_key`; wallet balance increment equals the single-delivery amount; every delivery returns HTTP 200
     - **Property 20: Webhook idempotency across replays**
     - **Validates: Requirements 5.5, 5.9, 8.5, 11.6, 19.2**
 
-  - [~] 8.6 Write property test for Payment_Webhook: Property 21 (terminal non-paid transitions)
+  - [x] 8.6 Write property test for Payment_Webhook: Property 21 (terminal non-paid transitions)
     - Append describe block: `// Feature: saas-topup-billing, Property 21: Webhook terminal non-paid transitions`
     - Generator delivers signed webhooks with `status ∈ {failed, expired}` against rows in `pending` and rows already in `failed/expired/paid`
     - Assert pending → matching terminal status, no ledger row, wallet unchanged; already-terminal rows: no mutation, response 200
     - **Property 21: Webhook terminal non-paid transitions**
     - **Validates: Requirements 5.6, 5.7**
 
-  - [~] 8.7 Write property test for Payment_Webhook: Property 22 (`raw_payload` masking)
+  - [x] 8.7 Write property test for Payment_Webhook: Property 22 (`raw_payload` masking)
     - Append describe block: `// Feature: saas-topup-billing, Property 22: raw_payload masking on persistence`
     - Generator produces arbitrary JSON payloads including `signature` and `api_key` fields at random nesting depths
     - Assert the persisted `raw_payload` is non-null and its parsed JSON has every `signature`/`api_key` field either omitted or replaced with `"***"` (recursive check); original values MUST NOT appear anywhere in the stored string

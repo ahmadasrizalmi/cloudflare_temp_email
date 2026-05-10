@@ -10,6 +10,35 @@ function jsonError(c: any, code: string, message: string, status: number) {
     return c.json({ code, message }, status);
 }
 
+const SENSITIVE_KEYWORDS = ['secret', 'token', 'signature', 'api_key', 'password', 'auth'];
+
+function isSensitiveKey(key: string): boolean {
+    const lower = key.toLowerCase();
+    return SENSITIVE_KEYWORDS.some((k) => lower.includes(k));
+}
+
+function maskDeep(value: unknown): unknown {
+    if (Array.isArray(value)) return value.map(maskDeep);
+    if (value && typeof value === 'object') {
+        const out: Record<string, unknown> = {};
+        for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+            out[k] = isSensitiveKey(k) ? '[REDACTED]' : maskDeep(v);
+        }
+        return out;
+    }
+    return value;
+}
+
+function maskRawPayload(rawBody: string): string {
+    try {
+        const parsed = JSON.parse(rawBody);
+        return JSON.stringify(maskDeep(parsed));
+    } catch {
+        // Fallback for non-JSON payloads: keep bounded preview only.
+        return rawBody.length > 1024 ? `${rawBody.slice(0, 1024)}...[TRUNCATED]` : rawBody;
+    }
+}
+
 api.post('/open_api/payment/webhook/dompetx', async (c) => {
     const msgs = i18n.getMessagesbyContext(c);
     const rawBody = await c.req.text();
@@ -76,12 +105,13 @@ api.post('/open_api/payment/webhook/dompetx', async (c) => {
             ? providerStatus
             : 'pending';
 
+    const maskedPayload = maskRawPayload(rawBody);
     await c.env.DB.prepare(
         `UPDATE topup_transactions
             SET raw_payload = ?, updated_at = datetime('now')
           WHERE id = ?`,
     )
-        .bind(rawBody, tx.id)
+        .bind(maskedPayload, tx.id)
         .run();
 
     if (canonical === 'paid') {
