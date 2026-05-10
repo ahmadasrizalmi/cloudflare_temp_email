@@ -218,7 +218,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 14: Minimum top-up guard short-circuits DompetX**
     - **Validates: Requirements 4.3, 19.4**
 
-  - [~] 7.5 Write property test for user Billing_API: Property 17 (top-up create persistence and eligibility)
+  - [x] 7.5 Write property test for user Billing_API: Property 17 (top-up create persistence and eligibility)
     - Append describe block: `// Feature: saas-topup-billing, Property 17: Top-up create persistence and eligibility`
     - Generator randomises `(nominal, channel_code)` against a random cached channel set
     - For eligible pairs assert the `topup_transactions` row is persisted with `status='pending'`, correct `amount/fee/gross_amount/channel_code/raw_payload`, and the response includes a `checkout_url`; for non-eligible pairs assert HTTP 400 `channel_not_eligible` and zero row inserts

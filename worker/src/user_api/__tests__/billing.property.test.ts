@@ -293,4 +293,166 @@ describe('user Billing_API properties', () => {
       { numRuns: 40 },
     );
   });
+
+  it('Property 17: top-up create persistence and channel eligibility', async () => {
+    await fc.assert(
+      fc.asyncProperty(
+        fc.record({
+          nominal: fc.integer({ min: 10000, max: 300000 }),
+          eligible: fc.boolean(),
+        }),
+        async ({ nominal, eligible }) => {
+          const sqlite = new BetterSqlite3(':memory:');
+          sqlite.exec(`
+            CREATE TABLE topup_transactions (
+              id INTEGER PRIMARY KEY AUTOINCREMENT,
+              user_id INTEGER NOT NULL,
+              invoice_id TEXT UNIQUE,
+              provider_reference TEXT UNIQUE,
+              channel_code TEXT,
+              amount INTEGER,
+              fee INTEGER,
+              gross_amount INTEGER,
+              fee_bearer TEXT,
+              status TEXT,
+              fingerprint_hash TEXT,
+              ip TEXT,
+              expiry_minutes INTEGER,
+              checkout_url TEXT,
+              raw_payload TEXT,
+              created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+              updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+            );
+          `);
+
+          let createInvoiceCalls = 0;
+          const requestedChannel = 'VA_BCA';
+
+          const deps = {
+            pricingEngine: () => ({
+              resolve: async () => 1,
+              getNumber: async (k: string) => {
+                if (k === 'min_topup_idr') return 10000;
+                if (k === 'bonus_threshold_idr') return 100000;
+                return 1;
+              },
+              getObject: async () => ({}),
+              invalidateCache: () => {},
+              listDomainCosts: async () => [],
+            }),
+            abuseGuard: {
+              requireFingerprint: async (c: any) => {
+                c.set('fingerprint_hash', 'fp_hash');
+                return 'fp_hash';
+              },
+              checkTopupQuote: async () => {},
+              checkTopupCreate: async () => {},
+            },
+            channelCache: () => ({
+              listPublic: async () => [],
+              listForQuote: async () => eligible
+                ? [{
+                  channel_code: requestedChannel,
+                  name: 'BCA',
+                  group: 'va',
+                  min: 10000,
+                  max: null,
+                  fee_type: 'fixed',
+                  fee_value: 0,
+                  fee_fixed: 2500,
+                  fee_bearer: 'customer',
+                  is_active: true,
+                  estimated_fee: 2500,
+                  gross_amount: nominal + 2500,
+                  icon_url: undefined,
+                }]
+                : [{
+                  channel_code: 'QRIS',
+                  name: 'QRIS',
+                  group: 'qris',
+                  min: 10000,
+                  max: null,
+                  fee_type: 'fixed',
+                  fee_value: 0,
+                  fee_fixed: 1500,
+                  fee_bearer: 'customer',
+                  is_active: true,
+                  estimated_fee: 1500,
+                  gross_amount: nominal + 1500,
+                  icon_url: undefined,
+                }],
+              refresh: async () => ({ count: 1 }),
+            }),
+            dompetxClient: () => ({
+              createInvoice: async () => {
+                createInvoiceCalls += 1;
+                return {
+                  invoice_id: `inv_${crypto.randomUUID()}`,
+                  checkout_url: 'https://pay.example/checkout',
+                  provider_reference: 'pref-1',
+                  amount: nominal,
+                  fee: 2500,
+                  gross_amount: nominal + 2500,
+                  status: 'pending',
+                  expiry_minutes: 30,
+                };
+              },
+              getInvoiceStatus: async () => ({
+                invoice_id: 'x',
+                provider_reference: null,
+                status: 'pending',
+                amount: 0,
+                fee: 0,
+                gross_amount: 0,
+                paid_at: null,
+                channel_code: requestedChannel,
+              }),
+              listChannels: async () => [],
+              verifyWebhookSignature: async () => true,
+              isTimestampWithinWindow: () => true,
+            }),
+          };
+
+          const db = makeD1(sqlite);
+          const env = { DB: db, DEFAULT_LANG: 'en' } as unknown as Bindings;
+          const run = makeAuthedApp(env, deps as any);
+
+          const res = await run(new Request('https://example.test/user_api/topup/create', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json', 'x-fingerprint': 'fp' },
+            body: JSON.stringify({ nominal, channel_code: requestedChannel }),
+          }));
+
+          if (!eligible) {
+            expect(res.status).toBe(400);
+            expect(createInvoiceCalls).toBe(0);
+            const countRow = sqlite.prepare('SELECT COUNT(1) AS c FROM topup_transactions').get() as { c: number };
+            expect(countRow.c).toBe(0);
+          } else {
+            expect(res.status).toBe(200);
+            expect(createInvoiceCalls).toBe(1);
+            const row = sqlite.prepare(
+              'SELECT channel_code, amount, fee, gross_amount, status, checkout_url FROM topup_transactions ORDER BY id DESC LIMIT 1',
+            ).get() as {
+              channel_code: string;
+              amount: number;
+              fee: number;
+              gross_amount: number;
+              status: string;
+              checkout_url: string | null;
+            };
+            expect(row.channel_code).toBe(requestedChannel);
+            expect(row.amount).toBe(nominal);
+            expect(row.fee).toBe(2500);
+            expect(row.gross_amount).toBe(nominal + 2500);
+            expect(row.status).toBe('pending');
+            expect(typeof row.checkout_url).toBe('string');
+          }
+
+          sqlite.close();
+        },
+      ),
+      { numRuns: 60 },
+    );
+  });
 });
