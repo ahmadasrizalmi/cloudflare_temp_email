@@ -1,10 +1,13 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useI18n } from 'vue-i18n'
 import { useGlobalState } from '../../../store'
 import { getWallet, getLedger } from '../../../api/billing'
+import { getRouterPathWithLang } from '../../../utils'
 
 const router = useRouter()
+const { locale } = useI18n({ useScope: 'global' })
 const message = useMessage()
 const { wallet } = useGlobalState()
 const ledger = ref([])
@@ -29,9 +32,9 @@ onMounted(refresh)
       <div>IDR Ref: {{ wallet.balance_idr_ref || 0 }}</div>
       <div>Updated: {{ wallet.updated_at || '-' }}</div>
       <n-space style="margin-top: 12px">
-        <n-button type="primary" @click="router.push('/user/wallet/topup')">Top-up</n-button>
-        <n-button @click="router.push('/user/wallet/ledger')">Ledger</n-button>
-        <n-button @click="router.push('/user/wallet/topup/history')">Top-up History</n-button>
+        <n-button type="primary" @click="router.push(getRouterPathWithLang('/user/wallet/topup', locale))">Top-up</n-button>
+        <n-button @click="router.push(getRouterPathWithLang('/user/wallet/ledger', locale))">Ledger</n-button>
+        <n-button @click="router.push(getRouterPathWithLang('/user/wallet/topup/history', locale))">Top-up History</n-button>
       </n-space>
     </n-card>
 
@@ -55,4 +58,3 @@ onMounted(refresh)
     </n-card>
   </n-space>
 </template>
-

@@ -13,6 +13,7 @@ import {
     getBrowserLocales,
     getHostDefaultLocale,
     getPreferredLocale,
+    getStoredLocale,
     replaceLocaleInFullPath,
     resolveSupportedLocale,
 } from '../i18n/utils'
@@ -77,13 +78,22 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const routeLocale = resolveSupportedLocale(to.path.split('/')[1])
-    const resolvedLocale = routeLocale || preferredLocale.value || getHostDefaultLocale()
+    const storedLocale = getStoredLocale()
+    const fallbackLocale = getHostDefaultLocale() === 'id'
+        ? 'id'
+        : getPreferredLocale(storedLocale, getBrowserLocales())
+    const resolvedLocale = routeLocale || preferredLocale.value || storedLocale || fallbackLocale
     i18n.global.locale.value = resolvedLocale
 
     if (routeLocale) {
         preferredLocale.value = routeLocale
     } else if (!preferredLocale.value) {
-        preferredLocale.value = getPreferredLocale('', getBrowserLocales())
+        preferredLocale.value = storedLocale || fallbackLocale
+    }
+
+    if (to.path.startsWith('/user/wallet') && !userJwt.value) {
+        next(replaceLocaleInFullPath('/user', i18n.global.locale.value))
+        return
     }
 
     if (Object.prototype.hasOwnProperty.call(to.query, 'jwt')) {
