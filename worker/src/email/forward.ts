@@ -131,9 +131,76 @@ async function forwardEmail(
     await forwardByRules(message, env);
 }
 
+/**
+ * Strict variants — identical behaviour to the originals except errors from
+ * `message.forward(...)` are re-thrown instead of swallowed. Used by the
+ * billing-aware wrapper in `email/index.ts` so an external Email Routing
+ * failure can trigger a Wallet_Service refund.
+ *
+ * Feature: saas-topup-billing (task 11.3)
+ * Requirements: 6.2, 6.7
+ */
+async function forwardToGlobalAddressesStrict(
+    message: ForwardableEmailMessage,
+    env: Bindings
+): Promise<void> {
+    const forwardAddressList = getEnvStringList(env.FORWARD_ADDRESS_LIST);
+    for (const forwardAddress of forwardAddressList) {
+        await message.forward(forwardAddress);
+    }
+}
+
+async function forwardByRulesStrict(
+    message: ForwardableEmailMessage,
+    env: Bindings
+): Promise<void> {
+    const subdomainForwardAddressList = getJsonObjectValue<SubdomainForwardAddressList[]>(
+        env.SUBDOMAIN_FORWARD_ADDRESS_LIST
+    ) || [];
+
+    const emailRuleSettings = await getJsonSetting<EmailRuleSettings>(
+        { env: env } as Context<HonoCustomType>,
+        CONSTANTS.EMAIL_RULE_SETTINGS_KEY
+    );
+
+    const allRules = [
+        ...(subdomainForwardAddressList || []),
+        ...(emailRuleSettings?.emailForwardingList || []),
+    ];
+
+    for (const rule of allRules) {
+        if (!matchSourcePatterns(message.from, rule.sourcePatterns, rule.sourceMatchMode)) {
+            continue;
+        }
+
+        if (rule.domains && rule.domains.length > 0) {
+            for (const domain of rule.domains) {
+                if (message.to.endsWith(domain) && rule.forward) {
+                    await message.forward(rule.forward);
+                }
+            }
+        } else {
+            if (rule.forward) {
+                await message.forward(rule.forward);
+            }
+        }
+    }
+}
+
+async function forwardEmailStrict(
+    message: ForwardableEmailMessage,
+    env: Bindings
+): Promise<void> {
+    await forwardToGlobalAddressesStrict(message, env);
+    await forwardByRulesStrict(message, env);
+}
+
 export {
     forwardEmail,
+    forwardEmailStrict,
     forwardToGlobalAddresses,
+    forwardToGlobalAddressesStrict,
     forwardByRules,
+    forwardByRulesStrict,
     matchSourcePatterns,
 };

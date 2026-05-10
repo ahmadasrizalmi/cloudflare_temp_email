@@ -125,6 +125,20 @@ export type LocaleMessages = {
     InvalidIpBlacklistSettingMsg: string
     BlacklistExceedsMaxSizeMsg: string
 
+    // Billing error messages
+    InsufficientCreditMsg: string
+    DomainNotAllowedMsg: string
+    NominalBelowMinimumMsg: string
+    ChannelNotEligibleMsg: string
+    FingerprintRequiredMsg: string
+    RateLimitedMsg: string
+    DuplicateInvoiceMsg: string
+    MarginGuardViolationMsg: string
+    MinTopupViolationMsg: string
+    NegativeBalanceNotAllowedMsg: string
+    UnknownActionMsg: string
+    InvoiceNotFoundMsg: string
+
     // Telegram bot messages
     TgUnableGetUserInfoMsg: string
     TgNoPermissionMsg: string

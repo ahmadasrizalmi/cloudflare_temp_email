@@ -8,10 +8,12 @@ import { triggerWebhook, triggerAnotherWorker, commonParseMail } from "../common
 import { check_if_junk_mail } from "./check_junk";
 import { remove_attachment_if_need } from "./check_attachment";
 import { extractEmailInfo } from "./ai_extract";
-import { forwardEmail } from "./forward";
+import { forwardEmail, forwardEmailStrict } from "./forward";
 import { EmailRuleSettings } from "../models";
 import { CONSTANTS } from "../constants";
 import { compressText } from "../gzip";
+import { createPricingEngine, PricingRuleNotFoundError, UnknownActionError } from "../billing/pricing_engine";
+import { createWalletService, InsufficientCreditError } from "../billing/wallet_service";
 
 
 async function email(message: ForwardableEmailMessage, env: Bindings, ctx: ExecutionContext) {

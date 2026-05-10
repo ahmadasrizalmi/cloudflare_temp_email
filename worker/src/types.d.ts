@@ -119,6 +119,22 @@ type Bindings = {
 
     // E2E testing
     E2E_TEST_MODE: string | boolean | undefined
+
+    // ── Billing / SaaS top-up (saas-topup-billing) ──────────────────────────
+    // Secrets — set via `wrangler secret put`; never returned in HTTP responses
+    DOMPETX_API_KEY: string | undefined
+    DOMPETX_API_SECRET: string | undefined
+    DOMPETX_WEBHOOK_SECRET: string | undefined
+    CLOUDFLARE_EMAIL_ROUTING_TOKEN: string | undefined
+
+    // Feature flags / config vars — set in wrangler.toml [vars]
+    // Note: DEFAULT_LANG is already declared above in the config section
+    BILLING_ENABLED: string | boolean | undefined
+    BILLING_LAUNCH_AT: string | undefined   // ISO-8601 date, e.g. "2026-06-01"
+
+    // Rate-limit KV namespace (optional second namespace for high-volume billing
+    // rate limiting; falls back to KV with "rl:" prefix when not bound)
+    BILLING_RATE_LIMITER: KVNamespace | undefined
 }
 
 type JwtPayload = {
@@ -137,7 +153,9 @@ type Variables = {
     userPayload: UserPayload,
     userRolePayload: string | undefined | null,
     jwtPayload: JwtPayload,
-    lang: string | undefined | null
+    lang: string | undefined | null,
+    // Billing: SHA-256 hash of the x-fingerprint header, set by Abuse_Guard.requireFingerprint
+    fingerprint_hash: string | undefined
 }
 
 type HonoCustomType = {

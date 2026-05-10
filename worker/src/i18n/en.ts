@@ -127,6 +127,20 @@ const messages: LocaleMessages = {
     InvalidIpBlacklistSettingMsg: "Invalid IP blacklist setting",
     BlacklistExceedsMaxSizeMsg: "Blacklist exceeds maximum size",
 
+    // Billing error messages
+    InsufficientCreditMsg: "Insufficient credit balance",
+    DomainNotAllowedMsg: "Domain is not allowed for paid actions",
+    NominalBelowMinimumMsg: "Top-up nominal is below the minimum allowed",
+    ChannelNotEligibleMsg: "Payment channel is not eligible for this nominal",
+    FingerprintRequiredMsg: "Device fingerprint is required",
+    RateLimitedMsg: "Too many requests, please try again later",
+    DuplicateInvoiceMsg: "Invoice already exists",
+    MarginGuardViolationMsg: "Value violates margin guard constraint (domain_weight_com must be ≤ 5)",
+    MinTopupViolationMsg: "Value violates minimum top-up constraint (min_topup_idr must be ≥ 10000)",
+    NegativeBalanceNotAllowedMsg: "Credit adjustment would result in a negative balance",
+    UnknownActionMsg: "Unknown action, no pricing rule found",
+    InvoiceNotFoundMsg: "Invoice not found",
+
     // Telegram bot messages
     TgUnableGetUserInfoMsg: "Unable to get user info",
     TgNoPermissionMsg: "You don't have permission to use this bot",

@@ -127,6 +127,20 @@ const messages: LocaleMessages = {
     InvalidIpBlacklistSettingMsg: "无效的 IP 黑名单设置",
     BlacklistExceedsMaxSizeMsg: "黑名单超出最大条目限制",
 
+    // Billing error messages
+    InsufficientCreditMsg: "余额不足，无法完成操作",
+    DomainNotAllowedMsg: "该域名不允许付费操作",
+    NominalBelowMinimumMsg: "充值金额低于最低限额",
+    ChannelNotEligibleMsg: "该支付渠道不支持此充值金额",
+    FingerprintRequiredMsg: "需要设备指纹",
+    RateLimitedMsg: "请求过于频繁，请稍后再试",
+    DuplicateInvoiceMsg: "订单已存在",
+    MarginGuardViolationMsg: "该值违反利润保护限制（domain_weight_com 不得超过 5）",
+    MinTopupViolationMsg: "该值违反最低充值限制（min_topup_idr 不得低于 10000）",
+    NegativeBalanceNotAllowedMsg: "积分调整将导致余额为负",
+    UnknownActionMsg: "未知操作，未找到定价规则",
+    InvoiceNotFoundMsg: "订单不存在",
+
     // Telegram bot messages
     TgUnableGetUserInfoMsg: "无法获取用户信息",
     TgNoPermissionMsg: "您没有权限使用此机器人",

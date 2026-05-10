@@ -42,7 +42,7 @@ api.post('/open_api/payment/webhook/dompetx', async (c) => {
                 }),
             )
             .run();
-        return jsonError(c, 'invalid_webhook_signature', msgs.RateLimitedMsg, 401);
+        return jsonError(c, 'invalid_webhook_signature', msgs.OperationFailedMsg, 401);
     }
 
     let body: any;
@@ -127,4 +127,3 @@ api.post('/open_api/payment/webhook/dompetx', async (c) => {
 });
 
 export { api };
-

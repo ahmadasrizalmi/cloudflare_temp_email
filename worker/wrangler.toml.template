@@ -18,6 +18,11 @@ keep_vars = true
 # [triggers]
 # crons = [ "0 0 * * *" ]
 
+# Billing: Topup_Reconciler runs every 5 minutes to expire stale pending transactions.
+# Merge with any existing cron entries above if you also want the cleanup cron.
+# [triggers]
+# crons = [ "0 0 * * *", "*/5 * * * *" ]
+
 # send_email = [
 #    { name = "SEND_MAIL" },
 # ]
@@ -25,6 +30,27 @@ keep_vars = true
 
 [vars]
 # DEFAULT_LANG = "zh"
+# ── Billing (SaaS top-up) ──────────────────────────────────────────────────
+# Set BILLING_ENABLED = true to activate the billing/credit system.
+# BILLING_LAUNCH_AT is the ISO-8601 datetime used to determine "grandfathered"
+# addresses (created before this date are exempt from create_address credit cost).
+# DEFAULT_LANG = "id" is the locale default for automation.my.id; override per
+# environment if you serve other domains from the same worker.
+#
+# BILLING_ENABLED = true
+# BILLING_LAUNCH_AT = "2026-01-01T00:00:00Z"
+# DEFAULT_LANG = "id"
+#
+# ── Billing secrets (set via `wrangler secret put <NAME>`) ─────────────────
+# The following four secrets MUST be set before enabling billing.
+# They are NEVER stored in wrangler.toml or committed to source control.
+#
+#   wrangler secret put DOMPETX_API_KEY
+#   wrangler secret put DOMPETX_API_SECRET
+#   wrangler secret put DOMPETX_WEBHOOK_SECRET
+#   wrangler secret put CLOUDFLARE_EMAIL_ROUTING_TOKEN
+#
+# ──────────────────────────────────────────────────────────────────────────
 # TITLE = "Custom Title" # custom title
 # ANNOUNCEMENT = "Custom Announcement"
 # always show ANNOUNCEMENT even no changes
@@ -169,6 +195,16 @@ database_id = "xxx"
 # [[kv_namespaces]]
 # binding = "KV"
 # id = "xxxx"
+
+# Billing rate-limiter KV namespace (optional).
+# Reuses the same KV store as the "KV" binding above but scopes all billing
+# rate-limit keys under the "rl:" prefix so they never collide with other keys.
+# If you expect high billing traffic you can provision a dedicated KV namespace
+# and set its id here instead.
+#
+# [[kv_namespaces]]
+# binding = "BILLING_RATE_LIMITER"
+# id = "xxxx"   # can be the same id as KV above; keys are prefixed with "rl:"
 
 # ratelimit config for /api/new_address
 # [[unsafe.bindings]]
