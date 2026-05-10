@@ -204,14 +204,14 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Assert registration order does not break `/user_api/login`, `/user_api/register`, `/user_api/passkey/*`, `/user_api/oauth2/*` (those routes must remain publicly accessible)
     - _Requirements: 1.1, 1.4, 1.5, 14.6_
 
-  - [~] 7.3 Write property test for user Billing_API: Property 11 (domain preview matches Pricing_Engine)
+  - [x] 7.3 Write property test for user Billing_API: Property 11 (domain preview matches Pricing_Engine)
     - Create `worker/src/user_api/__tests__/billing.property.test.ts` with `// Feature: saas-topup-billing, Property 11: Domain preview matches Pricing_Engine`
     - Generator randomises the active `allowed_domains` + `pricing_rules` state and calls `GET /user_api/billing/domains` via a Hono test client
     - Assert every returned entry has `domain ∈ active allowed_domains` and `credit_cost == Pricing_Engine.resolve('create_address', entry.domain)` (reuse the engine from task 2.1 as oracle)
     - **Property 11: Domain preview matches Pricing_Engine**
     - **Validates: Requirements 2.1, 2.4**
 
-  - [~] 7.4 Write property test for user Billing_API: Property 14 (min top-up guard short-circuits DompetX)
+  - [x] 7.4 Write property test for user Billing_API: Property 14 (min top-up guard short-circuits DompetX)
     - Append describe block: `// Feature: saas-topup-billing, Property 14: Minimum top-up guard short-circuits DompetX`
     - Generator randomises `nominal ∈ ℤ` and `min_topup_idr ∈ ℤ⁺` and targets both `POST /user_api/topup/quote` and `POST /user_api/topup/create`; inject a DompetxClient spy
     - Assert: (a) for every `nominal < min_topup_idr` response is HTTP 400 `nominal_below_minimum` and `dompetxSpy.callCount === 0`; (b) the boundary value `nominal === min_topup_idr` is accepted
