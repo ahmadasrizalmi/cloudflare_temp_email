@@ -160,7 +160,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 16: Channel quote fee and gross formula**
     - **Validates: Requirements 4.2, 4.7, 4.8**
 
-- [ ] 6. Abuse_Guard
+- [x] 6. Abuse_Guard
   - [x] 6.1 Implement `Abuse_Guard` at `worker/src/billing/abuse_guard.ts`
     - Implement `requireFingerprint(c)` — throws HTTP 400 `fingerprint_required` when `x-fingerprint` header is empty/missing; computes `sha256(fingerprint)` and attaches to `c.var.fingerprint_hash`
     - Implement `checkTopupQuote(c)` — KV counter `rl:quote:{user_id}:{bucketMinute}` TTL 60s, max 30/min/user; throws HTTP 429 `rate_limited` on excess
@@ -168,21 +168,21 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - `fail-closed` on KV unavailability for create, `fail-open` for quote (log + allow) as per design.md §"Failure modes" #6
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6_
 
-  - [~] 6.2 Write property test for Abuse_Guard: Property 28 (user rate limits)
+  - [x] 6.2 Write property test for Abuse_Guard: Property 28 (user rate limits)
     - Create `worker/src/billing/__tests__/abuse_guard.property.test.ts` with `// Feature: saas-topup-billing, Property 28: User-level rate limits`
     - Generator produces arbitrary bursts of requests by a single user over a simulated time window (monkey-patch `Date.now`)
     - Assert request N+1 returns 429 when N reaches the configured cap (30 for quote, 5 for create); rejected requests leave no mutation in `topup_transactions` or `billing_audit_logs`
     - **Property 28: User-level rate limits**
     - **Validates: Requirements 10.1, 10.2**
 
-  - [~] 6.3 Write property test for Abuse_Guard: Property 29 (IP new-user abuse guard)
+  - [x] 6.3 Write property test for Abuse_Guard: Property 29 (IP new-user abuse guard)
     - Append describe block: `// Feature: saas-topup-billing, Property 29: IP new-user abuse guard`
     - Generator produces requests from the same IP by a varying number of distinct user ids within a 1-hour simulated window
     - Assert after >10 distinct new users the next request from that IP is blocked for ≥1h and exactly one `billing_audit_logs` row with `event_type='ip_block'` is written per blocking event
     - **Property 29: IP new-user abuse guard**
     - **Validates: Requirements 10.4**
 
-  - [~] 6.4 Write property test for Abuse_Guard: Property 30 (fingerprint required)
+  - [x] 6.4 Write property test for Abuse_Guard: Property 30 (fingerprint required)
     - Append describe block: `// Feature: saas-topup-billing, Property 30: Fingerprint required`
     - Generator produces requests with random header shapes (missing, empty string, whitespace-only, valid hex, long random)
     - Assert the response is HTTP 400 with code `fingerprint_required` iff the header is missing / empty / whitespace; no state mutation for rejected requests
