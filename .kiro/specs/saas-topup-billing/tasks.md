@@ -348,26 +348,26 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Single D1 batch: `UPDATE pricing_rules SET is_active=0 WHERE rule_key=? AND is_active=1` → `INSERT INTO pricing_rules(rule_key, rule_value_json, version=(SELECT COALESCE(MAX(version),0)+1 FROM pricing_rules WHERE rule_key=?), is_active=1)` → `INSERT INTO billing_audit_logs(admin_id, event_type='pricing_update', rule_key, old_value, new_value, created_at)` → call `Pricing_Engine.invalidateCache()`
     - _Requirements: 7.1, 7.3, 7.4, 7.5, 7.6, 7.7, 9.6_
 
-  - [~] 12.2 Implement admin topup transactions endpoints in `billing_admin.ts`
+  - [x] 12.2 Implement admin topup transactions endpoints in `billing_admin.ts`
     - `GET /admin/billing/topup_transactions?status=&user_id=&from=&to=&limit=&cursor=` — paged list with optional filters, `limit <= 100`, cursor on `(created_at, id)`
     - `GET /admin/billing/topup_transactions/:id` — returns the full row INCLUDING `raw_payload`
     - _Requirements: 9.2, 15.5_
 
-  - [~] 12.3 Implement admin channels refresh endpoint in `billing_admin.ts`
+  - [x] 12.3 Implement admin channels refresh endpoint in `billing_admin.ts`
     - `POST /admin/billing/channels/refresh` — synchronously call `Channel_Cache.refresh()`; return `{count, fetched_at}`; write `billing_audit_logs` row with `event_type='channel_refresh'`
     - _Requirements: 9.1, 16.5_
 
-  - [~] 12.4 Implement admin credit adjust endpoint in `billing_admin.ts`
+  - [x] 12.4 Implement admin credit adjust endpoint in `billing_admin.ts`
     - `POST /admin/billing/credit_adjust` — body `{user_id, credit_delta, reason}`; delegate to `Wallet_Service.adjust`; when the resulting balance would be < 0 respond HTTP 400 `negative_balance_not_allowed` and write nothing
     - In the same D1 batch as the ADJUST ledger row, write `billing_audit_logs` with `event_type='credit_adjust'`, `admin_id`, `target_user_id`, `credit_delta`, `reason`
     - _Requirements: 9.3, 9.4, 9.5, 9.6_
 
-  - [~] 12.5 Implement admin KPI endpoint in `billing_admin.ts`
+  - [x] 12.5 Implement admin KPI endpoint in `billing_admin.ts`
     - `GET /admin/billing/kpi?from=&to=` — compute `payment_success_rate = paid / (paid + failed + expired)`, `webhook_mismatch_rate = invalid_sig_count / total_webhooks`, `pending_over_30min_rate`, `net_margin_idr`, `refund_dispute_rate` via SQL aggregates on `topup_transactions` + `credit_ledger` + webhook counter store
     - Reject non-admin (middleware already handles this) with HTTP 401/403
     - _Requirements: 12.1, 12.2, 12.4, 12.5_
 
-  - [~] 12.6 Implement admin domains endpoints in `billing_admin.ts`
+  - [x] 12.6 Implement admin domains endpoints in `billing_admin.ts`
     - `GET /admin/billing/domains`, `POST /admin/billing/domains` (body `{domain}` — verify the domain is active in Cloudflare Email Routing via `CLOUDFLARE_EMAIL_ROUTING_TOKEN` before inserting), `DELETE /admin/billing/domains/:domain`
     - Write `billing_audit_logs` row with `event_type='domain_add'` / `domain_remove`
     - _Requirements: 13.3, 13.5_
@@ -417,7 +417,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Map provider status → `paid` invokes `Wallet_Service.creditTopup` (idempotent via `invoice_id`) and UPDATEs row `status='paid'`; `failed` / `expired` UPDATEs row; `unknown` logs and leaves row pending
     - _Requirements: 8.3, 8.4, 8.5_
 
-  - [~] 13.2 Implement auto margin guard inside the reconciler
+  - [x] 13.2 Implement auto margin guard inside the reconciler
     - After processing pending rows, compute rolling 30-day `net_margin_monthly` from `topup_transactions` + `credit_ledger`
     - If `pricing_rules['margin_guard_auto'] = true` and `net_margin_monthly < margin_guard_target_percent`, increment `domain_weight_com` by 1 (capped at 5) via the same batched PUT flow from task 12.1 with `admin_id = null` and `event_type='auto_margin_guard'`
     - _Requirements: 12.3_
@@ -628,6 +628,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
   ]
 }
 ```
+
 
 
 

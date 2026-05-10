@@ -20,6 +20,9 @@ import { Context, Hono } from 'hono';
 
 import i18n from '../i18n';
 import { createPricingEngine } from '../billing/pricing_engine';
+import { createChannelCache } from '../billing/channel_cache';
+import { createDompetxClient } from '../billing/dompetx_client';
+import { createWalletService, NegativeBalanceError } from '../billing/wallet_service';
 import type { PricingRuleRow, RuleKey } from '../models/billing';
 import { BILLING_RULE_KEYS } from '../models/billing';
 
@@ -73,6 +76,26 @@ function parseRuleValue(raw: unknown): { inner: unknown; storage: string } {
  */
 function isInteger(value: unknown): value is number {
     return typeof value === 'number' && Number.isFinite(value) && Number.isInteger(value);
+}
+
+function parseLimit(raw: string | undefined, fallback = 20): number {
+    const n = Number(raw ?? fallback);
+    if (!Number.isFinite(n) || n <= 0) return fallback;
+    return Math.min(Math.floor(n), 100);
+}
+
+function encodeCursor(createdAt: string, id: number): string {
+    return btoa(JSON.stringify({ created_at: createdAt, id }));
+}
+
+function decodeCursor(cursor: string): { created_at: string; id: number } | null {
+    try {
+        const decoded = JSON.parse(atob(cursor)) as { created_at?: unknown; id?: unknown };
+        if (typeof decoded.created_at !== 'string' || typeof decoded.id !== 'number') return null;
+        return { created_at: decoded.created_at, id: decoded.id };
+    } catch {
+        return null;
+    }
 }
 
 // ─── GET /admin/billing/pricing_rules ─────────────────────────────────────────
@@ -262,7 +285,220 @@ api.put('/admin/billing/pricing_rules', async (c) => {
     return c.json({ rule_key, new_version: newVersion });
 });
 
-export default api;
+// ─── GET /admin/billing/topup_transactions ────────────────────────────────────
+api.get('/admin/billing/topup_transactions', async (c) => {
+    const msgs = i18n.getMessagesbyContext(c);
+    const status = c.req.query('status');
+    const userIdRaw = c.req.query('user_id');
+    const from = c.req.query('from');
+    const to = c.req.query('to');
+    const limit = parseLimit(c.req.query('limit'));
+    const cursor = c.req.query('cursor');
+    const cursorParsed = cursor ? decodeCursor(cursor) : null;
+    if (cursor && !cursorParsed) {
+        return c.json({ error: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
+    }
+
+    const where: string[] = [];
+    const binds: (string | number)[] = [];
+    if (status) {
+        where.push('status = ?');
+        binds.push(status);
+    }
+    if (userIdRaw) {
+        const userId = Number(userIdRaw);
+        if (!isInteger(userId) || userId <= 0) {
+            return c.json({ error: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
+        }
+        where.push('user_id = ?');
+        binds.push(userId);
+    }
+    if (from) {
+        where.push('created_at >= ?');
+        binds.push(from);
+    }
+    if (to) {
+        where.push('created_at <= ?');
+        binds.push(to);
+    }
+    if (cursorParsed) {
+        where.push('(created_at < ? OR (created_at = ? AND id < ?))');
+        binds.push(cursorParsed.created_at, cursorParsed.created_at, cursorParsed.id);
+    }
+
+    const whereSql = where.length > 0 ? `WHERE ${where.join(' AND ')}` : '';
+    const sql = `
+      SELECT id, user_id, invoice_id, provider_reference, channel_code,
+             amount, fee, gross_amount, fee_bearer, status, checkout_url,
+             expiry_minutes, fingerprint_hash, ip, created_at, paid_at, updated_at
+        FROM topup_transactions
+       ${whereSql}
+       ORDER BY created_at DESC, id DESC
+       LIMIT ?
+    `;
+    const { results } = await c.env.DB.prepare(sql).bind(...binds, limit + 1).all<Record<string, unknown>>();
+    const rows = results ?? [];
+    const hasMore = rows.length > limit;
+    const items = hasMore ? rows.slice(0, limit) : rows;
+    const next_cursor =
+        hasMore && items.length > 0
+            ? encodeCursor(String(items[items.length - 1].created_at), Number(items[items.length - 1].id))
+            : null;
+    return c.json({ items, next_cursor });
+});
+
+// ─── GET /admin/billing/topup_transactions/:id ───────────────────────────────
+api.get('/admin/billing/topup_transactions/:id', async (c) => {
+    const msgs = i18n.getMessagesbyContext(c);
+    const id = Number(c.req.param('id'));
+    if (!isInteger(id) || id <= 0) {
+        return c.json({ error: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
+    }
+    const row = await c.env.DB.prepare(
+        `SELECT * FROM topup_transactions WHERE id = ? LIMIT 1`,
+    ).bind(id).first<Record<string, unknown>>();
+    if (!row) return c.text('Not Found', 404);
+    return c.json(row);
+});
+
+// ─── POST /admin/billing/channels/refresh ─────────────────────────────────────
+api.post('/admin/billing/channels/refresh', async (c) => {
+    const msgs = i18n.getMessagesbyContext(c);
+    try {
+        const dompetx = createDompetxClient(c.env);
+        const cache = createChannelCache(c.env.DB, { listChannels: () => dompetx.listChannels() });
+        const { count } = await cache.refresh();
+        await c.env.DB.prepare(
+            `INSERT INTO billing_audit_logs
+               (admin_id, event_type, target_user_id, rule_key, old_value, new_value, reason, metadata, created_at)
+             VALUES (?, 'channel_refresh', NULL, NULL, NULL, NULL, NULL, ?, CURRENT_TIMESTAMP)`,
+        ).bind(
+            getAdminIdForAudit(c),
+            JSON.stringify({ count }),
+        ).run();
+        return c.json({ count, fetched_at: new Date().toISOString() });
+    } catch (err) {
+        console.error('channel refresh failed', err);
+        return c.json({ error: 'operation_failed', message: msgs.OperationFailedMsg }, 500);
+    }
+});
+
+// ─── POST /admin/billing/credit_adjust ────────────────────────────────────────
+api.post('/admin/billing/credit_adjust', async (c) => {
+    const msgs = i18n.getMessagesbyContext(c);
+    let body: { user_id?: unknown; credit_delta?: unknown; reason?: unknown };
+    try {
+        body = await c.req.json();
+    } catch {
+        return c.json({ error: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
+    }
+    const userId = Number(body.user_id);
+    const creditDelta = Number(body.credit_delta);
+    const reason = typeof body.reason === 'string' ? body.reason.trim() : '';
+    if (!isInteger(userId) || userId <= 0 || !isInteger(creditDelta) || creditDelta === 0 || !reason) {
+        return c.json({ error: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
+    }
+
+    try {
+        const wallet = createWalletService(c.env.DB);
+        const adminId = getAdminIdForAudit(c) ?? 0;
+        const result = await wallet.adjust({
+            adminId,
+            userId,
+            creditDelta,
+            reason,
+        });
+        await c.env.DB.prepare(
+            `INSERT INTO billing_audit_logs
+               (admin_id, event_type, target_user_id, rule_key, old_value, new_value, reason, metadata, created_at)
+             VALUES (?, 'credit_adjust', ?, NULL, NULL, ?, ?, ?, CURRENT_TIMESTAMP)`,
+        ).bind(
+            adminId || null,
+            userId,
+            String(creditDelta),
+            reason,
+            JSON.stringify({ ledger_id: result.ledgerId, new_balance: result.newBalance }),
+        ).run();
+        return c.json({ ledger_id: result.ledgerId, new_balance: result.newBalance });
+    } catch (err) {
+        if (err instanceof NegativeBalanceError) {
+            return c.json(
+                { error: 'negative_balance_not_allowed', message: msgs.NegativeBalanceNotAllowedMsg },
+                400,
+            );
+        }
+        throw err;
+    }
+});
+
+// ─── GET /admin/billing/kpi ───────────────────────────────────────────────────
+api.get('/admin/billing/kpi', async (c) => {
+    const from = c.req.query('from') || "1970-01-01";
+    const to = c.req.query('to') || "2999-12-31";
+
+    const tx = await c.env.DB.prepare(
+        `SELECT
+            COALESCE(SUM(CASE WHEN status='paid' THEN 1 ELSE 0 END), 0) AS paid,
+            COALESCE(SUM(CASE WHEN status='failed' THEN 1 ELSE 0 END), 0) AS failed,
+            COALESCE(SUM(CASE WHEN status='expired' THEN 1 ELSE 0 END), 0) AS expired,
+            COALESCE(SUM(CASE WHEN status='pending' AND created_at < datetime('now', '-30 minutes') THEN 1 ELSE 0 END), 0) AS pending_over_30m,
+            COALESCE(SUM(CASE WHEN status='paid' THEN amount ELSE 0 END), 0) AS paid_amount
+          FROM topup_transactions
+         WHERE created_at >= ? AND created_at <= ?`,
+    ).bind(from, to).first<{
+        paid: number; failed: number; expired: number; pending_over_30m: number; paid_amount: number;
+    }>();
+
+    const ledger = await c.env.DB.prepare(
+        `SELECT
+            COALESCE(SUM(CASE WHEN type='DEBIT' THEN ABS(COALESCE(idr_ref,0)) ELSE 0 END), 0) AS debit_idr,
+            COALESCE(SUM(CASE WHEN type='REFUND' THEN 1 ELSE 0 END), 0) AS refund_count,
+            COALESCE(COUNT(*), 0) AS ledger_count
+          FROM credit_ledger
+         WHERE created_at >= ? AND created_at <= ?`,
+    ).bind(from, to).first<{ debit_idr: number; refund_count: number; ledger_count: number }>();
+
+    const webhook = await c.env.DB.prepare(
+        `SELECT
+            COALESCE(SUM(CASE WHEN event_type='webhook_invalid_signature' THEN 1 ELSE 0 END), 0) AS invalid_sig_count,
+            COALESCE(SUM(CASE WHEN event_type LIKE 'webhook_%' THEN 1 ELSE 0 END), 0) AS total_webhooks
+          FROM billing_audit_logs
+         WHERE created_at >= ? AND created_at <= ?`,
+    ).bind(from, to).first<{ invalid_sig_count: number; total_webhooks: number }>();
+
+    const paid = Number(tx?.paid ?? 0);
+    const failed = Number(tx?.failed ?? 0);
+    const expired = Number(tx?.expired ?? 0);
+    const denom = paid + failed + expired;
+    const payment_success_rate = denom > 0 ? paid / denom : 0;
+
+    const totalWebhooks = Number(webhook?.total_webhooks ?? 0);
+    const invalidSigCount = Number(webhook?.invalid_sig_count ?? 0);
+    const webhook_mismatch_rate = totalWebhooks > 0 ? invalidSigCount / totalWebhooks : 0;
+
+    const paidAmount = Number(tx?.paid_amount ?? 0);
+    const debitIdr = Number(ledger?.debit_idr ?? 0);
+    const net_margin_idr = paidAmount - debitIdr;
+    const refundDisputeRate = paid > 0 ? Number(ledger?.refund_count ?? 0) / paid : 0;
+
+    return c.json({
+        from,
+        to,
+        payment_success_rate,
+        webhook_mismatch_rate,
+        pending_over_30min_rate: denom > 0 ? Number(tx?.pending_over_30m ?? 0) / denom : 0,
+        net_margin_idr,
+        refund_dispute_rate: refundDisputeRate,
+        raw: {
+            paid,
+            failed,
+            expired,
+            pending_over_30m: Number(tx?.pending_over_30m ?? 0),
+            invalid_sig_count: invalidSigCount,
+            total_webhooks: totalWebhooks,
+        },
+    });
+});
 
 // ─── POST /admin/billing/domains ──────────────────────────────────────────────
 // Body: { domain: string, is_active?: boolean }
@@ -311,3 +547,28 @@ api.post('/admin/billing/domains', async (c) => {
 
     return c.json({ domain, is_active: body.is_active === false ? 0 : 1 });
 });
+
+// ─── GET /admin/billing/domains ───────────────────────────────────────────────
+api.get('/admin/billing/domains', async (c) => {
+    const { results } = await c.env.DB.prepare(
+        `SELECT id, domain, is_active, created_at, created_by
+           FROM allowed_domains
+          ORDER BY domain ASC`,
+    ).all<Record<string, unknown>>();
+    return c.json(results ?? []);
+});
+
+// ─── DELETE /admin/billing/domains/:domain ────────────────────────────────────
+api.delete('/admin/billing/domains/:domain', async (c) => {
+    const msgs = i18n.getMessagesbyContext(c);
+    const domain = (c.req.param('domain') || '').trim().toLowerCase();
+    if (!domain) {
+        return c.json({ error: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
+    }
+    const res = await c.env.DB.prepare(
+        `DELETE FROM allowed_domains WHERE domain = ?`,
+    ).bind(domain).run();
+    return c.json({ success: (res.meta?.changes ?? 0) > 0 });
+});
+
+export default api;
