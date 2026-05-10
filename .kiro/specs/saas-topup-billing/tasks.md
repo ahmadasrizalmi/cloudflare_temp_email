@@ -529,8 +529,8 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 37: i18n fallback**
     - **Validates: Requirements 17.3**
 
-- [ ] 18. Integration tests (mocked externals)
-  - [~] 18.1 Write integration test: admin channels refresh against mocked DompetX list endpoint
+- [x] 18. Integration tests (mocked externals)
+  - [x] 18.1 Write integration test: admin channels refresh against mocked DompetX list endpoint
     - File: `worker/src/billing/__tests__/channels_refresh.integration.test.ts`; use a fetch-mocker to return a fixed channel set; assert `payment_channels_cache` rows reflect the mock and subsequent `GET /open_api/payment_channels` returns filtered rows
     - _Requirements: 9.1, 16.5_
 
