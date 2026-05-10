@@ -3,6 +3,19 @@
 > [!NOTE] Note
 > For CLI deployment syntax, please refer to `worker/wrangler.toml.template`
 
+## Billing Variables (SaaS Top-up)
+
+| Variable Name | Type | Description | Example |
+| --- | --- | --- | --- |
+| `BILLING_ENABLED` | Text/JSON | Enable wallet/top-up billing features | `true` |
+| `BILLING_LAUNCH_AT` | Text | Billing launch datetime (ISO-8601) for grandfather rules | `2026-01-01T00:00:00Z` |
+| `DEFAULT_LANG` | Text | Recommended default `id` for `automation.my.id` deployment | `id` |
+| `DOMPETX_API_KEY` | Secret | DompetX API key for create/status calls | `***` |
+| `DOMPETX_API_SECRET` | Secret | DompetX API signing secret | `***` |
+| `DOMPETX_WEBHOOK_SECRET` | Secret | DompetX webhook signature secret | `***` |
+| `CLOUDFLARE_EMAIL_ROUTING_TOKEN` | Secret | Cloudflare Email Routing token for domain automation | `***` |
+
+
 ## Required Variables
 
 | Variable Name              | Type        | Description                                                            | Example                              |

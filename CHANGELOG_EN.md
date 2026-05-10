@@ -10,6 +10,7 @@
 
 ### Features
 
+- feat: |billing| add backend billing wiring (user/admin routes, DompetX webhook, scheduled reconciler + auto margin guard), and add frontend wallet/top-up pages with billing API client and locale host-default support
 - feat: |Frontend| Upgrade the address credential dialog to "Address Credentials & Connection Methods" and reuse it for both normal users and admin-created addresses; support showing AI Agent access via `ENABLE_AGENT_EMAIL_INFO` and SMTP/IMAP client settings via `SMTP_IMAP_PROXY_CONFIG`
 
 ### Bug Fixes
@@ -26,6 +27,7 @@
 
 ### Features
 
+- feat: |billing| add backend billing wiring (user/admin routes, DompetX webhook, scheduled reconciler + auto margin guard), and add frontend wallet/top-up pages with billing API client and locale host-default support
 - feat: |Frontend| Add six-language frontend support (`zh` / `en` / `es` / `pt-BR` / `ja` / `de`), keep `zh` as the default locale; locale-unprefixed routes (for example `/` and `/user`) render in Chinese by default while still recording browser language as the stored preference. Explicit locale switches are persisted, and the current route, query string, and canonical locale URL stay in sync during switching
 - feat: |API| Add server-side parsed-mail endpoints `/api/parsed_mails` and `/api/parsed_mail/:id` that return `sender` / `subject` / `text` / `html` / `attachments` metadata directly (reuses `commonParseMail`), so AI agents no longer need a client-side MIME parser
 - feat: |Skill| Bundle a read-only skill `cf-temp-mail-agent-mail` (`skills/cf-temp-mail-agent-mail/`) so AI agents like OpenClaw / Codex / Cursor can consume a mailbox with a user-supplied Address JWT + API base URL — list mails, poll verification codes, etc. — sidestepping the Turnstile challenge required to create a mailbox. Install via `npx degit dreamhunter2333/cloudflare_temp_email/skills/cf-temp-mail-agent-mail`
@@ -54,6 +56,7 @@
 
 ### Features
 
+- feat: |billing| add backend billing wiring (user/admin routes, DompetX webhook, scheduled reconciler + auto margin guard), and add frontend wallet/top-up pages with billing API client and locale host-default support
 - feat: |send mail| Recommend Cloudflare `send_email` binding as the default send channel. Domains onboarded to Email Routing without Resend/SMTP now automatically use the binding to send to arbitrary addresses (Workers Paid includes 3,000 msgs/month, $0.35/1000 beyond); existing `verifiedAddressList` / Resend / SMTP configurations remain fully compatible (#964)
 
 ### Bug Fixes
@@ -68,6 +71,7 @@
 
 ### Features
 
+- feat: |billing| add backend billing wiring (user/admin routes, DompetX webhook, scheduled reconciler + auto margin guard), and add frontend wallet/top-up pages with billing API client and locale host-default support
 - feat: |Admin| Add **IP Whitelist (strict mode)** to IP blacklist settings: when enabled, ONLY whitelisted IPs can access rate-limited APIs (create address, send mail, external send mail, user register, verify code); all other IPs are denied (#920)
 - feat: |Address| Support setting max address count to `0` for unlimited (#968)
 
@@ -92,6 +96,7 @@
 
 ### Features
 
+- feat: |billing| add backend billing wiring (user/admin routes, DompetX webhook, scheduled reconciler + auto margin guard), and add frontend wallet/top-up pages with billing API client and locale host-default support
 - feat: |Admin| Admin account list now supports column sorting (ID, name, created at, updated at, mail count, send count), search automatically resets pagination to page 1 (#918)
 - feat: |Admin API| `/admin/new_address` endpoint now returns `address_id` field, avoiding additional query after address creation (#912)
 - feat: |Create Address| Add `ENABLE_CREATE_ADDRESS_SUBDOMAIN_MATCH` switch and an admin-panel toggle for suffix-based subdomain matching in create-address APIs; when enabled, `foo.example.com` can match base domain `example.com`
@@ -127,6 +132,7 @@
 
 ### Features
 
+- feat: |billing| add backend billing wiring (user/admin routes, DompetX webhook, scheduled reconciler + auto margin guard), and add frontend wallet/top-up pages with billing API client and locale host-default support
 - feat: |User Registration| Add email regex validation for user registration, admins can configure email format validation rules
 - feat: |Frontend| Add configurable Status menu button via `STATUS_URL` environment variable for status monitoring page link
 - feat: |SMTP| Add STARTTLS support for SMTP proxy server via `smtp_tls_cert` and `smtp_tls_key` environment variables
@@ -163,6 +169,7 @@
 
 ### Features
 
+- feat: |billing| add backend billing wiring (user/admin routes, DompetX webhook, scheduled reconciler + auto margin guard), and add frontend wallet/top-up pages with billing API client and locale host-default support
 - feat: |OAuth2| Add email format transformation support for OAuth2, allowing regex-based email format conversion from third-party login providers (e.g., transform `user@domain` to `user@custom.domain`)
 - feat: |OAuth2| Add SVG icon support for OAuth2 providers, admins can configure custom icons for login buttons, preset icons for GitHub, Linux Do, Authentik templates
 - feat: |Send Mail| Auto-hide sendmail tab, sendbox tab, and reply button when send mail is not configured
@@ -194,6 +201,7 @@
 
 ### Features
 
+- feat: |billing| add backend billing wiring (user/admin routes, DompetX webhook, scheduled reconciler + auto margin guard), and add frontend wallet/top-up pages with billing API client and locale host-default support
 - feat: |Admin| Add admin account page, display current login method and support logout (password login only)
 - fix: |GitHub Actions| Fix container image name must be lowercase
 - feat: |Email Forwarding| Add source address regex forwarding, filter by sender address, fully backward compatible
@@ -756,3 +764,4 @@ Changes:
 DB changes
 
 - `db/2024-01-13-patch.sql`
+

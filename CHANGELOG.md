@@ -10,6 +10,7 @@
 
 ### Features
 
+- feat: |billing| ?????????(user/admin ?????DompetX webhook??? reconciler ??? margin guard),???????/?????billing API ???? hostname ??????
 - feat: |Frontend| 将邮箱地址凭证弹窗升级为“地址凭证与连接方式”，复用普通用户与 admin 创建邮箱结果弹窗；支持通过 `ENABLE_AGENT_EMAIL_INFO` 展示 AI Agent 接入信息，并通过 `SMTP_IMAP_PROXY_CONFIG` 展示 SMTP/IMAP 客户端连接信息
 
 ### Bug Fixes
@@ -26,6 +27,7 @@
 
 ### Features
 
+- feat: |billing| ?????????(user/admin ?????DompetX webhook??? reconciler ??? margin guard),???????/?????billing API ???? hostname ??????
 - feat: |Frontend| 前端新增 6 国语言支持（`zh` / `en` / `es` / `pt-BR` / `ja` / `de`），默认语言保持为 `zh`；无 locale 前缀路由（如 `/`、`/user`）默认使用中文渲染，同时会记录浏览器语言作为语言偏好。用户手动切换后会持久化语言偏好，并保持当前页面路径、查询参数与 canonical locale URL 一致
 - feat: |API| 新增服务端解析邮件接口 `/api/parsed_mails` 与 `/api/parsed_mail/:id`，直接返回 `sender` / `subject` / `text` / `html` / `attachments` 元信息（复用 `commonParseMail`），AI agent 侧不再需要引入 MIME 解析器
 - feat: |Skill| 新增仓库内置只读 skill `cf-temp-mail-agent-mail`（`skills/cf-temp-mail-agent-mail/`），让 OpenClaw / Codex / Cursor 等 AI agent 凭用户提供的 Address JWT + API 地址读取邮箱、轮询验证码，绕开创建邮箱时的 Turnstile 人机验证；可通过 `npx degit dreamhunter2333/cloudflare_temp_email/skills/cf-temp-mail-agent-mail` 安装
@@ -54,6 +56,7 @@
 
 ### Features
 
+- feat: |billing| ?????????(user/admin ?????DompetX webhook??? reconciler ??? margin guard),???????/?????billing API ???? hostname ??????
 - feat: |发信| 推荐使用 Cloudflare `send_email` binding 作为默认发信通道，已 onboard Email Routing 的域名未配置 Resend/SMTP 时自动走 binding 发至任意地址（Workers Paid 每月含 3000 封，超出 $0.35/1000 封）；历史 `verifiedAddressList` / Resend / SMTP 配置完全兼容（#964）
 
 ### Bug Fixes
@@ -68,6 +71,7 @@
 
 ### Features
 
+- feat: |billing| ?????????(user/admin ?????DompetX webhook??? reconciler ??? margin guard),???????/?????billing API ???? hostname ??????
 - feat: |Admin| IP 黑名单设置新增 **IP 白名单（严格模式）**：启用后仅允许匹配白名单的 IP 访问受限流保护的 API（创建邮箱、发送邮件、外部发送邮件、用户注册、验证码校验），其他所有 IP 一律拒绝（#920）
 - feat: |Address| 支持最大地址数量设置为 `0` 表示无限制（#968）
 
@@ -92,6 +96,7 @@
 
 ### Features
 
+- feat: |billing| ?????????(user/admin ?????DompetX webhook??? reconciler ??? margin guard),???????/?????billing API ???? hostname ??????
 - feat: |Admin| 管理后台账号列表支持按列排序（ID、名称、创建时间、更新时间、邮件数量、发送数量），搜索时自动重置分页到第1页（#918）
 - feat: |Admin API| `/admin/new_address` 接口返回值新增 `address_id` 字段，避免创建后需再次查询地址 ID（#912）
 - feat: |创建邮箱| 新增 `ENABLE_CREATE_ADDRESS_SUBDOMAIN_MATCH` 开关，并支持在管理后台单独控制创建邮箱 API 的子域名后缀匹配；开启后允许 `foo.example.com` 匹配基础域名 `example.com`
@@ -127,6 +132,7 @@
 
 ### Features
 
+- feat: |billing| ?????????(user/admin ?????DompetX webhook??? reconciler ??? margin guard),???????/?????billing API ???? hostname ??????
 - feat: |用户注册| 新增用户注册邮箱正则校验功能，管理员可配置邮箱格式验证规则
 - feat: |前端| 新增可配置的 Status 菜单按钮，通过 `STATUS_URL` 环境变量配置状态监控页面链接
 - feat: |SMTP| SMTP 代理服务支持 STARTTLS，通过 `smtp_tls_cert` 和 `smtp_tls_key` 环境变量配置
@@ -163,6 +169,7 @@
 
 ### Features
 
+- feat: |billing| ?????????(user/admin ?????DompetX webhook??? reconciler ??? margin guard),???????/?????billing API ???? hostname ??????
 - feat: |OAuth2| 新增 OAuth2 邮箱格式转换功能，支持通过正则表达式转换第三方登录返回的邮箱格式（如将 `user@domain` 转换为 `user@custom.domain`）
 - feat: |OAuth2| 新增 OAuth2 提供商 SVG 图标支持，管理员可为登录按钮配置自定义图标，预置 GitHub、Linux Do、Authentik 模板图标
 - feat: |发送邮件| 未配置发送邮件功能时自动隐藏发送邮件 tab、发件箱 tab 和回复按钮
@@ -194,6 +201,7 @@
 
 ### Features
 
+- feat: |billing| ?????????(user/admin ?????DompetX webhook??? reconciler ??? margin guard),???????/?????billing API ???? hostname ??????
 - feat: |Admin| 新增管理员账号页面，显示当前登录方式并支持退出登录（仅限密码登录方式）
 - fix: |GitHub Actions| 修复容器镜像名需要全部小写的问题
 - feat: |邮件转发| 新增来源地址正则转发功能，支持按发件人地址过滤转发，完全向后兼容
@@ -763,3 +771,4 @@ Changes:
 DB changes
 
 - `db/2024-01-13-patch.sql`
+
