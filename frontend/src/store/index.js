@@ -141,6 +141,11 @@ export const useGlobalState = createGlobalState(
             set: (v) => { _oauth2ClientIDSession.value = v; _oauth2ClientIDFallback.value = v; }
         });
         const browserFingerprint = ref('');
+        const wallet = useStorage('wallet', {
+            balance_credit: 0,
+            balance_idr_ref: 0,
+            updated_at: '',
+        });
         return {
             isDark,
             toggleDark,
@@ -180,6 +185,7 @@ export const useGlobalState = createGlobalState(
             useSimpleIndex,
             addressPassword,
             browserFingerprint,
+            wallet,
         }
     },
 )

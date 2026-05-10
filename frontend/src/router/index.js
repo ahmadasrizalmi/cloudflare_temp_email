@@ -2,11 +2,16 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/Index.vue'
 import User from '../views/User.vue'
 import UserOauth2Callback from '../views/user/UserOauth2Callback.vue'
+import WalletHome from '../views/user/wallet/WalletHome.vue'
+import WalletTopup from '../views/user/wallet/Topup.vue'
+import WalletTopupHistory from '../views/user/wallet/TopupHistory.vue'
+import WalletLedger from '../views/user/wallet/Ledger.vue'
 import i18n from '../i18n'
 import { useGlobalState } from '../store'
 import {
     DEFAULT_LOCALE,
     getBrowserLocales,
+    getHostDefaultLocale,
     getPreferredLocale,
     replaceLocaleInFullPath,
     resolveSupportedLocale,
@@ -33,6 +38,26 @@ const router = createRouter({
             component: UserOauth2Callback
         },
         {
+            path: '/user/wallet',
+            alias: '/:lang/user/wallet',
+            component: WalletHome
+        },
+        {
+            path: '/user/wallet/topup',
+            alias: '/:lang/user/wallet/topup',
+            component: WalletTopup
+        },
+        {
+            path: '/user/wallet/topup/history',
+            alias: '/:lang/user/wallet/topup/history',
+            component: WalletTopupHistory
+        },
+        {
+            path: '/user/wallet/ledger',
+            alias: '/:lang/user/wallet/ledger',
+            component: WalletLedger
+        },
+        {
             path: '/admin',
             alias: '/:lang/admin',
             component: () => import('../views/Admin.vue')
@@ -52,7 +77,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     const routeLocale = resolveSupportedLocale(to.path.split('/')[1])
-    const resolvedLocale = routeLocale || DEFAULT_LOCALE
+    const resolvedLocale = routeLocale || preferredLocale.value || getHostDefaultLocale()
     i18n.global.locale.value = resolvedLocale
 
     if (routeLocale) {

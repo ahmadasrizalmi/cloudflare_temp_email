@@ -44,6 +44,13 @@ export const LOCALE_REGISTRY = [
     turnstileLocale: 'en',
   },
   {
+    locale: 'id',
+    label: 'Bahasa Indonesia',
+    browserMatches: ['id'],
+    naive: { locale: enUS, dateLocale: dateEnUS },
+    turnstileLocale: 'id',
+  },
+  {
     locale: 'es',
     label: 'Español',
     browserMatches: ['es'],

@@ -10,7 +10,7 @@ const API_BASE = import.meta.env.VITE_API_BASE || "";
 const {
     loading, auth, jwt, settings, openSettings,
     userOpenSettings, userSettings, announcement,
-    showAuth, adminAuth, showAdminAuth, userJwt
+    showAuth, adminAuth, showAdminAuth, userJwt, wallet
 } = useGlobalState();
 
 const instance = axios.create({
@@ -54,6 +54,21 @@ const apiFetch = async (path, options = {}) => {
         }
         if (response.status === 401 && openSettings.value.needAuth) {
             showAuth.value = true;
+        }
+        if (response.status === 402) {
+            try {
+                const walletRes = await instance.request('/user_api/wallet', {
+                    method: 'GET',
+                    headers,
+                });
+                if (walletRes?.data?.balance_credit !== undefined) {
+                    wallet.value = walletRes.data;
+                }
+            } catch (refreshErr) {
+                console.warn('wallet refresh on 402 failed', refreshErr);
+            }
+            const msg = i18n.global.t('views.common.Login.credentialInput') || 'insufficient_credit';
+            throw new Error(`[402]: ${msg}`);
         }
         if (response.status >= 300) {
             throw new Error(`[${response.status}]: ${response.data}` || "error");

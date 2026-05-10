@@ -73,7 +73,12 @@ export const getPreferredLocale = (
   return FALLBACK_LOCALE
 }
 
-export const getInitialLocale = () => DEFAULT_LOCALE
+export const getHostDefaultLocale = (): SupportedLocale => {
+  if (typeof window === 'undefined') return DEFAULT_LOCALE
+  return window.location.hostname === 'automation.my.id' ? 'id' : DEFAULT_LOCALE
+}
+
+export const getInitialLocale = () => getHostDefaultLocale()
 
 const splitPathSuffix = (fullPath: string) => {
   const match = fullPath.match(/^([^?#]*)(.*)$/)

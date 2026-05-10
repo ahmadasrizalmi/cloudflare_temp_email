@@ -66,6 +66,7 @@ const buildAdditionalLocaleMessages = (locale: AdditionalLocale) => {
 export const I18N_MESSAGES: Record<SupportedLocale, LocaleTree> = {
   zh: buildSourceLocaleMessages('zh'),
   en: buildSourceLocaleMessages('en'),
+  id: buildSourceLocaleMessages('en'),
   es: buildAdditionalLocaleMessages('es'),
   'pt-BR': buildAdditionalLocaleMessages('pt-BR'),
   ja: buildAdditionalLocaleMessages('ja'),

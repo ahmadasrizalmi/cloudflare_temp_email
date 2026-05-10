@@ -8,6 +8,7 @@ import UserSettingsPage from './user/UserSettings.vue';
 import UserBar from './user/UserBar.vue';
 import BindAddress from './user/BindAddress.vue';
 import UserMailBox from './user/UserMailBox.vue';
+import WalletHome from './user/wallet/WalletHome.vue';
 
 const {
     userTab, globalTabplacement, userSettings
@@ -32,6 +33,9 @@ const { t } = useScopedI18n('views.User')
             </n-tab-pane>
             <n-tab-pane name="bind_address" :tab="t('bind_address')">
                 <BindAddress />
+            </n-tab-pane>
+            <n-tab-pane name="wallet" tab="Wallet">
+                <WalletHome />
             </n-tab-pane>
         </n-tabs>
     </div>
