@@ -44,6 +44,7 @@
     "@vicons/fa": "^0.13.0",
     "@vicons/material": "^0.13.0",
     "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/test-utils": "^2.4.10",
     "jsdom": "^28.1.0",
     "unplugin-auto-import": "^20.3.0",
     "unplugin-vue-components": "^30.0.0",

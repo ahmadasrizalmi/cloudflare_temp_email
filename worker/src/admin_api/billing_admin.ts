@@ -263,3 +263,51 @@ api.put('/admin/billing/pricing_rules', async (c) => {
 });
 
 export default api;
+
+// ─── POST /admin/billing/domains ──────────────────────────────────────────────
+// Body: { domain: string, is_active?: boolean }
+// Adds or updates allowed domain after optional Cloudflare Email Routing check.
+// Requirements: 13.5
+api.post('/admin/billing/domains', async (c) => {
+    const msgs = i18n.getMessagesbyContext(c);
+    let body: { domain?: string; is_active?: boolean };
+    try {
+        body = await c.req.json();
+    } catch {
+        return c.json({ error: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
+    }
+    const domain = (body.domain || '').trim().toLowerCase();
+    if (!domain) {
+        return c.json({ error: 'invalid_input', message: msgs.RequiredFieldMsg }, 400);
+    }
+
+    // Optional CF validation step: when token exists, call CF Email Routing API.
+    // In tests we mock this fetch and assert insertion only happens after success.
+    const token = c.env.CLOUDFLARE_EMAIL_ROUTING_TOKEN;
+    if (token) {
+        const accountId = (c.env as unknown as Record<string, string>).CLOUDFLARE_ACCOUNT_ID || '';
+        const zoneId = (c.env as unknown as Record<string, string>).CLOUDFLARE_ZONE_ID || '';
+        const url = `https://api.cloudflare.com/client/v4/accounts/${accountId}/zones/${zoneId}/email/routing/addresses`;
+        const res = await fetch(url, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: `test@${domain}` }),
+        });
+        if (!res.ok) {
+            return c.json({ error: 'operation_failed', message: msgs.OperationFailedMsg }, 400);
+        }
+    }
+
+    await c.env.DB.prepare(
+        `INSERT INTO allowed_domains (domain, is_active, created_at, created_by)
+         VALUES (?, ?, CURRENT_TIMESTAMP, ?)
+         ON CONFLICT(domain) DO UPDATE SET is_active = excluded.is_active`,
+    )
+        .bind(domain, body.is_active === false ? 0 : 1, getAdminIdForAudit(c))
+        .run();
+
+    return c.json({ domain, is_active: body.is_active === false ? 0 : 1 });
+});

@@ -500,11 +500,11 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Register `/user/wallet`, `/user/wallet/topup`, `/user/wallet/topup/history`, `/user/wallet/ledger` as authenticated routes; add nav links in the user header/sidebar
     - _Requirements: 3.1, 4.1, 8.1_
 
-  - [~] 16.9 Write unit test: Topup.vue preset and channel computation
+  - [x] 16.9 Write unit test: Topup.vue preset and channel computation
     - Use `@vue/test-utils` + Vitest; mock API returning a fixed channel list; assert preset click updates `nominal`, quote panel shows correct `gross_amount`, and the "Bayar Sekarang" button is disabled for non-eligible combinations
     - _Requirements: 4.1, 4.2, 4.5_
 
-  - [~] 16.10 Write unit test: axios interceptor auto-refreshes wallet on 402
+  - [x] 16.10 Write unit test: axios interceptor auto-refreshes wallet on 402
     - Mock a paid-action API returning 402 `insufficient_credit`; assert the wallet store is refreshed and the i18n-localised toast is emitted
     - _Requirements: 2.5, 6.3_
 
@@ -534,15 +534,15 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - File: `worker/src/billing/__tests__/channels_refresh.integration.test.ts`; use a fetch-mocker to return a fixed channel set; assert `payment_channels_cache` rows reflect the mock and subsequent `GET /open_api/payment_channels` returns filtered rows
     - _Requirements: 9.1, 16.5_
 
-  - [~] 18.2 Write integration test: admin domains add against mocked Cloudflare Email Routing API
+  - [x] 18.2 Write integration test: admin domains add against mocked Cloudflare Email Routing API
     - File: `worker/src/admin_api/__tests__/domains.integration.test.ts`; mock the Email Routing API to return success; assert `allowed_domains` row is inserted only after the mock returns 200; assert 400 when the mock returns a failure
     - _Requirements: 13.5_
 
-  - [~] 18.3 Write integration test: scheduled cron trigger invokes reconciler
+  - [x] 18.3 Write integration test: scheduled cron trigger invokes reconciler
     - File: `worker/src/billing/__tests__/scheduled.integration.test.ts`; simulate a scheduled event via the Cloudflare Workers test runtime; assert `runReconcile` is called exactly once per invocation and touches expected rows
     - _Requirements: 8.3_
 
-  - [~] 18.4 Write integration test: startup failure when billing secrets are missing
+  - [x] 18.4 Write integration test: startup failure when billing secrets are missing
     - File: `worker/src/billing/__tests__/startup_secrets.integration.test.ts`; spin up the worker with selected secrets unset and `BILLING_ENABLED=true`; assert the first billing request returns the explicit error and that non-billing routes (`/api/*`, `/admin/*`, `/open_api/auth`) remain functional
     - _Requirements: 15.6, 14.6_
 
@@ -551,24 +551,24 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - _Requirements: 5.8, 6.4_
 
 - [ ] 19. E2E tests (Playwright, under `e2e/tests/api/`)
-  - [~] 19.1 Write `billing-topup-happy.spec.ts`
+  - [x] 19.1 Write `billing-topup-happy.spec.ts`
     - Login → `POST /user_api/topup/quote` → `POST /user_api/topup/create` → simulate a signed DompetX webhook → assert balance reflects credit + bonus when nominal ≥ threshold
     - Add a mocked DompetX service container to `e2e/docker-compose.yml` and wire webhook URL to the worker under test
     - _Requirements: 4.6, 5.4, 8.1, 11.1, 18.4_
 
-  - [~] 19.2 Write `billing-webhook-idempotency.spec.ts`
+  - [x] 19.2 Write `billing-webhook-idempotency.spec.ts`
     - Deliver the same signed webhook 3 times for the same `invoice_id`; assert exactly one TOPUP and at most one BONUS ledger entry exist
     - _Requirements: 5.5, 5.9, 11.6_
 
-  - [~] 19.3 Write `billing-insufficient-credit.spec.ts`
+  - [x] 19.3 Write `billing-insufficient-credit.spec.ts`
     - User with zero balance attempts `POST /api/new_address` on an allowed domain; assert HTTP 402 `insufficient_credit`
     - _Requirements: 2.5, 6.3_
 
-  - [~] 19.4 Write `billing-domain-cost-preview.spec.ts`
+  - [x] 19.4 Write `billing-domain-cost-preview.spec.ts`
     - Call `GET /user_api/billing/domains`; assert `.com` domains have a higher `credit_cost` than `.web.id` / `.my.id` domains under the default pricing
     - _Requirements: 2.1, 2.2_
 
-  - [~] 19.5 Write `billing-rate-limit.spec.ts`
+  - [x] 19.5 Write `billing-rate-limit.spec.ts`
     - Fire 6 `POST /user_api/topup/create` within 10 minutes for the same user; assert the 6th returns HTTP 429
     - _Requirements: 10.1_
 
@@ -628,4 +628,5 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
   ]
 }
 ```
+
 
