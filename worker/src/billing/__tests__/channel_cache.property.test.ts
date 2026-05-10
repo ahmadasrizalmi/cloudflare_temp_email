@@ -350,4 +350,53 @@ describe('Channel_Cache — Property 15: Channel filter correctness', () => {
             (await cache.listPublic(999_999_999)).map((r) => r.channel_code),
         ).toEqual(['OPEN_MAX']);
     });
+
+    it('Property 16: quote fee and gross formula always match the oracle', async () => {
+        const computeFeeOracle = (
+            fee_type: 'percentage' | 'fixed' | 'mixed',
+            fee_value: number,
+            fee_fixed: number,
+            nominal: number,
+        ): number => {
+            switch (fee_type) {
+                case 'percentage':
+                    return Math.floor((nominal * fee_value) / 100);
+                case 'fixed':
+                    return fee_fixed;
+                case 'mixed':
+                    return Math.floor((nominal * fee_value) / 100) + fee_fixed;
+            }
+        };
+
+        await fc.assert(
+            fc.asyncProperty(
+                rowsArb(),
+                fc.integer({ min: 1, max: 10_000_000 }),
+                async (rows, nominal) => {
+                    seedRows(sqlite, rows);
+                    const cache = createChannelCache(
+                        db as unknown as D1Database,
+                        stubDompetxClient,
+                    );
+
+                    const quoteRows = await cache.listForQuote(nominal);
+                    for (const row of quoteRows) {
+                        const expectedFee = computeFeeOracle(
+                            row.fee_type,
+                            row.fee_value,
+                            row.fee_fixed,
+                            nominal,
+                        );
+                        expect(row.estimated_fee).toBe(expectedFee);
+                        if (row.fee_bearer === 'customer') {
+                            expect(row.gross_amount).toBe(nominal + expectedFee);
+                        } else {
+                            expect(row.gross_amount).toBe(nominal);
+                        }
+                    }
+                },
+            ),
+            { numRuns: 100 },
+        );
+    });
 });

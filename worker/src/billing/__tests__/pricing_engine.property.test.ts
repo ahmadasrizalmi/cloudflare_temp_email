@@ -21,7 +21,7 @@
  */
 
 import fc from 'fast-check';
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createPricingEngine, extractSuffix } from '../pricing_engine.js';
 
 // ─── Minimal fake D1 ─────────────────────────────────────────────────────────
@@ -173,9 +173,16 @@ const domain = () =>
 
 describe('Pricing_Engine.resolve — Property 7: Pricing resolution correctness', () => {
     let fake: FakeD1;
+    let nowSpy: ReturnType<typeof vi.spyOn> | null = null;
 
     beforeEach(() => {
         fake = new FakeD1();
+    });
+    afterEach(() => {
+        if (nowSpy) {
+            nowSpy.mockRestore();
+            nowSpy = null;
+        }
     });
 
     it('resolves every (action, domain) to the pure-function oracle result', async () => {
@@ -231,6 +238,88 @@ describe('Pricing_Engine.resolve — Property 7: Pricing resolution correctness'
                     });
 
                     expect(actual).toBe(expected);
+                },
+            ),
+            { numRuns: 100 },
+        );
+    });
+
+    it('Property 8: cache determinism within TTL and refresh after expiry', async () => {
+        await fc.assert(
+            fc.asyncProperty(
+                actionKey(),
+                domain(),
+                fc.integer({ min: 1, max: 5 }),
+                fc.integer({ min: 1, max: 3 }),
+                fc.integer({ min: 1, max: 20 }),
+                fc.integer({ min: 1, max: 50 }),
+                fc.integer({ min: 1, max: 50 }),
+                fc.integer({ min: 1, max: 5 }),
+                fc.integer({ min: 1, max: 12 }),
+                async (
+                    action,
+                    dom,
+                    weightCom,
+                    weightDefault,
+                    costCreateAddress,
+                    costSendMail,
+                    costForwardMail,
+                    delta,
+                    repeatCount,
+                ) => {
+                    fake.reset();
+                    const engine = createPricingEngine(fake as unknown as D1Database);
+                    engine.invalidateCache();
+
+                    fake.upsertActiveRule('domain_weight_com', weightCom);
+                    fake.upsertActiveRule('domain_weight_default', weightDefault);
+                    fake.upsertActiveRule('action_cost_create_address', costCreateAddress);
+                    fake.upsertActiveRule('action_cost_send_mail', costSendMail);
+                    fake.upsertActiveRule('action_cost_forward_mail', costForwardMail);
+
+                    const oldInput: OracleInputs = {
+                        actionKey: action,
+                        domain: dom,
+                        domainWeightCom: weightCom,
+                        domainWeightDefault: weightDefault,
+                        actionCostCreateAddress: costCreateAddress,
+                        actionCostSendMail: costSendMail,
+                        actionCostForwardMail: costForwardMail,
+                    };
+                    const expectedOld = oracleResolve(oldInput);
+
+                    let fakeNow = 1_700_000_000_000;
+                    nowSpy = vi.spyOn(Date, 'now').mockImplementation(() => fakeNow);
+
+                    for (let i = 0; i < repeatCount; i++) {
+                        const v = await engine.resolve({ actionKey: action, domain: dom });
+                        expect(v).toBe(expectedOld);
+                    }
+
+                    fake.upsertActiveRule('domain_weight_com', weightCom + delta, 2);
+                    fake.upsertActiveRule('domain_weight_default', weightDefault + delta, 2);
+                    fake.upsertActiveRule('action_cost_create_address', costCreateAddress + delta, 2);
+                    fake.upsertActiveRule('action_cost_send_mail', costSendMail + delta, 2);
+                    fake.upsertActiveRule('action_cost_forward_mail', costForwardMail + delta, 2);
+
+                    const stillCached = await engine.resolve({ actionKey: action, domain: dom });
+                    expect(stillCached).toBe(expectedOld);
+
+                    fakeNow += 61_000;
+                    const expectedNew = oracleResolve({
+                        actionKey: action,
+                        domain: dom,
+                        domainWeightCom: weightCom + delta,
+                        domainWeightDefault: weightDefault + delta,
+                        actionCostCreateAddress: costCreateAddress + delta,
+                        actionCostSendMail: costSendMail + delta,
+                        actionCostForwardMail: costForwardMail + delta,
+                    });
+                    const afterExpiry = await engine.resolve({ actionKey: action, domain: dom });
+                    expect(afterExpiry).toBe(expectedNew);
+
+                    nowSpy?.mockRestore();
+                    nowSpy = null;
                 },
             ),
             { numRuns: 100 },

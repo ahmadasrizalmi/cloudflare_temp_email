@@ -36,7 +36,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Add an optional `BILLING_RATE_LIMITER` KV namespace binding reusing the existing KV store with a `rl:` key prefix convention documented inline
     - _Requirements: 5.2, 8.3, 10.6, 15.1, 15.2_
 
-- [ ] 2. Pricing_Engine
+- [x] 2. Pricing_Engine
   - [x] 2.1 Implement `Pricing_Engine` at `worker/src/billing/pricing_engine.ts`
     - Implement `resolve(action, domain)`, `getNumber(ruleKey)`, `getObject<T>(ruleKey)`, `invalidateCache()`, `listDomainCosts(action)` per the `PricingEngine` interface in design.md §"Pricing_Engine"
     - Read only rows with `is_active=1 AND MAX(version)` via `SELECT … ORDER BY version DESC LIMIT 1` per `rule_key`
@@ -53,7 +53,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 7: Pricing resolution correctness**
     - **Validates: Requirements 2.2, 2.4, 6.1, 6.5, 13.2, 19.3**
 
-  - [~] 2.3 Write property test for Pricing_Engine: Property 8 (cache determinism)
+  - [x] 2.3 Write property test for Pricing_Engine: Property 8 (cache determinism)
     - Append a describe block to `pricing_engine.property.test.ts` with `// Feature: saas-topup-billing, Property 8: Pricing cache determinism`
     - Generator produces a fixed set of pricing rules and a sequence of N `resolve(action, domain)` calls within a simulated 60-second window (monkey-patch `Date.now`)
     - Assert every call returns the same value; then advance time past 60s, mutate the rule row in place, assert cache expires and a new read returns the new value
@@ -138,7 +138,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Cover: signature verification accepts valid HMAC + timestamp within 300s; rejects tampered body/timestamp/signature; `createInvoice` retries exactly twice on 5xx then throws; never retries on 4xx; sensitive keys never logged (assert via a spy-able logger)
     - _Requirements: 5.2, 5.3, 15.4_
 
-- [ ] 5. Channel_Cache
+- [x] 5. Channel_Cache
   - [x] 5.1 Implement `Channel_Cache` at `worker/src/billing/channel_cache.ts`
     - Implement `listPublic(nominal?)`, `listForQuote(nominal)`, `refresh()` per the `ChannelCache` interface
     - `listForQuote` returns `estimated_fee` computed from `fee_type ∈ {percentage, fixed, mixed}` using `fee_value`, `fee_fixed`; `gross_amount = nominal + estimated_fee` iff `fee_bearer='customer'`, else `gross_amount = nominal`
@@ -153,7 +153,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 15: Channel-filter correctness**
     - **Validates: Requirements 4.4, 16.2, 16.3, 19.5**
 
-  - [~] 5.3 Write property test for Channel_Cache: Property 16 (channel quote fee and gross formula)
+  - [x] 5.3 Write property test for Channel_Cache: Property 16 (channel quote fee and gross formula)
     - Append describe block: `// Feature: saas-topup-billing, Property 16: Channel quote fee and gross formula`
     - Generator varies `(fee_type, fee_value, fee_fixed, fee_bearer, nominal)` across all four fee types
     - Assert `estimated_fee == computeFee(channel, nominal)` (re-implement `computeFee` pure function inline in the test); assert `gross_amount == nominal + estimated_fee` iff `fee_bearer='customer'`, else `gross_amount == nominal`
