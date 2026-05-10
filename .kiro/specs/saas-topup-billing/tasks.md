@@ -199,7 +199,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - All handlers map errors to the i18n message keys registered in task 1.3 and honour the `x-lang` header (falls back to `en`)
     - _Requirements: 1.5, 1.6, 2.1, 2.3, 2.5, 2.6, 2.7, 3.1, 3.2, 3.5, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 8.1, 8.2, 10.1, 10.2, 10.5, 11.5, 17.2_
 
-  - [~] 7.2 Register billing routes in `worker/src/user_api/index.ts`
+  - [x] 7.2 Register billing routes in `worker/src/user_api/index.ts`
     - Import the `billing` Hono app from `worker/src/user_api/billing.ts` and mount with `app.route('/', billing)` immediately after the existing `/user_api/*` middleware so JWT authentication is applied uniformly
     - Assert registration order does not break `/user_api/login`, `/user_api/register`, `/user_api/passkey/*`, `/user_api/oauth2/*` (those routes must remain publicly accessible)
     - _Requirements: 1.1, 1.4, 1.5, 14.6_
@@ -242,7 +242,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Handle `UNIQUE(idempotency_key, type)` violation from `creditTopup` by returning 200 (replay is a no-op)
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 5.10, 11.1, 11.2, 11.6, 15.4_
 
-  - [~] 8.2 Wire webhook + open_api routes in `worker/src/worker.ts`
+  - [x] 8.2 Wire webhook + open_api routes in `worker/src/worker.ts`
     - Register the Payment_Webhook route under `/open_api/*` so the existing no-auth rule covers it
     - Confirm no regression to existing `/open_api/auth.ts` routes
     - _Requirements: 5.1_
@@ -372,7 +372,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Write `billing_audit_logs` row with `event_type='domain_add'` / `domain_remove`
     - _Requirements: 13.3, 13.5_
 
-  - [~] 12.7 Register admin billing routes in `worker/src/admin_api/index.ts`
+  - [x] 12.7 Register admin billing routes in `worker/src/admin_api/index.ts`
     - Mount the `billing_admin` Hono app so it inherits the existing `/admin/*` `x-admin-auth` middleware; do not modify or relocate existing admin routes
     - _Requirements: 9.6, 12.4_
 
@@ -422,7 +422,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - If `pricing_rules['margin_guard_auto'] = true` and `net_margin_monthly < margin_guard_target_percent`, increment `domain_weight_com` by 1 (capped at 5) via the same batched PUT flow from task 12.1 with `admin_id = null` and `event_type='auto_margin_guard'`
     - _Requirements: 12.3_
 
-  - [~] 13.3 Wire reconciler into the scheduled handler in `worker/src/scheduled.ts`
+  - [x] 13.3 Wire reconciler into the scheduled handler in `worker/src/scheduled.ts`
     - On cron event (every 5 min), call `runReconcile(env, ctx)`; keep existing scheduled entries untouched so other cron workloads continue to run
     - _Requirements: 8.3, 12.3_
 
@@ -628,6 +628,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
   ]
 }
 ```
+
 
 
 
