@@ -115,7 +115,7 @@ export const idMessages = {
   "views.admin.Account.clearInbox": "Kosongkan Kotak Masuk",
   "views.index.AccountSettings.clearSentItems": "Kosongkan Kotak Terkirim",
   "views.admin.Account.clearSentItems": "Kosongkan Kotak Terkirim",
-  "views.Header.title": "Email Sementara Cloudflare",
+  "views.Header.title": "Temp Mail",
   "views.admin.DatabaseManager.code_db_version": "Versi DB yang Dibutuhkan Kode",
   "views.user.UserOauth2Callback.codeNotFound": "Kode tidak ditemukan",
   "views.admin.AccountSettings.config": "Konfigurasi",

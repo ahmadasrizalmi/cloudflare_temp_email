@@ -1,290 +1,290 @@
-export const MESSAGE_REGISTRY = {
+﻿export const MESSAGE_REGISTRY = {
   "components.WebhookComponent": {
     "enable": {
       "en": "Enable",
-      "zh": "启用"
+      "zh": "å¯ç”¨"
     },
     "fillInDemoTip": {
       "en": "Please modify the URL and other settings to your own",
-      "zh": "请修改URL和其他设置为您自己的配置"
+      "zh": "è¯·ä¿®æ”¹URLå’Œå…¶ä»–è®¾ç½®ä¸ºæ‚¨è‡ªå·±çš„é…ç½®"
     },
     "notEnabled": {
       "en": "Webhook is not enabled for you",
-      "zh": "Webhook 未开启，请联系管理员开启"
+      "zh": "Webhook æœªå¼€å¯ï¼Œè¯·è”ç³»ç®¡ç†å‘˜å¼€å¯"
     },
     "presets": {
       "en": "Presets",
-      "zh": "示例模板"
+      "zh": "ç¤ºä¾‹æ¨¡æ¿"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "successTip": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "test": {
       "en": "Test",
-      "zh": "测试"
+      "zh": "æµ‹è¯•"
     },
     "urlMissing": {
       "en": "URL is required",
-      "zh": "URL 不能为空"
+      "zh": "URL ä¸èƒ½ä¸ºç©º"
     }
   },
   "components.MailBox": {
     "attachments": {
       "en": "Show Attachments",
-      "zh": "查看附件"
+      "zh": "æŸ¥çœ‹é™„ä»¶"
     },
     "autoRefresh": {
       "en": "Auto Refresh",
-      "zh": "自动刷新"
+      "zh": "è‡ªåŠ¨åˆ·æ–°"
     },
     "cancelMultiAction": {
       "en": "Cancel Multi Action",
-      "zh": "取消多选"
+      "zh": "å–æ¶ˆå¤šé€‰"
     },
     "delete": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "deleteMailTip": {
       "en": "Are you sure you want to delete mail?",
-      "zh": "确定要删除邮件吗?"
+      "zh": "ç¡®å®šè¦åˆ é™¤é‚®ä»¶å—?"
     },
     "downloadMail": {
       "en": "Download Mail",
-      "zh": "下载邮件"
+      "zh": "ä¸‹è½½é‚®ä»¶"
     },
     "emptyInbox": {
       "en": "Your inbox is empty",
-      "zh": "收件箱为空"
+      "zh": "æ”¶ä»¶ç®±ä¸ºç©º"
     },
     "forwardMail": {
       "en": "Forward",
-      "zh": "转发"
+      "zh": "è½¬å‘"
     },
     "keywordQueryTip": {
       "en": "Filter current page",
-      "zh": "过滤当前页"
+      "zh": "è¿‡æ»¤å½“å‰é¡µ"
     },
     "multiAction": {
       "en": "Multi Action",
-      "zh": "多选"
+      "zh": "å¤šé€‰"
     },
     "nextMail": {
       "en": "Next",
-      "zh": "下一封"
+      "zh": "ä¸‹ä¸€å°"
     },
     "pleaseSelectMail": {
       "en": "Please select mail",
-      "zh": "请选择邮件"
+      "zh": "è¯·é€‰æ‹©é‚®ä»¶"
     },
     "prevMail": {
       "en": "Previous",
-      "zh": "上一封"
+      "zh": "ä¸Šä¸€å°"
     },
     "query": {
       "en": "Query",
-      "zh": "查询"
+      "zh": "æŸ¥è¯¢"
     },
     "refresh": {
       "en": "Refresh",
-      "zh": "刷新"
+      "zh": "åˆ·æ–°"
     },
     "refreshAfter": {
       "en": "Refresh After {msg} Seconds",
-      "zh": "{msg}秒后刷新"
+      "zh": "{msg}ç§’åŽåˆ·æ–°"
     },
     "reply": {
       "en": "Reply",
-      "zh": "回复"
+      "zh": "å›žå¤"
     },
     "saveToS3": {
       "en": "Save to S3",
-      "zh": "保存到S3"
+      "zh": "ä¿å­˜åˆ°S3"
     },
     "selectAll": {
       "en": "Select All of This Page",
-      "zh": "全选本页"
+      "zh": "å…¨é€‰æœ¬é¡µ"
     },
     "showHtmlMail": {
       "en": "Show Html Mail",
-      "zh": "显示HTML邮件"
+      "zh": "æ˜¾ç¤ºHTMLé‚®ä»¶"
     },
     "showTextMail": {
       "en": "Show Text Mail",
-      "zh": "显示纯文本邮件"
+      "zh": "æ˜¾ç¤ºçº¯æ–‡æœ¬é‚®ä»¶"
     },
     "success": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "unselectAll": {
       "en": "Unselect All",
-      "zh": "取消全选"
+      "zh": "å–æ¶ˆå…¨é€‰"
     }
   },
   "components.AiExtractInfo": {
     "authCode": {
       "en": "Verification Code",
-      "zh": "验证码"
+      "zh": "éªŒè¯ç "
     },
     "authLink": {
       "en": "Authentication Link",
-      "zh": "认证链接"
+      "zh": "è®¤è¯é“¾æŽ¥"
     },
     "copyFailed": {
       "en": "Copy failed",
-      "zh": "复制失败"
+      "zh": "å¤åˆ¶å¤±è´¥"
     },
     "copySuccess": {
       "en": "Copied successfully",
-      "zh": "复制成功"
+      "zh": "å¤åˆ¶æˆåŠŸ"
     },
     "open": {
       "en": "Open",
-      "zh": "打开"
+      "zh": "æ‰“å¼€"
     },
     "otherLink": {
       "en": "Other Link",
-      "zh": "其他链接"
+      "zh": "å…¶ä»–é“¾æŽ¥"
     },
     "serviceLink": {
       "en": "Service Link",
-      "zh": "服务链接"
+      "zh": "æœåŠ¡é“¾æŽ¥"
     },
     "subscriptionLink": {
       "en": "Subscription Link",
-      "zh": "订阅链接"
+      "zh": "è®¢é˜…é“¾æŽ¥"
     }
   },
   "components.MailContentRenderer": {
     "attachments": {
       "en": "View Attachments",
-      "zh": "查看附件"
+      "zh": "æŸ¥çœ‹é™„ä»¶"
     },
     "delete": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "deleteMailTip": {
       "en": "Are you sure you want to delete mail?",
-      "zh": "确定要删除邮件吗?"
+      "zh": "ç¡®å®šè¦åˆ é™¤é‚®ä»¶å—?"
     },
     "downloadMail": {
       "en": "Download Mail",
-      "zh": "下载邮件"
+      "zh": "ä¸‹è½½é‚®ä»¶"
     },
     "forward": {
       "en": "Forward",
-      "zh": "转发"
+      "zh": "è½¬å‘"
     },
     "fullscreen": {
       "en": "Fullscreen",
-      "zh": "全屏"
+      "zh": "å…¨å±"
     },
     "reply": {
       "en": "Reply",
-      "zh": "回复"
+      "zh": "å›žå¤"
     },
     "saveToS3": {
       "en": "Save to S3",
-      "zh": "保存到S3"
+      "zh": "ä¿å­˜åˆ°S3"
     },
     "showHtmlMail": {
       "en": "Show HTML Mail",
-      "zh": "显示HTML邮件"
+      "zh": "æ˜¾ç¤ºHTMLé‚®ä»¶"
     },
     "showTextMail": {
       "en": "Show Text Mail",
-      "zh": "显示纯文本邮件"
+      "zh": "æ˜¾ç¤ºçº¯æ–‡æœ¬é‚®ä»¶"
     },
     "size": {
       "en": "Size",
-      "zh": "大小"
+      "zh": "å¤§å°"
     }
   },
   "components.Turnstile": {
     "refresh": {
       "en": "Refresh",
-      "zh": "刷新"
+      "zh": "åˆ·æ–°"
     }
   },
   "components.SendBox": {
     "cancelMultiAction": {
       "en": "Cancel Multi Action",
-      "zh": "取消多选"
+      "zh": "å–æ¶ˆå¤šé€‰"
     },
     "delete": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "deleteMailTip": {
       "en": "Are you sure you want to delete mail?",
-      "zh": "确定要删除邮件吗?"
+      "zh": "ç¡®å®šè¦åˆ é™¤é‚®ä»¶å—?"
     },
     "emptySent": {
       "en": "No sent emails",
-      "zh": "发件箱为空"
+      "zh": "å‘ä»¶ç®±ä¸ºç©º"
     },
     "multiAction": {
       "en": "Multi Action",
-      "zh": "多选"
+      "zh": "å¤šé€‰"
     },
     "pleaseSelectMail": {
       "en": "Please select a mail to view.",
-      "zh": "请选择一封邮件查看。"
+      "zh": "è¯·é€‰æ‹©ä¸€å°é‚®ä»¶æŸ¥çœ‹ã€‚"
     },
     "refresh": {
       "en": "Refresh",
-      "zh": "刷新"
+      "zh": "åˆ·æ–°"
     },
     "selectAll": {
       "en": "Select All of This Page",
-      "zh": "全选本页"
+      "zh": "å…¨é€‰æœ¬é¡µ"
     },
     "showCode": {
       "en": "Change View Original Code",
-      "zh": "切换查看元数据"
+      "zh": "åˆ‡æ¢æŸ¥çœ‹å…ƒæ•°æ®"
     },
     "success": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "unselectAll": {
       "en": "Unselect All",
-      "zh": "取消全选"
+      "zh": "å–æ¶ˆå…¨é€‰"
     }
   },
   "components.AddressSelect": {
     "address": {
       "en": "Address",
-      "zh": "地址"
+      "zh": "åœ°å€"
     },
     "copied": {
       "en": "Copied",
-      "zh": "已复制"
+      "zh": "å·²å¤åˆ¶"
     },
     "copy": {
       "en": "Copy",
-      "zh": "复制"
+      "zh": "å¤åˆ¶"
     },
     "localAddresses": {
       "en": "Local Addresses",
-      "zh": "本地地址"
+      "zh": "æœ¬åœ°åœ°å€"
     },
     "userAddresses": {
       "en": "User Addresses",
-      "zh": "用户地址"
+      "zh": "ç”¨æˆ·åœ°å€"
     }
   },
   "components.AddressCredentialModal": {
     "addressCredential": {
       "en": "Address Credential",
-      "zh": "地址凭证"
+      "zh": "åœ°å€å‡­è¯"
     },
     "addressCredentialLabel": {
       "en": "Address JWT",
@@ -292,7 +292,7 @@ export const MESSAGE_REGISTRY = {
     },
     "addressPassword": {
       "en": "Address Password",
-      "zh": "地址密码"
+      "zh": "åœ°å€å¯†ç "
     },
     "agentAccess": {
       "en": "AI Agent",
@@ -300,11 +300,11 @@ export const MESSAGE_REGISTRY = {
     },
     "agentAccessTip": {
       "en": "Use this mailbox from an AI agent with the Address JWT and parsed-mail APIs.",
-      "zh": "AI Agent 可使用 Address JWT 和 parsed-mail API 读取这个邮箱。"
+      "zh": "AI Agent å¯ä½¿ç”¨ Address JWT å’Œ parsed-mail API è¯»å–è¿™ä¸ªé‚®ç®±ã€‚"
     },
     "agentConfig": {
       "en": "Agent config",
-      "zh": "Agent 配置"
+      "zh": "Agent é…ç½®"
     },
     "agentSkill": {
       "en": "Agent skill",
@@ -312,55 +312,55 @@ export const MESSAGE_REGISTRY = {
     },
     "apiBase": {
       "en": "API Base",
-      "zh": "API 地址"
+      "zh": "API åœ°å€"
     },
     "autoLoginLink": {
       "en": "Auto-login link",
-      "zh": "自动登录链接"
+      "zh": "è‡ªåŠ¨ç™»å½•é“¾æŽ¥"
     },
     "copyFailed": {
       "en": "Copy failed",
-      "zh": "复制失败"
+      "zh": "å¤åˆ¶å¤±è´¥"
     },
     "copySection": {
       "en": "Copy",
-      "zh": "复制"
+      "zh": "å¤åˆ¶"
     },
     "copySuccess": {
       "en": "Copied",
-      "zh": "已复制"
+      "zh": "å·²å¤åˆ¶"
     },
     "currentAddress": {
       "en": "Current address",
-      "zh": "当前邮箱"
+      "zh": "å½“å‰é‚®ç®±"
     },
     "docs": {
       "en": "Docs",
-      "zh": "文档"
+      "zh": "æ–‡æ¡£"
     },
     "imapHost": {
       "en": "IMAP host",
-      "zh": "IMAP 主机"
+      "zh": "IMAP ä¸»æœº"
     },
     "imapPort": {
       "en": "IMAP port",
-      "zh": "IMAP 端口"
+      "zh": "IMAP ç«¯å£"
     },
     "password": {
       "en": "Password",
-      "zh": "密码"
+      "zh": "å¯†ç "
     },
     "plainOrProxyTls": {
       "en": "Plain or proxy TLS",
-      "zh": "明文或代理层 TLS"
+      "zh": "æ˜Žæ–‡æˆ–ä»£ç†å±‚ TLS"
     },
     "security": {
       "en": "Security",
-      "zh": "安全"
+      "zh": "å®‰å…¨"
     },
     "smtpHost": {
       "en": "SMTP host",
-      "zh": "SMTP 主机"
+      "zh": "SMTP ä¸»æœº"
     },
     "smtpImapAccess": {
       "en": "SMTP / IMAP",
@@ -368,11 +368,11 @@ export const MESSAGE_REGISTRY = {
     },
     "smtpImapTip": {
       "en": "Use these values in mail clients after the administrator configures the SMTP/IMAP proxy. The password can be the Address JWT shown here, or the address password when you have it.",
-      "zh": "管理员配置 SMTP/IMAP 代理后，可在邮件客户端中使用这些信息。密码可使用这里展示的 Address JWT，也可使用你持有的地址密码。"
+      "zh": "ç®¡ç†å‘˜é…ç½® SMTP/IMAP ä»£ç†åŽï¼Œå¯åœ¨é‚®ä»¶å®¢æˆ·ç«¯ä¸­ä½¿ç”¨è¿™äº›ä¿¡æ¯ã€‚å¯†ç å¯ä½¿ç”¨è¿™é‡Œå±•ç¤ºçš„ Address JWTï¼Œä¹Ÿå¯ä½¿ç”¨ä½ æŒæœ‰çš„åœ°å€å¯†ç ã€‚"
     },
     "smtpPort": {
       "en": "SMTP port",
-      "zh": "SMTP 端口"
+      "zh": "SMTP ç«¯å£"
     },
     "starttls": {
       "en": "STARTTLS",
@@ -380,871 +380,871 @@ export const MESSAGE_REGISTRY = {
     },
     "tip": {
       "en": "Use these credentials only with clients and agents you trust.",
-      "zh": "请只在可信的客户端和 Agent 中使用这些凭证。"
+      "zh": "è¯·åªåœ¨å¯ä¿¡çš„å®¢æˆ·ç«¯å’Œ Agent ä¸­ä½¿ç”¨è¿™äº›å‡­è¯ã€‚"
     },
     "title": {
       "en": "Address Credentials & Connection Methods",
-      "zh": "地址凭证与连接方式"
+      "zh": "åœ°å€å‡­è¯ä¸Žè¿žæŽ¥æ–¹å¼"
     },
     "username": {
       "en": "Username",
-      "zh": "用户名"
+      "zh": "ç”¨æˆ·å"
     }
   },
   "views.user.UserMailBox": {
     "addressQueryTip": {
       "en": "Leave blank to query all addresses",
-      "zh": "留空查询所有地址"
+      "zh": "ç•™ç©ºæŸ¥è¯¢æ‰€æœ‰åœ°å€"
     },
     "query": {
       "en": "Query",
-      "zh": "查询"
+      "zh": "æŸ¥è¯¢"
     }
   },
   "views.Index": {
     "about": {
       "en": "About",
-      "zh": "关于"
+      "zh": "å…³äºŽ"
     },
     "accountSettings": {
       "en": "Account Settings",
-      "zh": "账户"
+      "zh": "è´¦æˆ·"
     },
     "appearance": {
       "en": "Appearance",
-      "zh": "外观"
+      "zh": "å¤–è§‚"
     },
     "auto_reply": {
       "en": "Auto Reply",
-      "zh": "自动回复"
+      "zh": "è‡ªåŠ¨å›žå¤"
     },
     "enterSimpleMode": {
       "en": "Simple Mode",
-      "zh": "极简模式"
+      "zh": "æžç®€æ¨¡å¼"
     },
     "mailbox": {
       "en": "Mail Box",
-      "zh": "收件箱"
+      "zh": "æ”¶ä»¶ç®±"
     },
     "query": {
       "en": "Query",
-      "zh": "查询"
+      "zh": "æŸ¥è¯¢"
     },
     "s3Attachment": {
       "en": "S3 Attachment",
-      "zh": "S3附件"
+      "zh": "S3é™„ä»¶"
     },
     "saveToS3Success": {
       "en": "save to s3 success",
-      "zh": "保存到s3成功"
+      "zh": "ä¿å­˜åˆ°s3æˆåŠŸ"
     },
     "sendbox": {
       "en": "Send Box",
-      "zh": "发件箱"
+      "zh": "å‘ä»¶ç®±"
     },
     "sendmail": {
       "en": "Send Mail",
-      "zh": "发送邮件"
+      "zh": "å‘é€é‚®ä»¶"
     },
     "webhookSettings": {
       "en": "Webhook Settings",
-      "zh": "Webhook 设置"
+      "zh": "Webhook è®¾ç½®"
     }
   },
   "views.Footer": {
     "copyright": {
       "en": "Copyright",
-      "zh": "版权所有"
+      "zh": "ç‰ˆæƒæ‰€æœ‰"
     }
   },
   "views.user.UserSettings": {
     "actions": {
       "en": "Actions",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "createPasskey": {
       "en": "Create Passkey",
-      "zh": "创建 Passkey"
+      "zh": "åˆ›å»º Passkey"
     },
     "created_at": {
       "en": "Created At",
-      "zh": "创建时间"
+      "zh": "åˆ›å»ºæ—¶é—´"
     },
     "deletePasskey": {
       "en": "Delete Passkey",
-      "zh": "删除 Passkey"
+      "zh": "åˆ é™¤ Passkey"
     },
     "logout": {
       "en": "Logout",
-      "zh": "退出登录"
+      "zh": "é€€å‡ºç™»å½•"
     },
     "logoutConfirm": {
       "en": "Are you sure you want to logout?",
-      "zh": "确定要退出登录吗？"
+      "zh": "ç¡®å®šè¦é€€å‡ºç™»å½•å—ï¼Ÿ"
     },
     "passkeyCreated": {
       "en": "Passkey created successfully",
-      "zh": "Passkey 创建成功"
+      "zh": "Passkey åˆ›å»ºæˆåŠŸ"
     },
     "passkeyNamePlaceholder": {
       "en": "Please enter the passkey name or leave it empty to generate a random one",
-      "zh": "请输入 Passkey 名称或者留空自动生成"
+      "zh": "è¯·è¾“å…¥ Passkey åç§°æˆ–è€…ç•™ç©ºè‡ªåŠ¨ç”Ÿæˆ"
     },
     "passkey_name": {
       "en": "Passkey Name",
-      "zh": "Passkey 名称"
+      "zh": "Passkey åç§°"
     },
     "passordTip": {
       "en": "The server will only receive the hash value of the password, and will not receive the plaintext password, so it cannot view or retrieve your password. If the administrator enables email verification, you can reset the password in incognito mode",
-      "zh": "服务器只会接收到密码的哈希值，不会接收到明文密码，因此无法查看或者找回您的密码, 如果管理员启用了邮件验证您可以在无痕模式重置密码"
+      "zh": "æœåŠ¡å™¨åªä¼šæŽ¥æ”¶åˆ°å¯†ç çš„å“ˆå¸Œå€¼ï¼Œä¸ä¼šæŽ¥æ”¶åˆ°æ˜Žæ–‡å¯†ç ï¼Œå› æ­¤æ— æ³•æŸ¥çœ‹æˆ–è€…æ‰¾å›žæ‚¨çš„å¯†ç , å¦‚æžœç®¡ç†å‘˜å¯ç”¨äº†é‚®ä»¶éªŒè¯æ‚¨å¯ä»¥åœ¨æ— ç—•æ¨¡å¼é‡ç½®å¯†ç "
     },
     "renamePasskey": {
       "en": "Rename Passkey",
-      "zh": "重命名 Passkey"
+      "zh": "é‡å‘½å Passkey"
     },
     "renamePasskeyNamePlaceholder": {
       "en": "Please enter the new passkey name",
-      "zh": "请输入新的 Passkey 名称"
+      "zh": "è¯·è¾“å…¥æ–°çš„ Passkey åç§°"
     },
     "showPasskeyList": {
       "en": "Show Passkey List",
-      "zh": "查看 Passkey 列表"
+      "zh": "æŸ¥çœ‹ Passkey åˆ—è¡¨"
     },
     "updated_at": {
       "en": "Updated At",
-      "zh": "更新时间"
+      "zh": "æ›´æ–°æ—¶é—´"
     }
   },
   "views.Header": {
     "accessHeader": {
       "en": "Access Password",
-      "zh": "访问密码"
+      "zh": "è®¿é—®å¯†ç "
     },
     "accessTip": {
       "en": "Please enter the correct access password",
-      "zh": "请输入站点访问密码"
+      "zh": "è¯·è¾“å…¥ç«™ç‚¹è®¿é—®å¯†ç "
     },
     "dark": {
       "en": "Dark",
-      "zh": "暗色"
+      "zh": "æš—è‰²"
     },
     "home": {
       "en": "Home",
-      "zh": "主页"
+      "zh": "ä¸»é¡µ"
     },
     "light": {
       "en": "Light",
-      "zh": "亮色"
+      "zh": "äº®è‰²"
     },
     "menu": {
       "en": "Menu",
-      "zh": "菜单"
+      "zh": "èœå•"
     },
     "ok": {
       "en": "OK",
-      "zh": "确定"
+      "zh": "ç¡®å®š"
     },
     "status": {
       "en": "Status",
-      "zh": "状态"
+      "zh": "çŠ¶æ€"
     },
     "title": {
-      "en": "Cloudflare Temp Email",
-      "zh": "Cloudflare 临时邮件"
+      "en": "Temp Mail",
+      "zh": "Cloudflare ä¸´æ—¶é‚®ä»¶"
     },
     "user": {
       "en": "User",
-      "zh": "用户"
+      "zh": "ç”¨æˆ·"
     }
   },
   "views.user.BindAddress": {
     "logout": {
       "en": "Logout",
-      "zh": "退出登录"
+      "zh": "é€€å‡ºç™»å½•"
     }
   },
   "views.Admin": {
     "about": {
       "en": "About",
-      "zh": "关于"
+      "zh": "å…³äºŽ"
     },
     "accessHeader": {
       "en": "Admin Password",
-      "zh": "Admin 密码"
+      "zh": "Admin å¯†ç "
     },
     "accessTip": {
       "en": "Please enter the admin password",
-      "zh": "请输入 Admin 密码"
+      "zh": "è¯·è¾“å…¥ Admin å¯†ç "
     },
     "account": {
       "en": "Account",
-      "zh": "账号"
+      "zh": "è´¦å·"
     },
     "account_create": {
       "en": "Create Account",
-      "zh": "创建账号"
+      "zh": "åˆ›å»ºè´¦å·"
     },
     "account_settings": {
       "en": "Account Settings",
-      "zh": "账号设置"
+      "zh": "è´¦å·è®¾ç½®"
     },
     "adminAccount": {
       "en": "Admin",
-      "zh": "管理员"
+      "zh": "ç®¡ç†å‘˜"
     },
     "aiExtractSettings": {
       "en": "AI Extract Settings",
-      "zh": "AI 提取设置"
+      "zh": "AI æå–è®¾ç½®"
     },
     "appearance": {
       "en": "Appearance",
-      "zh": "外观"
+      "zh": "å¤–è§‚"
     },
     "confirm": {
       "en": "Confirm",
-      "zh": "确认"
+      "zh": "ç¡®è®¤"
     },
     "database": {
       "en": "Database",
-      "zh": "数据库"
+      "zh": "æ•°æ®åº“"
     },
     "ipBlacklistSettings": {
       "en": "IP Blacklist",
-      "zh": "IP 黑名单"
+      "zh": "IP é»‘åå•"
     },
     "loginMethod": {
       "en": "Login Method",
-      "zh": "登录方式"
+      "zh": "ç™»å½•æ–¹å¼"
     },
     "loginViaDisabledCheck": {
       "en": "Disabled Password Check",
-      "zh": "已禁用密码检查"
+      "zh": "å·²ç¦ç”¨å¯†ç æ£€æŸ¥"
     },
     "loginViaPassword": {
       "en": "Admin Password Login",
-      "zh": "Admin 密码登录"
+      "zh": "Admin å¯†ç ç™»å½•"
     },
     "loginViaUserAdmin": {
       "en": "User Admin Permission",
-      "zh": "用户管理员权限"
+      "zh": "ç”¨æˆ·ç®¡ç†å‘˜æƒé™"
     },
     "logout": {
       "en": "Logout",
-      "zh": "退出登录"
+      "zh": "é€€å‡ºç™»å½•"
     },
     "logoutConfirmContent": {
       "en": "Are you sure you want to logout from admin panel?",
-      "zh": "确定要退出管理员面板吗？"
+      "zh": "ç¡®å®šè¦é€€å‡ºç®¡ç†å‘˜é¢æ¿å—ï¼Ÿ"
     },
     "logoutConfirmTitle": {
       "en": "Confirm Logout",
-      "zh": "确认退出"
+      "zh": "ç¡®è®¤é€€å‡º"
     },
     "logoutSuccess": {
       "en": "Logout successful",
-      "zh": "退出成功"
+      "zh": "é€€å‡ºæˆåŠŸ"
     },
     "mailWebhook": {
       "en": "Mail Webhook",
-      "zh": "邮件 Webhook"
+      "zh": "é‚®ä»¶ Webhook"
     },
     "mails": {
       "en": "Emails",
-      "zh": "邮件"
+      "zh": "é‚®ä»¶"
     },
     "maintenance": {
       "en": "Maintenance",
-      "zh": "维护"
+      "zh": "ç»´æŠ¤"
     },
     "ok": {
       "en": "OK",
-      "zh": "确定"
+      "zh": "ç¡®å®š"
     },
     "qucickSetup": {
       "en": "Quick Setup",
-      "zh": "快速设置"
+      "zh": "å¿«é€Ÿè®¾ç½®"
     },
     "roleAddressConfig": {
       "en": "Role Address Config",
-      "zh": "角色地址配置"
+      "zh": "è§’è‰²åœ°å€é…ç½®"
     },
     "sendBox": {
       "en": "Send Box",
-      "zh": "发件箱"
+      "zh": "å‘ä»¶ç®±"
     },
     "sendMail": {
       "en": "Send Mail",
-      "zh": "发送邮件"
+      "zh": "å‘é€é‚®ä»¶"
     },
     "senderAccess": {
       "en": "Sender Access Control",
-      "zh": "发件权限控制"
+      "zh": "å‘ä»¶æƒé™æŽ§åˆ¶"
     },
     "statistics": {
       "en": "Statistics",
-      "zh": "统计"
+      "zh": "ç»Ÿè®¡"
     },
     "telegram": {
       "en": "Telegram Bot",
-      "zh": "电报机器人"
+      "zh": "ç”µæŠ¥æœºå™¨äºº"
     },
     "unknow": {
       "en": "Mails with unknow receiver",
-      "zh": "无收件人邮件"
+      "zh": "æ— æ”¶ä»¶äººé‚®ä»¶"
     },
     "user": {
       "en": "User",
-      "zh": "用户"
+      "zh": "ç”¨æˆ·"
     },
     "userOauth2Settings": {
       "en": "Oauth2 Settings",
-      "zh": "Oauth2 设置"
+      "zh": "Oauth2 è®¾ç½®"
     },
     "user_management": {
       "en": "User Management",
-      "zh": "用户管理"
+      "zh": "ç”¨æˆ·ç®¡ç†"
     },
     "user_settings": {
       "en": "User Settings",
-      "zh": "用户设置"
+      "zh": "ç”¨æˆ·è®¾ç½®"
     },
     "webhookSettings": {
       "en": "Webhook Settings",
-      "zh": "Webhook 设置"
+      "zh": "Webhook è®¾ç½®"
     },
     "workerconfig": {
       "en": "Worker Config",
-      "zh": "Worker 配置"
+      "zh": "Worker é…ç½®"
     }
   },
   "views.User": {
     "address_management": {
       "en": "Address Management",
-      "zh": "地址管理"
+      "zh": "åœ°å€ç®¡ç†"
     },
     "bind_address": {
       "en": "Bind Mail Address",
-      "zh": "绑定邮箱地址"
+      "zh": "ç»‘å®šé‚®ç®±åœ°å€"
     },
     "wallet": {
       "en": "Coin Wallet",
-      "zh": "金币钱包"
+      "zh": "é‡‘å¸é’±åŒ…"
     },
     "user_mail_box_tab": {
       "en": "Mail Box",
-      "zh": "收件箱"
+      "zh": "æ”¶ä»¶ç®±"
     },
     "user_settings": {
       "en": "User Settings",
-      "zh": "用户设置"
+      "zh": "ç”¨æˆ·è®¾ç½®"
     }
   },
   "views.user.UserLogin": {
     "cannotForgotPassword": {
       "en": "Mail verification is disabled or register is disabled, cannot reset password, please contact administrator",
-      "zh": "未开启邮箱验证或未开启注册功能，无法重置密码，请联系管理员"
+      "zh": "æœªå¼€å¯é‚®ç®±éªŒè¯æˆ–æœªå¼€å¯æ³¨å†ŒåŠŸèƒ½ï¼Œæ— æ³•é‡ç½®å¯†ç ï¼Œè¯·è”ç³»ç®¡ç†å‘˜"
     },
     "email": {
       "en": "Email",
-      "zh": "邮箱"
+      "zh": "é‚®ç®±"
     },
     "forgotPassword": {
       "en": "Forgot Password",
-      "zh": "忘记密码"
+      "zh": "å¿˜è®°å¯†ç "
     },
     "login": {
       "en": "Login",
-      "zh": "登录"
+      "zh": "ç™»å½•"
     },
     "loginWith": {
       "en": "Login with {provider}",
-      "zh": "使用 {provider} 登录"
+      "zh": "ä½¿ç”¨ {provider} ç™»å½•"
     },
     "loginWithPasskey": {
       "en": "Login with Passkey",
-      "zh": "使用 Passkey 登录"
+      "zh": "ä½¿ç”¨ Passkey ç™»å½•"
     },
     "password": {
       "en": "Password",
-      "zh": "密码"
+      "zh": "å¯†ç "
     },
     "pleaseCompleteTurnstile": {
       "en": "Please complete turnstile",
-      "zh": "请完成人机验证"
+      "zh": "è¯·å®ŒæˆäººæœºéªŒè¯"
     },
     "pleaseInput": {
       "en": "Please input email and password",
-      "zh": "请输入邮箱和密码"
+      "zh": "è¯·è¾“å…¥é‚®ç®±å’Œå¯†ç "
     },
     "pleaseInputCode": {
       "en": "Please input code",
-      "zh": "请输入验证码"
+      "zh": "è¯·è¾“å…¥éªŒè¯ç "
     },
     "pleaseInputEmail": {
       "en": "Please input email",
-      "zh": "请输入邮箱"
+      "zh": "è¯·è¾“å…¥é‚®ç®±"
     },
     "pleaseLogin": {
       "en": "Please login",
-      "zh": "请登录"
+      "zh": "è¯·ç™»å½•"
     },
     "register": {
       "en": "Register",
-      "zh": "注册"
+      "zh": "æ³¨å†Œ"
     },
     "resetPassword": {
       "en": "Reset Password",
-      "zh": "重置密码"
+      "zh": "é‡ç½®å¯†ç "
     },
     "sendVerificationCode": {
       "en": "Send Verification Code",
-      "zh": "发送验证码"
+      "zh": "å‘é€éªŒè¯ç "
     },
     "verifyCode": {
       "en": "Verification Code",
-      "zh": "验证码"
+      "zh": "éªŒè¯ç "
     },
     "verifyCodeSent": {
       "en": "Verification Code Sent, expires in {timeout} seconds",
-      "zh": "验证码已发送, {timeout} 秒后失效"
+      "zh": "éªŒè¯ç å·²å‘é€, {timeout} ç§’åŽå¤±æ•ˆ"
     },
     "waitforVerifyCode": {
       "en": "Wait for {timeout} seconds",
-      "zh": "等待{timeout}秒"
+      "zh": "ç­‰å¾…{timeout}ç§’"
     }
   },
   "views.user.UserBar": {
     "currentUser": {
       "en": "Current Login User",
-      "zh": "当前登录用户"
+      "zh": "å½“å‰ç™»å½•ç”¨æˆ·"
     },
     "fetchUserSettingsError": {
       "en": "Login password is invalid or account not exist, it may be network connection issue, please try again later.",
-      "zh": "登录信息已过期或账号不存在，也可能是网络连接异常，请稍后再尝试。"
+      "zh": "ç™»å½•ä¿¡æ¯å·²è¿‡æœŸæˆ–è´¦å·ä¸å­˜åœ¨ï¼Œä¹Ÿå¯èƒ½æ˜¯ç½‘ç»œè¿žæŽ¥å¼‚å¸¸ï¼Œè¯·ç¨åŽå†å°è¯•ã€‚"
     }
   },
   "views.user.wallet.WalletHome": {
     "wallet": {
       "en": "Coin Wallet",
-      "zh": "金币钱包"
+      "zh": "é‡‘å¸é’±åŒ…"
     },
     "credit": {
       "en": "Coin",
-      "zh": "金币"
+      "zh": "é‡‘å¸"
     },
     "idrRef": {
       "en": "IDR Ref",
-      "zh": "印尼盾参考值"
+      "zh": "å°å°¼ç›¾å‚è€ƒå€¼"
     },
     "updated": {
       "en": "Updated",
-      "zh": "更新时间"
+      "zh": "æ›´æ–°æ—¶é—´"
     },
     "topup": {
       "en": "Top-up",
-      "zh": "充值"
+      "zh": "å……å€¼"
     },
     "ledger": {
       "en": "Ledger",
-      "zh": "流水"
+      "zh": "æµæ°´"
     },
     "topupHistory": {
       "en": "Top-up History",
-      "zh": "充值记录"
+      "zh": "å……å€¼è®°å½•"
     },
     "latestLedger": {
       "en": "Latest Ledger (10)",
-      "zh": "最近流水（10条）"
+      "zh": "æœ€è¿‘æµæ°´ï¼ˆ10æ¡ï¼‰"
     },
     "type": {
       "en": "Type",
-      "zh": "类型"
+      "zh": "ç±»åž‹"
     },
     "delta": {
       "en": "Delta",
-      "zh": "变动"
+      "zh": "å˜åŠ¨"
     },
     "coinDelta": {
       "en": "Coin Delta",
-      "zh": "金币变动"
+      "zh": "é‡‘å¸å˜åŠ¨"
     },
     "at": {
       "en": "At",
-      "zh": "时间"
+      "zh": "æ—¶é—´"
     },
     "loadWalletFailed": {
       "en": "Failed to load wallet",
-      "zh": "加载钱包失败"
+      "zh": "åŠ è½½é’±åŒ…å¤±è´¥"
     },
     "viewAll": {
       "en": "View All",
-      "zh": "查看全部"
+      "zh": "æŸ¥çœ‹å…¨éƒ¨"
     },
     "noActivity": {
       "en": "No recent activity",
-      "zh": "暂无最近流水"
+      "zh": "æš‚æ— æœ€è¿‘æµæ°´"
     }
   },
   "views.user.wallet.Topup": {
     "topup": {
       "en": "Top-up",
-      "zh": "充值"
+      "zh": "å……å€¼"
     },
     "channels": {
       "en": "Channels",
-      "zh": "支付通道"
+      "zh": "æ”¯ä»˜é€šé“"
     },
     "fee": {
       "en": "fee",
-      "zh": "手续费"
+      "zh": "æ‰‹ç»­è´¹"
     },
     "gross": {
       "en": "gross",
-      "zh": "总额"
+      "zh": "æ€»é¢"
     },
     "payNow": {
       "en": "Pay Now",
-      "zh": "立即支付"
+      "zh": "ç«‹å³æ”¯ä»˜"
     },
     "topupUpdated": {
       "en": "Top-up status updated",
-      "zh": "充值状态已更新"
+      "zh": "å……å€¼çŠ¶æ€å·²æ›´æ–°"
     },
     "quoteFailed": {
       "en": "Failed to quote",
-      "zh": "获取报价失败"
+      "zh": "èŽ·å–æŠ¥ä»·å¤±è´¥"
     },
     "createTopupFailed": {
       "en": "Failed to create topup",
-      "zh": "创建充值失败"
+      "zh": "åˆ›å»ºå……å€¼å¤±è´¥"
     },
     "customNominal": {
       "en": "Custom Nominal",
-      "zh": "自定义金额"
+      "zh": "è‡ªå®šä¹‰é‡‘é¢"
     },
     "noChannels": {
       "en": "No payment channels available for this nominal",
-      "zh": "该金额暂无可用支付通道"
+      "zh": "è¯¥é‡‘é¢æš‚æ— å¯ç”¨æ”¯ä»˜é€šé“"
     },
     "payTip": {
       "en": "You will be redirected to the payment gateway to complete the transaction.",
-      "zh": "您将被重定向到支付网关完成交易。"
+      "zh": "æ‚¨å°†è¢«é‡å®šå‘åˆ°æ”¯ä»˜ç½‘å…³å®Œæˆäº¤æ˜“ã€‚"
     }
   },
   "views.user.wallet.TopupHistory": {
     "all": {
       "en": "All",
-      "zh": "全部"
+      "zh": "å…¨éƒ¨"
     },
     "invoice": {
       "en": "Invoice",
-      "zh": "订单号"
+      "zh": "è®¢å•å·"
     },
     "amount": {
       "en": "Amount",
-      "zh": "金额"
+      "zh": "é‡‘é¢"
     },
     "fee": {
       "en": "Fee",
-      "zh": "手续费"
+      "zh": "æ‰‹ç»­è´¹"
     },
     "gross": {
       "en": "Gross",
-      "zh": "总额"
+      "zh": "æ€»é¢"
     },
     "channel": {
       "en": "Channel",
-      "zh": "渠道"
+      "zh": "æ¸ é“"
     },
     "status": {
       "en": "Status",
-      "zh": "状态"
+      "zh": "çŠ¶æ€"
     },
     "pending": {
       "en": "Pending",
-      "zh": "待处理"
+      "zh": "å¾…å¤„ç†"
     },
     "paidStatus": {
       "en": "Paid",
-      "zh": "已支付"
+      "zh": "å·²æ”¯ä»˜"
     },
     "failed": {
       "en": "Failed",
-      "zh": "失败"
+      "zh": "å¤±è´¥"
     },
     "expired": {
       "en": "Expired",
-      "zh": "已过期"
+      "zh": "å·²è¿‡æœŸ"
     },
     "cancelled": {
       "en": "Cancelled",
-      "zh": "已取消"
+      "zh": "å·²å–æ¶ˆ"
     },
     "created": {
       "en": "Created",
-      "zh": "创建时间"
+      "zh": "åˆ›å»ºæ—¶é—´"
     },
     "paid": {
       "en": "Paid",
-      "zh": "支付时间"
+      "zh": "æ”¯ä»˜æ—¶é—´"
     },
     "loadMore": {
       "en": "Load More",
-      "zh": "加载更多"
+      "zh": "åŠ è½½æ›´å¤š"
     },
     "loadTopupHistoryFailed": {
       "en": "Failed to load topup history",
-      "zh": "加载充值记录失败"
+      "zh": "åŠ è½½å……å€¼è®°å½•å¤±è´¥"
     },
     "noHistory": {
       "en": "No top-up history found.",
-      "zh": "暂无充值记录。"
+      "zh": "æš‚æ— å……å€¼è®°å½•ã€‚"
     }
   },
   "views.user.wallet.Ledger": {
     "type": {
       "en": "Type",
-      "zh": "类型"
+      "zh": "ç±»åž‹"
     },
     "delta": {
       "en": "Delta",
-      "zh": "变动"
+      "zh": "å˜åŠ¨"
     },
     "coinDelta": {
       "en": "Coin Delta",
-      "zh": "金币变动"
+      "zh": "é‡‘å¸å˜åŠ¨"
     },
     "idrRef": {
       "en": "IDR Ref",
-      "zh": "印尼盾参考值"
+      "zh": "å°å°¼ç›¾å‚è€ƒå€¼"
     },
     "metadata": {
       "en": "Metadata",
-      "zh": "元数据"
+      "zh": "å…ƒæ•°æ®"
     },
     "created": {
       "en": "Created",
-      "zh": "创建时间"
+      "zh": "åˆ›å»ºæ—¶é—´"
     },
     "loadMore": {
       "en": "Load More",
-      "zh": "加载更多"
+      "zh": "åŠ è½½æ›´å¤š"
     },
     "loadLedgerFailed": {
       "en": "Failed to load ledger",
-      "zh": "加载流水失败"
+      "zh": "åŠ è½½æµæ°´å¤±è´¥"
     },
     "noLedger": {
       "en": "No transaction records found.",
-      "zh": "暂无交易流水。"
+      "zh": "æš‚æ— äº¤æ˜“æµæ°´ã€‚"
     }
   },
   "views.user.AddressManagement": {
     "actions": {
       "en": "Actions",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "address": {
       "en": "Address",
-      "zh": "地址"
+      "zh": "åœ°å€"
     },
     "changeMailAddress": {
       "en": "Change Address",
-      "zh": "切换地址"
+      "zh": "åˆ‡æ¢åœ°å€"
     },
     "create_or_bind": {
       "en": "Create or Bind",
-      "zh": "创建或绑定"
+      "zh": "åˆ›å»ºæˆ–ç»‘å®š"
     },
     "mail_count": {
       "en": "Mail Count",
-      "zh": "邮件数量"
+      "zh": "é‚®ä»¶æ•°é‡"
     },
     "name": {
       "en": "Name",
-      "zh": "名称"
+      "zh": "åç§°"
     },
     "send_count": {
       "en": "Send Count",
-      "zh": "发送数量"
+      "zh": "å‘é€æ•°é‡"
     },
     "success": {
       "en": "success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "targetUserEmail": {
       "en": "Target User Email",
-      "zh": "目标用户邮箱"
+      "zh": "ç›®æ ‡ç”¨æˆ·é‚®ç®±"
     },
     "transferAddress": {
       "en": "Transfer Address",
-      "zh": "转移地址"
+      "zh": "è½¬ç§»åœ°å€"
     },
     "transferAddressTip": {
       "en": "Transfer address to another user will remove the address from your account and transfer it to another user. Are you sure to transfer the address?",
-      "zh": "转移地址到其他用户将会从你的账户中移除此地址并转移给其他用户。确定要转移地址吗？"
+      "zh": "è½¬ç§»åœ°å€åˆ°å…¶ä»–ç”¨æˆ·å°†ä¼šä»Žä½ çš„è´¦æˆ·ä¸­ç§»é™¤æ­¤åœ°å€å¹¶è½¬ç§»ç»™å…¶ä»–ç”¨æˆ·ã€‚ç¡®å®šè¦è½¬ç§»åœ°å€å—ï¼Ÿ"
     },
     "unbindAddress": {
       "en": "Unbind Address",
-      "zh": "解绑地址"
+      "zh": "è§£ç»‘åœ°å€"
     },
     "unbindAddressTip": {
       "en": "Before unbinding, please switch to this email address and save the email address credential.",
-      "zh": "解绑前请切换到此邮箱地址并保存邮箱地址凭证。"
+      "zh": "è§£ç»‘å‰è¯·åˆ‡æ¢åˆ°æ­¤é‚®ç®±åœ°å€å¹¶ä¿å­˜é‚®ç®±åœ°å€å‡­è¯ã€‚"
     }
   },
   "views.index.AccountSettings": {
     "changePassword": {
       "en": "Change Password",
-      "zh": "修改密码"
+      "zh": "ä¿®æ”¹å¯†ç "
     },
     "clearInbox": {
       "en": "Clear Inbox",
-      "zh": "清空收件箱"
+      "zh": "æ¸…ç©ºæ”¶ä»¶ç®±"
     },
     "clearInboxConfirm": {
       "en": "Are you sure to clear all emails in your inbox?",
-      "zh": "确定要清空你收件箱中的所有邮件吗？"
+      "zh": "ç¡®å®šè¦æ¸…ç©ºä½ æ”¶ä»¶ç®±ä¸­çš„æ‰€æœ‰é‚®ä»¶å—ï¼Ÿ"
     },
     "clearSentItems": {
       "en": "Clear Sent Items",
-      "zh": "清空发件箱"
+      "zh": "æ¸…ç©ºå‘ä»¶ç®±"
     },
     "clearSentItemsConfirm": {
       "en": "Are you sure to clear all emails in your sent items?",
-      "zh": "确定要清空你发件箱中的所有邮件吗？"
+      "zh": "ç¡®å®šè¦æ¸…ç©ºä½ å‘ä»¶ç®±ä¸­çš„æ‰€æœ‰é‚®ä»¶å—ï¼Ÿ"
     },
     "confirmPassword": {
       "en": "Confirm Password",
-      "zh": "确认密码"
+      "zh": "ç¡®è®¤å¯†ç "
     },
     "deleteAccount": {
       "en": "Delete Account",
-      "zh": "删除账户"
+      "zh": "åˆ é™¤è´¦æˆ·"
     },
     "deleteAccountConfirm": {
       "en": "Are you sure to delete your account and all emails for this account?",
-      "zh": "确定要删除你的账户和其中的所有邮件吗?"
+      "zh": "ç¡®å®šè¦åˆ é™¤ä½ çš„è´¦æˆ·å’Œå…¶ä¸­çš„æ‰€æœ‰é‚®ä»¶å—?"
     },
     "logout": {
       "en": "Logout",
-      "zh": "退出登录"
+      "zh": "é€€å‡ºç™»å½•"
     },
     "logoutConfirm": {
       "en": "Are you sure to logout?",
-      "zh": "确定要退出登录吗？"
+      "zh": "ç¡®å®šè¦é€€å‡ºç™»å½•å—ï¼Ÿ"
     },
     "newPassword": {
       "en": "New Password",
-      "zh": "新密码"
+      "zh": "æ–°å¯†ç "
     },
     "passwordChanged": {
       "en": "Password changed successfully",
-      "zh": "密码修改成功"
+      "zh": "å¯†ç ä¿®æ”¹æˆåŠŸ"
     },
     "passwordMismatch": {
       "en": "Passwords do not match",
-      "zh": "密码不匹配"
+      "zh": "å¯†ç ä¸åŒ¹é…"
     },
     "showAddressCredential": {
       "en": "Credentials & Connection Methods",
-      "zh": "地址凭证与连接方式"
+      "zh": "åœ°å€å‡­è¯ä¸Žè¿žæŽ¥æ–¹å¼"
     },
     "success": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     }
   },
   "views.user.UserOauth2Callback": {
     "codeNotFound": {
       "en": "code not found",
-      "zh": "未找到授权码"
+      "zh": "æœªæ‰¾åˆ°æŽˆæƒç "
     },
     "logging": {
       "en": "Logging in...",
-      "zh": "登录中..."
+      "zh": "ç™»å½•ä¸­..."
     },
     "stateNotMatch": {
       "en": "state not match",
-      "zh": "state 不匹配"
+      "zh": "state ä¸åŒ¹é…"
     }
   },
   "views.index.Attachment": {
     "action": {
       "en": "Action",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "delete": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "deleteConfirm": {
       "en": "Are you sure to delete this attachment?",
-      "zh": "确定要删除此附件吗？"
+      "zh": "ç¡®å®šè¦åˆ é™¤æ­¤é™„ä»¶å—ï¼Ÿ"
     },
     "deleteSuccess": {
       "en": "Deleted successfully",
-      "zh": "删除成功"
+      "zh": "åˆ é™¤æˆåŠŸ"
     },
     "download": {
       "en": "Download",
-      "zh": "下载"
+      "zh": "ä¸‹è½½"
     }
   },
   "views.index.AutoReply": {
     "autoReply": {
       "en": "Auto Reply",
-      "zh": "自动回复"
+      "zh": "è‡ªåŠ¨å›žå¤"
     },
     "enableAutoReply": {
       "en": "Enable Auto Reply",
-      "zh": "启用自动回复"
+      "zh": "å¯ç”¨è‡ªåŠ¨å›žå¤"
     },
     "name": {
       "en": "Name",
-      "zh": "名称"
+      "zh": "åç§°"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "settings": {
       "en": "Settings",
-      "zh": "设置"
+      "zh": "è®¾ç½®"
     },
     "sourcePrefix": {
       "en": "Sender Filter",
-      "zh": "发件人过滤"
+      "zh": "å‘ä»¶äººè¿‡æ»¤"
     },
     "sourcePrefixPlaceholder": {
       "en": "Empty=all, prefix match, or /regex/",
-      "zh": "留空=全部匹配，前缀匹配，或 /正则/"
+      "zh": "ç•™ç©º=å…¨éƒ¨åŒ¹é…ï¼Œå‰ç¼€åŒ¹é…ï¼Œæˆ– /æ­£åˆ™/"
     },
     "subject": {
       "en": "Subject",
-      "zh": "主题"
+      "zh": "ä¸»é¢˜"
     },
     "success": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     }
   },
   "views.index.SendMail": {
     "content": {
       "en": "Content",
-      "zh": "内容"
+      "zh": "å†…å®¹"
     },
     "contentEmpty": {
       "en": "Content is empty",
-      "zh": "内容不能为空"
+      "zh": "å†…å®¹ä¸èƒ½ä¸ºç©º"
     },
     "edit": {
       "en": "Edit",
-      "zh": "编辑"
+      "zh": "ç¼–è¾‘"
     },
     "fromName": {
       "en": "Your Name and Address, leave Name blank to use email address",
-      "zh": "你的名称和地址，名称不填写则使用邮箱地址"
+      "zh": "ä½ çš„åç§°å’Œåœ°å€ï¼Œåç§°ä¸å¡«å†™åˆ™ä½¿ç”¨é‚®ç®±åœ°å€"
     },
     "html": {
       "en": "HTML",
@@ -1252,251 +1252,251 @@ export const MESSAGE_REGISTRY = {
     },
     "options": {
       "en": "Options",
-      "zh": "选项"
+      "zh": "é€‰é¡¹"
     },
     "preview": {
       "en": "Preview",
-      "zh": "预览"
+      "zh": "é¢„è§ˆ"
     },
     "requestAccess": {
       "en": "Request Access",
-      "zh": "申请权限"
+      "zh": "ç”³è¯·æƒé™"
     },
     "requestAccessTip": {
       "en": "No send balance yet. If your admin enabled a default balance it should be assigned automatically; otherwise request access or contact the admin.",
-      "zh": "当前还没有可用的发信额度。如果管理员启用了默认额度，会自动发放；否则请申请权限或联系管理员处理。"
+      "zh": "å½“å‰è¿˜æ²¡æœ‰å¯ç”¨çš„å‘ä¿¡é¢åº¦ã€‚å¦‚æžœç®¡ç†å‘˜å¯ç”¨äº†é»˜è®¤é¢åº¦ï¼Œä¼šè‡ªåŠ¨å‘æ”¾ï¼›å¦åˆ™è¯·ç”³è¯·æƒé™æˆ–è”ç³»ç®¡ç†å‘˜å¤„ç†ã€‚"
     },
     "rich text": {
       "en": "Rich Text",
-      "zh": "富文本"
+      "zh": "å¯Œæ–‡æœ¬"
     },
     "send": {
       "en": "Send",
-      "zh": "发送"
+      "zh": "å‘é€"
     },
     "send_balance": {
       "en": "Send Mail Balance Left",
-      "zh": "剩余发送邮件额度"
+      "zh": "å‰©ä½™å‘é€é‚®ä»¶é¢åº¦"
     },
     "subject": {
       "en": "Subject",
-      "zh": "主题"
+      "zh": "ä¸»é¢˜"
     },
     "subjectEmpty": {
       "en": "Subject is empty",
-      "zh": "主题不能为空"
+      "zh": "ä¸»é¢˜ä¸èƒ½ä¸ºç©º"
     },
     "successSend": {
       "en": "Please check your sendbox. If failed, please check your balance or try again later.",
-      "zh": "请查看您的发件箱, 如果失败, 请检查您的余额或稍后重试。"
+      "zh": "è¯·æŸ¥çœ‹æ‚¨çš„å‘ä»¶ç®±, å¦‚æžœå¤±è´¥, è¯·æ£€æŸ¥æ‚¨çš„ä½™é¢æˆ–ç¨åŽé‡è¯•ã€‚"
     },
     "text": {
       "en": "Text",
-      "zh": "文本"
+      "zh": "æ–‡æœ¬"
     },
     "toMailEmpty": {
       "en": "Recipient address is empty",
-      "zh": "收件人地址不能为空"
+      "zh": "æ”¶ä»¶äººåœ°å€ä¸èƒ½ä¸ºç©º"
     },
     "toName": {
       "en": "Recipient Name and Address, leave Name blank to use email address",
-      "zh": "收件人名称和地址，名称不填写则使用邮箱地址"
+      "zh": "æ”¶ä»¶äººåç§°å’Œåœ°å€ï¼Œåç§°ä¸å¡«å†™åˆ™ä½¿ç”¨é‚®ç®±åœ°å€"
     },
     "tooLarge": {
       "en": "Too large file, please upload file less than 1MB.",
-      "zh": "文件过大, 请上传小于1MB的文件。"
+      "zh": "æ–‡ä»¶è¿‡å¤§, è¯·ä¸Šä¼ å°äºŽ1MBçš„æ–‡ä»¶ã€‚"
     }
   },
   "views.index.SimpleIndex": {
     "accountSettings": {
       "en": "Account Settings",
-      "zh": "账户设置"
+      "zh": "è´¦æˆ·è®¾ç½®"
     },
     "addressCopied": {
       "en": "Address copied successfully",
-      "zh": "地址复制成功"
+      "zh": "åœ°å€å¤åˆ¶æˆåŠŸ"
     },
     "addressCredential": {
       "en": "Mail Address Credential",
-      "zh": "邮箱地址凭证"
+      "zh": "é‚®ç®±åœ°å€å‡­è¯"
     },
     "addressCredentialTip": {
       "en": "Please copy the Mail Address Credential and you can use it to login",
-      "zh": "请复制邮箱地址凭证，你可以使用它登录你的邮箱。"
+      "zh": "è¯·å¤åˆ¶é‚®ç®±åœ°å€å‡­è¯ï¼Œä½ å¯ä»¥ä½¿ç”¨å®ƒç™»å½•ä½ çš„é‚®ç®±ã€‚"
     },
     "copyAddress": {
       "en": "Copy",
-      "zh": "复制"
+      "zh": "å¤åˆ¶"
     },
     "deleteSuccess": {
       "en": "Mail deleted successfully",
-      "zh": "邮件删除成功"
+      "zh": "é‚®ä»¶åˆ é™¤æˆåŠŸ"
     },
     "exitSimpleIndex": {
       "en": "Exit Simple",
-      "zh": "退出极简"
+      "zh": "é€€å‡ºæžç®€"
     },
     "mailCount": {
       "en": "{current} / {total} emails",
-      "zh": "{current} / {total} 封邮件"
+      "zh": "{current} / {total} å°é‚®ä»¶"
     },
     "nextPage": {
       "en": "Next",
-      "zh": "下一页"
+      "zh": "ä¸‹ä¸€é¡µ"
     },
     "noMails": {
       "en": "No mails found",
-      "zh": "暂无邮件"
+      "zh": "æš‚æ— é‚®ä»¶"
     },
     "prevPage": {
       "en": "Previous",
-      "zh": "上一页"
+      "zh": "ä¸Šä¸€é¡µ"
     },
     "refreshAfter": {
       "en": "Refresh After {msg} Seconds",
-      "zh": "{msg}秒后刷新"
+      "zh": "{msg}ç§’åŽåˆ·æ–°"
     },
     "refreshMails": {
       "en": "Refresh",
-      "zh": "刷新"
+      "zh": "åˆ·æ–°"
     },
     "refreshSuccess": {
       "en": "Mails refreshed successfully",
-      "zh": "邮件刷新成功"
+      "zh": "é‚®ä»¶åˆ·æ–°æˆåŠŸ"
     }
   },
   "views.index.TelegramAddress": {
     "actions": {
       "en": "Actions",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "address": {
       "en": "Address",
-      "zh": "地址"
+      "zh": "åœ°å€"
     },
     "bind": {
       "en": "Bind",
-      "zh": "绑定"
+      "zh": "ç»‘å®š"
     },
     "bindAddressSuccess": {
       "en": "Bind Address Success",
-      "zh": "绑定地址成功"
+      "zh": "ç»‘å®šåœ°å€æˆåŠŸ"
     },
     "changeMailAddress": {
       "en": "Change Mail Address",
-      "zh": "切换邮箱地址"
+      "zh": "åˆ‡æ¢é‚®ç®±åœ°å€"
     },
     "success": {
       "en": "success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "unbindMailAddress": {
       "en": "Unbind Mail Address",
-      "zh": "解绑邮箱地址"
+      "zh": "è§£ç»‘é‚®ç®±åœ°å€"
     }
   },
   "views.index.AddressBar": {
     "addressCredential": {
       "en": "Mail Address Credential",
-      "zh": "邮箱地址凭证"
+      "zh": "é‚®ç®±åœ°å€å‡­è¯"
     },
     "addressCredentialTip": {
       "en": "Please copy the Mail Address Credential and you can use it to login to your email account.",
-      "zh": "请复制邮箱地址凭证，你可以使用它登录你的邮箱。"
+      "zh": "è¯·å¤åˆ¶é‚®ç®±åœ°å€å‡­è¯ï¼Œä½ å¯ä»¥ä½¿ç”¨å®ƒç™»å½•ä½ çš„é‚®ç®±ã€‚"
     },
     "addressManage": {
       "en": "Manage",
-      "zh": "地址管理"
+      "zh": "åœ°å€ç®¡ç†"
     },
     "addressPassword": {
       "en": "Address Password",
-      "zh": "地址密码"
+      "zh": "åœ°å€å¯†ç "
     },
     "fetchAddressError": {
       "en": "Mail address credential is invalid or account not exist, it may be network connection issue, please try again later.",
-      "zh": "邮箱地址凭证无效或邮箱地址不存在，也可能是网络连接异常，请稍后再尝试。"
+      "zh": "é‚®ç®±åœ°å€å‡­è¯æ— æ•ˆæˆ–é‚®ç®±åœ°å€ä¸å­˜åœ¨ï¼Œä¹Ÿå¯èƒ½æ˜¯ç½‘ç»œè¿žæŽ¥å¼‚å¸¸ï¼Œè¯·ç¨åŽå†å°è¯•ã€‚"
     },
     "linkWithAddressCredential": {
       "en": "Open to auto login email link",
-      "zh": "打开即可自动登录邮箱的链接"
+      "zh": "æ‰“å¼€å³å¯è‡ªåŠ¨ç™»å½•é‚®ç®±çš„é“¾æŽ¥"
     },
     "ok": {
       "en": "OK",
-      "zh": "确定"
+      "zh": "ç¡®å®š"
     },
     "userLogin": {
       "en": "User Login",
-      "zh": "用户登录"
+      "zh": "ç”¨æˆ·ç™»å½•"
     }
   },
   "views.admin.SendBox": {
     "query": {
       "en": "Query",
-      "zh": "查询"
+      "zh": "æŸ¥è¯¢"
     },
     "queryTip": {
       "en": "Please input address to query, leave blank to query all",
-      "zh": "请输入地址查询, 留空则查询所有"
+      "zh": "è¯·è¾“å…¥åœ°å€æŸ¥è¯¢, ç•™ç©ºåˆ™æŸ¥è¯¢æ‰€æœ‰"
     }
   },
   "views.admin.AiExtractSettings": {
     "allowList": {
       "en": "Address Allowlist (Enter address and press Enter, wildcards supported)",
-      "zh": "地址白名单 (请输入地址并回车，支持通配符)"
+      "zh": "åœ°å€ç™½åå• (è¯·è¾“å…¥åœ°å€å¹¶å›žè½¦ï¼Œæ”¯æŒé€šé…ç¬¦)"
     },
     "allowListTip": {
       "en": "Wildcard * matches any characters, e.g. *{'@'}example.com matches all addresses under example.com domain",
-      "zh": "通配符 * 可匹配任意字符，如 *{'@'}example.com 可匹配 example.com 域名下的所有地址"
+      "zh": "é€šé…ç¬¦ * å¯åŒ¹é…ä»»æ„å­—ç¬¦ï¼Œå¦‚ *{'@'}example.com å¯åŒ¹é… example.com åŸŸåä¸‹çš„æ‰€æœ‰åœ°å€"
     },
     "disabledTip": {
       "en": "When disabled, AI extraction will process all email addresses",
-      "zh": "未启用时，所有邮箱地址都可使用 AI 提取功能"
+      "zh": "æœªå¯ç”¨æ—¶ï¼Œæ‰€æœ‰é‚®ç®±åœ°å€éƒ½å¯ä½¿ç”¨ AI æå–åŠŸèƒ½"
     },
     "enableAllowList": {
       "en": "Enable Address Allowlist",
-      "zh": "启用地址白名单"
+      "zh": "å¯ç”¨åœ°å€ç™½åå•"
     },
     "enableAllowListTip": {
       "en": "When enabled, AI extraction will only process emails sent to addresses in the allowlist",
-      "zh": "启用后，AI 提取功能仅对白名单中的邮箱地址生效"
+      "zh": "å¯ç”¨åŽï¼ŒAI æå–åŠŸèƒ½ä»…å¯¹ç™½åå•ä¸­çš„é‚®ç®±åœ°å€ç”Ÿæ•ˆ"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "输入后按回车键添加"
+      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "successTip": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "title": {
       "en": "AI Email Extraction Settings",
-      "zh": "AI 邮件提取设置"
+      "zh": "AI é‚®ä»¶æå–è®¾ç½®"
     }
   },
   "views.admin.SendMail": {
     "content": {
       "en": "Content",
-      "zh": "内容"
+      "zh": "å†…å®¹"
     },
     "contentEmpty": {
       "en": "Content is empty",
-      "zh": "内容不能为空"
+      "zh": "å†…å®¹ä¸èƒ½ä¸ºç©º"
     },
     "edit": {
       "en": "Edit",
-      "zh": "编辑"
+      "zh": "ç¼–è¾‘"
     },
     "fromMailEmpty": {
       "en": "Sender address is empty",
-      "zh": "发件人地址不能为空"
+      "zh": "å‘ä»¶äººåœ°å€ä¸èƒ½ä¸ºç©º"
     },
     "fromName": {
       "en": "Your Name and Address, leave Name blank to use email address",
-      "zh": "你的名称和地址，名称不填写则使用邮箱地址"
+      "zh": "ä½ çš„åç§°å’Œåœ°å€ï¼Œåç§°ä¸å¡«å†™åˆ™ä½¿ç”¨é‚®ç®±åœ°å€"
     },
     "html": {
       "en": "HTML",
@@ -1504,949 +1504,949 @@ export const MESSAGE_REGISTRY = {
     },
     "options": {
       "en": "Options",
-      "zh": "选项"
+      "zh": "é€‰é¡¹"
     },
     "preview": {
       "en": "Preview",
-      "zh": "预览"
+      "zh": "é¢„è§ˆ"
     },
     "rich text": {
       "en": "Rich Text",
-      "zh": "富文本"
+      "zh": "å¯Œæ–‡æœ¬"
     },
     "send": {
       "en": "Send",
-      "zh": "发送"
+      "zh": "å‘é€"
     },
     "subject": {
       "en": "Subject",
-      "zh": "主题"
+      "zh": "ä¸»é¢˜"
     },
     "subjectEmpty": {
       "en": "Subject is empty",
-      "zh": "主题不能为空"
+      "zh": "ä¸»é¢˜ä¸èƒ½ä¸ºç©º"
     },
     "successSend": {
       "en": "Please check your sendbox. If failed, please try again later.",
-      "zh": "请查看您的发件箱, 如果失败, 请检查稍后重试。"
+      "zh": "è¯·æŸ¥çœ‹æ‚¨çš„å‘ä»¶ç®±, å¦‚æžœå¤±è´¥, è¯·æ£€æŸ¥ç¨åŽé‡è¯•ã€‚"
     },
     "text": {
       "en": "Text",
-      "zh": "文本"
+      "zh": "æ–‡æœ¬"
     },
     "toMailEmpty": {
       "en": "Recipient address is empty",
-      "zh": "收件人地址不能为空"
+      "zh": "æ”¶ä»¶äººåœ°å€ä¸èƒ½ä¸ºç©º"
     },
     "toName": {
       "en": "Recipient Name and Address, leave Name blank to use email address",
-      "zh": "收件人名称和地址，名称不填写则使用邮箱地址"
+      "zh": "æ”¶ä»¶äººåç§°å’Œåœ°å€ï¼Œåç§°ä¸å¡«å†™åˆ™ä½¿ç”¨é‚®ç®±åœ°å€"
     },
     "tooLarge": {
       "en": "Too large file, please upload file less than 1MB.",
-      "zh": "文件过大, 请上传小于1MB的文件。"
+      "zh": "æ–‡ä»¶è¿‡å¤§, è¯·ä¸Šä¼ å°äºŽ1MBçš„æ–‡ä»¶ã€‚"
     }
   },
   "views.admin.Account": {
     "actions": {
       "en": "Actions",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "addressCredential": {
       "en": "Mail Address Credential",
-      "zh": "邮箱地址凭证"
+      "zh": "é‚®ç®±åœ°å€å‡­è¯"
     },
     "addressCredentialTip": {
       "en": "Please copy the Mail Address Credential and you can use it to login to your email account.",
-      "zh": "请复制邮箱地址凭证，你可以使用它登录你的邮箱。"
+      "zh": "è¯·å¤åˆ¶é‚®ç®±åœ°å€å‡­è¯ï¼Œä½ å¯ä»¥ä½¿ç”¨å®ƒç™»å½•ä½ çš„é‚®ç®±ã€‚"
     },
     "addressQueryTip": {
       "en": "Leave blank to query all addresses",
-      "zh": "留空查询所有地址"
+      "zh": "ç•™ç©ºæŸ¥è¯¢æ‰€æœ‰åœ°å€"
     },
     "clearInbox": {
       "en": "Clear Inbox",
-      "zh": "清空收件箱"
+      "zh": "æ¸…ç©ºæ”¶ä»¶ç®±"
     },
     "clearInboxTip": {
       "en": "Are you sure to clear inbox for this email?",
-      "zh": "确定要清空这个邮箱的收件箱吗？"
+      "zh": "ç¡®å®šè¦æ¸…ç©ºè¿™ä¸ªé‚®ç®±çš„æ”¶ä»¶ç®±å—ï¼Ÿ"
     },
     "clearSentItems": {
       "en": "Clear Sent Items",
-      "zh": "清空发件箱"
+      "zh": "æ¸…ç©ºå‘ä»¶ç®±"
     },
     "clearSentItemsTip": {
       "en": "Are you sure to clear sent items for this email?",
-      "zh": "确定要清空这个邮箱的发件箱吗？"
+      "zh": "ç¡®å®šè¦æ¸…ç©ºè¿™ä¸ªé‚®ç®±çš„å‘ä»¶ç®±å—ï¼Ÿ"
     },
     "created_at": {
       "en": "Created At",
-      "zh": "创建时间"
+      "zh": "åˆ›å»ºæ—¶é—´"
     },
     "delete": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "deleteAccount": {
       "en": "Delete Account",
-      "zh": "删除邮箱"
+      "zh": "åˆ é™¤é‚®ç®±"
     },
     "deleteTip": {
       "en": "Are you sure to delete this email?",
-      "zh": "确定要删除这个邮箱吗？"
+      "zh": "ç¡®å®šè¦åˆ é™¤è¿™ä¸ªé‚®ç®±å—ï¼Ÿ"
     },
     "itemCount": {
       "en": "itemCount",
-      "zh": "总数"
+      "zh": "æ€»æ•°"
     },
     "mail_count": {
       "en": "Mail Count",
-      "zh": "邮件数量"
+      "zh": "é‚®ä»¶æ•°é‡"
     },
     "multiClearInbox": {
       "en": "Multi Clear Inbox",
-      "zh": "批量清空收件箱"
+      "zh": "æ‰¹é‡æ¸…ç©ºæ”¶ä»¶ç®±"
     },
     "multiClearInboxTip": {
       "en": "Are you sure to clear inbox for selected addresses?",
-      "zh": "确定要清空选中邮箱的收件箱吗？"
+      "zh": "ç¡®å®šè¦æ¸…ç©ºé€‰ä¸­é‚®ç®±çš„æ”¶ä»¶ç®±å—ï¼Ÿ"
     },
     "multiClearSentItems": {
       "en": "Multi Clear Sent Items",
-      "zh": "批量清空发件箱"
+      "zh": "æ‰¹é‡æ¸…ç©ºå‘ä»¶ç®±"
     },
     "multiClearSentItemsTip": {
       "en": "Are you sure to clear sent items for selected addresses?",
-      "zh": "确定要清空选中邮箱的发件箱吗？"
+      "zh": "ç¡®å®šè¦æ¸…ç©ºé€‰ä¸­é‚®ç®±çš„å‘ä»¶ç®±å—ï¼Ÿ"
     },
     "multiDelete": {
       "en": "Multi Delete",
-      "zh": "批量删除"
+      "zh": "æ‰¹é‡åˆ é™¤"
     },
     "multiDeleteTip": {
       "en": "Are you sure to delete selected addresses?",
-      "zh": "确定要删除选中的邮箱吗？"
+      "zh": "ç¡®å®šè¦åˆ é™¤é€‰ä¸­çš„é‚®ç®±å—ï¼Ÿ"
     },
     "name": {
       "en": "Name",
-      "zh": "名称"
+      "zh": "åç§°"
     },
     "newPassword": {
       "en": "New Password",
-      "zh": "新密码"
+      "zh": "æ–°å¯†ç "
     },
     "passwordResetSuccess": {
       "en": "Password reset successfully",
-      "zh": "密码重置成功"
+      "zh": "å¯†ç é‡ç½®æˆåŠŸ"
     },
     "pleaseSelectAddress": {
       "en": "Please select address",
-      "zh": "请选择地址"
+      "zh": "è¯·é€‰æ‹©åœ°å€"
     },
     "query": {
       "en": "Query",
-      "zh": "查询"
+      "zh": "æŸ¥è¯¢"
     },
     "resetPassword": {
       "en": "Reset Password",
-      "zh": "重置密码"
+      "zh": "é‡ç½®å¯†ç "
     },
     "selectAll": {
       "en": "Select All of This Page",
-      "zh": "全选本页"
+      "zh": "å…¨é€‰æœ¬é¡µ"
     },
     "selectedItems": {
       "en": "Selected",
-      "zh": "已选择"
+      "zh": "å·²é€‰æ‹©"
     },
     "send_count": {
       "en": "Send Count",
-      "zh": "发送数量"
+      "zh": "å‘é€æ•°é‡"
     },
     "showCredential": {
       "en": "Show Mail Address Credential",
-      "zh": "查看邮箱地址凭证"
+      "zh": "æŸ¥çœ‹é‚®ç®±åœ°å€å‡­è¯"
     },
     "source_meta": {
       "en": "Source",
-      "zh": "来源"
+      "zh": "æ¥æº"
     },
     "success": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "unselectAll": {
       "en": "Unselect All",
-      "zh": "取消全选"
+      "zh": "å–æ¶ˆå…¨é€‰"
     },
     "updated_at": {
       "en": "Update At",
-      "zh": "更新时间"
+      "zh": "æ›´æ–°æ—¶é—´"
     },
     "viewMails": {
       "en": "View Mails",
-      "zh": "查看邮件"
+      "zh": "æŸ¥çœ‹é‚®ä»¶"
     },
     "viewSendBox": {
       "en": "View SendBox",
-      "zh": "查看发件箱"
+      "zh": "æŸ¥çœ‹å‘ä»¶ç®±"
     }
   },
   "views.admin.UserOauth2Settings": {
     "addOauth2": {
       "en": "Add Oauth2",
-      "zh": "添加 Oauth2"
+      "zh": "æ·»åŠ  Oauth2"
     },
     "delete": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "enable": {
       "en": "Enable",
-      "zh": "启用"
+      "zh": "å¯ç”¨"
     },
     "enableEmailFormat": {
       "en": "Enable Email Format",
-      "zh": "启用邮箱格式转换"
+      "zh": "å¯ç”¨é‚®ç®±æ ¼å¼è½¬æ¢"
     },
     "enableMailAllowList": {
       "en": "Enable Mail Address Allow List(Manually enterable)",
-      "zh": "启用邮件地址白名单(可手动输入, 回车增加)"
+      "zh": "å¯ç”¨é‚®ä»¶åœ°å€ç™½åå•(å¯æ‰‹åŠ¨è¾“å…¥, å›žè½¦å¢žåŠ )"
     },
     "icon": {
       "en": "Icon (SVG, please ensure trusted source)",
-      "zh": "图标 (SVG, 请确保来源可信)"
+      "zh": "å›¾æ ‡ (SVG, è¯·ç¡®ä¿æ¥æºå¯ä¿¡)"
     },
     "iconPreview": {
       "en": "Preview",
-      "zh": "预览"
+      "zh": "é¢„è§ˆ"
     },
     "mailAllowList": {
       "en": "Mail Address Allow List",
-      "zh": "邮件地址白名单"
+      "zh": "é‚®ä»¶åœ°å€ç™½åå•"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "输入后按回车键添加"
+      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
     },
     "name": {
       "en": "Name",
-      "zh": "名称"
+      "zh": "åç§°"
     },
     "oauth2Type": {
       "en": "Oauth2 Type",
-      "zh": "Oauth2 类型"
+      "zh": "Oauth2 ç±»åž‹"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "successTip": {
       "en": "Save Success",
-      "zh": "保存成功"
+      "zh": "ä¿å­˜æˆåŠŸ"
     },
     "tip": {
       "en": "Third-party login will automatically use the user's email to register an account (the same email will be regarded as the same account), this account is the same as the registered account, and you can also set the password through the forget password",
-      "zh": "第三方登录会自动使用用户邮箱注册账号(邮箱相同将视为同一账号), 此账号和注册的账号相同, 也可以通过忘记密码设置密码"
+      "zh": "ç¬¬ä¸‰æ–¹ç™»å½•ä¼šè‡ªåŠ¨ä½¿ç”¨ç”¨æˆ·é‚®ç®±æ³¨å†Œè´¦å·(é‚®ç®±ç›¸åŒå°†è§†ä¸ºåŒä¸€è´¦å·), æ­¤è´¦å·å’Œæ³¨å†Œçš„è´¦å·ç›¸åŒ, ä¹Ÿå¯ä»¥é€šè¿‡å¿˜è®°å¯†ç è®¾ç½®å¯†ç "
     },
     "userEmailFormat": {
       "en": "Email Regex Pattern",
-      "zh": "邮箱正则表达式"
+      "zh": "é‚®ç®±æ­£åˆ™è¡¨è¾¾å¼"
     },
     "userEmailFormatTip": {
       "en": "Use regex to transform email. Example: ^(.+)@old\\.com$ with $1@new.com",
-      "zh": "使用正则转换邮箱。示例: ^(.+)@old\\.com$ 配合 $1@new.com"
+      "zh": "ä½¿ç”¨æ­£åˆ™è½¬æ¢é‚®ç®±ã€‚ç¤ºä¾‹: ^(.+)@old\\.com$ é…åˆ $1@new.com"
     },
     "userEmailReplace": {
       "en": "Replace Template",
-      "zh": "替换模板"
+      "zh": "æ›¿æ¢æ¨¡æ¿"
     }
   },
   "views.admin.Statistics": {
     "activeAddressCount30days": {
       "en": "30 days Active Address Count",
-      "zh": "30天活跃邮箱地址总数"
+      "zh": "30å¤©æ´»è·ƒé‚®ç®±åœ°å€æ€»æ•°"
     },
     "activeAddressCount7days": {
       "en": "7 days Active Address Count",
-      "zh": "7天活跃邮箱地址总数"
+      "zh": "7å¤©æ´»è·ƒé‚®ç®±åœ°å€æ€»æ•°"
     },
     "addressCount": {
       "en": "Address Count",
-      "zh": "邮箱地址总数"
+      "zh": "é‚®ç®±åœ°å€æ€»æ•°"
     },
     "mailCount": {
       "en": "Mail Count",
-      "zh": "邮件总数"
+      "zh": "é‚®ä»¶æ€»æ•°"
     },
     "sendMailCount": {
       "en": "Send Mail Count",
-      "zh": "发送邮件总数"
+      "zh": "å‘é€é‚®ä»¶æ€»æ•°"
     },
     "userCount": {
       "en": "User Count",
-      "zh": "用户总数"
+      "zh": "ç”¨æˆ·æ€»æ•°"
     }
   },
   "views.admin.SenderAccess": {
     "action": {
       "en": "Action",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "address": {
       "en": "Address",
-      "zh": "地址"
+      "zh": "åœ°å€"
     },
     "balance": {
       "en": "Balance",
-      "zh": "余额"
+      "zh": "ä½™é¢"
     },
     "created_at": {
       "en": "Created At",
-      "zh": "创建时间"
+      "zh": "åˆ›å»ºæ—¶é—´"
     },
     "delete": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "deleteTip": {
       "en": "Are you sure to delete this?",
-      "zh": "确定删除吗？"
+      "zh": "ç¡®å®šåˆ é™¤å—ï¼Ÿ"
     },
     "disable": {
       "en": "Disable",
-      "zh": "禁用"
+      "zh": "ç¦ç”¨"
     },
     "enable": {
       "en": "Enable",
-      "zh": "启用"
+      "zh": "å¯ç”¨"
     },
     "is_enabled": {
       "en": "Is Enabled",
-      "zh": "是否启用"
+      "zh": "æ˜¯å¦å¯ç”¨"
     },
     "itemCount": {
       "en": "itemCount",
-      "zh": "总数"
+      "zh": "æ€»æ•°"
     },
     "modalTip": {
       "en": "Please input the sender balance",
-      "zh": "请输入发件额度"
+      "zh": "è¯·è¾“å…¥å‘ä»¶é¢åº¦"
     },
     "modify": {
       "en": "Modify",
-      "zh": "修改"
+      "zh": "ä¿®æ”¹"
     },
     "ok": {
       "en": "OK",
-      "zh": "确定"
+      "zh": "ç¡®å®š"
     },
     "query": {
       "en": "Query",
-      "zh": "查询"
+      "zh": "æŸ¥è¯¢"
     },
     "success": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     }
   },
   "views.index.LocalAddress": {
     "actions": {
       "en": "Actions",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "address": {
       "en": "Address",
-      "zh": "地址"
+      "zh": "åœ°å€"
     },
     "bindAddressSuccess": {
       "en": "Bind Address Success",
-      "zh": "绑定地址成功"
+      "zh": "ç»‘å®šåœ°å€æˆåŠŸ"
     },
     "changeMailAddress": {
       "en": "Change Mail Address",
-      "zh": "切换邮箱地址"
+      "zh": "åˆ‡æ¢é‚®ç®±åœ°å€"
     },
     "create_or_bind": {
       "en": "Create or Bind",
-      "zh": "创建或绑定"
+      "zh": "åˆ›å»ºæˆ–ç»‘å®š"
     },
     "success": {
       "en": "success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "tip": {
       "en": "These addresses are stored in your browser, maybe loss if you clear the browser cache.",
-      "zh": "这些地址存储在您的浏览器中，如果您清除浏览器缓存，可能会丢失。"
+      "zh": "è¿™äº›åœ°å€å­˜å‚¨åœ¨æ‚¨çš„æµè§ˆå™¨ä¸­ï¼Œå¦‚æžœæ‚¨æ¸…é™¤æµè§ˆå™¨ç¼“å­˜ï¼Œå¯èƒ½ä¼šä¸¢å¤±ã€‚"
     },
     "unbindMailAddress": {
       "en": "Unbind Mail Address credential",
-      "zh": "解绑邮箱地址"
+      "zh": "è§£ç»‘é‚®ç®±åœ°å€"
     }
   },
   "views.admin.DatabaseManager": {
     "code_db_version": {
       "en": "Code Needed DB Version",
-      "zh": "需要的数据库版本"
+      "zh": "éœ€è¦çš„æ•°æ®åº“ç‰ˆæœ¬"
     },
     "current_db_version": {
       "en": "Current DB Version",
-      "zh": "当前数据库版本"
+      "zh": "å½“å‰æ•°æ®åº“ç‰ˆæœ¬"
     },
     "init": {
       "en": "Initialize Database",
-      "zh": "初始化数据库"
+      "zh": "åˆå§‹åŒ–æ•°æ®åº“"
     },
     "initializationSuccess": {
       "en": "Database initialized successfully",
-      "zh": "数据库初始化成功"
+      "zh": "æ•°æ®åº“åˆå§‹åŒ–æˆåŠŸ"
     },
     "migration": {
       "en": "Migrate Database",
-      "zh": "升级数据库 Schema"
+      "zh": "å‡çº§æ•°æ®åº“ Schema"
     },
     "migrationSuccess": {
       "en": "Database migrated successfully",
-      "zh": "数据库升级成功"
+      "zh": "æ•°æ®åº“å‡çº§æˆåŠŸ"
     },
     "need_initialization_tip": {
       "en": "Database initialization is required. Please initialize the database.",
-      "zh": "需要初始化数据库，请初始化数据库"
+      "zh": "éœ€è¦åˆå§‹åŒ–æ•°æ®åº“ï¼Œè¯·åˆå§‹åŒ–æ•°æ®åº“"
     },
     "need_migration_tip": {
       "en": "Database migration is required. Please migrate the database.",
-      "zh": "需要迁移数据库，请迁移数据库"
+      "zh": "éœ€è¦è¿ç§»æ•°æ®åº“ï¼Œè¯·è¿ç§»æ•°æ®åº“"
     }
   },
   "views.admin.IpBlacklistSettings": {
     "asn_blacklist": {
       "en": "ASN Organization Blacklist",
-      "zh": "ASN 组织（运营商）黑名单"
+      "zh": "ASN ç»„ç»‡ï¼ˆè¿è¥å•†ï¼‰é»‘åå•"
     },
     "asn_blacklist_placeholder": {
       "en": "Enter ASN organization (e.g., Google, Amazon)",
-      "zh": "输入 ASN 组织名称（例如：Google, Amazon）"
+      "zh": "è¾“å…¥ ASN ç»„ç»‡åç§°ï¼ˆä¾‹å¦‚ï¼šGoogle, Amazonï¼‰"
     },
     "daily_request_limit": {
       "en": "Daily Request Limit",
-      "zh": "每日请求次数上限"
+      "zh": "æ¯æ—¥è¯·æ±‚æ¬¡æ•°ä¸Šé™"
     },
     "daily_request_limit_placeholder": {
       "en": "Enter limit (e.g., 1000)",
-      "zh": "输入限制次数（例如：1000）"
+      "zh": "è¾“å…¥é™åˆ¶æ¬¡æ•°ï¼ˆä¾‹å¦‚ï¼š1000ï¼‰"
     },
     "enable_daily_limit": {
       "en": "Enable Daily Request Limit",
-      "zh": "启用每日请求限流"
+      "zh": "å¯ç”¨æ¯æ—¥è¯·æ±‚é™æµ"
     },
     "enable_daily_limit_tip": {
       "en": "Limit the number of API requests per IP address per day",
-      "zh": "限制每个 IP 地址每天的 API 请求次数"
+      "zh": "é™åˆ¶æ¯ä¸ª IP åœ°å€æ¯å¤©çš„ API è¯·æ±‚æ¬¡æ•°"
     },
     "enable_ip_blacklist": {
       "en": "Enable IP Blacklist",
-      "zh": "启用 IP 黑名单"
+      "zh": "å¯ç”¨ IP é»‘åå•"
     },
     "enable_ip_whitelist": {
       "en": "Enable IP Whitelist (Strict)",
-      "zh": "启用 IP 白名单（严格模式）"
+      "zh": "å¯ç”¨ IP ç™½åå•ï¼ˆä¸¥æ ¼æ¨¡å¼ï¼‰"
     },
     "enable_tip": {
       "en": "Block IPs matching blacklist patterns from accessing rate-limited APIs",
-      "zh": "阻止匹配黑名单的 IP 访问限流 API"
+      "zh": "é˜»æ­¢åŒ¹é…é»‘åå•çš„ IP è®¿é—®é™æµ API"
     },
     "enable_whitelist_tip": {
       "en": "Strict mode: ONLY IPs matching the whitelist can access rate-limited APIs. All other IPs will be denied.",
-      "zh": "严格模式：仅允许匹配白名单的 IP 访问限流 API，其他所有 IP 将被拒绝"
+      "zh": "ä¸¥æ ¼æ¨¡å¼ï¼šä»…å…è®¸åŒ¹é…ç™½åå•çš„ IP è®¿é—®é™æµ APIï¼Œå…¶ä»–æ‰€æœ‰ IP å°†è¢«æ‹’ç»"
     },
     "fingerprint_blacklist": {
       "en": "Browser Fingerprint Blacklist",
-      "zh": "浏览器指纹黑名单"
+      "zh": "æµè§ˆå™¨æŒ‡çº¹é»‘åå•"
     },
     "fingerprint_blacklist_placeholder": {
       "en": "Enter fingerprint ID (e.g., a1b2c3d4e5f6g7h8)",
-      "zh": "输入指纹 ID（例如：a1b2c3d4e5f6g7h8）"
+      "zh": "è¾“å…¥æŒ‡çº¹ IDï¼ˆä¾‹å¦‚ï¼ša1b2c3d4e5f6g7h8ï¼‰"
     },
     "ip_blacklist": {
       "en": "IP Blacklist Patterns",
-      "zh": "IP 黑名单匹配模式"
+      "zh": "IP é»‘åå•åŒ¹é…æ¨¡å¼"
     },
     "ip_blacklist_placeholder": {
       "en": "Enter pattern (e.g., 192.168.1 or ^10\\.0\\.0\\.5$)",
-      "zh": "输入匹配模式（例如：192.168.1 或 ^10\\.0\\.0\\.5$）"
+      "zh": "è¾“å…¥åŒ¹é…æ¨¡å¼ï¼ˆä¾‹å¦‚ï¼š192.168.1 æˆ– ^10\\.0\\.0\\.5$ï¼‰"
     },
     "ip_whitelist": {
       "en": "IP Whitelist Patterns",
-      "zh": "IP 白名单匹配模式"
+      "zh": "IP ç™½åå•åŒ¹é…æ¨¡å¼"
     },
     "ip_whitelist_placeholder": {
       "en": "Exact IP (e.g., 1.2.3.4) or anchored regex (e.g., ^192\\.168\\.1\\.\\d+$)",
-      "zh": "精确 IP(如 1.2.3.4)或锚定正则(如 ^192\\.168\\.1\\.\\d+$)"
+      "zh": "ç²¾ç¡® IP(å¦‚ 1.2.3.4)æˆ–é”šå®šæ­£åˆ™(å¦‚ ^192\\.168\\.1\\.\\d+$)"
     },
     "manualInputPrompt": {
       "en": "Type pattern and press Enter to add",
-      "zh": "输入匹配模式后按回车键添加"
+      "zh": "è¾“å…¥åŒ¹é…æ¨¡å¼åŽæŒ‰å›žè½¦é”®æ·»åŠ "
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "successTip": {
       "en": "Save Success",
-      "zh": "保存成功"
+      "zh": "ä¿å­˜æˆåŠŸ"
     },
     "tip_asn": {
       "en": "ASN Organization: Block by ISP/provider. Case-insensitive text matching or regex.",
-      "zh": "ASN 组织：根据运营商/ISP 拉黑。支持不区分大小写的文本匹配或正则表达式。"
+      "zh": "ASN ç»„ç»‡ï¼šæ ¹æ®è¿è¥å•†/ISP æ‹‰é»‘ã€‚æ”¯æŒä¸åŒºåˆ†å¤§å°å†™çš„æ–‡æœ¬åŒ¹é…æˆ–æ­£åˆ™è¡¨è¾¾å¼ã€‚"
     },
     "tip_daily_limit": {
       "en": "Daily Limit: Restrict the maximum number of requests per IP address per day (1-1000000).",
-      "zh": "每日限流：限制单个 IP 地址每天最多请求次数（1-1000000）。"
+      "zh": "æ¯æ—¥é™æµï¼šé™åˆ¶å•ä¸ª IP åœ°å€æ¯å¤©æœ€å¤šè¯·æ±‚æ¬¡æ•°ï¼ˆ1-1000000ï¼‰ã€‚"
     },
     "tip_fingerprint": {
       "en": "Browser Fingerprint: Block by browser fingerprint. Supports exact matching or regex patterns.",
-      "zh": "浏览器指纹：根据浏览器指纹拉黑。支持完全匹配或正则表达式。"
+      "zh": "æµè§ˆå™¨æŒ‡çº¹ï¼šæ ¹æ®æµè§ˆå™¨æŒ‡çº¹æ‹‰é»‘ã€‚æ”¯æŒå®Œå…¨åŒ¹é…æˆ–æ­£åˆ™è¡¨è¾¾å¼ã€‚"
     },
     "tip_ip": {
       "en": "IP Blacklist: Supports text matching (e.g., \"192.168.1\") or regex (e.g., \"^10\\.0\\.0\\.5$\").",
-      "zh": "IP 黑名单：支持文本匹配（如 \"192.168.1\"）或正则表达式（如 \"^10\\.0\\.0\\.5$\"）。"
+      "zh": "IP é»‘åå•ï¼šæ”¯æŒæ–‡æœ¬åŒ¹é…ï¼ˆå¦‚ \"192.168.1\"ï¼‰æˆ–æ­£åˆ™è¡¨è¾¾å¼ï¼ˆå¦‚ \"^10\\.0\\.0\\.5$\"ï¼‰ã€‚"
     },
     "tip_scope": {
       "en": "Applies to: Create Address, Send Mail, External Send Mail API, User Registration, Verify Code",
-      "zh": "作用范围：创建邮箱地址、发送邮件、外部发送邮件 API、用户注册、验证码验证"
+      "zh": "ä½œç”¨èŒƒå›´ï¼šåˆ›å»ºé‚®ç®±åœ°å€ã€å‘é€é‚®ä»¶ã€å¤–éƒ¨å‘é€é‚®ä»¶ APIã€ç”¨æˆ·æ³¨å†Œã€éªŒè¯ç éªŒè¯"
     },
     "tip_whitelist": {
-      "en": "IP Whitelist: Strict allowlist — plain entries must be EXACT IP matches (no substring). Use anchored regex (^...$) for ranges. Whitelisted IPs skip blacklist checks.",
-      "zh": "IP 白名单: 严格放行名单——纯文本必须是精确 IP(不支持子串匹配), 批量放行请用锚定正则 ^...$. 命中白名单的 IP 将跳过黑名单检查."
+      "en": "IP Whitelist: Strict allowlist â€” plain entries must be EXACT IP matches (no substring). Use anchored regex (^...$) for ranges. Whitelisted IPs skip blacklist checks.",
+      "zh": "IP ç™½åå•: ä¸¥æ ¼æ”¾è¡Œåå•â€”â€”çº¯æ–‡æœ¬å¿…é¡»æ˜¯ç²¾ç¡® IP(ä¸æ”¯æŒå­ä¸²åŒ¹é…), æ‰¹é‡æ”¾è¡Œè¯·ç”¨é”šå®šæ­£åˆ™ ^...$. å‘½ä¸­ç™½åå•çš„ IP å°†è·³è¿‡é»‘åå•æ£€æŸ¥."
     },
     "title": {
       "en": "IP Blacklist Settings",
-      "zh": "IP 黑名单设置"
+      "zh": "IP é»‘åå•è®¾ç½®"
     },
     "whitelist_empty_warning": {
       "en": "IP whitelist is enabled but the list is empty. This is ignored by the server to prevent lockout. Please add at least one entry before enabling.",
-      "zh": "IP 白名单已启用但列表为空，服务端将忽略该开关以防止锁死。请先添加至少一条白名单条目再启用。"
+      "zh": "IP ç™½åå•å·²å¯ç”¨ä½†åˆ—è¡¨ä¸ºç©ºï¼ŒæœåŠ¡ç«¯å°†å¿½ç•¥è¯¥å¼€å…³ä»¥é˜²æ­¢é”æ­»ã€‚è¯·å…ˆæ·»åŠ è‡³å°‘ä¸€æ¡ç™½åå•æ¡ç›®å†å¯ç”¨ã€‚"
     }
   },
   "views.admin.UserAddressManagement": {
     "mail_count": {
       "en": "Mail Count",
-      "zh": "邮件数量"
+      "zh": "é‚®ä»¶æ•°é‡"
     },
     "name": {
       "en": "Name",
-      "zh": "名称"
+      "zh": "åç§°"
     },
     "send_count": {
       "en": "Send Count",
-      "zh": "发送数量"
+      "zh": "å‘é€æ•°é‡"
     },
     "success": {
       "en": "success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     }
   },
   "views.admin.UserManagement": {
     "actions": {
       "en": "Actions",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "address_count": {
       "en": "Address Count",
-      "zh": "地址数量"
+      "zh": "åœ°å€æ•°é‡"
     },
     "changeRole": {
       "en": "Change Role",
-      "zh": "更改角色"
+      "zh": "æ›´æ”¹è§’è‰²"
     },
     "createUser": {
       "en": "Create User",
-      "zh": "创建用户"
+      "zh": "åˆ›å»ºç”¨æˆ·"
     },
     "created_at": {
       "en": "Created At",
-      "zh": "创建时间"
+      "zh": "åˆ›å»ºæ—¶é—´"
     },
     "delete": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "deleteUser": {
       "en": "Delete User",
-      "zh": "删除用户"
+      "zh": "åˆ é™¤ç”¨æˆ·"
     },
     "deleteUserTip": {
       "en": "Are you sure you want to delete this user?",
-      "zh": "确定要删除此用户吗？"
+      "zh": "ç¡®å®šè¦åˆ é™¤æ­¤ç”¨æˆ·å—ï¼Ÿ"
     },
     "domains": {
       "en": "Domains",
-      "zh": "域名"
+      "zh": "åŸŸå"
     },
     "email": {
       "en": "Email",
-      "zh": "邮箱"
+      "zh": "é‚®ç®±"
     },
     "itemCount": {
       "en": "itemCount",
-      "zh": "总数"
+      "zh": "æ€»æ•°"
     },
     "password": {
       "en": "Password",
-      "zh": "密码"
+      "zh": "å¯†ç "
     },
     "pleaseInput": {
       "en": "Please input complete information",
-      "zh": "请输入完整信息"
+      "zh": "è¯·è¾“å…¥å®Œæ•´ä¿¡æ¯"
     },
     "prefix": {
       "en": "Prefix",
-      "zh": "前缀"
+      "zh": "å‰ç¼€"
     },
     "query": {
       "en": "Query",
-      "zh": "查询"
+      "zh": "æŸ¥è¯¢"
     },
     "resetPassword": {
       "en": "Reset Password",
-      "zh": "重置密码"
+      "zh": "é‡ç½®å¯†ç "
     },
     "role": {
       "en": "Role",
-      "zh": "角色"
+      "zh": "è§’è‰²"
     },
     "roleDonotExist": {
       "en": "Current Role does not exist",
-      "zh": "当前角色不存在"
+      "zh": "å½“å‰è§’è‰²ä¸å­˜åœ¨"
     },
     "success": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "userAddressManagement": {
       "en": "Address Management",
-      "zh": "地址管理"
+      "zh": "åœ°å€ç®¡ç†"
     },
     "user_email": {
       "en": "User Email",
-      "zh": "用户邮箱"
+      "zh": "ç”¨æˆ·é‚®ç®±"
     }
   },
   "views.admin.Telegram": {
     "enable": {
       "en": "Enable",
-      "zh": "启用"
+      "zh": "å¯ç”¨"
     },
     "enableGlobalMailPush": {
       "en": "Enable Global Mail Push(Manually input telegram Chat ID)",
-      "zh": "启用全局邮件推送(手动输入邮箱管理员的 telegram Chat ID, 回车增加)"
+      "zh": "å¯ç”¨å…¨å±€é‚®ä»¶æŽ¨é€(æ‰‹åŠ¨è¾“å…¥é‚®ç®±ç®¡ç†å‘˜çš„ telegram Chat ID, å›žè½¦å¢žåŠ )"
     },
     "enableTelegramAllowList": {
       "en": "Enable Telegram Allow List(Manually input Chat ID)",
-      "zh": "启用 Telegram 白名单(手动输入 Chat ID, 回车增加)"
+      "zh": "å¯ç”¨ Telegram ç™½åå•(æ‰‹åŠ¨è¾“å…¥ Chat ID, å›žè½¦å¢žåŠ )"
     },
     "globalMailPushList": {
       "en": "Global Mail Push Chat ID List",
-      "zh": "全局邮件推送 Chat ID 列表"
+      "zh": "å…¨å±€é‚®ä»¶æŽ¨é€ Chat ID åˆ—è¡¨"
     },
     "globalMailPushListTip": {
       "en": "Support chat_id of private chat/group/channel. You can send a message to your bot, then visit this link to see chat_id, https://api.telegram.org/bot<Replace with your BOT TOKEN>/getUpdates",
-      "zh": "支持对话/群组/频道的 Chat ID, 您可以发送一条消息给您的机器人，然后访问此链接来查看 chat_id, https://api.telegram.org/bot<这里替换成您的 BOT TOKEN>/getUpdates"
+      "zh": "æ”¯æŒå¯¹è¯/ç¾¤ç»„/é¢‘é“çš„ Chat ID, æ‚¨å¯ä»¥å‘é€ä¸€æ¡æ¶ˆæ¯ç»™æ‚¨çš„æœºå™¨äººï¼Œç„¶åŽè®¿é—®æ­¤é“¾æŽ¥æ¥æŸ¥çœ‹ chat_id, https://api.telegram.org/bot<è¿™é‡Œæ›¿æ¢æˆæ‚¨çš„ BOT TOKEN>/getUpdates"
     },
     "init": {
       "en": "Init",
-      "zh": "初始化"
+      "zh": "åˆå§‹åŒ–"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "输入后按回车键添加"
+      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
     },
     "miniAppUrl": {
       "en": "Telegram Mini App URL",
-      "zh": "电报小程序 URL(请输入你部署的电报小程序网页地址)"
+      "zh": "ç”µæŠ¥å°ç¨‹åº URL(è¯·è¾“å…¥ä½ éƒ¨ç½²çš„ç”µæŠ¥å°ç¨‹åºç½‘é¡µåœ°å€)"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "status": {
       "en": "Check Status",
-      "zh": "查看状态"
+      "zh": "æŸ¥çœ‹çŠ¶æ€"
     },
     "successTip": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "telegramAllowList": {
       "en": "Telegram Allow List(Manually input telegram Chat ID)",
-      "zh": "Telegram 白名单(手动输入 Chat ID, 回车增加)"
+      "zh": "Telegram ç™½åå•(æ‰‹åŠ¨è¾“å…¥ Chat ID, å›žè½¦å¢žåŠ )"
     }
   },
   "views.admin.CreateAccount": {
     "address": {
       "en": "Address",
-      "zh": "地址"
+      "zh": "åœ°å€"
     },
     "addressCredential": {
       "en": "Mail Address Credential",
-      "zh": "邮箱地址凭证"
+      "zh": "é‚®ç®±åœ°å€å‡­è¯"
     },
     "addressCredentialTip": {
       "en": "Please copy the Mail Address Credential and you can use it to login to your email account.",
-      "zh": "请复制邮箱地址凭证，你可以使用它登录你的邮箱。"
+      "zh": "è¯·å¤åˆ¶é‚®ç®±åœ°å€å‡­è¯ï¼Œä½ å¯ä»¥ä½¿ç”¨å®ƒç™»å½•ä½ çš„é‚®ç®±ã€‚"
     },
     "addressPassword": {
       "en": "Address Password",
-      "zh": "地址密码"
+      "zh": "åœ°å€å¯†ç "
     },
     "creatNewEmail": {
       "en": "Create New Email",
-      "zh": "创建新邮箱"
+      "zh": "åˆ›å»ºæ–°é‚®ç®±"
     },
     "enablePrefix": {
       "en": "If enable Prefix",
-      "zh": "是否启用前缀"
+      "zh": "æ˜¯å¦å¯ç”¨å‰ç¼€"
     },
     "enableRandomSubdomain": {
       "en": "Use Random Subdomain",
-      "zh": "启用随机子域名"
+      "zh": "å¯ç”¨éšæœºå­åŸŸå"
     },
     "fillInAllFields": {
       "en": "Please fill in all fields",
-      "zh": "请填写完整信息"
+      "zh": "è¯·å¡«å†™å®Œæ•´ä¿¡æ¯"
     },
     "linkWithAddressCredential": {
       "en": "Open to auto login email link",
-      "zh": "打开即可自动登录邮箱的链接"
+      "zh": "æ‰“å¼€å³å¯è‡ªåŠ¨ç™»å½•é‚®ç®±çš„é“¾æŽ¥"
     },
     "randomSubdomainTip": {
       "en": "When enabled, the created address will use a random subdomain. Subdomain addresses are recommended for receiving only.",
-      "zh": "启用后，创建出来的地址会自动挂在随机子域名下。子域名地址更建议仅用于收件。"
+      "zh": "å¯ç”¨åŽï¼Œåˆ›å»ºå‡ºæ¥çš„åœ°å€ä¼šè‡ªåŠ¨æŒ‚åœ¨éšæœºå­åŸŸåä¸‹ã€‚å­åŸŸååœ°å€æ›´å»ºè®®ä»…ç”¨äºŽæ”¶ä»¶ã€‚"
     },
     "successTip": {
       "en": "Success Created",
-      "zh": "创建成功"
+      "zh": "åˆ›å»ºæˆåŠŸ"
     }
   },
   "views.admin.UserSettings": {
     "emailCheckRegex": {
       "en": "Email Check Regex (e.g. ^[^.]+{'@'}.+$ to disallow dots before {'@'})",
-      "zh": "邮箱正则校验 (例如 ^[^.]+{'@'}.+$ 禁止{'@'}前面有.)"
+      "zh": "é‚®ç®±æ­£åˆ™æ ¡éªŒ (ä¾‹å¦‚ ^[^.]+{'@'}.+$ ç¦æ­¢{'@'}å‰é¢æœ‰.)"
     },
     "enable": {
       "en": "Enable",
-      "zh": "启用"
+      "zh": "å¯ç”¨"
     },
     "enableEmailCheckRegex": {
       "en": "Enable Email Check Regex",
-      "zh": "启用邮箱正则校验"
+      "zh": "å¯ç”¨é‚®ç®±æ­£åˆ™æ ¡éªŒ"
     },
     "enableMailAllowList": {
       "en": "Enable Mail Address Allow List(Manually enterable)",
-      "zh": "启用邮件地址白名单(可手动输入, 回车增加)"
+      "zh": "å¯ç”¨é‚®ä»¶åœ°å€ç™½åå•(å¯æ‰‹åŠ¨è¾“å…¥, å›žè½¦å¢žåŠ )"
     },
     "enableMailVerify": {
       "en": "Enable Mail Verify (Send address must be an address in the system with a balance and can send mail normally)",
-      "zh": "启用邮件验证(发送地址必须是系统中能有余额且能正常发送邮件的地址)"
+      "zh": "å¯ç”¨é‚®ä»¶éªŒè¯(å‘é€åœ°å€å¿…é¡»æ˜¯ç³»ç»Ÿä¸­èƒ½æœ‰ä½™é¢ä¸”èƒ½æ­£å¸¸å‘é€é‚®ä»¶çš„åœ°å€)"
     },
     "enableUserRegister": {
       "en": "Allow User Register",
-      "zh": "允许用户注册"
+      "zh": "å…è®¸ç”¨æˆ·æ³¨å†Œ"
     },
     "mailAllowList": {
       "en": "Mail Address Allow List",
-      "zh": "邮件地址白名单"
+      "zh": "é‚®ä»¶åœ°å€ç™½åå•"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "输入后按回车键添加"
+      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
     },
     "maxAddressCount": {
       "en": "Maximum number of email addresses that can be binded (0 = Unlimited)",
-      "zh": "可绑定最大邮箱地址数量（0 为不限制）"
+      "zh": "å¯ç»‘å®šæœ€å¤§é‚®ç®±åœ°å€æ•°é‡ï¼ˆ0 ä¸ºä¸é™åˆ¶ï¼‰"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "successTip": {
       "en": "Save Success",
-      "zh": "保存成功"
+      "zh": "ä¿å­˜æˆåŠŸ"
     },
     "verifyMailSender": {
       "en": "Verify Mail Sender",
-      "zh": "验证邮件发送地址"
+      "zh": "éªŒè¯é‚®ä»¶å‘é€åœ°å€"
     }
   },
   "views.admin.RoleAddressConfig": {
     "maxAddressCount": {
       "en": "Max Address Count (0 = Unlimited)",
-      "zh": "最大地址数量（0 为不限制）"
+      "zh": "æœ€å¤§åœ°å€æ•°é‡ï¼ˆ0 ä¸ºä¸é™åˆ¶ï¼‰"
     },
     "noRolesAvailable": {
       "en": "No roles available in system config",
-      "zh": "系统配置中没有可用的角色"
+      "zh": "ç³»ç»Ÿé…ç½®ä¸­æ²¡æœ‰å¯ç”¨çš„è§’è‰²"
     },
     "notConfigured": {
       "en": "Not Configured (Use Global Settings)",
-      "zh": "未配置（使用全局设置）"
+      "zh": "æœªé…ç½®ï¼ˆä½¿ç”¨å…¨å±€è®¾ç½®ï¼‰"
     },
     "role": {
       "en": "Role",
-      "zh": "角色"
+      "zh": "è§’è‰²"
     },
     "roleConfigDesc": {
       "en": "Configure maximum address count for each user role. Role-based limits take priority over global settings. Set 0 for unlimited.",
-      "zh": "为每个用户角色配置最大地址数量。角色配置优先于全局设置。设置为 0 表示不限制。"
+      "zh": "ä¸ºæ¯ä¸ªç”¨æˆ·è§’è‰²é…ç½®æœ€å¤§åœ°å€æ•°é‡ã€‚è§’è‰²é…ç½®ä¼˜å…ˆäºŽå…¨å±€è®¾ç½®ã€‚è®¾ç½®ä¸º 0 è¡¨ç¤ºä¸é™åˆ¶ã€‚"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "successTip": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     }
   },
   "views.common.Appearance": {
     "autoRefreshInterval": {
       "en": "Auto Refresh Interval(Sec)",
-      "zh": "自动刷新间隔(秒)"
+      "zh": "è‡ªåŠ¨åˆ·æ–°é—´éš”(ç§’)"
     },
     "bottom": {
       "en": "bottom",
-      "zh": "底部"
+      "zh": "åº•éƒ¨"
     },
     "globalTabplacement": {
       "en": "Global Tab Placement",
-      "zh": "全局选项卡位置"
+      "zh": "å…¨å±€é€‰é¡¹å¡ä½ç½®"
     },
     "left": {
       "en": "left",
-      "zh": "左侧"
+      "zh": "å·¦ä¾§"
     },
     "mailboxSplitSize": {
       "en": "Mailbox Split Size",
-      "zh": "邮箱界面分栏大小"
+      "zh": "é‚®ç®±ç•Œé¢åˆ†æ å¤§å°"
     },
     "preferShowTextMail": {
       "en": "Display text Mail by default",
-      "zh": "默认以文本显示邮件"
+      "zh": "é»˜è®¤ä»¥æ–‡æœ¬æ˜¾ç¤ºé‚®ä»¶"
     },
     "right": {
       "en": "right",
-      "zh": "右侧"
+      "zh": "å³ä¾§"
     },
     "top": {
       "en": "top",
-      "zh": "顶部"
+      "zh": "é¡¶éƒ¨"
     },
     "useIframeShowMail": {
       "en": "Use iframe Show HTML Mail",
-      "zh": "使用iframe显示HTML邮件"
+      "zh": "ä½¿ç”¨iframeæ˜¾ç¤ºHTMLé‚®ä»¶"
     },
     "useSideMargin": {
       "en": "Turn on the side margins on the left and right sides of the page",
-      "zh": "开启页面左右两侧侧边距"
+      "zh": "å¼€å¯é¡µé¢å·¦å³ä¸¤ä¾§ä¾§è¾¹è·"
     },
     "useSimpleIndex": {
       "en": "Use Simple Index",
-      "zh": "使用极简主页"
+      "zh": "ä½¿ç”¨æžç®€ä¸»é¡µ"
     },
     "useUTCDate": {
       "en": "Use UTC Date",
-      "zh": "使用 UTC 时间"
+      "zh": "ä½¿ç”¨ UTC æ—¶é—´"
     }
   },
   "views.admin.AccountSettings": {
     "actions": {
       "en": "Actions",
-      "zh": "操作"
+      "zh": "æ“ä½œ"
     },
     "add": {
       "en": "Add",
-      "zh": "添加"
+      "zh": "æ·»åŠ "
     },
     "address_block_list": {
       "en": "Address Block Keywords for Users(Admin can skip)",
-      "zh": "邮件地址屏蔽关键词(管理员可跳过检查)"
+      "zh": "é‚®ä»¶åœ°å€å±è”½å…³é”®è¯(ç®¡ç†å‘˜å¯è·³è¿‡æ£€æŸ¥)"
     },
     "address_block_list_placeholder": {
       "en": "Please enter the keywords you want to block",
-      "zh": "请输入您想要屏蔽的关键词"
+      "zh": "è¯·è¾“å…¥æ‚¨æƒ³è¦å±è”½çš„å…³é”®è¯"
     },
     "block_receive_unknow_address_email": {
       "en": "Block receive unknow address email",
-      "zh": "禁止接收未知地址邮件"
+      "zh": "ç¦æ­¢æŽ¥æ”¶æœªçŸ¥åœ°å€é‚®ä»¶"
     },
     "cancel": {
       "en": "Cancel",
-      "zh": "取消"
+      "zh": "å–æ¶ˆ"
     },
     "config": {
       "en": "Config",
-      "zh": "配置"
+      "zh": "é…ç½®"
     },
     "create_address_subdomain_match": {
       "en": "Allow Subdomain Suffix Match When Creating Address",
-      "zh": "创建邮箱时允许子域名后缀匹配"
+      "zh": "åˆ›å»ºé‚®ç®±æ—¶å…è®¸å­åŸŸååŽç¼€åŒ¹é…"
     },
     "create_address_subdomain_match_env_locked": {
       "en": "Worker env ENABLE_CREATE_ADDRESS_SUBDOMAIN_MATCH is currently false. The saved admin switch can be modified, but it will not take effect until env is enabled or removed.",
-      "zh": "当前 Worker 环境变量 ENABLE_CREATE_ADDRESS_SUBDOMAIN_MATCH 为 false。后台开关仍可保存，但在 env 打开或移除前不会生效。"
+      "zh": "å½“å‰ Worker çŽ¯å¢ƒå˜é‡ ENABLE_CREATE_ADDRESS_SUBDOMAIN_MATCH ä¸º falseã€‚åŽå°å¼€å…³ä»å¯ä¿å­˜ï¼Œä½†åœ¨ env æ‰“å¼€æˆ–ç§»é™¤å‰ä¸ä¼šç”Ÿæ•ˆã€‚"
     },
     "create_address_subdomain_match_follow_env": {
       "en": "Follow Environment Variable",
-      "zh": "跟随环境变量"
+      "zh": "è·ŸéšçŽ¯å¢ƒå˜é‡"
     },
     "create_address_subdomain_match_follow_env_note": {
       "en": "Choosing \"Follow Environment Variable\" clears the admin override and returns to the unset state. The effective result is still controlled by the Worker env and the precedence rules.",
-      "zh": "选择“跟随环境变量”会清空后台覆盖，恢复为未设置状态；最终是否开启仍由 Worker env 和优先级规则决定。"
+      "zh": "é€‰æ‹©â€œè·ŸéšçŽ¯å¢ƒå˜é‡â€ä¼šæ¸…ç©ºåŽå°è¦†ç›–ï¼Œæ¢å¤ä¸ºæœªè®¾ç½®çŠ¶æ€ï¼›æœ€ç»ˆæ˜¯å¦å¼€å¯ä»ç”± Worker env å’Œä¼˜å…ˆçº§è§„åˆ™å†³å®šã€‚"
     },
     "create_address_subdomain_match_force_disable": {
       "en": "Force Disable",
-      "zh": "强制关闭"
+      "zh": "å¼ºåˆ¶å…³é—­"
     },
     "create_address_subdomain_match_force_enable": {
       "en": "Force Enable",
-      "zh": "强制开启"
+      "zh": "å¼ºåˆ¶å¼€å¯"
     },
     "create_address_subdomain_match_note": {
       "en": "This is different from RANDOM_SUBDOMAIN_DOMAINS: this switch allows API callers to specify custom subdomains directly, while random subdomain only auto-generates one during creation.",
-      "zh": "这与 RANDOM_SUBDOMAIN_DOMAINS 不同：这里允许 API 调用方直接指定自定义子域名；随机子域名功能只是在创建时自动补一个随机子域名。"
+      "zh": "è¿™ä¸Ž RANDOM_SUBDOMAIN_DOMAINS ä¸åŒï¼šè¿™é‡Œå…è®¸ API è°ƒç”¨æ–¹ç›´æŽ¥æŒ‡å®šè‡ªå®šä¹‰å­åŸŸåï¼›éšæœºå­åŸŸååŠŸèƒ½åªæ˜¯åœ¨åˆ›å»ºæ—¶è‡ªåŠ¨è¡¥ä¸€ä¸ªéšæœºå­åŸŸåã€‚"
     },
     "create_address_subdomain_match_tip": {
       "en": "Only affects /api/new_address and /admin/new_address domain validation. Example: when enabled, foo.example.com can match configured base domain example.com.",
-      "zh": "仅影响 /api/new_address 和 /admin/new_address 的域名校验。例如开启后，foo.example.com 可以匹配已配置的基础域名 example.com。"
+      "zh": "ä»…å½±å“ /api/new_address å’Œ /admin/new_address çš„åŸŸåæ ¡éªŒã€‚ä¾‹å¦‚å¼€å¯åŽï¼Œfoo.example.com å¯ä»¥åŒ¹é…å·²é…ç½®çš„åŸºç¡€åŸŸå example.comã€‚"
     },
     "delete_rule": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "delete_rule_confirm": {
       "en": "Are you sure you want to delete this rule?",
-      "zh": "确定要删除这条规则吗？"
+      "zh": "ç¡®å®šè¦åˆ é™¤è¿™æ¡è§„åˆ™å—ï¼Ÿ"
     },
     "delete_success": {
       "en": "Delete Success",
-      "zh": "删除成功"
+      "zh": "åˆ é™¤æˆåŠŸ"
     },
     "domain_list": {
       "en": "Domain List (Optional)",
-      "zh": "域名列表（可选）"
+      "zh": "åŸŸååˆ—è¡¨ï¼ˆå¯é€‰ï¼‰"
     },
     "email_forwarding_config": {
       "en": "Email Forwarding Configuration",
-      "zh": "邮件转发配置"
+      "zh": "é‚®ä»¶è½¬å‘é…ç½®"
     },
     "forward_address": {
       "en": "Forward Address",
-      "zh": "转发地址"
+      "zh": "è½¬å‘åœ°å€"
     },
     "forward_address_required": {
       "en": "Forward address is required",
-      "zh": "转发地址不能为空"
+      "zh": "è½¬å‘åœ°å€ä¸èƒ½ä¸ºç©º"
     },
     "forward_placeholder": {
       "en": "forward@example.com",
@@ -2454,341 +2454,341 @@ export const MESSAGE_REGISTRY = {
     },
     "forwarding_rule_warning": {
       "en": "Each rule will run independently. Forward address needs to be a verified address.",
-      "zh": "每条规则独立运行，转发地址需要为已验证的地址。"
+      "zh": "æ¯æ¡è§„åˆ™ç‹¬ç«‹è¿è¡Œï¼Œè½¬å‘åœ°å€éœ€è¦ä¸ºå·²éªŒè¯çš„åœ°å€ã€‚"
     },
     "fromBlockList": {
       "en": "Block Keywords for receive email",
-      "zh": "接收邮件地址屏蔽关键词"
+      "zh": "æŽ¥æ”¶é‚®ä»¶åœ°å€å±è”½å…³é”®è¯"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "输入后按回车键添加"
+      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
     },
     "match_all": {
       "en": "All",
-      "zh": "全部"
+      "zh": "å…¨éƒ¨"
     },
     "match_any": {
       "en": "Any",
-      "zh": "任一"
+      "zh": "ä»»ä¸€"
     },
     "noLimitSendAddressList": {
       "en": "No Balance Limit Send Address List",
-      "zh": "无余额限制发送地址列表"
+      "zh": "æ— ä½™é¢é™åˆ¶å‘é€åœ°å€åˆ—è¡¨"
     },
     "regex_invalid": {
       "en": "Invalid regex pattern",
-      "zh": "无效的正则表达式"
+      "zh": "æ— æ•ˆçš„æ­£åˆ™è¡¨è¾¾å¼"
     },
     "regex_too_long": {
       "en": "Regex pattern too long (max 200 characters)",
-      "zh": "正则表达式过长（最大200字符）"
+      "zh": "æ­£åˆ™è¡¨è¾¾å¼è¿‡é•¿ï¼ˆæœ€å¤§200å­—ç¬¦ï¼‰"
     },
     "rule_index": {
       "en": "Rule",
-      "zh": "规则"
+      "zh": "è§„åˆ™"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "select_domain": {
       "en": "Select Domain",
-      "zh": "选择域名"
+      "zh": "é€‰æ‹©åŸŸå"
     },
     "send_address_block_list": {
       "en": "Address Block Keywords for send email",
-      "zh": "发送邮件地址屏蔽关键词"
+      "zh": "å‘é€é‚®ä»¶åœ°å€å±è”½å…³é”®è¯"
     },
     "send_mail_daily_limit": {
       "en": "Daily Limit",
-      "zh": "每日额度"
+      "zh": "æ¯æ—¥é¢åº¦"
     },
     "send_mail_daily_limit_invalid": {
       "en": "Daily limit must be an integer greater than or equal to -1",
-      "zh": "每日额度必须是大于等于 -1 的整数"
+      "zh": "æ¯æ—¥é¢åº¦å¿…é¡»æ˜¯å¤§äºŽç­‰äºŽ -1 çš„æ•´æ•°"
     },
     "send_mail_limit": {
       "en": "Send Mail Limit",
-      "zh": "发信额度"
+      "zh": "å‘ä¿¡é¢åº¦"
     },
     "send_mail_limit_tip": {
       "en": "This applies to all send channels. Use -1 for unlimited and 0 to block sending.",
-      "zh": "对全部发信渠道生效。-1 表示无限，0 表示禁止发送。"
+      "zh": "å¯¹å…¨éƒ¨å‘ä¿¡æ¸ é“ç”Ÿæ•ˆã€‚-1 è¡¨ç¤ºæ— é™ï¼Œ0 è¡¨ç¤ºç¦æ­¢å‘é€ã€‚"
     },
     "send_mail_monthly_limit": {
       "en": "Monthly Limit",
-      "zh": "每月额度"
+      "zh": "æ¯æœˆé¢åº¦"
     },
     "send_mail_monthly_limit_invalid": {
       "en": "Monthly limit must be an integer greater than or equal to -1",
-      "zh": "每月额度必须是大于等于 -1 的整数"
+      "zh": "æ¯æœˆé¢åº¦å¿…é¡»æ˜¯å¤§äºŽç­‰äºŽ -1 çš„æ•´æ•°"
     },
     "source_match_mode": {
       "en": "Match Mode",
-      "zh": "匹配模式"
+      "zh": "åŒ¹é…æ¨¡å¼"
     },
     "source_patterns": {
       "en": "Source Address Regex (Optional)",
-      "zh": "来源地址正则（可选）"
+      "zh": "æ¥æºåœ°å€æ­£åˆ™ï¼ˆå¯é€‰ï¼‰"
     },
     "source_patterns_placeholder": {
       "en": "e.g. gmail.com",
-      "zh": "例如: gmail.com"
+      "zh": "ä¾‹å¦‚: gmail.com"
     },
     "source_patterns_tip": {
       "en": "Domain list filters by recipient address, source regex filters by sender address. Both conditions must match for forwarding (AND logic). Leave either empty to skip that filter.",
-      "zh": "域名列表按收件地址过滤，来源正则按发件地址过滤，两者均为可选。同时配置时需同时满足（AND 逻辑），留空则跳过该条件。"
+      "zh": "åŸŸååˆ—è¡¨æŒ‰æ”¶ä»¶åœ°å€è¿‡æ»¤ï¼Œæ¥æºæ­£åˆ™æŒ‰å‘ä»¶åœ°å€è¿‡æ»¤ï¼Œä¸¤è€…å‡ä¸ºå¯é€‰ã€‚åŒæ—¶é…ç½®æ—¶éœ€åŒæ—¶æ»¡è¶³ï¼ˆAND é€»è¾‘ï¼‰ï¼Œç•™ç©ºåˆ™è·³è¿‡è¯¥æ¡ä»¶ã€‚"
     },
     "successTip": {
       "en": "Save Success",
-      "zh": "保存成功"
+      "zh": "ä¿å­˜æˆåŠŸ"
     },
     "tip": {
       "en": "You can manually input the following multiple select input and enter",
-      "zh": "您可以手动输入以下多选输入框, 回车增加"
+      "zh": "æ‚¨å¯ä»¥æ‰‹åŠ¨è¾“å…¥ä»¥ä¸‹å¤šé€‰è¾“å…¥æ¡†, å›žè½¦å¢žåŠ "
     },
     "verified_address_list": {
       "en": "Verified Address List(Can send email by cf internal api)",
-      "zh": "已验证地址列表(可通过 cf 内部 api 发送邮件)"
+      "zh": "å·²éªŒè¯åœ°å€åˆ—è¡¨(å¯é€šè¿‡ cf å†…éƒ¨ api å‘é€é‚®ä»¶)"
     }
   },
   "views.admin.Mails": {
     "addressQueryTip": {
       "en": "Leave blank to query all addresses",
-      "zh": "留空查询所有地址"
+      "zh": "ç•™ç©ºæŸ¥è¯¢æ‰€æœ‰åœ°å€"
     },
     "query": {
       "en": "Query",
-      "zh": "查询"
+      "zh": "æŸ¥è¯¢"
     }
   },
   "views.admin.Maintenance": {
     "addCustomSql": {
       "en": "Add Custom SQL",
-      "zh": "添加自定义 SQL"
+      "zh": "æ·»åŠ è‡ªå®šä¹‰ SQL"
     },
     "addressCreateLabel": {
       "en": "Cleanup the address created before n days",
-      "zh": "清理 n 天前创建的地址"
+      "zh": "æ¸…ç† n å¤©å‰åˆ›å»ºçš„åœ°å€"
     },
     "autoCleanup": {
       "en": "Auto cleanup",
-      "zh": "自动清理"
+      "zh": "è‡ªåŠ¨æ¸…ç†"
     },
     "basicCleanup": {
       "en": "Basic Cleanup",
-      "zh": "基础清理"
+      "zh": "åŸºç¡€æ¸…ç†"
     },
     "cleanupNow": {
       "en": "Cleanup now",
-      "zh": "立即清理"
+      "zh": "ç«‹å³æ¸…ç†"
     },
     "cleanupSuccess": {
       "en": "Cleanup success",
-      "zh": "清理成功"
+      "zh": "æ¸…ç†æˆåŠŸ"
     },
     "cronTip": {
       "en": "Enable cron cleanup, need to configure [crons] in worker, please refer to the document, setting 0 days means clear all",
-      "zh": "启用定时清理, 需在 worker 配置 [crons] 参数, 请参考文档, 配置为 0 天表示全部清空"
+      "zh": "å¯ç”¨å®šæ—¶æ¸…ç†, éœ€åœ¨ worker é…ç½® [crons] å‚æ•°, è¯·å‚è€ƒæ–‡æ¡£, é…ç½®ä¸º 0 å¤©è¡¨ç¤ºå…¨éƒ¨æ¸…ç©º"
     },
     "customSqlCleanup": {
       "en": "Custom SQL Cleanup",
-      "zh": "自定义 SQL 清理"
+      "zh": "è‡ªå®šä¹‰ SQL æ¸…ç†"
     },
     "customSqlTip": {
       "en": "Add custom DELETE SQL statements for scheduled cleanup. Only single DELETE statement is allowed per entry.",
-      "zh": "添加自定义 DELETE SQL 语句进行定时清理。每条记录仅允许单条 DELETE 语句。"
+      "zh": "æ·»åŠ è‡ªå®šä¹‰ DELETE SQL è¯­å¥è¿›è¡Œå®šæ—¶æ¸…ç†ã€‚æ¯æ¡è®°å½•ä»…å…è®¸å•æ¡ DELETE è¯­å¥ã€‚"
     },
     "deleteCustomSql": {
       "en": "Delete",
-      "zh": "删除"
+      "zh": "åˆ é™¤"
     },
     "emptyAddressLabel": {
       "en": "Cleanup the empty address before n days",
-      "zh": "清理 n 天前空邮件的邮箱地址"
+      "zh": "æ¸…ç† n å¤©å‰ç©ºé‚®ä»¶çš„é‚®ç®±åœ°å€"
     },
     "inactiveAddressLabel": {
       "en": "Cleanup the inactive address before n days",
-      "zh": "清理 n 天前的未活跃地址"
+      "zh": "æ¸…ç† n å¤©å‰çš„æœªæ´»è·ƒåœ°å€"
     },
     "mailBoxLabel": {
       "en": "Cleanup the inbox before n days",
-      "zh": "清理 n 天前的收件箱"
+      "zh": "æ¸…ç† n å¤©å‰çš„æ”¶ä»¶ç®±"
     },
     "mailUnknowLabel": {
       "en": "Cleanup the unknow mail before n days",
-      "zh": "清理 n 天前的无收件人邮件"
+      "zh": "æ¸…ç† n å¤©å‰çš„æ— æ”¶ä»¶äººé‚®ä»¶"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "saveSuccess": {
       "en": "Save success",
-      "zh": "保存成功"
+      "zh": "ä¿å­˜æˆåŠŸ"
     },
     "sendBoxLabel": {
       "en": "Cleanup the sendbox before n days",
-      "zh": "清理 n 天前的发件箱"
+      "zh": "æ¸…ç† n å¤©å‰çš„å‘ä»¶ç®±"
     },
     "sqlName": {
       "en": "Name",
-      "zh": "名称"
+      "zh": "åç§°"
     },
     "sqlNamePlaceholder": {
       "en": "e.g. Clean old logs",
-      "zh": "例如: 清理旧日志"
+      "zh": "ä¾‹å¦‚: æ¸…ç†æ—§æ—¥å¿—"
     },
     "sqlPlaceholder": {
       "en": "e.g. DELETE FROM raw_mails WHERE source GLOB '*{'@'}example.com' AND created_at < datetime('now', '-3 day')",
-      "zh": "例如: DELETE FROM raw_mails WHERE source GLOB '*{'@'}example.com' AND created_at < datetime('now', '-3 day')"
+      "zh": "ä¾‹å¦‚: DELETE FROM raw_mails WHERE source GLOB '*{'@'}example.com' AND created_at < datetime('now', '-3 day')"
     },
     "sqlStatement": {
       "en": "SQL Statement (DELETE only)",
-      "zh": "SQL 语句 (仅限 DELETE)"
+      "zh": "SQL è¯­å¥ (ä»…é™ DELETE)"
     },
     "tip": {
       "en": "Please input the days",
-      "zh": "请输入天数"
+      "zh": "è¯·è¾“å…¥å¤©æ•°"
     },
     "unboundAddressLabel": {
       "en": "Cleanup the unbound address before n days",
-      "zh": "清理 n 天前的未绑定用户地址"
+      "zh": "æ¸…ç† n å¤©å‰çš„æœªç»‘å®šç”¨æˆ·åœ°å€"
     }
   },
   "views.common.Login": {
     "autoGeneratedName": {
       "en": "Auto-generated name",
-      "zh": "自动生成名称"
+      "zh": "è‡ªåŠ¨ç”Ÿæˆåç§°"
     },
     "bindUserAddressError": {
       "en": "Error when bind email address to user",
-      "zh": "绑定邮箱地址到用户时错误"
+      "zh": "ç»‘å®šé‚®ç®±åœ°å€åˆ°ç”¨æˆ·æ—¶é”™è¯¯"
     },
     "bindUserInfo": {
       "en": "Logged in user, login without binding email or create new email address will bind to current user",
-      "zh": "已登录用户, 登录未绑定邮箱或创建新邮箱地址将绑定到当前用户"
+      "zh": "å·²ç™»å½•ç”¨æˆ·, ç™»å½•æœªç»‘å®šé‚®ç®±æˆ–åˆ›å»ºæ–°é‚®ç®±åœ°å€å°†ç»‘å®šåˆ°å½“å‰ç”¨æˆ·"
     },
     "credential": {
       "en": "Email Address Credential",
-      "zh": "邮箱地址凭据"
+      "zh": "é‚®ç®±åœ°å€å‡­æ®"
     },
     "credentialInput": {
       "en": "Please input the Mail Address Credential",
-      "zh": "请输入邮箱地址凭据"
+      "zh": "è¯·è¾“å…¥é‚®ç®±åœ°å€å‡­æ®"
     },
     "credentialLogin": {
       "en": "Credential Login",
-      "zh": "凭据登录"
+      "zh": "å‡­æ®ç™»å½•"
     },
     "coinUnit": {
       "en": "coin",
-      "zh": "金币"
+      "zh": "é‡‘å¸"
     },
     "domainCostHint": {
       "en": "Domain cost: {cost} {coin}",
-      "zh": "域名成本：{cost}{coin}"
+      "zh": "åŸŸåæˆæœ¬ï¼š{cost}{coin}"
     },
     "email": {
       "en": "Email",
-      "zh": "邮箱"
+      "zh": "é‚®ç®±"
     },
     "emailPasswordRequired": {
       "en": "Email and password are required",
-      "zh": "邮箱和密码不能为空"
+      "zh": "é‚®ç®±å’Œå¯†ç ä¸èƒ½ä¸ºç©º"
     },
     "enableRandomSubdomain": {
       "en": "Use Random Subdomain",
-      "zh": "启用随机子域名"
+      "zh": "å¯ç”¨éšæœºå­åŸŸå"
     },
     "generateName": {
       "en": "Generate Fake Name",
-      "zh": "生成随机名字"
+      "zh": "ç”Ÿæˆéšæœºåå­—"
     },
     "getNewEmail": {
       "en": "Create New Email",
-      "zh": "创建新邮箱"
+      "zh": "åˆ›å»ºæ–°é‚®ç®±"
     },
     "getNewEmailTip1": {
       "en": "Please input the email you want to use. only allow: ",
-      "zh": "请输入你想要使用的邮箱地址, 只允许: "
+      "zh": "è¯·è¾“å…¥ä½ æƒ³è¦ä½¿ç”¨çš„é‚®ç®±åœ°å€, åªå…è®¸: "
     },
     "getNewEmailTip2": {
       "en": "Levaing it blank will generate a random email address.",
-      "zh": "留空将会生成一个随机的邮箱地址。"
+      "zh": "ç•™ç©ºå°†ä¼šç”Ÿæˆä¸€ä¸ªéšæœºçš„é‚®ç®±åœ°å€ã€‚"
     },
     "getNewEmailTip3": {
       "en": "You can choose a domain from the dropdown list.",
-      "zh": "你可以从下拉列表中选择一个域名。"
+      "zh": "ä½ å¯ä»¥ä»Žä¸‹æ‹‰åˆ—è¡¨ä¸­é€‰æ‹©ä¸€ä¸ªåŸŸåã€‚"
     },
     "help": {
       "en": "Help",
-      "zh": "帮助"
+      "zh": "å¸®åŠ©"
     },
     "insufficientCoinForDomain": {
       "en": "Insufficient coin. Need {need}, available {have}.",
-      "zh": "金币不足。需要 {need}，当前仅有 {have}。"
+      "zh": "é‡‘å¸ä¸è¶³ã€‚éœ€è¦ {need}ï¼Œå½“å‰ä»…æœ‰ {have}ã€‚"
     },
     "login": {
       "en": "Login",
-      "zh": "登录"
+      "zh": "ç™»å½•"
     },
     "loginAndBind": {
       "en": "Login and Bind",
-      "zh": "登录并绑定"
+      "zh": "ç™»å½•å¹¶ç»‘å®š"
     },
     "ok": {
       "en": "OK",
-      "zh": "确定"
+      "zh": "ç¡®å®š"
     },
     "password": {
       "en": "Password",
-      "zh": "密码"
+      "zh": "å¯†ç "
     },
     "passwordLogin": {
       "en": "Password Login",
-      "zh": "密码登录"
+      "zh": "å¯†ç ç™»å½•"
     },
     "pleaseGetNewEmail": {
       "en": "Please login or click \"Get New Email\" button to get a new email address",
-      "zh": "请\"登录\"或点击 \"注册新邮箱\" 按钮来获取一个新的邮箱地址"
+      "zh": "è¯·\"ç™»å½•\"æˆ–ç‚¹å‡» \"æ³¨å†Œæ–°é‚®ç®±\" æŒ‰é’®æ¥èŽ·å–ä¸€ä¸ªæ–°çš„é‚®ç®±åœ°å€"
     },
     "randomSubdomainTip": {
       "en": "When enabled, the created address will use a random subdomain. Subdomain addresses are recommended for receiving only.",
-      "zh": "启用后，创建出来的地址会自动挂在随机子域名下。子域名地址更建议仅用于收件。"
+      "zh": "å¯ç”¨åŽï¼Œåˆ›å»ºå‡ºæ¥çš„åœ°å€ä¼šè‡ªåŠ¨æŒ‚åœ¨éšæœºå­åŸŸåä¸‹ã€‚å­åŸŸååœ°å€æ›´å»ºè®®ä»…ç”¨äºŽæ”¶ä»¶ã€‚"
     }
   },
   "views.admin.Webhook": {
     "enableAllowList": {
       "en": "Enable Allow List (Restrict webhook access to specific users)",
-      "zh": "启用白名单 (限制 webhook 访问权限，只有白名单中的用户可以使用)"
+      "zh": "å¯ç”¨ç™½åå• (é™åˆ¶ webhook è®¿é—®æƒé™ï¼Œåªæœ‰ç™½åå•ä¸­çš„ç”¨æˆ·å¯ä»¥ä½¿ç”¨)"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "输入后按回车键添加"
+      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
     },
     "notEnabled": {
       "en": "Webhook is not enabled",
-      "zh": "Webhook 未开启"
+      "zh": "Webhook æœªå¼€å¯"
     },
     "save": {
       "en": "Save",
-      "zh": "保存"
+      "zh": "ä¿å­˜"
     },
     "successTip": {
       "en": "Success",
-      "zh": "成功"
+      "zh": "æˆåŠŸ"
     },
     "webhookAllowList": {
       "en": "Webhook Allow List(Enter the mail address that is allowed to use webhook and enter)",
-      "zh": "Webhook 白名单(请输入允许使用webhook 的邮箱地址, 回车增加)"
+      "zh": "Webhook ç™½åå•(è¯·è¾“å…¥å…è®¸ä½¿ç”¨webhook çš„é‚®ç®±åœ°å€, å›žè½¦å¢žåŠ )"
     }
   },
   "views.common.AdminContact": {
     "adminContact": {
       "en": "If you need help, please contact the administrator ({msg})",
-      "zh": "如果你需要帮助，请联系管理员 ({msg})"
+      "zh": "å¦‚æžœä½ éœ€è¦å¸®åŠ©ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ ({msg})"
     }
   }
 } as const
