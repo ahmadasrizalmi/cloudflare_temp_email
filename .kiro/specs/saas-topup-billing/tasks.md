@@ -125,7 +125,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 35: Wallet creation (eager and lazy)**
     - **Validates: Requirements 1.2, 1.3**
 
-- [ ] 4. DompetX client
+- [x] 4. DompetX client
   - [x] 4.1 Implement DompetX client at `worker/src/billing/dompetx_client.ts`
     - Implement `createInvoice`, `getInvoiceStatus`, `listChannels`, `verifyWebhookSignature(rawBody, timestamp, signatureHex)` (uses `timingSafeEqual` equivalent) per design.md §"DompetX client"
     - Add HMAC-SHA256 signing over `timestamp + "." + raw_body` with `DOMPETX_API_SECRET` for outbound calls
@@ -282,7 +282,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 22: raw_payload masking on persistence**
     - **Validates: Requirements 5.10, 15.4**
 
-- [ ] 9. Public payment channels endpoint
+- [x] 9. Public payment channels endpoint
   - [x] 9.1 Implement `GET /open_api/payment_channels` at `worker/src/open_api/payment_channels.ts`
     - No auth; delegate to `Channel_Cache.listPublic(nominal)`; omit sensitive fields
     - Register under `/open_api/*` in `worker/src/worker.ts` alongside the webhook route
@@ -411,7 +411,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 31: KPI aggregate correctness**
     - **Validates: Requirements 12.2, 12.5**
 
-- [ ] 13. Topup_Reconciler, auto margin guard, and scheduled hook
+- [x] 13. Topup_Reconciler, auto margin guard, and scheduled hook
   - [x] 13.1 Implement `Topup_Reconciler` at `worker/src/billing/reconciler.ts`
     - Implement `runReconcile(env, ctx)`: select up to 100 `topup_transactions WHERE status='pending' AND created_at < datetime('now', '-' || expiry_minutes || ' minutes')`; for each, call `DompetxClient.getInvoiceStatus(invoice_id)`
     - Map provider status → `paid` invokes `Wallet_Service.creditTopup` (idempotent via `invoice_id`) and UPDATEs row `status='paid'`; `failed` / `expired` UPDATEs row; `unknown` logs and leaves row pending
@@ -447,7 +447,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - **Property 34: Migration back-fill**
     - **Validates: Requirements 14.7**
 
-- [ ] 14. Startup validation and secret non-leakage
+- [x] 14. Startup validation and secret non-leakage
   - [x] 14.1 Add boot-time secret validation hook in `worker/src/worker.ts`
     - Before registering billing routes, validate presence of `DOMPETX_API_KEY`, `DOMPETX_API_SECRET`, `DOMPETX_WEBHOOK_SECRET`, `CLOUDFLARE_EMAIL_ROUTING_TOKEN`; when `BILLING_ENABLED=true` and any are missing, respond to the first billing request with an explicit i18n error and skip route registration
     - Never echo the secret values in the error; reference them by key name only
@@ -508,7 +508,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Mock a paid-action API returning 402 `insufficient_credit`; assert the wallet store is refreshed and the i18n-localised toast is emitted
     - _Requirements: 2.5, 6.3_
 
-- [ ] 17. Indonesian locale and fallback
+- [x] 17. Indonesian locale and fallback
   - [x] 17.1 Add worker i18n locale `id` at `worker/src/i18n/id.ts`
     - Translate every billing key added in task 1.3 plus all existing keys in `type.ts` into Bahasa Indonesia; register `id` in `worker/src/i18n/index.ts` and include fallback-to-`en` when a key is missing
     - _Requirements: 17.1, 17.2, 17.3_
@@ -550,7 +550,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - File: `worker/src/billing/__tests__/schema.integration.test.ts`; directly attempt duplicate inserts on `invoice_id` and `provider_reference`; assert SQLite constraint errors; verify `CHECK (balance_credit >= 0)` rejects a manual UPDATE that would go negative
     - _Requirements: 5.8, 6.4_
 
-- [ ] 19. E2E tests (Playwright, under `e2e/tests/api/`)
+- [x] 19. E2E tests (Playwright, under `e2e/tests/api/`)
   - [x] 19.1 Write `billing-topup-happy.spec.ts`
     - Login → `POST /user_api/topup/quote` → `POST /user_api/topup/create` → simulate a signed DompetX webhook → assert balance reflects credit + bonus when nominal ≥ threshold
     - Add a mocked DompetX service container to `e2e/docker-compose.yml` and wire webhook URL to the worker under test
