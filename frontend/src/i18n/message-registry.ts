@@ -726,6 +726,10 @@ export const MESSAGE_REGISTRY = {
       "en": "Bind Mail Address",
       "zh": "绑定邮箱地址"
     },
+    "wallet": {
+      "en": "Wallet",
+      "zh": "钱包"
+    },
     "user_mail_box_tab": {
       "en": "Mail Box",
       "zh": "收件箱"
@@ -817,6 +821,166 @@ export const MESSAGE_REGISTRY = {
     "fetchUserSettingsError": {
       "en": "Login password is invalid or account not exist, it may be network connection issue, please try again later.",
       "zh": "登录信息已过期或账号不存在，也可能是网络连接异常，请稍后再尝试。"
+    }
+  },
+  "views.user.wallet.WalletHome": {
+    "wallet": {
+      "en": "Wallet",
+      "zh": "钱包"
+    },
+    "credit": {
+      "en": "Credit",
+      "zh": "积分"
+    },
+    "idrRef": {
+      "en": "IDR Ref",
+      "zh": "印尼盾参考值"
+    },
+    "updated": {
+      "en": "Updated",
+      "zh": "更新时间"
+    },
+    "topup": {
+      "en": "Top-up",
+      "zh": "充值"
+    },
+    "ledger": {
+      "en": "Ledger",
+      "zh": "流水"
+    },
+    "topupHistory": {
+      "en": "Top-up History",
+      "zh": "充值记录"
+    },
+    "latestLedger": {
+      "en": "Latest Ledger (10)",
+      "zh": "最近流水（10条）"
+    },
+    "type": {
+      "en": "Type",
+      "zh": "类型"
+    },
+    "delta": {
+      "en": "Delta",
+      "zh": "变动"
+    },
+    "at": {
+      "en": "At",
+      "zh": "时间"
+    },
+    "loadWalletFailed": {
+      "en": "Failed to load wallet",
+      "zh": "加载钱包失败"
+    }
+  },
+  "views.user.wallet.Topup": {
+    "topup": {
+      "en": "Top-up",
+      "zh": "充值"
+    },
+    "channels": {
+      "en": "Channels",
+      "zh": "支付通道"
+    },
+    "fee": {
+      "en": "fee",
+      "zh": "手续费"
+    },
+    "gross": {
+      "en": "gross",
+      "zh": "总额"
+    },
+    "payNow": {
+      "en": "Pay Now",
+      "zh": "立即支付"
+    },
+    "topupUpdated": {
+      "en": "Top-up status updated",
+      "zh": "充值状态已更新"
+    },
+    "quoteFailed": {
+      "en": "Failed to quote",
+      "zh": "获取报价失败"
+    },
+    "createTopupFailed": {
+      "en": "Failed to create topup",
+      "zh": "创建充值失败"
+    }
+  },
+  "views.user.wallet.TopupHistory": {
+    "all": {
+      "en": "All",
+      "zh": "全部"
+    },
+    "invoice": {
+      "en": "Invoice",
+      "zh": "订单号"
+    },
+    "amount": {
+      "en": "Amount",
+      "zh": "金额"
+    },
+    "fee": {
+      "en": "Fee",
+      "zh": "手续费"
+    },
+    "gross": {
+      "en": "Gross",
+      "zh": "总额"
+    },
+    "channel": {
+      "en": "Channel",
+      "zh": "渠道"
+    },
+    "status": {
+      "en": "Status",
+      "zh": "状态"
+    },
+    "created": {
+      "en": "Created",
+      "zh": "创建时间"
+    },
+    "paid": {
+      "en": "Paid",
+      "zh": "支付时间"
+    },
+    "loadMore": {
+      "en": "Load More",
+      "zh": "加载更多"
+    },
+    "loadTopupHistoryFailed": {
+      "en": "Failed to load topup history",
+      "zh": "加载充值记录失败"
+    }
+  },
+  "views.user.wallet.Ledger": {
+    "type": {
+      "en": "Type",
+      "zh": "类型"
+    },
+    "delta": {
+      "en": "Delta",
+      "zh": "变动"
+    },
+    "idrRef": {
+      "en": "IDR Ref",
+      "zh": "印尼盾参考值"
+    },
+    "metadata": {
+      "en": "Metadata",
+      "zh": "元数据"
+    },
+    "created": {
+      "en": "Created",
+      "zh": "创建时间"
+    },
+    "loadMore": {
+      "en": "Load More",
+      "zh": "加载更多"
+    },
+    "loadLedgerFailed": {
+      "en": "Failed to load ledger",
+      "zh": "加载流水失败"
     }
   },
   "views.user.AddressManagement": {

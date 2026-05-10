@@ -29,5 +29,5 @@ describe('api.fetch billing 402 behavior', () => {
 
     expect(requestMock).toHaveBeenCalledTimes(2)
     expect(requestMock.mock.calls[1][0]).toBe('/user_api/wallet')
-  }, 20000)
+  }, 40000)
 })

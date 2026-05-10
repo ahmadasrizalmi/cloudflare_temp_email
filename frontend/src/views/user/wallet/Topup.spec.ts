@@ -3,6 +3,7 @@ import { nextTick } from 'vue'
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 
 import Topup from './Topup.vue'
+import i18n from '../../../i18n'
 
 const quoteTopup = vi.fn()
 const createTopup = vi.fn()
@@ -28,6 +29,7 @@ describe('Topup.vue', () => {
   it('loads quote on mount and clicking preset triggers quote with preset nominal', async () => {
     const wrapper = mount(Topup, {
       global: {
+        plugins: [i18n],
         stubs: {
           'n-space': { template: '<div><slot/></div>' },
           'n-card': { template: '<div><slot/></div>' },
@@ -46,4 +48,3 @@ describe('Topup.vue', () => {
     expect(quoteTopup).toHaveBeenLastCalledWith(50000)
   })
 })
-

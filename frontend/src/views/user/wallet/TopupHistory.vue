@@ -1,8 +1,10 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useScopedI18n } from '@/i18n/app'
 import { getTopupHistory } from '../../../api/billing'
 
 const message = useMessage()
+const { t } = useScopedI18n('views.user.wallet.TopupHistory')
 const rows = ref([])
 const nextCursor = ref('')
 const status = ref('')
@@ -14,7 +16,7 @@ const load = async (append = false) => {
     rows.value = append ? [...rows.value, ...items] : items
     nextCursor.value = page.next_cursor || ''
   } catch (err) {
-    message.error(err.message || 'Failed to load topup history')
+    message.error(err.message || t('loadTopupHistoryFailed'))
   }
 }
 
@@ -26,7 +28,7 @@ onMounted(() => load(false))
     <n-select
       v-model:value="status"
       :options="[
-        { label: 'All', value: '' },
+        { label: t('all'), value: '' },
         { label: 'pending', value: 'pending' },
         { label: 'paid', value: 'paid' },
         { label: 'failed', value: 'failed' },
@@ -38,14 +40,14 @@ onMounted(() => load(false))
     <n-table striped>
       <thead>
         <tr>
-          <th>Invoice</th>
-          <th>Amount</th>
-          <th>Fee</th>
-          <th>Gross</th>
-          <th>Channel</th>
-          <th>Status</th>
-          <th>Created</th>
-          <th>Paid</th>
+          <th>{{ t('invoice') }}</th>
+          <th>{{ t('amount') }}</th>
+          <th>{{ t('fee') }}</th>
+          <th>{{ t('gross') }}</th>
+          <th>{{ t('channel') }}</th>
+          <th>{{ t('status') }}</th>
+          <th>{{ t('created') }}</th>
+          <th>{{ t('paid') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -61,7 +63,6 @@ onMounted(() => load(false))
         </tr>
       </tbody>
     </n-table>
-    <n-button :disabled="!nextCursor" @click="load(true)">Load More</n-button>
+    <n-button :disabled="!nextCursor" @click="load(true)">{{ t('loadMore') }}</n-button>
   </n-space>
 </template>
-

@@ -1,9 +1,11 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
+import { useScopedI18n } from '@/i18n/app'
 import { createTopup, quoteTopup, getTopupHistory, getWallet } from '../../../api/billing'
 import { useGlobalState } from '../../../store'
 
 const message = useMessage()
+const { t } = useScopedI18n('views.user.wallet.Topup')
 const { wallet } = useGlobalState()
 
 const presets = [10000, 20000, 50000, 100000, 250000]
@@ -20,7 +22,7 @@ const loadQuote = async () => {
     }
   } catch (err) {
     channels.value = []
-    message.error(err.message || 'Failed to quote')
+    message.error(err.message || t('quoteFailed'))
   }
 }
 
@@ -37,9 +39,9 @@ const payNow = async () => {
       await new Promise((r) => setTimeout(r, 5000))
     }
     wallet.value = await getWallet()
-    message.success('Top-up status updated')
+    message.success(t('topupUpdated'))
   } catch (err) {
-    message.error(err.message || 'Failed to create topup')
+    message.error(err.message || t('createTopupFailed'))
   } finally {
     loading.value = false
   }
@@ -52,7 +54,7 @@ onMounted(loadQuote)
 
 <template>
   <n-space vertical>
-    <n-card title="Top-up">
+    <n-card :title="t('topup')">
       <n-space>
         <n-button v-for="p in presets" :key="p" @click="nominal = p; loadQuote()">
           Rp{{ p.toLocaleString('id-ID') }}
@@ -61,18 +63,17 @@ onMounted(loadQuote)
       <n-input-number v-model:value="nominal" :min="10000" style="margin-top: 12px" @update:value="loadQuote" />
     </n-card>
 
-    <n-card title="Channels">
+    <n-card :title="t('channels')">
       <n-radio-group v-model:value="selected">
         <n-space vertical>
           <n-radio v-for="ch in channels" :key="ch.channel_code" :value="ch.channel_code">
-            {{ ch.name }} | fee: {{ ch.estimated_fee }} | gross: {{ ch.gross_amount }} | {{ ch.fee_bearer }}
+            {{ ch.name }} | {{ t('fee') }}: {{ ch.estimated_fee }} | {{ t('gross') }}: {{ ch.gross_amount }} | {{ ch.fee_bearer }}
           </n-radio>
         </n-space>
       </n-radio-group>
       <n-button type="primary" :disabled="!canPay" :loading="loading" style="margin-top: 12px" @click="payNow">
-        Bayar Sekarang
+        {{ t('payNow') }}
       </n-button>
     </n-card>
   </n-space>
 </template>
-

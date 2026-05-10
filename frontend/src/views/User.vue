@@ -34,7 +34,7 @@ const { t } = useScopedI18n('views.User')
             <n-tab-pane name="bind_address" :tab="t('bind_address')">
                 <BindAddress />
             </n-tab-pane>
-            <n-tab-pane name="wallet" tab="Wallet">
+            <n-tab-pane name="wallet" :tab="t('wallet')">
                 <WalletHome />
             </n-tab-pane>
         </n-tabs>

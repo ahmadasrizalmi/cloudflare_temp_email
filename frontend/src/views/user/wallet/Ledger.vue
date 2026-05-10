@@ -1,8 +1,10 @@
 <script setup>
 import { onMounted, ref } from 'vue'
+import { useScopedI18n } from '@/i18n/app'
 import { getLedger } from '../../../api/billing'
 
 const message = useMessage()
+const { t } = useScopedI18n('views.user.wallet.Ledger')
 const rows = ref([])
 const nextCursor = ref('')
 
@@ -13,7 +15,7 @@ const load = async (append = false) => {
     rows.value = append ? [...rows.value, ...items] : items
     nextCursor.value = page.next_cursor || ''
   } catch (err) {
-    message.error(err.message || 'Failed to load ledger')
+    message.error(err.message || t('loadLedgerFailed'))
   }
 }
 
@@ -25,11 +27,11 @@ onMounted(() => load(false))
     <n-table striped>
       <thead>
         <tr>
-          <th>Type</th>
-          <th>Delta</th>
-          <th>IDR Ref</th>
-          <th>Metadata</th>
-          <th>Created</th>
+          <th>{{ t('type') }}</th>
+          <th>{{ t('delta') }}</th>
+          <th>{{ t('idrRef') }}</th>
+          <th>{{ t('metadata') }}</th>
+          <th>{{ t('created') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -42,7 +44,6 @@ onMounted(() => load(false))
         </tr>
       </tbody>
     </n-table>
-    <n-button :disabled="!nextCursor" @click="load(true)">Load More</n-button>
+    <n-button :disabled="!nextCursor" @click="load(true)">{{ t('loadMore') }}</n-button>
   </n-space>
 </template>
-
