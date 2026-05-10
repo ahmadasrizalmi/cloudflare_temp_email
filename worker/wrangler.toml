@@ -23,7 +23,7 @@ ENABLE_AUTO_REPLY = false
 BILLING_ENABLED = false
 
 routes = [
-	{ pattern = "automation.my.id", custom_domain = true },
+	{ pattern = "automation.my.id/*", zone_id = "e63a194fe4a2da31188b6cce0f6d2d95" },
 ]
 
 [[d1_databases]]
