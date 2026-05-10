@@ -17,6 +17,18 @@
 > 这里填写的所有域名（包括下文「邮箱相关变量」里的 `DEFAULT_DOMAINS`、`USER_ROLES.domains`、`RANDOM_SUBDOMAIN_DOMAINS` 等）必须是你**已经在 Cloudflare Email Routing 中启用并完成邮件 DNS 记录下发**的域名。Worker 部署完成后，还需要把该域名的 Catch-all 规则绑定到这个 Worker，否则邮件无法投递到 Worker。
 > 配置步骤见 [Cloudflare Email Routing](/zh/guide/email-routing)。
 
+## 账单变量 (SaaS 充值)
+
+| 变量名 | 类型 | 说明 | 示例 |
+| --- | --- | --- | --- |
+| `BILLING_ENABLED` | 文本/JSON | 启用钱包/充值账单功能 | `true` |
+| `BILLING_LAUNCH_AT` | 文本 | 账单上线时间 (ISO-8601)，用于 grandfather 规则 | `2026-01-01T00:00:00Z` |
+| `DEFAULT_LANG` | 文本 | `automation.my.id` 部署时建议设为 `id` | `id` |
+| `DOMPETX_API_KEY` | Secret | DompetX API Key (用于创建/状态查询) | `***` |
+| `DOMPETX_API_SECRET` | Secret | DompetX API 签名密钥 | `***` |
+| `DOMPETX_WEBHOOK_SECRET` | Secret | DompetX Webhook 签名密钥 | `***` |
+| `CLOUDFLARE_EMAIL_ROUTING_TOKEN` | Secret | Cloudflare Email Routing 自动化 token | `***` |
+
 ## 后台相关变量
 
 | 变量名                         | 类型      | 说明                                 | 示例             |
@@ -214,15 +226,3 @@
 > #]
 > #
 > ```
-
-## Billing ????(SaaS ????)
-
-| ??? | ?? | ?? | ?? |
-| --- | --- | --- | --- |
-| `BILLING_ENABLED` | ??/JSON | ????/?????? | `true` |
-| `BILLING_LAUNCH_AT` | ?? | ??????(ISO-8601),?? grandfather ?? | `2026-01-01T00:00:00Z` |
-| `DEFAULT_LANG` | ?? | `automation.my.id` ?????? `id` | `id` |
-| `DOMPETX_API_KEY` | Secret | DompetX ????(????/??) | `***` |
-| `DOMPETX_API_SECRET` | Secret | DompetX ?????? | `***` |
-| `DOMPETX_WEBHOOK_SECRET` | Secret | DompetX ?????? | `***` |
-| `CLOUDFLARE_EMAIL_ROUTING_TOKEN` | Secret | Cloudflare Email Routing ??? token | `***` |

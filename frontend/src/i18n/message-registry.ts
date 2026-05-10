@@ -875,6 +875,14 @@ export const MESSAGE_REGISTRY = {
     "loadWalletFailed": {
       "en": "Failed to load wallet",
       "zh": "加载钱包失败"
+    },
+    "viewAll": {
+      "en": "View All",
+      "zh": "查看全部"
+    },
+    "noActivity": {
+      "en": "No recent activity",
+      "zh": "暂无最近流水"
     }
   },
   "views.user.wallet.Topup": {
@@ -909,6 +917,18 @@ export const MESSAGE_REGISTRY = {
     "createTopupFailed": {
       "en": "Failed to create topup",
       "zh": "创建充值失败"
+    },
+    "customNominal": {
+      "en": "Custom Nominal",
+      "zh": "自定义金额"
+    },
+    "noChannels": {
+      "en": "No payment channels available for this nominal",
+      "zh": "该金额暂无可用支付通道"
+    },
+    "payTip": {
+      "en": "You will be redirected to the payment gateway to complete the transaction.",
+      "zh": "您将被重定向到支付网关完成交易。"
     }
   },
   "views.user.wallet.TopupHistory": {
@@ -975,6 +995,10 @@ export const MESSAGE_REGISTRY = {
     "loadTopupHistoryFailed": {
       "en": "Failed to load topup history",
       "zh": "加载充值记录失败"
+    },
+    "noHistory": {
+      "en": "No top-up history found.",
+      "zh": "暂无充值记录。"
     }
   },
   "views.user.wallet.Ledger": {
@@ -1009,6 +1033,10 @@ export const MESSAGE_REGISTRY = {
     "loadLedgerFailed": {
       "en": "Failed to load ledger",
       "zh": "加载流水失败"
+    },
+    "noLedger": {
+      "en": "No transaction records found.",
+      "zh": "暂无交易流水。"
     }
   },
   "views.user.AddressManagement": {

@@ -18,7 +18,7 @@ import {
     resolveSupportedLocale,
 } from '../i18n/utils'
 
-const { jwt, preferredLocale } = useGlobalState()
+const { jwt, preferredLocale, userJwt } = useGlobalState()
 
 const router = createRouter({
     history: createWebHistory(),
@@ -91,8 +91,8 @@ router.beforeEach((to, from, next) => {
         preferredLocale.value = storedLocale || fallbackLocale
     }
 
-    if (to.path.startsWith('/user/wallet') && !userJwt.value) {
-        next(replaceLocaleInFullPath('/user', i18n.global.locale.value))
+    if ((to.path.includes('/user/wallet')) && !userJwt.value) {
+        next(replaceLocaleInFullPath('/user', resolvedLocale))
         return
     }
 

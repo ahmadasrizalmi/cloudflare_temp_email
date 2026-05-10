@@ -170,6 +170,7 @@ function sidebarGuide(): DefaultTheme.SidebarItem[] {
                 { text: '配置 worker 使用 wasm 解析邮件', link: 'feature/mail_parser_wasm_worker' },
                 { text: '配置其他 worker 增强', link: 'feature/another-worker-enhanced' },
                 { text: '给网页增加 Google Ads', link: 'feature/google-ads.md' },
+                { text: '账单与钱包', link: 'billing' },
             ]
         },
         {

@@ -140,12 +140,29 @@ export const useGlobalState = createGlobalState(
             get: () => _oauth2ClientIDSession.value || _oauth2ClientIDFallback.value,
             set: (v) => { _oauth2ClientIDSession.value = v; _oauth2ClientIDFallback.value = v; }
         });
+
         const browserFingerprint = ref('');
         const wallet = useStorage('wallet', {
             balance_credit: 0,
             balance_idr_ref: 0,
             updated_at: '',
         });
+        const refreshWallet = async () => {
+            const { getWallet } = await import('../api/billing');
+            try {
+                const res = await getWallet();
+                if (res) wallet.value = res;
+            } catch (e) {
+                console.error('refreshWallet failed', e);
+            }
+        }
+        const clearWallet = () => {
+            wallet.value = {
+                balance_credit: 0,
+                balance_idr_ref: 0,
+                updated_at: '',
+            };
+        }
         return {
             isDark,
             toggleDark,
@@ -186,6 +203,8 @@ export const useGlobalState = createGlobalState(
             addressPassword,
             browserFingerprint,
             wallet,
+            refreshWallet,
+            clearWallet,
         }
     },
 )

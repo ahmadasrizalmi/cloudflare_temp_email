@@ -6,6 +6,7 @@ import { deMessages } from './locales/source/de'
 import { esMessages } from './locales/source/es'
 import { jaMessages } from './locales/source/ja'
 import { ptBRMessages } from './locales/source/ptBR'
+import { idMessages } from './locales/source/id'
 
 import type { SupportedLocale } from './locale-registry'
 
@@ -18,6 +19,7 @@ const additionalLocaleSources: Record<AdditionalLocale, Record<string, string>> 
   'pt-BR': ptBRMessages,
   ja: jaMessages,
   de: deMessages,
+  id: idMessages,
 }
 
 const setNestedValue = (target: LocaleTree, path: string, value: unknown) => {
@@ -66,7 +68,7 @@ const buildAdditionalLocaleMessages = (locale: AdditionalLocale) => {
 export const I18N_MESSAGES: Record<SupportedLocale, LocaleTree> = {
   zh: buildSourceLocaleMessages('zh'),
   en: buildSourceLocaleMessages('en'),
-  id: buildSourceLocaleMessages('en'),
+  id: buildAdditionalLocaleMessages('id'),
   es: buildAdditionalLocaleMessages('es'),
   'pt-BR': buildAdditionalLocaleMessages('pt-BR'),
   ja: buildAdditionalLocaleMessages('ja'),
