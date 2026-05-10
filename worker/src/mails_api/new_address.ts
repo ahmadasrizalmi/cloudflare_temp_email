@@ -4,6 +4,12 @@ import i18n from '../i18n';
 import { getBooleanValue, getJsonSetting, checkCfTurnstile, isAddressCountLimitReached } from '../utils';
 import { newAddress, getAddressPrefix, generateRandomName } from '../common'
 import { CONSTANTS } from '../constants'
+import {
+    preCheckCreateAddress,
+    executeCreateAddressDebit,
+    rollbackCreatedAddress,
+    renderBillingError,
+} from '../billing/paid_action';
 
 const createNewAddress = async (c: Context<HonoCustomType>) => {
     const msgs = i18n.getMessagesbyContext(c);
@@ -52,6 +58,7 @@ const createNewAddress = async (c: Context<HonoCustomType>) => {
         console.error(error);
     }
     try {
+        const billingPre = await preCheckCreateAddress(c, domain);
         const addressPrefix = await getAddressPrefix(c);
         const sourceMeta = c.req.header('CF-Connecting-IP')
             || c.req.header('X-Forwarded-For')?.split(',')[0]?.trim()
@@ -65,8 +72,24 @@ const createNewAddress = async (c: Context<HonoCustomType>) => {
             addressPrefix,
             sourceMeta
         });
+
+        if (!billingPre.skipped && billingPre.context.shouldCharge) {
+            try {
+                await executeCreateAddressDebit(
+                    billingPre.context,
+                    res.address_id,
+                );
+            } catch (debitErr) {
+                await rollbackCreatedAddress(c.env.DB, res.address_id);
+                const billingResponse = renderBillingError(c, debitErr);
+                if (billingResponse) return billingResponse;
+                throw debitErr;
+            }
+        }
         return c.json(res);
     } catch (e) {
+        const billingResponse = renderBillingError(c, e);
+        if (billingResponse) return billingResponse;
         return c.text(`${msgs.FailedCreateAddressMsg}: ${(e as Error).message}`, 400)
     }
 };

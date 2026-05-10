@@ -105,6 +105,19 @@ export type CreateAddressPreCheck =
     | { skipped: true; reason: 'billing_disabled' | 'anonymous' }
     | { skipped: false; context: CreateAddressBillingContext };
 
+export interface SendMailBillingContext {
+    userId: number;
+    senderAddress: string;
+    domain: string;
+    requiredCredit: number;
+    walletService: WalletService;
+    shouldCharge: boolean;
+}
+
+export type SendMailPreCheck =
+    | { skipped: true; reason: 'billing_disabled' | 'anonymous' }
+    | { skipped: false; context: SendMailBillingContext };
+
 // ─── Dependency wiring (overridable per request for testing) ─────────────────
 
 export interface PaidActionDeps {
@@ -236,6 +249,77 @@ export async function preCheckCreateAddress(
     };
 }
 
+export async function preCheckSendMail(
+    c: Context<HonoCustomType>,
+    senderAddress: string | undefined | null,
+    deps: PaidActionDeps = {},
+): Promise<SendMailPreCheck> {
+    if (!isBillingEnabled(c.env)) {
+        return { skipped: true, reason: 'billing_disabled' };
+    }
+    const userPayload = c.get('userPayload');
+    if (!userPayload) {
+        return { skipped: true, reason: 'anonymous' };
+    }
+    const userId = userPayload.user_id;
+    const normalizedAddress = typeof senderAddress === 'string' ? senderAddress.trim().toLowerCase() : '';
+    if (!normalizedAddress || !normalizedAddress.includes('@')) {
+        throw new DomainNotAllowedError();
+    }
+
+    const guard = resolveAbuseGuard(deps);
+    await guard.requireFingerprint(c);
+
+    const domain = normalizedAddress.split('@')[1]?.trim().toLowerCase() || '';
+    if (!domain) {
+        throw new DomainNotAllowedError();
+    }
+
+    const pricingEngine = resolvePricingEngine(c, deps);
+    const walletService = resolveWalletService(c, deps);
+    const requiredCredit = await pricingEngine.resolve({
+        actionKey: 'send_mail',
+        domain,
+    });
+
+    const now = (deps.now ?? (() => new Date()))();
+    const billingLaunchAt = c.env.BILLING_LAUNCH_AT || '1970-01-01';
+    let grandfatherPeriodDays = 30;
+    try {
+        grandfatherPeriodDays = await pricingEngine.getNumber('grandfather_period_days');
+    } catch {
+        // keep default
+    }
+
+    const addressCreatedAtRow = await c.env.DB
+        .prepare(`SELECT created_at FROM address WHERE name = ? LIMIT 1`)
+        .bind(normalizedAddress)
+        .first<{ created_at: string }>();
+    const addressCreatedAt = addressCreatedAtRow?.created_at
+        ? new Date(addressCreatedAtRow.created_at)
+        : now;
+
+    const shouldCharge = shouldChargeDebit({
+        action: 'send_mail',
+        addressCreatedAt,
+        now,
+        billingLaunchAt,
+        grandfatherPeriodDays,
+    });
+
+    return {
+        skipped: false,
+        context: {
+            userId,
+            senderAddress: normalizedAddress,
+            domain,
+            requiredCredit,
+            walletService,
+            shouldCharge,
+        },
+    };
+}
+
 // ─── Debit + compensating cleanup ────────────────────────────────────────────
 
 export interface DebitOutcome {
@@ -271,6 +355,20 @@ export async function executeCreateAddressDebit(
         actionKey: 'create_address',
         domain: context.domain,
         resourceId: addressId,
+    });
+    return result;
+}
+
+export async function executeSendMailDebit(
+    context: SendMailBillingContext,
+    resourceId: string | number | undefined,
+): Promise<DebitOutcome> {
+    const result = await context.walletService.debit({
+        userId: context.userId,
+        credits: context.requiredCredit,
+        actionKey: 'send_mail',
+        domain: context.domain,
+        resourceId,
     });
     return result;
 }

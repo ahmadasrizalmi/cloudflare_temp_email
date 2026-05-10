@@ -292,13 +292,13 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 11. Paid-action integration and grandfather policy
-  - [~] 11.1 Integrate `create_address` debit path
+  - [x] 11.1 Integrate `create_address` debit path
     - In the existing handler that serves address creation (`worker/src/user_api/user_mail_api.ts` or the corresponding `/api/new_address` route), before creating the address: require fingerprint, validate domain ∈ `allowed_domains WHERE is_active=1` (400 `domain_not_allowed`), compute `required_credit = Pricing_Engine.resolve('create_address', domain)`, run `Wallet_Service.debit` with `{action_key:'create_address', domain, resource_id: newAddressId}` AFTER the address row is inserted but in the same batch so rollback is atomic
     - If address creation fails after debit, call `Wallet_Service.refund` with `refund_of = debit.ledgerId` and propagate the upstream error
     - Respect grandfather helper (task 11.4) when deciding whether to debit
     - _Requirements: 2.4, 2.5, 2.6, 2.7, 6.1, 6.2, 6.3, 6.6, 6.7, 13.3, 14.1, 14.3_
 
-  - [~] 11.2 Integrate `send_mail` debit path
+  - [x] 11.2 Integrate `send_mail` debit path
     - In every handler that performs user-triggered mail sending (user-facing `send_mail`, admin-triggered variants if they charge the user), compute `required_credit = Pricing_Engine.resolve('send_mail', domain)`, run `Wallet_Service.debit` before invoking the external SMTP/send route
     - On external failure call `Wallet_Service.refund` with `refund_of = debit.ledgerId` and return 502 `external_unavailable`
     - Grandfather policy: `send_mail` is always charged (even for grandfathered addresses) per Requirement 14.2
@@ -628,6 +628,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
   ]
 }
 ```
+
 
 
 

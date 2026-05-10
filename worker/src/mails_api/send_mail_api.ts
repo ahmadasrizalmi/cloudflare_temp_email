@@ -11,6 +11,11 @@ import { GeoData } from '../models'
 import { handleListQuery, isSendMailBindingEnabled, updateAddressUpdatedAt } from '../common'
 import { getSendBalanceState, requestSendMailAccess } from './send_balance';
 import { ensureSendMailLimit, increaseSendMailLimitCount } from './send_mail_limit_utils';
+import {
+    preCheckSendMail,
+    executeSendMailDebit,
+    renderBillingError,
+} from '../billing/paid_action';
 
 
 export const api = new Hono<HonoCustomType>()
@@ -251,9 +256,50 @@ export const sendMail = async (
 api.post('/api/send_mail', async (c) => {
     const { address } = c.get("jwtPayload")
     const reqJson = await c.req.json();
+    let debitLedgerId = 0;
+    try {
+        const billingCheck = await preCheckSendMail(c, address);
+        if (!billingCheck.skipped && billingCheck.context.shouldCharge) {
+            const debit = await executeSendMailDebit(
+                billingCheck.context,
+                `send_mail:${Date.now()}:${reqJson?.to_mail || ''}`,
+            );
+            debitLedgerId = debit.ledgerId;
+        }
+    } catch (e) {
+        const billingRes = renderBillingError(c, e);
+        if (billingRes) return billingRes;
+        return c.text(`Failed to send mail ${(e as Error).message}`, 400);
+    }
+
     try {
         await sendMail(c, address, reqJson);
     } catch (e) {
+        // Compensating refund: if mail send fails after a successful debit,
+        // refund the exact credits using refund_of metadata idempotency.
+        if (debitLedgerId > 0) {
+            try {
+                const { user_id } = c.get("userPayload") || {};
+                if (user_id) {
+                    const { createWalletService } = await import('../billing/wallet_service');
+                    const { createPricingEngine } = await import('../billing/pricing_engine');
+                    const wallet = createWalletService(c.env.DB);
+                    const pricing = createPricingEngine(c.env.DB);
+                    const credits = await pricing.resolve({
+                        actionKey: 'send_mail',
+                        domain: String(address || '').split('@')[1] || '',
+                    });
+                    await wallet.refund({
+                        userId: user_id,
+                        credits,
+                        refundOfLedgerId: debitLedgerId,
+                        reason: 'send_mail_failed',
+                    });
+                }
+            } catch (refundErr) {
+                console.error('Failed to refund send_mail debit', refundErr);
+            }
+        }
         console.error("Failed to send mail", e);
         return c.text(`Failed to send mail ${(e as Error).message}`, 400)
     }
