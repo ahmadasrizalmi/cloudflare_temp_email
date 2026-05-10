@@ -453,7 +453,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Never echo the secret values in the error; reference them by key name only
     - _Requirements: 15.1, 15.2, 15.6_
 
-  - [~] 14.2 Write property test: Property 36 (secret non-leakage in responses)
+  - [x] 14.2 Write property test: Property 36 (secret non-leakage in responses)
     - Create `worker/src/billing/__tests__/secret_leakage.property.test.ts` with `// Feature: saas-topup-billing, Property 36: Secret non-leakage in responses`
     - Generator produces arbitrary requests to every `/user_api/*`, `/open_api/payment_channels`, `/user_api/topup/history`, and asserts the response body never contains the string values of `DOMPETX_API_KEY`, `DOMPETX_API_SECRET`, `DOMPETX_WEBHOOK_SECRET`, `CLOUDFLARE_EMAIL_ROUTING_TOKEN`, nor a top-level `raw_payload` field
     - Also assert `GET /admin/billing/topup_transactions/:id` is the only path that exposes `raw_payload`
@@ -492,7 +492,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - Cursor-paged ledger display with type, delta, idr_ref, metadata, created_at
     - _Requirements: 3.2, 3.3_
 
-  - [~] 16.7 Add credit-cost preview on the address creation form
+  - [x] 16.7 Add credit-cost preview on the address creation form
     - In the existing address creation view (under `frontend/src/views/`) fetch `GET /user_api/billing/domains` on mount and render `credit_cost` next to each selectable domain; disable the confirm button when `balance_credit < credit_cost`
     - _Requirements: 2.1, 2.3_
 
@@ -628,5 +628,6 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
   ]
 }
 ```
+
 
 

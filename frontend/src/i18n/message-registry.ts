@@ -2654,6 +2654,14 @@ export const MESSAGE_REGISTRY = {
       "en": "Credential Login",
       "zh": "凭据登录"
     },
+    "coinUnit": {
+      "en": "coin",
+      "zh": "金币"
+    },
+    "domainCostHint": {
+      "en": "Domain cost: {cost} {coin}",
+      "zh": "域名成本：{cost}{coin}"
+    },
     "email": {
       "en": "Email",
       "zh": "邮箱"
@@ -2689,6 +2697,10 @@ export const MESSAGE_REGISTRY = {
     "help": {
       "en": "Help",
       "zh": "帮助"
+    },
+    "insufficientCoinForDomain": {
+      "en": "Insufficient coin. Need {need}, available {have}.",
+      "zh": "金币不足。需要 {need}，当前仅有 {have}。"
     },
     "login": {
       "en": "Login",
