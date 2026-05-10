@@ -5,6 +5,8 @@ import { Jwt } from 'hono/utils/jwt'
 
 import { api as commonApi } from './commom_api';
 import { api as openAuthApi } from './open_api/auth';
+import { api as paymentChannelsApi } from './open_api/payment_channels';
+import { api as paymentWebhookApi } from './open_api/payment_webhook';
 import { api as mailsApi } from './mails_api'
 import { api as userApi } from './user_api';
 import { api as adminApi } from './admin_api';
@@ -25,6 +27,38 @@ const API_PATHS = [
 	"/telegram/",
 	"/external/",
 ];
+
+const BILLING_PATH_PREFIXES = [
+	"/user_api/wallet",
+	"/user_api/billing/",
+	"/user_api/topup/",
+	"/admin/billing/",
+	"/open_api/payment_channels",
+	"/open_api/payment/webhook/dompetx",
+];
+
+const BILLING_REQUIRED_SECRETS = [
+	"DOMPETX_API_KEY",
+	"DOMPETX_API_SECRET",
+	"DOMPETX_WEBHOOK_SECRET",
+	"CLOUDFLARE_EMAIL_ROUTING_TOKEN",
+] as const;
+
+function isBillingPath(path: string): boolean {
+	return BILLING_PATH_PREFIXES.some((prefix) => path.startsWith(prefix));
+}
+
+function isBillingEnabled(env: Bindings): boolean {
+	const raw = env.BILLING_ENABLED;
+	return raw === true || raw === "true" || raw === "1";
+}
+
+function getMissingBillingSecrets(env: Bindings): string[] {
+	return BILLING_REQUIRED_SECRETS.filter((key) => {
+		const value = env[key];
+		return !value || String(value).trim() === "";
+	});
+}
 
 const app = new Hono<HonoCustomType>()
 //cors
@@ -48,8 +82,23 @@ app.use('/*', async (c, next) => {
 
 	// save language in context
 	const lang = c.req.raw.headers.get("x-lang");
+	const host = c.req.raw.headers.get("host") || "";
+	const hostDefaultLang = host === "automation.my.id" ? "id" : c.env.DEFAULT_LANG;
 	if (lang) { c.set("lang", lang); }
-	const msgs = i18n.getMessages(lang || c.env.DEFAULT_LANG);
+	else if (host === "automation.my.id") { c.set("lang", "id"); }
+	const msgs = i18n.getMessages(lang || hostDefaultLang);
+
+	// billing startup validation: if billing is enabled and required secrets are
+	// missing, fail explicit billing requests without exposing secret values.
+	if (isBillingEnabled(c.env) && isBillingPath(c.req.path)) {
+		const missing = getMissingBillingSecrets(c.env);
+		if (missing.length > 0) {
+			return c.json({
+				code: "billing_misconfigured",
+				message: `${msgs.OperationFailedMsg}: missing secrets: ${missing.join(", ")}`,
+			}, 503);
+		}
+	}
 
 	// check header x-custom-auth
 	const passwords = getPasswords(c);
@@ -255,6 +304,8 @@ app.use('/admin/*', async (c, next) => {
 
 app.route('/', commonApi)
 app.route('/', openAuthApi)
+app.route('/', paymentChannelsApi)
+app.route('/', paymentWebhookApi)
 app.route('/', mailsApi)
 app.route('/', userApi)
 app.route('/', adminApi)

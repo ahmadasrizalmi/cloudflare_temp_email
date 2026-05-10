@@ -4,9 +4,18 @@ import { CONSTANTS } from './constants'
 import { getJsonSetting } from './utils';
 import { CleanupSettings } from './models';
 import { executeCustomSqlCleanup } from './admin_api/cleanup_api';
+import { runReconcile } from './billing/reconciler';
 
 export async function scheduled(event: ScheduledEvent, env: Bindings, ctx: any) {
     console.log("Scheduled event: ", event);
+    // Billing reconciler (every 5m cron): always safe to invoke; function no-ops
+    // when there are no expired pending rows.
+    try {
+        await runReconcile(env, ctx);
+    } catch (err) {
+        console.error("billing reconcile failed", err);
+    }
+
     const autoCleanupSetting = await getJsonSetting<CleanupSettings>(
         { env: env, } as Context<HonoCustomType>,
         CONSTANTS.AUTO_CLEANUP_KEY

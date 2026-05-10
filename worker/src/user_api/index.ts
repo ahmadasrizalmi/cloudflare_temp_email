@@ -6,6 +6,7 @@ import bind_address from './bind_address';
 import passkey from './passkey';
 import oauth2 from './oauth2';
 import user_mail_api from './user_mail_api';
+import billing from './billing';
 
 export const api = new Hono<HonoCustomType>();
 
@@ -41,3 +42,6 @@ api.post('/user_api/passkey/register_request', passkey.registerRequest);
 api.post('/user_api/passkey/register_response', passkey.registerResponse);
 api.post('/user_api/passkey/authenticate_request', passkey.authenticateRequest);
 api.post('/user_api/passkey/authenticate_response', passkey.authenticateResponse);
+
+// billing api
+api.route('/', billing);

@@ -18,6 +18,7 @@ import db_api from './db_api'
 import ip_blacklist_settings from './ip_blacklist_settings'
 import ai_extract_settings from './ai_extract_settings'
 import e2e_test_api from './e2e_test_api'
+import billing_admin from './billing_admin'
 
 export const api = new Hono<HonoCustomType>()
 
@@ -106,3 +107,6 @@ api.post('/admin/ai_extract/settings', ai_extract_settings.saveAiExtractSettings
 // E2E test endpoints
 api.post('/admin/test/seed_mail', e2e_test_api.seedMail)
 api.post('/admin/test/receive_mail', e2e_test_api.receiveMail)
+
+// billing admin api
+api.route('/', billing_admin)
