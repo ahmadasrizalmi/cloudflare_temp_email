@@ -727,8 +727,8 @@ export const MESSAGE_REGISTRY = {
       "zh": "绑定邮箱地址"
     },
     "wallet": {
-      "en": "Wallet",
-      "zh": "钱包"
+      "en": "Coin Wallet",
+      "zh": "金币钱包"
     },
     "user_mail_box_tab": {
       "en": "Mail Box",
@@ -825,12 +825,12 @@ export const MESSAGE_REGISTRY = {
   },
   "views.user.wallet.WalletHome": {
     "wallet": {
-      "en": "Wallet",
-      "zh": "钱包"
+      "en": "Coin Wallet",
+      "zh": "金币钱包"
     },
     "credit": {
-      "en": "Credit",
-      "zh": "积分"
+      "en": "Coin",
+      "zh": "金币"
     },
     "idrRef": {
       "en": "IDR Ref",
@@ -863,6 +863,10 @@ export const MESSAGE_REGISTRY = {
     "delta": {
       "en": "Delta",
       "zh": "变动"
+    },
+    "coinDelta": {
+      "en": "Coin Delta",
+      "zh": "金币变动"
     },
     "at": {
       "en": "At",
@@ -936,6 +940,26 @@ export const MESSAGE_REGISTRY = {
       "en": "Status",
       "zh": "状态"
     },
+    "pending": {
+      "en": "Pending",
+      "zh": "待处理"
+    },
+    "paidStatus": {
+      "en": "Paid",
+      "zh": "已支付"
+    },
+    "failed": {
+      "en": "Failed",
+      "zh": "失败"
+    },
+    "expired": {
+      "en": "Expired",
+      "zh": "已过期"
+    },
+    "cancelled": {
+      "en": "Cancelled",
+      "zh": "已取消"
+    },
     "created": {
       "en": "Created",
       "zh": "创建时间"
@@ -961,6 +985,10 @@ export const MESSAGE_REGISTRY = {
     "delta": {
       "en": "Delta",
       "zh": "变动"
+    },
+    "coinDelta": {
+      "en": "Coin Delta",
+      "zh": "金币变动"
     },
     "idrRef": {
       "en": "IDR Ref",

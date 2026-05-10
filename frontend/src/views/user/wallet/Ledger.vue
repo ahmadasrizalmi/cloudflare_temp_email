@@ -28,7 +28,7 @@ onMounted(() => load(false))
       <thead>
         <tr>
           <th>{{ t('type') }}</th>
-          <th>{{ t('delta') }}</th>
+          <th>{{ t('coinDelta') }}</th>
           <th>{{ t('idrRef') }}</th>
           <th>{{ t('metadata') }}</th>
           <th>{{ t('created') }}</th>

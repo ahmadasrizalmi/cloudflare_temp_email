@@ -45,7 +45,7 @@ onMounted(refresh)
         <thead>
           <tr>
             <th>{{ t('type') }}</th>
-            <th>{{ t('delta') }}</th>
+            <th>{{ t('coinDelta') }}</th>
             <th>{{ t('at') }}</th>
           </tr>
         </thead>

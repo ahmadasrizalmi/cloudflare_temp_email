@@ -29,11 +29,11 @@ onMounted(() => load(false))
       v-model:value="status"
       :options="[
         { label: t('all'), value: '' },
-        { label: 'pending', value: 'pending' },
-        { label: 'paid', value: 'paid' },
-        { label: 'failed', value: 'failed' },
-        { label: 'expired', value: 'expired' },
-        { label: 'cancelled', value: 'cancelled' }
+        { label: t('pending'), value: 'pending' },
+        { label: t('paidStatus'), value: 'paid' },
+        { label: t('failed'), value: 'failed' },
+        { label: t('expired'), value: 'expired' },
+        { label: t('cancelled'), value: 'cancelled' }
       ]"
       @update:value="load(false)"
     />
