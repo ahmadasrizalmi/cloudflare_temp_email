@@ -426,14 +426,14 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
     - On cron event (every 5 min), call `runReconcile(env, ctx)`; keep existing scheduled entries untouched so other cron workloads continue to run
     - _Requirements: 8.3, 12.3_
 
-  - [~] 13.4 Write property test for Reconciler: Property 24 (expires + late paid)
+  - [x] 13.4 Write property test for Reconciler: Property 24 (expires + late paid)
     - Create `worker/src/billing/__tests__/reconciler.property.test.ts` with `// Feature: saas-topup-billing, Property 24: Reconciler expires pending and honors late paid`
     - Generator produces `pending` rows older than `expiry_minutes` with random provider-returned statuses
     - Assert `getInvoiceStatus` is called exactly once per row; `paid` → state converges to Property 20's post-condition (idempotent even if a webhook also arrives); `failed/expired/unknown` → correct status transition with no ledger mutation
     - **Property 24: Reconciler expires pending and honors late paid**
     - **Validates: Requirements 8.3, 8.4, 8.5**
 
-  - [~] 13.5 Write property test for Reconciler: Property 32 (auto margin guard upper bound)
+  - [x] 13.5 Write property test for Reconciler: Property 32 (auto margin guard upper bound)
     - Append describe block: `// Feature: saas-topup-billing, Property 32: Auto margin guard upper bound`
     - Generator randomises `(net_margin_monthly, margin_guard_target_percent, current domain_weight_com, margin_guard_auto)`
     - Assert: if `margin_guard_auto=true` and `net_margin_monthly < target` and current `< 5` then weight increases by at most 1 per run and never exceeds 5, with one `event_type='auto_margin_guard'` audit row per adjustment; otherwise no change
@@ -628,6 +628,7 @@ Implementation proceeds bottom-up: (1) D1 schema + shared TypeScript types + i18
   ]
 }
 ```
+
 
 
 
