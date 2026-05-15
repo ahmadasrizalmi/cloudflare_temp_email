@@ -215,7 +215,13 @@ const payNow = async () => {
   }
 }
 
-const canPay = computed(() => Number(nominal.value) >= 10000 && !!selected.value)
+const isFreeFlow = computed(() => isValidVoucher.value && discountAmount.value >= Number(nominal.value))
+
+const canPay = computed(() => {
+  if (Number(nominal.value) < 10000) return false
+  if (isFreeFlow.value) return true // No bank needed if free
+  return !!selected.value
+})
 
 onMounted(loadQuote)
 watch(nominal, loadQuote)
@@ -269,7 +275,16 @@ watch(nominal, loadQuote)
         </template>
 
         <n-spin :show="quoteLoading">
-          <div v-if="channels.length > 0">
+          <!-- FREE FLOW UI -->
+          <div v-if="isFreeFlow" class="free-info">
+            <n-result status="success" title="Topup Gratis!" description="Voucher Anda menutupi seluruh biaya. Tidak perlu memilih metode pembayaran.">
+              <template #icon>
+                <n-icon size="64" :component="CheckCircleRound" color="#18a058" />
+              </template>
+            </n-result>
+          </div>
+
+          <div v-else-if="channels.length > 0">
             <!-- Category Tabs -->
             <div class="cat-tabs">
               <div
@@ -565,5 +580,9 @@ watch(nominal, loadQuote)
   display: block;
   margin-top: 12px;
   font-size: 0.85rem;
+}
+.free-info {
+  padding: 24px 0;
+  text-align: center;
 }
 </style>
