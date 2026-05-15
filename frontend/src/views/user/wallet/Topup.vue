@@ -4,10 +4,13 @@ import { useMessage } from 'naive-ui'
 import { useScopedI18n } from '@/i18n/app'
 import { createTopup, quoteTopup, getTopupHistory, checkVoucherApi } from '../../../api/billing'
 import { useGlobalState } from '../../../store'
-import { 
   PaymentsRound, 
   CheckCircleRound,
-  InfoOutlined
+  InfoOutlined,
+  AccountBalanceRound,
+  QrCodeRound,
+  AccountBalanceWalletRound,
+  StorefrontRound
 } from '@vicons/material'
 
 const message = useMessage()
@@ -24,6 +27,24 @@ const voucherCode = ref('')
 const discountAmount = ref(0)
 const checkingVoucher = ref(false)
 const isValidVoucher = ref(false)
+
+const groupedChannels = computed(() => {
+  const groups = {}
+  for (const ch of channels.value) {
+    const g = ch.group || 'Lainnya'
+    if (!groups[g]) groups[g] = []
+    groups[g].push(ch)
+  }
+  return groups
+})
+
+const getGroupIcon = (groupName) => {
+  const gn = groupName.toLowerCase()
+  if (gn.includes('virtual account')) return AccountBalanceRound
+  if (gn.includes('qris')) return QrCodeRound
+  if (gn.includes('retail')) return StorefrontRound
+  return AccountBalanceWalletRound
+}
 
 const loadQuote = async () => {
   if (!nominal.value || nominal.value < 10000) return
@@ -163,38 +184,54 @@ watch(nominal, loadQuote)
         </template>
         
         <n-spin :show="quoteLoading">
-          <n-radio-group v-model:value="selected" class="channel-group">
-            <n-space vertical size="medium">
-              <n-card 
-                v-for="ch in channels" 
-                :key="ch.channel_code" 
-                hoverable 
-                size="small" 
-                class="channel-item"
-                :class="{ 'selected': selected === ch.channel_code }"
-                @click="selected = ch.channel_code"
-              >
-                <n-space align="center" justify="space-between" :wrap="false">
-                  <n-space align="center" :wrap="false">
-                    <n-radio :value="ch.channel_code" />
-                    <div class="channel-info">
-                      <div class="channel-name">{{ ch.name }}</div>
-                      <div class="channel-fee" v-if="ch.estimated_fee > 0">
-                        <n-text depth="3">{{ t('fee') }}: </n-text>
-                        <n-text type="warning">Rp {{ ch.estimated_fee.toLocaleString('id-ID') }}</n-text>
-                      </div>
-                    </div>
-                  </n-space>
-                  <div class="channel-gross">
-                    <n-text strong>Rp {{ Math.max(0, ch.gross_amount - discountAmount).toLocaleString('id-ID') }}</n-text>
-                    <div v-if="discountAmount > 0" style="text-decoration: line-through; font-size: 12px; color: #999">
-                      Rp {{ ch.gross_amount.toLocaleString('id-ID') }}
-                    </div>
-                  </div>
+          <n-tabs type="line" animated justify-content="space-evenly" style="margin-bottom: 16px;" v-if="channels.length > 0">
+            <n-tab-pane v-for="(groupChannels, groupName) in groupedChannels" :key="groupName" :name="groupName">
+              <template #tab>
+                <n-space align="center" :size="4" :wrap="false">
+                  <n-icon :component="getGroupIcon(groupName)" />
+                  <span style="font-weight: 600;">{{ groupName }}</span>
                 </n-space>
-              </n-card>
-            </n-space>
-          </n-radio-group>
+              </template>
+
+              <n-radio-group v-model:value="selected" class="channel-group" style="width: 100%;">
+                <n-grid :cols="2" :x-gap="12" :y-gap="12" responsive="screen" item-responsive>
+                  <n-grid-item span="2 s:1 m:1" v-for="ch in groupChannels" :key="ch.channel_code">
+                    <n-card 
+                      hoverable 
+                      class="channel-tile"
+                      :class="{ 'selected': selected === ch.channel_code }"
+                      @click="selected = ch.channel_code"
+                      content-style="padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; position: relative;"
+                    >
+                      <div class="channel-logo">
+                        {{ ch.name.substring(0, 2).toUpperCase() }}
+                      </div>
+                      
+                      <div class="channel-name-compact" style="font-weight: 600; font-size: 14px; margin-top: 12px; line-height: 1.2;">
+                        {{ ch.name }}
+                      </div>
+
+                      <div v-if="ch.estimated_fee > 0" style="font-size: 12px; color: #999; margin-top: 6px;">
+                        + Fee Rp {{ ch.estimated_fee.toLocaleString('id-ID') }}
+                      </div>
+                      <div v-else style="font-size: 12px; color: #18a058; margin-top: 6px; font-weight: 600;">
+                        Gratis Fee
+                      </div>
+
+                      <div class="channel-gross-compact" style="font-weight: 700; color: #18a058; margin-top: 12px; font-size: 16px;">
+                        <span v-if="discountAmount > 0" style="text-decoration: line-through; font-size: 11px; color: #999; display: block;">
+                          Rp {{ ch.gross_amount.toLocaleString('id-ID') }}
+                        </span>
+                        Rp {{ Math.max(0, ch.gross_amount - discountAmount).toLocaleString('id-ID') }}
+                      </div>
+
+                      <n-radio :value="ch.channel_code" style="display: none;" />
+                    </n-card>
+                  </n-grid-item>
+                </n-grid>
+              </n-radio-group>
+            </n-tab-pane>
+          </n-tabs>
         </n-spin>
 
         <n-alert v-if="channels.length === 0 && !quoteLoading" type="info" :show-icon="false">
@@ -276,29 +313,44 @@ watch(nominal, loadQuote)
   width: 100%;
 }
 
-.channel-item {
-  border-radius: 12px;
-  transition: all 0.2s ease;
+.channel-tile {
   cursor: pointer;
-  border: 1px solid var(--n-border-color);
+  transition: all 0.2s ease-in-out;
+  border-radius: 12px;
+  border: 2px solid transparent;
 }
 
-.channel-item.selected {
-  border-color: var(--n-primary-color);
-  background: rgba(24, 160, 88, 0.05);
+.channel-tile.selected {
+  border-color: #18a058;
+  background-color: rgba(24, 160, 88, 0.05);
+  box-shadow: 0 4px 12px rgba(24, 160, 88, 0.15);
+  transform: translateY(-2px);
 }
 
-.channel-info {
+.channel-tile:hover:not(.selected) {
+  border-color: rgba(24, 160, 88, 0.3);
+  transform: translateY(-2px);
+}
+
+.channel-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  color: #334e68;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.05);
+  letter-spacing: 1px;
 }
 
-.channel-name {
-  font-weight: 600;
-}
-
-.channel-fee {
-  font-size: 0.85rem;
+.dark-theme .channel-logo {
+  background: linear-gradient(135deg, #2d3748, #1a202c);
+  color: #e2e8f0;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .pay-action {
