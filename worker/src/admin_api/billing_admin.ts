@@ -569,7 +569,7 @@ api.delete('/admin/billing/domains/:domain', async (c) => {
 // --- GET /admin/billing/vouchers ----------------------------------------------
 api.get('/admin/billing/vouchers', async (c) => {
     const { results } = await c.env.DB.prepare(
-        SELECT * FROM vouchers ORDER BY id DESC
+        `SELECT * FROM vouchers ORDER BY id DESC`
     ).all<Record<string, unknown>>();
     return c.json(results ?? []);
 });
@@ -590,8 +590,8 @@ api.post('/admin/billing/vouchers', async (c) => {
 
     try {
         await c.env.DB.prepare(
-            INSERT INTO vouchers (code, type, value, max_uses, expires_at)
-             VALUES (?, ?, ?, ?, ?)
+            `INSERT INTO vouchers (code, type, value, max_uses, expires_at)
+             VALUES (?, ?, ?, ?, ?)`
         )
             .bind(code, body.type, body.value, body.max_uses ?? 1, body.expires_at || null)
             .run();
@@ -604,7 +604,7 @@ api.post('/admin/billing/vouchers', async (c) => {
 // --- DELETE /admin/billing/vouchers/:id ---------------------------------------
 api.delete('/admin/billing/vouchers/:id', async (c) => {
     const id = Number(c.req.param('id'));
-    await c.env.DB.prepare(DELETE FROM vouchers WHERE id = ?).bind(id).run();
+    await c.env.DB.prepare(`DELETE FROM vouchers WHERE id = ?`).bind(id).run();
     return c.json({ success: true });
 });
 
