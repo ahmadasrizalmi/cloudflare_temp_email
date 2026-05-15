@@ -175,7 +175,7 @@ function registerFreeQuotaRoute(app: Hono<HonoCustomType>) {
 }
 
 function registerTopupQuoteRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps) {
-    app.post('/user_api/topup/quote', async (c) => {
+    app.post('/topup/quote', async (c) => {
         const msgs = i18n.getMessagesbyContext(c);
         const guard = resolveAbuseGuard(deps);
         try {
@@ -201,7 +201,7 @@ function registerTopupQuoteRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps
 }
 
 function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps) {
-    app.get('/user_api/billing/voucher/check', async (c) => {
+    app.get('/voucher/check', async (c) => {
         const code = c.req.query('code')?.trim();
         const nominalStr = c.req.query('nominal')?.trim();
         if (!code || !nominalStr) return c.json({ valid: false, message: 'Invalid input' });
@@ -215,7 +215,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         return c.json({ valid: true, discountAmount: Math.min(discount, nominal) });
     });
 
-    app.post('/user_api/topup/create', async (c) => {
+    app.post('/topup/create', async (c) => {
         const msgs = i18n.getMessagesbyContext(c);
         const { user_id } = c.get('userPayload');
         const guard = resolveAbuseGuard(deps);
@@ -322,7 +322,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
 }
 
 function registerTopupHistoryRoute(app: Hono<HonoCustomType>) {
-    app.get('/user_api/topup/history', async (c) => {
+    app.get('/topup/history', async (c) => {
         const { user_id } = c.get('userPayload');
         const limit = clampLimit(c.req.query('limit'));
         const { results } = await c.env.DB.prepare(`SELECT * FROM topup_transactions WHERE user_id = ? ORDER BY created_at DESC LIMIT ?`).bind(user_id, limit).all<any>();

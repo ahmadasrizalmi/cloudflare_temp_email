@@ -12,13 +12,13 @@ export const getLedger = async ({ limit = 20, cursor = '' } = {}) => {
 export const getDomains = async () => api.fetch('/user_api/billing/domains')
 
 export const quoteTopup = async (nominal) =>
-  api.fetch('/user_api/topup/quote', {
+  api.fetch('/user_api/billing/topup/quote', {
     method: 'POST',
     body: JSON.stringify({ nominal }),
   })
 
 export const createTopup = async (nominal, channel_code, voucher_code = '') =>
-  api.fetch('/user_api/topup/create', {
+  api.fetch('/user_api/billing/topup/create', {
     method: 'POST',
     body: JSON.stringify({ nominal, channel_code, voucher_code }),
   })
@@ -31,7 +31,7 @@ export const getTopupHistory = async ({ limit = 20, cursor = '', status = '' } =
   if (limit) q.set('limit', String(limit))
   if (cursor) q.set('cursor', cursor)
   if (status) q.set('status', status)
-  return api.fetch(`/user_api/topup/history?${q.toString()}`)
+  return api.fetch(`/user_api/billing/topup/history?${q.toString()}`)
 }
 
 // Admin API
