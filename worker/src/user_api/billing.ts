@@ -298,6 +298,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
             const invoice = await dompetx.createInvoice({
                 amount: grossAmount,
                 channel_code: channelCode,
+                fee_bearer: selected?.fee_bearer ?? 'customer',
                 metadata: { user_id, local_invoice_id: localInvoiceId, topup_row_id: pendingRowId },
                 webhook_url: buildWebhookUrl(c),
             });
