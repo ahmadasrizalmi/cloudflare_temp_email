@@ -564,8 +564,9 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
 
         let invoice: Awaited<ReturnType<DompetxClient['createInvoice']>>;
         try {
+            console.log('[billing] createInvoice payload', { nominal, grossAmount, discountAmount, channelCode, user_id });
             invoice = await dompetx.createInvoice({
-                amount: grossAmount,
+                amount: nominal,
                 channel_code: channelCode,
                 fee_bearer: feeBearer,
                 metadata: {
@@ -593,13 +594,19 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
 
             const code =
                 err instanceof DompetxError ? err.code : 'dompetx_unavailable';
-            console.warn('[billing] DompetX createInvoice failed', {
+            const errMsg = err instanceof Error ? err.message : String(err);
+            console.error('[billing] DompetX createInvoice FAILED', {
                 user_id,
                 pendingRowId,
                 code,
+                errMsg,
+                nominal,
+                grossAmount,
+                discountAmount,
+                channelCode,
             });
             return c.json(
-                { code, message: msgs.OperationFailedMsg },
+                { code, message: errMsg || msgs.OperationFailedMsg },
                 502,
             );
         }
