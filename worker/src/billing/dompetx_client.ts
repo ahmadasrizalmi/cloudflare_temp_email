@@ -301,19 +301,23 @@ export class DompetxClientImpl implements DompetxClient {
 
         const raw = await response.json() as any;
         console.log('[dompetx] createInvoice raw response', JSON.stringify(raw));
-        // DompetX wraps all responses in { data: { ... } } — unwrap first
+        
+        // Try to find the data object (DompetX often wraps in { data: ... })
         const data = raw.data || raw;
-        // Map DompetX checkout response to our internal shape
-        // Docs response: { id, status, amount, currency, payment_link, createdAt, expiresAt }
+        
+        // Aggressively try to find the checkout link in both raw and nested data
+        const checkoutUrl = raw.payment_link || raw.paymentUrl || raw.checkoutUrl || 
+                            data.payment_link || data.paymentUrl || data.checkoutUrl || null;
+
         return {
-            invoice_id: data.id || dompayBody.reference as string,
-            checkout_url: data.payment_link || data.paymentUrl || data.checkoutUrl || null,
-            provider_reference: data.id || null,
-            amount: data.amount || req.amount,
+            invoice_id: data.id || raw.id || dompayBody.reference as string,
+            checkout_url: checkoutUrl,
+            provider_reference: data.id || raw.id || null,
+            amount: data.amount || raw.amount || req.amount,
             fee: 0,
-            gross_amount: data.amount || req.amount,
-            status: data.status || 'pending',
-            expiry_minutes: 1440, // checkout expires in 24h per docs
+            gross_amount: data.amount || raw.amount || req.amount,
+            status: data.status || raw.status || 'pending',
+            expiry_minutes: 1440,
         };
     }
 

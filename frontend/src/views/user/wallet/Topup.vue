@@ -182,7 +182,8 @@ const payNow = async () => {
       return
     }
     if (!res?.checkout_url) {
-      message.error('Gagal mendapatkan link pembayaran. Silakan coba lagi.')
+      const responseStr = JSON.stringify(res, null, 2)
+      message.error(`Gagal mendapatkan link pembayaran: ${responseStr}`)
       console.error('No checkout_url in response:', res)
       loading.value = false
       return
