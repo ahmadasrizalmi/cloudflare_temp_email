@@ -562,6 +562,28 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         const webhookUrl = buildWebhookUrl(c);
         const returnUrl = c.req.header('x-topup-return-url') ?? undefined;
 
+        if (grossAmount <= 0) {
+            try {
+                const wallet = createWalletService(c.env.DB);
+                const pricing = resolvePricingEngine(c, deps);
+                const [rate, threshold, bonus] = await Promise.all([
+                    pricing.getNumber('credit_idr_rate'),
+                    pricing.getNumber('bonus_threshold_idr'),
+                    pricing.getNumber('bonus_rate_percent'),
+                ]);
+                await wallet.creditTopup({
+                    userId: user_id, amountIdr: nominal,
+                    creditIdrRate: rate, bonusThresholdIdr: threshold, bonusRatePercent: bonus,
+                    invoiceId: localInvoiceId,
+                });
+                await c.env.DB.prepare(`UPDATE topup_transactions SET status = 'paid', paid_at = datetime('now'), updated_at = datetime('now') WHERE id = ?`).bind(pendingRowId).run();
+                return c.json({ is_free: true, amount: nominal });
+            } catch (err) {
+                console.error('[billing] free topup failed', err);
+                return c.text(msgs.OperationFailedMsg, 500);
+            }
+        }
+
         let invoice: Awaited<ReturnType<DompetxClient['createInvoice']>>;
         try {
             console.log('[billing] createInvoice payload', { nominal, grossAmount, discountAmount, channelCode, user_id });
