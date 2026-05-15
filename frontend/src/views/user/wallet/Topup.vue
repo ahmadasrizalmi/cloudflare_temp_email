@@ -31,43 +31,63 @@ const isValidVoucher = ref(false)
 const activeTab = ref('')
 
 const groupedChannels = computed(() => {
-  const groups = {}
-  for (const ch of channels.value) {
-    const g = ch.group || 'Lainnya'
-    if (!groups[g]) groups[g] = []
-    groups[g].push(ch)
+  const groups = {
+    'QRIS': [],
+    'VA Bank': [],
+    'E-Wallet': [],
+    'Minimarket': []
   }
+  
+  for (const ch of channels.value) {
+    const c = ch.channel_code.toUpperCase()
+    const g = ch.group ? ch.group.toUpperCase() : ''
+    
+    if (c.includes('QRIS') || g.includes('QRIS')) {
+      groups['QRIS'].push(ch)
+    } else if (c.includes('VA') || g.includes('VIRTUAL ACCOUNT') || g.includes('BANK')) {
+      groups['VA Bank'].push(ch)
+    } else if (c.includes('ALFAMART') || c.includes('INDOMARET') || g.includes('RETAIL')) {
+      groups['Minimarket'].push(ch)
+    } else {
+      groups['E-Wallet'].push(ch)
+    }
+  }
+  
+  // Remove empty groups
+  Object.keys(groups).forEach(k => {
+    if (groups[k].length === 0) delete groups[k]
+  })
+  
   return groups
 })
 
 const getGroupIcon = (groupName) => {
   const gn = groupName.toLowerCase()
-  if (gn.includes('virtual account')) return AccountBalanceRound
+  if (gn.includes('va bank')) return AccountBalanceRound
   if (gn.includes('qris')) return QrCodeRound
-  if (gn.includes('retail')) return StorefrontRound
+  if (gn.includes('minimarket')) return StorefrontRound
   return AccountBalanceWalletRound
 }
 
 const getChannelLogo = (code) => {
   const c = code.toUpperCase()
-  // Bank VA
-  if (c.includes('BCA')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/bca.svg'
-  if (c.includes('BNI')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/bni.svg'
-  if (c.includes('BRI')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/bri.svg'
-  if (c.includes('MANDIRI')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/mandiri.svg'
-  if (c.includes('PERMATA')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/permata.svg'
-  if (c.includes('CIMB')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/cimb.svg'
-  if (c.includes('BSI')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/bsi.svg' // might fallback
+  if (c.includes('BCA')) return 'https://tripay.co.id/images/payment-channel/BCAVA.png'
+  if (c.includes('BNI')) return 'https://tripay.co.id/images/payment-channel/BNIVA.png'
+  if (c.includes('BRI')) return 'https://tripay.co.id/images/payment-channel/BRIVA.png'
+  if (c.includes('MANDIRI')) return 'https://tripay.co.id/images/payment-channel/MANDIRIVA.png'
+  if (c.includes('PERMATA')) return 'https://tripay.co.id/images/payment-channel/PERMATAVA.png'
+  if (c.includes('CIMB')) return 'https://tripay.co.id/images/payment-channel/CIMBVA.png'
+  if (c.includes('BSI')) return 'https://tripay.co.id/images/payment-channel/BSIVA.png'
+  if (c.includes('DANAMON')) return 'https://tripay.co.id/images/payment-channel/DANAMONVA.png'
+  if (c.includes('BNC')) return 'https://tripay.co.id/images/payment-channel/BNCVA.png'
   
-  // E-Wallet & Others (using standard CDN links for ID brands)
-  if (c.includes('OVO')) return 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg'
-  if (c.includes('DANA')) return 'https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg'
-  if (c.includes('SHOPEEPAY')) return 'https://upload.wikimedia.org/wikipedia/commons/f/fe/ShopeePay_Logo.svg'
-  if (c.includes('LINKAJA')) return 'https://upload.wikimedia.org/wikipedia/commons/8/85/LinkAja.svg'
-  if (c.includes('GOPAY')) return 'https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg'
-  if (c.includes('QRIS')) return 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg'
-  if (c.includes('ALFAMART')) return 'https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png'
-  if (c.includes('INDOMARET')) return 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Logo_Indomaret.png'
+  if (c.includes('OVO')) return 'https://tripay.co.id/images/payment-channel/OVO.png'
+  if (c.includes('DANA')) return 'https://tripay.co.id/images/payment-channel/DANA.png'
+  if (c.includes('SHOPEEPAY')) return 'https://tripay.co.id/images/payment-channel/SHOPEEPAY.png'
+  if (c.includes('LINKAJA')) return 'https://tripay.co.id/images/payment-channel/LINKAJA.png'
+  if (c.includes('QRIS')) return 'https://tripay.co.id/images/payment-channel/QRIS.png'
+  if (c.includes('ALFAMART')) return 'https://tripay.co.id/images/payment-channel/ALFAMART.png'
+  if (c.includes('INDOMARET')) return 'https://tripay.co.id/images/payment-channel/INDOMARET.png'
   
   return null
 }
@@ -81,10 +101,11 @@ const loadQuote = async () => {
       const qrisChannel = channels.value.find(ch => ch.channel_code === 'QRIS' || ch.name.toUpperCase().includes('QRIS') || (ch.group && ch.group.toUpperCase() === 'QRIS'));
       if (qrisChannel) {
         selected.value = qrisChannel.channel_code;
-        activeTab.value = qrisChannel.group || 'Lainnya';
+        selected.value = qrisChannel.channel_code;
+        activeTab.value = 'QRIS';
       } else {
         selected.value = channels.value[0].channel_code;
-        activeTab.value = channels.value[0].group || 'Lainnya';
+        activeTab.value = Object.keys(groupedChannels.value)[0] || 'Lainnya';
       }
     }
   } catch (err) {
@@ -217,55 +238,69 @@ watch(nominal, loadQuote)
         </template>
         
         <n-spin :show="quoteLoading">
-          <n-tabs v-model:value="activeTab" type="line" animated justify-content="space-evenly" style="margin-bottom: 16px;" v-if="channels.length > 0">
-            <n-tab-pane v-for="(groupChannels, groupName) in groupedChannels" :key="groupName" :name="groupName">
-              <template #tab>
-                <n-space align="center" :size="4" :wrap="false">
-                  <n-icon :component="getGroupIcon(groupName)" />
-                  <span style="font-weight: 600;">{{ groupName }}</span>
-                </n-space>
-              </template>
+          <div v-if="channels.length > 0">
+            <!-- Custom Tabs -->
+            <div class="custom-tabs-container">
+              <div 
+                v-for="(groupChannels, groupName) in groupedChannels" 
+                :key="groupName"
+                class="custom-tab"
+                :class="{ 'active': activeTab === groupName }"
+                @click="activeTab = groupName"
+              >
+                <n-icon :component="getGroupIcon(groupName)" size="28" class="custom-tab-icon" />
+                <span class="custom-tab-name">{{ groupName }}</span>
+              </div>
+            </div>
 
-              <n-radio-group v-model:value="selected" class="channel-group" style="width: 100%;">
-                <n-grid :cols="2" :x-gap="12" :y-gap="12" responsive="screen" item-responsive>
-                  <n-grid-item span="2 s:1 m:1" v-for="ch in groupChannels" :key="ch.channel_code">
-                    <n-card 
-                      hoverable 
-                      class="channel-tile"
-                      :class="{ 'selected': selected === ch.channel_code }"
-                      @click="selected = ch.channel_code"
-                      content-style="padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; position: relative;"
-                    >
-                      <div class="channel-logo" :class="{ 'has-image': getChannelLogo(ch.channel_code) }">
-                        <img v-if="getChannelLogo(ch.channel_code)" :src="getChannelLogo(ch.channel_code)" :alt="ch.name" class="channel-logo-img" />
-                        <span v-else>{{ ch.name.substring(0, 2).toUpperCase() }}</span>
-                      </div>
+            <!-- Tab Info Alert -->
+            <div class="custom-tab-alert" v-if="activeTab">
+              <span v-if="activeTab === 'QRIS'">⚡ QRIS — Metode paling cepat. Scan dari aplikasi banking / e-wallet manapun.</span>
+              <span v-else-if="activeTab === 'VA Bank'">🏦 VA Bank — Transfer ke Virtual Account bank pilihan Anda via ATM / m-Banking.</span>
+              <span v-else-if="activeTab === 'E-Wallet'">💳 E-Wallet — Bayar instan menggunakan dompet digital Anda.</span>
+              <span v-else-if="activeTab === 'Minimarket'">🏪 Minimarket — Bayar tunai di kasir minimarket terdekat.</span>
+              <span v-else>💳 {{ activeTab }} — Pembayaran instan dan mudah.</span>
+            </div>
+
+            <!-- Vertical Channel List -->
+            <n-radio-group v-model:value="selected" style="width: 100%;">
+              <div class="channel-list">
+                <div 
+                  v-for="ch in groupedChannels[activeTab]" 
+                  :key="ch.channel_code"
+                  class="channel-row"
+                  :class="{ 'selected': selected === ch.channel_code }"
+                  @click="selected = ch.channel_code"
+                >
+                  <div class="channel-logo-container" :class="{ 'has-image': getChannelLogo(ch.channel_code) }">
+                    <img v-if="getChannelLogo(ch.channel_code)" :src="getChannelLogo(ch.channel_code)" :alt="ch.name" class="channel-logo-img" @error="(e) => { e.target.style.display = 'none'; e.target.nextElementSibling.style.display = 'flex'; }" />
+                    <span class="channel-logo-fallback" :style="{ display: getChannelLogo(ch.channel_code) ? 'none' : 'flex' }">{{ ch.name.substring(0, 2).toUpperCase() }}</span>
+                  </div>
+                  
+                  <div class="channel-info-col">
+                    <div class="channel-title">{{ ch.name.replace('VIRTUAL ACCOUNT ', '').replace('Virtual Account ', '') }}</div>
+                    <div class="channel-subtitle">
+                      <span v-if="activeTab === 'VA Bank'">Transfer via ATM / m-Banking {{ ch.name.replace('VIRTUAL ACCOUNT ', '') }}</span>
+                      <span v-else-if="activeTab === 'E-Wallet'">Bayar instan via aplikasi {{ ch.name }}</span>
+                      <span v-else-if="activeTab === 'QRIS'">Scan QR code via aplikasi apapun</span>
+                      <span v-else>Bayar tunai di kasir {{ ch.name }}</span>
                       
-                      <div class="channel-name-compact" style="font-weight: 600; font-size: 14px; margin-top: 12px; line-height: 1.2;">
-                        {{ ch.name }}
-                      </div>
+                      <span v-if="ch.estimated_fee > 0" class="fee-text"> • +Rp {{ ch.estimated_fee.toLocaleString('id-ID') }}</span>
+                      <span v-else class="fee-free"> • Gratis Fee</span>
+                    </div>
+                  </div>
 
-                      <div v-if="ch.estimated_fee > 0" style="font-size: 12px; color: #999; margin-top: 6px;">
-                        + Fee Rp {{ ch.estimated_fee.toLocaleString('id-ID') }}
-                      </div>
-                      <div v-else style="font-size: 12px; color: #18a058; margin-top: 6px; font-weight: 600;">
-                        Gratis Fee
-                      </div>
-
-                      <div class="channel-gross-compact" style="font-weight: 700; color: #18a058; margin-top: 12px; font-size: 16px;">
-                        <span v-if="discountAmount > 0" style="text-decoration: line-through; font-size: 11px; color: #999; display: block;">
-                          Rp {{ ch.gross_amount.toLocaleString('id-ID') }}
-                        </span>
-                        Rp {{ Math.max(0, ch.gross_amount - discountAmount).toLocaleString('id-ID') }}
-                      </div>
-
-                      <n-radio :value="ch.channel_code" style="display: none;" />
-                    </n-card>
-                  </n-grid-item>
-                </n-grid>
-              </n-radio-group>
-            </n-tab-pane>
-          </n-tabs>
+                  <div class="channel-radio">
+                    <n-icon size="24" :component="CheckCircleRound" v-if="selected === ch.channel_code" />
+                    <div v-else class="channel-radio-empty"></div>
+                  </div>
+                  
+                  <!-- Hidden radio for form semantics -->
+                  <n-radio :value="ch.channel_code" style="display: none;" />
+                </div>
+              </div>
+            </n-radio-group>
+          </div>
         </n-spin>
 
         <n-alert v-if="channels.length === 0 && !quoteLoading" type="info" :show-icon="false">
@@ -343,61 +378,161 @@ watch(nominal, loadQuote)
   border-radius: 12px;
 }
 
-.channel-group {
-  width: 100%;
+.custom-tabs-container {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
 }
-
-.channel-tile {
+.custom-tabs-container::-webkit-scrollbar {
+  display: none;
+}
+.custom-tab {
+  flex: 1;
+  min-width: 90px;
+  border-radius: 12px;
+  background-color: var(--n-color-embedded);
+  border: 1px solid var(--n-border-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 8px;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  border-radius: 12px;
-  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  color: var(--n-text-color);
 }
-
-.channel-tile.selected {
-  border-color: #18a058;
+.custom-tab.active {
+  background-color: var(--n-primary-color);
+  color: #fff;
+  border-color: var(--n-primary-color);
+  box-shadow: 0 4px 12px rgba(24, 160, 88, 0.3);
+}
+.custom-tab-icon {
+  margin-bottom: 8px;
+}
+.custom-tab-name {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+.custom-tab-alert {
   background-color: rgba(24, 160, 88, 0.05);
-  box-shadow: 0 4px 12px rgba(24, 160, 88, 0.15);
-  transform: translateY(-2px);
-}
-
-.channel-tile:hover:not(.selected) {
-  border-color: rgba(24, 160, 88, 0.3);
-  transform: translateY(-2px);
-}
-
-.channel-logo {
-  width: 48px;
-  height: 48px;
+  border: 1px solid rgba(24, 160, 88, 0.2);
   border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--n-text-color);
+}
+
+.channel-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.channel-row {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--n-border-color);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--n-color);
+}
+.channel-row:hover:not(.selected) {
+  border-color: rgba(24, 160, 88, 0.4);
+}
+.channel-row.selected {
+  border-color: var(--n-primary-color);
+  background-color: rgba(24, 160, 88, 0.05);
+  box-shadow: 0 2px 8px rgba(24, 160, 88, 0.1);
+}
+
+.channel-logo-container {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
   background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
   color: #334e68;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 18px;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.05);
-  letter-spacing: 1px;
+  margin-right: 16px;
+  flex-shrink: 0;
   overflow: hidden;
+  border: 1px solid #eaeaea;
 }
-
-.channel-logo.has-image {
+.channel-logo-container.has-image {
   background: #ffffff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
   padding: 4px;
 }
-
+.dark-theme .channel-logo-container {
+  background: linear-gradient(135deg, #2d3748, #1a202c);
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+.dark-theme .channel-logo-container.has-image {
+  background: #ffffff;
+}
 .channel-logo-img {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 90%;
+  max-height: 90%;
   object-fit: contain;
 }
+.channel-logo-fallback {
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
 
-.dark-theme .channel-logo {
-  background: linear-gradient(135deg, #2d3748, #1a202c);
-  color: #e2e8f0;
-  box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), 0 2px 4px rgba(0,0,0,0.2);
+.channel-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.channel-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.channel-subtitle {
+  font-size: 12px;
+  color: #777;
+}
+.dark-theme .channel-subtitle {
+  color: #aaa;
+}
+.fee-free {
+  color: var(--n-primary-color);
+  font-weight: 600;
+}
+.fee-text {
+  color: #f2a900;
+  font-weight: 500;
+}
+
+.channel-radio {
+  margin-left: 12px;
+  color: var(--n-primary-color);
+  display: flex;
+  align-items: center;
+}
+.channel-radio-empty {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid var(--n-border-color);
+  transition: all 0.2s;
+}
+.channel-row:hover:not(.selected) .channel-radio-empty {
+  border-color: rgba(24, 160, 88, 0.4);
 }
 
 .pay-action {
