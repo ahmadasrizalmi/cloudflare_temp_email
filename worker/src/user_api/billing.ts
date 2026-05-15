@@ -301,7 +301,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         ).bind(user_id, localInvoiceId, channelCode || 'VOUCHER', nominal, voucherCode, discountAmount, selected?.estimated_fee ?? 0, grossAmount, selected?.fee_bearer ?? 'customer', fingerprintHash, ip, expiryMinutes).first<any>();
 
         // HANDLE FREE TOPUP
-        if (grossAmount <= 0) {
+        if (isFree || grossAmount <= 0) {
             try {
                 const wallet = resolveWalletService(c, deps);
                 const [rate, threshold, bonus] = await Promise.all([pricing.getNumber('credit_idr_rate'), pricing.getNumber('bonus_threshold_idr'), pricing.getNumber('bonus_rate_percent')]);
@@ -314,6 +314,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
                 return c.text(msgs.OperationFailedMsg, 500);
             }
         }
+
 
         // Call DompetX
         try {
