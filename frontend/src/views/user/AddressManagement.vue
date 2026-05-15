@@ -12,10 +12,10 @@ import Login from '../common/Login.vue';
 import InsufficientCreditModal from '../../components/InsufficientCreditModal.vue';
 import { getFreeQuota } from '../../api/billing';
 
-const { jwt, openSettings } = useGlobalState()
+const { jwt, openSettings, showInsufficientCreditModal, freeQuota } = useGlobalState()
 const showCreditModal = ref(false)
-const freeQuota.used = ref(0)
-const freeQuota.limit = ref(1)
+
+
 const message = useMessage()
 const router = useRouter()
 
