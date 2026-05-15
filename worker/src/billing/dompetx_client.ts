@@ -299,10 +299,12 @@ export class DompetxClientImpl implements DompetxClient {
             rawBody,
         );
 
-        const data = await response.json() as any;
-        console.log('[dompetx] createInvoice raw response', JSON.stringify(data));
+        const raw = await response.json() as any;
+        console.log('[dompetx] createInvoice raw response', JSON.stringify(raw));
+        // DompetX wraps all responses in { data: { ... } } — unwrap first
+        const data = raw.data || raw;
         // Map DompetX checkout response to our internal shape
-        // Docs: { id, status, amount, currency, payment_link, createdAt, expiresAt }
+        // Docs response: { id, status, amount, currency, payment_link, createdAt, expiresAt }
         return {
             invoice_id: data.id || dompayBody.reference as string,
             checkout_url: data.payment_link || data.paymentUrl || data.checkoutUrl || null,
