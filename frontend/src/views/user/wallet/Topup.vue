@@ -20,6 +20,7 @@ const channels = ref([])
 const selected = ref('')
 const loading = ref(false)
 const quoteLoading = ref(false)
+const voucherCode = ref('')
 
 const loadQuote = async () => {
   if (!nominal.value || nominal.value < 10000) return
@@ -40,7 +41,13 @@ const loadQuote = async () => {
 const payNow = async () => {
   try {
     loading.value = true
-    const res = await createTopup(Number(nominal.value), selected.value)
+    const res = await createTopup(Number(nominal.value), selected.value, voucherCode.value)
+    if (res?.is_free) {
+        message.success("Voucher berhasil digunakan! Saldo bertambah.")
+        await refreshWallet()
+        loading.value = false
+        return
+    }
     if (res?.checkout_url) window.open(res.checkout_url, '_blank', 'noopener,noreferrer')
     
     // Polling for status update
@@ -138,7 +145,7 @@ watch(nominal, loadQuote)
                     <n-radio :value="ch.channel_code" />
                     <div class="channel-info">
                       <div class="channel-name">{{ ch.name }}</div>
-                      <div class="channel-fee">
+                      <div class="channel-fee" v-if="ch.estimated_fee > 0">
                         <n-text depth="3">{{ t('fee') }}: </n-text>
                         <n-text type="warning">Rp {{ ch.estimated_fee.toLocaleString('id-ID') }}</n-text>
                       </div>
@@ -157,6 +164,12 @@ watch(nominal, loadQuote)
           <template #icon><n-icon :component="InfoOutlined" /></template>
           {{ t('noChannels') }}
         </n-alert>
+
+        <div class="voucher-section" style="margin-top: 24px;">
+          <n-form-item label="Kode Voucher (Opsional)">
+            <n-input v-model:value="voucherCode" placeholder="Masukkan kode voucher untuk diskon / gratis" clearable />
+          </n-form-item>
+        </div>
 
         <div class="pay-action">
           <n-button 

@@ -299,12 +299,12 @@ export class DompetxClientImpl implements DompetxClient {
         const data = await response.json() as any;
         // Map back to our internal response shape
         return {
-            invoice_id: dompayBody.reference,
-            checkout_url: data.data?.checkoutUrl || data.data?.paymentUrl,
-            provider_reference: data.data?.id || null,
-            amount: dompayBody.amount,
-            fee: 0, // Fee resolution happens in pricing engine
-            gross_amount: dompayBody.amount,
+            invoice_id: data.reference || dompayBody.reference || null,
+            checkout_url: data.paymentUrl || data.checkoutUrl || null,
+            provider_reference: data.id || null,
+            amount: data.amount || dompayBody.amount,
+            fee: (data.fee || 0) + (data.additionalFee || 0),
+            gross_amount: data.totalAmount || (dompayBody.amount + (data.fee || 0) + (data.additionalFee || 0)),
             status: 'pending',
             expiry_minutes: 30
         };

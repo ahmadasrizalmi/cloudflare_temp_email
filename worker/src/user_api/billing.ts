@@ -1,4 +1,4 @@
-﻿/**
+/**
  * User-facing Billing_API — wallet, ledger, top-up, domain preview.
  *
  * Feature: saas-topup-billing
@@ -340,7 +340,7 @@ function registerTopupQuoteRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps
 function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps) {
     /**
      * POST /user_api/topup/create { nominal, channel_code }
-     * → { invoice_id, checkout_url, expires_at, amount, fee, gross_amount }
+     * → { invoice_id, checkout_url, expires_at, amount, voucher_code, discount_amount, fee, gross_amount }
      *
      * Flow (Requirements 4.6, 4.7, 4.8, 4.9, 10.1, 10.5):
      *   1. requireFingerprint + checkTopupCreate (5/10min + IP new-user guard,
@@ -380,6 +380,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
 
         const nominal = Number(body.nominal);
         const channelCode = typeof body.channel_code === 'string' ? body.channel_code : '';
+        const voucherCode = typeof (body as any).voucher_code === 'string' ? (body as any).voucher_code.trim() : '';
 
         if (!Number.isFinite(nominal) || !Number.isInteger(nominal) || nominal <= 0) {
             return c.json({ code: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
@@ -415,6 +416,67 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         const expiryMinutes = getExpiryMinutes(c.env);
         const ip = getClientIp(c);
 
+        let discountAmount = 0;
+        let isFree = false;
+        let voucherId = null;
+
+        if (voucherCode) {
+            const voucher = await c.env.DB.prepare(
+                `SELECT id, type, value, max_uses, uses, expires_at FROM vouchers WHERE code = ? AND is_active = 1`
+            ).bind(voucherCode).first<{id: number, type: string, value: number, max_uses: number, uses: number, expires_at: string|null}>();
+
+            if (!voucher) {
+                return c.json({ code: 'invalid_voucher', message: 'Voucher tidak valid atau sudah tidak aktif.' }, 400);
+            }
+            if (voucher.uses >= voucher.max_uses) {
+                return c.json({ code: 'voucher_limit_reached', message: 'Voucher sudah mencapai batas penggunaan.' }, 400);
+            }
+            if (voucher.expires_at && new Date(voucher.expires_at) < new Date()) {
+                return c.json({ code: 'voucher_expired', message: 'Voucher sudah kedaluwarsa.' }, 400);
+            }
+
+            if (voucher.type === 'free_credit') {
+                isFree = true;
+                discountAmount = nominal;
+                voucherId = voucher.id;
+            } else if (voucher.type === 'discount_nominal') {
+                discountAmount = voucher.value;
+                voucherId = voucher.id;
+            } else if (voucher.type === 'discount_percent') {
+                discountAmount = Math.floor(nominal * (voucher.value / 100));
+                voucherId = voucher.id;
+            }
+            
+            if (discountAmount > grossAmount) {
+                discountAmount = grossAmount;
+            }
+            // grossAmount = grossAmount - discountAmount;
+            // if (grossAmount <= 0) isFree = true;
+        }
+
+        if (isFree) {
+            const walletService = resolveWalletService(c, deps);
+            await c.env.DB.prepare(`UPDATE vouchers SET uses = uses + 1 WHERE id = ?`).bind(voucherId).run();
+            const pricingRules = await resolvePricingEngine(c, deps).getAll();
+            const { creditIdrRate } = resolvePricingConfig(c.env, pricingRules);
+            const creditDelta = Math.floor(nominal / creditIdrRate);
+            
+            await walletService.creditVoucher({
+                userId: user_id,
+                creditDelta,
+                voucherCode
+            });
+            
+            return c.json({
+                invoice_id: `voucher-${voucherCode}-${Date.now()}`,
+                amount: nominal,
+                fee: 0,
+                gross_amount: 0,
+                status: 'paid',
+                is_free: true
+            });
+        }
+
         // ── Step 1: INSERT pending row with a local placeholder invoice_id ──
         // Using a `local-` prefix so the placeholder cannot collide with any
         // real DompetX invoice id (which never carries this prefix) and the
@@ -425,24 +487,26 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         try {
             const insertResult = await c.env.DB.prepare(
                 `INSERT INTO topup_transactions
-                   (user_id, invoice_id, channel_code, amount, fee, gross_amount,
+                   (user_id, invoice_id, channel_code, amount, voucher_code, discount_amount, fee, gross_amount,
                     fee_bearer, status, fingerprint_hash, ip, expiry_minutes,
                     created_at, updated_at)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?, ?,
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?, ?,
                          datetime('now'), datetime('now'))
                  RETURNING id`,
             )
                 .bind(
-                    user_id,
-                    localInvoiceId,
-                    channelCode,
-                    nominal,
-                    fee,
-                    grossAmount,
-                    feeBearer,
-                    fingerprintHash,
-                    ip,
-                    expiryMinutes,
+                    user_id ?? null,
+                    localInvoiceId ?? null,
+                    channelCode ?? null,
+                    nominal ?? null,
+                    voucherCode || null,
+                    discountAmount ?? 0,
+                    fee ?? null,
+                    grossAmount ?? null,
+                    feeBearer ?? null,
+                    fingerprintHash ?? null,
+                    ip ?? null,
+                    expiryMinutes ?? null,
                 )
                 .first<{ id: number }>();
 
@@ -527,13 +591,13 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
                  WHERE id = ?`,
             )
                 .bind(
-                    invoice.invoice_id,
+                    invoice.invoice_id ?? null,
                     invoice.provider_reference ?? null,
-                    invoice.checkout_url,
-                    finalFee,
-                    finalGross,
-                    finalExpiryMinutes,
-                    pendingRowId,
+                    invoice.checkout_url ?? null,
+                    finalFee ?? 0,
+                    finalGross ?? 0,
+                    finalExpiryMinutes ?? 30,
+                    pendingRowId ?? null,
                 )
                 .run();
         } catch (err) {
@@ -635,7 +699,7 @@ function registerTopupHistoryRoute(app: Hono<HonoCustomType>, deps: BillingApiDe
 
         const query = `
             SELECT id, user_id, invoice_id, provider_reference, channel_code,
-                   amount, fee, gross_amount, fee_bearer, status, checkout_url,
+                   amount, voucher_code, discount_amount, fee, gross_amount, fee_bearer, status, checkout_url,
                    expiry_minutes, fingerprint_hash, ip, raw_payload,
                    created_at, paid_at, updated_at
               FROM topup_transactions

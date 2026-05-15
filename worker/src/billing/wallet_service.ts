@@ -87,6 +87,16 @@ export interface WalletService {
         creditDelta: number;
         reason: string;
     }): Promise<{ ledgerId: number; newBalance: number }>;
+
+    /**
+     * Credit for a redeemed voucher.
+     * Idempotent by voucherCode.
+     */
+    creditVoucher(args: {
+        userId: number;
+        creditDelta: number;
+        voucherCode: string;
+    }): Promise<{ ledgerId: number; newBalance: number }>;
 }
 
 // ─── Cursor helpers ───────────────────────────────────────────────────────────
@@ -655,6 +665,59 @@ export class WalletServiceImpl implements WalletService {
         const newBalance = balanceFromUpdate ?? (await this.readBalance(args.userId));
 
         return { ledgerId, newBalance };
+    }
+
+    async creditVoucher(args: {
+        userId: number;
+        creditDelta: number;
+        voucherCode: string;
+    }): Promise<{ ledgerId: number; newBalance: number }> {
+        const metadataJson = JSON.stringify({ voucher_code: args.voucherCode });
+        const idempotencyKey = `voucher:${args.voucherCode}`;
+
+        // Ensure wallet exists
+        const ensureStmt = this.db.prepare(
+            `INSERT OR IGNORE INTO wallets (user_id, balance_credit, balance_idr_ref, created_at, updated_at)
+             VALUES (?, 0, 0, datetime('now'), datetime('now'))`
+        ).bind(args.userId);
+
+        const updateStmt = this.db.prepare(
+            `UPDATE wallets
+               SET balance_credit = balance_credit + ?,
+                   updated_at     = datetime('now')
+             WHERE user_id = ?
+             RETURNING balance_credit`
+        ).bind(args.creditDelta, args.userId);
+
+        // We use type='BONUS' for voucher credits
+        const insertStmt = this.db.prepare(
+            `INSERT OR IGNORE INTO credit_ledger
+               (user_id, type, credit_delta, idempotency_key, metadata, created_at)
+             VALUES (?, 'BONUS', ?, ?, ?, datetime('now'))
+             RETURNING id`
+        ).bind(args.userId, args.creditDelta, idempotencyKey, metadataJson);
+
+        const results = await this.db.batch<Record<string, unknown>>([
+            ensureStmt,
+            insertStmt,
+            updateStmt,
+        ]);
+
+        const insertRow = results[1].results[0] as { id?: number } | undefined;
+        // If no ID returned, it means it hit the idempotency key conflict.
+        if (!insertRow || !insertRow.id) {
+            const existing = await this.db.prepare(
+                `SELECT id FROM credit_ledger WHERE idempotency_key = ?`
+            ).bind(idempotencyKey).first<{ id: number }>();
+            const newBalance = await this.readBalance(args.userId);
+            return { ledgerId: existing?.id ?? 0, newBalance };
+        }
+
+        const updateRow = results[2].results[0] as { balance_credit: number };
+        return {
+            ledgerId: insertRow.id,
+            newBalance: updateRow.balance_credit,
+        };
     }
 
     // ── private helpers ───────────────────────────────────────────────────────

@@ -11,7 +11,10 @@ import {
   getAdminKPIs, 
   getAdminDomains, 
   addAdminDomain, 
-  deleteAdminDomain 
+  deleteAdminDomain,
+  getAdminVouchers,
+  createAdminVoucher,
+  deleteAdminVoucher
 } from '../../api/billing'
 
 const { loading } = useGlobalState()
@@ -113,6 +116,38 @@ const handleRefreshChannels = async () => {
   }
 }
 
+// Vouchers
+const vouchers = ref([])
+const showAddVoucher = ref(false)
+const newVoucher = ref({ code: '', type: 'discount_nominal', value: 0, max_uses: 1 })
+const fetchVouchers = async () => {
+  try {
+    vouchers.value = await getAdminVouchers()
+  } catch (err) {
+    message.error('Failed to fetch vouchers: ' + err.message)
+  }
+}
+const submitVoucher = async () => {
+  try {
+    await createAdminVoucher(newVoucher.value)
+    message.success('Voucher added')
+    showAddVoucher.value = false
+    newVoucher.value = { code: '', type: 'discount_nominal', value: 0, max_uses: 1 }
+    await fetchVouchers()
+  } catch (err) {
+    message.error('Failed to add voucher: ' + err.message)
+  }
+}
+const removeVoucher = async (id) => {
+  try {
+    await deleteAdminVoucher(id)
+    message.success('Voucher removed')
+    await fetchVouchers()
+  } catch (err) {
+    message.error('Failed to remove voucher: ' + err.message)
+  }
+}
+
 // Columns
 const ruleColumns = [
   { title: 'Key', key: 'rule_key' },
@@ -169,11 +204,34 @@ const domainColumns = [
   }
 ]
 
+const voucherColumns = [
+  { title: 'ID', key: 'id' },
+  { title: 'Code', key: 'code' },
+  { title: 'Type', key: 'type' },
+  { title: 'Value', key: 'value' },
+  { title: 'Uses / Max', key: 'uses_max', render(row) { return `${row.uses} / ${row.max_uses}` } },
+  {
+    title: 'Active',
+    key: 'is_active',
+    render(row) {
+      return h(NTag, { type: row.is_active ? 'success' : 'default' }, { default: () => row.is_active ? 'Yes' : 'No' })
+    }
+  },
+  {
+    title: 'Actions',
+    key: 'actions',
+    render(row) {
+      return h(NButton, { size: 'small', type: 'error', onClick: () => removeVoucher(row.id) }, { default: () => 'Delete' })
+    }
+  }
+]
+
 onMounted(() => {
   fetchKPIs()
   fetchPricingRules()
   fetchTransactions()
   fetchDomains()
+  fetchVouchers()
 })
 </script>
 
@@ -247,6 +305,36 @@ onMounted(() => {
           </n-input-group>
           <n-data-table :columns="domainColumns" :data="domains" />
         </n-space>
+      </n-tab-pane>
+      <n-tab-pane name="vouchers" tab="Vouchers">
+        <n-space vertical>
+          <n-button type="primary" @click="showAddVoucher = true">Create Voucher</n-button>
+          <n-data-table :columns="voucherColumns" :data="vouchers" />
+        </n-space>
+        
+        <n-modal v-model:show="showAddVoucher" preset="dialog" title="Create Voucher">
+          <n-form>
+            <n-form-item label="Voucher Code">
+              <n-input v-model:value="newVoucher.code" placeholder="e.g. DISKON50" />
+            </n-form-item>
+            <n-form-item label="Type">
+              <n-select v-model:value="newVoucher.type" :options="[
+                { label: 'Nominal Discount (IDR)', value: 'discount_nominal' },
+                { label: 'Percentage Discount (%)', value: 'discount_percent' },
+                { label: 'Free Credit / 100%', value: 'free_credit' }
+              ]" />
+            </n-form-item>
+            <n-form-item label="Value (Discount Amount or Percentage)">
+              <n-input-number v-model:value="newVoucher.value" :min="0" />
+            </n-form-item>
+            <n-form-item label="Max Uses">
+              <n-input-number v-model:value="newVoucher.max_uses" :min="1" />
+            </n-form-item>
+          </n-form>
+          <template #action>
+            <n-button type="primary" @click="submitVoucher">Save</n-button>
+          </template>
+        </n-modal>
       </n-tab-pane>
     </n-tabs>
   </div>

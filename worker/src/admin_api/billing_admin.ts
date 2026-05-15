@@ -565,4 +565,47 @@ api.delete('/admin/billing/domains/:domain', async (c) => {
     return c.json({ success: (res.meta?.changes ?? 0) > 0 });
 });
 
+
+// --- GET /admin/billing/vouchers ----------------------------------------------
+api.get('/admin/billing/vouchers', async (c) => {
+    const { results } = await c.env.DB.prepare(
+        SELECT * FROM vouchers ORDER BY id DESC
+    ).all<Record<string, unknown>>();
+    return c.json(results ?? []);
+});
+
+// --- POST /admin/billing/vouchers ---------------------------------------------
+api.post('/admin/billing/vouchers', async (c) => {
+    const msgs = i18n.getMessagesbyContext(c);
+    let body: { code?: string; type?: string; value?: number; max_uses?: number; expires_at?: string };
+    try {
+        body = await c.req.json();
+    } catch {
+        return c.json({ error: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
+    }
+    const code = (body.code || '').trim();
+    if (!code || !body.type || typeof body.value !== 'number') {
+        return c.json({ error: 'invalid_input', message: msgs.RequiredFieldMsg }, 400);
+    }
+
+    try {
+        await c.env.DB.prepare(
+            INSERT INTO vouchers (code, type, value, max_uses, expires_at)
+             VALUES (?, ?, ?, ?, ?)
+        )
+            .bind(code, body.type, body.value, body.max_uses ?? 1, body.expires_at || null)
+            .run();
+        return c.json({ success: true });
+    } catch (err) {
+        return c.json({ error: 'operation_failed', message: 'Failed to create voucher (code may already exist)' }, 400);
+    }
+});
+
+// --- DELETE /admin/billing/vouchers/:id ---------------------------------------
+api.delete('/admin/billing/vouchers/:id', async (c) => {
+    const id = Number(c.req.param('id'));
+    await c.env.DB.prepare(DELETE FROM vouchers WHERE id = ?).bind(id).run();
+    return c.json({ success: true });
+});
+
 export default api;

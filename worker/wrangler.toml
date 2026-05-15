@@ -30,6 +30,7 @@ BILLING_LAUNCH_AT = "2024-01-01"
 ADMIN_USER_ROLE = "admin"
 USER_DEFAULT_ROLE = "user"
 DOMPETX_BASE_URL = "https://api.dompetx.com/v1"
+DOMPETX_API_KEY = "dompk_f82e01cc83e0eb58b6c64bdf16ae9921db4e1f7b993c0efba4c686dc5b274865"
 DISABLE_ANONYMOUS_USER_CREATE_EMAIL = true
 
 [[d1_databases]]

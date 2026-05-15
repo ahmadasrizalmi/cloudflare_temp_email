@@ -1,4 +1,4 @@
-﻿import { api } from './index'
+import { api } from './index'
 
 export const getWallet = async () => api.fetch('/user_api/wallet')
 
@@ -17,10 +17,10 @@ export const quoteTopup = async (nominal) =>
     body: JSON.stringify({ nominal }),
   })
 
-export const createTopup = async (nominal, channel_code) =>
+export const createTopup = async (nominal, channel_code, voucher_code = '') =>
   api.fetch('/user_api/topup/create', {
     method: 'POST',
-    body: JSON.stringify({ nominal, channel_code }),
+    body: JSON.stringify({ nominal, channel_code, voucher_code }),
   })
 
 export const getTopupHistory = async ({ limit = 20, cursor = '', status = '' } = {}) => {
@@ -57,5 +57,12 @@ export const addAdminDomain = async (domain) => api.fetch('/admin/billing/domain
 })
 export const deleteAdminDomain = async (id) => api.fetch(`/admin/billing/domains/${id}`, { method: 'DELETE' })
 
+// Vouchers
+export const getAdminVouchers = async () => api.fetch('/admin/billing/vouchers')
+export const createAdminVoucher = async (data) => api.fetch('/admin/billing/vouchers', {
+  method: 'POST',
+  body: JSON.stringify(data)
+})
+export const deleteAdminVoucher = async (id) => api.fetch(`/admin/billing/vouchers/${id}`, { method: 'DELETE' })
 
 export const getFreeQuota = async () => api.fetch('/user_api/billing/free_quota')
