@@ -46,6 +46,30 @@ const getGroupIcon = (groupName) => {
   return AccountBalanceWalletRound
 }
 
+const getChannelLogo = (code) => {
+  const c = code.toUpperCase()
+  // Bank VA
+  if (c.includes('BCA')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/bca.svg'
+  if (c.includes('BNI')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/bni.svg'
+  if (c.includes('BRI')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/bri.svg'
+  if (c.includes('MANDIRI')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/mandiri.svg'
+  if (c.includes('PERMATA')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/permata.svg'
+  if (c.includes('CIMB')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/cimb.svg'
+  if (c.includes('BSI')) return 'https://d2f3dnsqg0ebia.cloudfront.net/v3/assets/images/bank-logos/bsi.svg' // might fallback
+  
+  // E-Wallet & Others (using standard CDN links for ID brands)
+  if (c.includes('OVO')) return 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg'
+  if (c.includes('DANA')) return 'https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg'
+  if (c.includes('SHOPEEPAY')) return 'https://upload.wikimedia.org/wikipedia/commons/f/fe/ShopeePay_Logo.svg'
+  if (c.includes('LINKAJA')) return 'https://upload.wikimedia.org/wikipedia/commons/8/85/LinkAja.svg'
+  if (c.includes('GOPAY')) return 'https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg'
+  if (c.includes('QRIS')) return 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg'
+  if (c.includes('ALFAMART')) return 'https://upload.wikimedia.org/wikipedia/commons/9/9e/ALFAMART_LOGO_BARU.png'
+  if (c.includes('INDOMARET')) return 'https://upload.wikimedia.org/wikipedia/commons/9/9d/Logo_Indomaret.png'
+  
+  return null
+}
+
 const loadQuote = async () => {
   if (!nominal.value || nominal.value < 10000) return
   try {
@@ -203,8 +227,9 @@ watch(nominal, loadQuote)
                       @click="selected = ch.channel_code"
                       content-style="padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; height: 100%; position: relative;"
                     >
-                      <div class="channel-logo">
-                        {{ ch.name.substring(0, 2).toUpperCase() }}
+                      <div class="channel-logo" :class="{ 'has-image': getChannelLogo(ch.channel_code) }">
+                        <img v-if="getChannelLogo(ch.channel_code)" :src="getChannelLogo(ch.channel_code)" :alt="ch.name" class="channel-logo-img" />
+                        <span v-else>{{ ch.name.substring(0, 2).toUpperCase() }}</span>
                       </div>
                       
                       <div class="channel-name-compact" style="font-weight: 600; font-size: 14px; margin-top: 12px; line-height: 1.2;">
@@ -345,6 +370,19 @@ watch(nominal, loadQuote)
   font-size: 18px;
   box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.05);
   letter-spacing: 1px;
+  overflow: hidden;
+}
+
+.channel-logo.has-image {
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 4px;
+}
+
+.channel-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .dark-theme .channel-logo {
