@@ -1,4 +1,4 @@
-﻿import { useGlobalState } from '../store'
+import { useGlobalState } from '../store'
 import { h } from 'vue'
 import axios from 'axios'
 
@@ -16,7 +16,7 @@ const {
 const instance = axios.create({
     baseURL: API_BASE,
     timeout: 30000,
-    validateStatus: (status) => status >= 200 && status <= 500
+    validateStatus: (status) => status >= 200 && status < 600
 });
 
 const apiFetch = async (path, options = {}) => {

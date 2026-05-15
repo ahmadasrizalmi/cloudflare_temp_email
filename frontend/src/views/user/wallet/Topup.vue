@@ -181,7 +181,14 @@ const payNow = async () => {
       loading.value = false
       return
     }
-    if (res?.checkout_url) window.open(res.checkout_url, '_blank', 'noopener,noreferrer')
+    if (!res?.checkout_url) {
+      message.error('Gagal mendapatkan link pembayaran. Silakan coba lagi.')
+      console.error('No checkout_url in response:', res)
+      loading.value = false
+      return
+    }
+    window.open(res.checkout_url, '_blank', 'noopener,noreferrer')
+    message.info('Halaman pembayaran dibuka di tab baru. Menunggu konfirmasi...')
 
     const start = Date.now()
     let success = false
