@@ -2,7 +2,7 @@
 import { computed, onMounted, ref, watch } from 'vue'
 import { useMessage } from 'naive-ui'
 import { useScopedI18n } from '@/i18n/app'
-import { createTopup, quoteTopup, getTopupHistory } from '../../../api/billing'
+import { createTopup, quoteTopup, getTopupHistory, checkVoucherApi } from '../../../api/billing'
 import { useGlobalState } from '../../../store'
 import { 
   PaymentsRound, 
@@ -21,6 +21,9 @@ const selected = ref('')
 const loading = ref(false)
 const quoteLoading = ref(false)
 const voucherCode = ref('')
+const discountAmount = ref(0)
+const checkingVoucher = ref(false)
+const isValidVoucher = ref(false)
 
 const loadQuote = async () => {
   if (!nominal.value || nominal.value < 10000) return
@@ -37,6 +40,37 @@ const loadQuote = async () => {
     quoteLoading.value = false
   }
 }
+
+const handleCheckVoucher = async () => {
+  if (!voucherCode.value) {
+    message.warning('Masukkan kode voucher terlebih dahulu')
+    return
+  }
+  checkingVoucher.value = true
+  try {
+    const res = await checkVoucherApi(voucherCode.value, Number(nominal.value))
+    if (res.valid) {
+      discountAmount.value = res.discountAmount
+      isValidVoucher.value = true
+      message.success(`Voucher valid! Diskon: Rp ${res.discountAmount.toLocaleString('id-ID')}`)
+    } else {
+      discountAmount.value = 0
+      isValidVoucher.value = false
+      message.error(res.message || 'Voucher tidak valid')
+    }
+  } catch (err) {
+    discountAmount.value = 0
+    isValidVoucher.value = false
+    message.error(err.message || 'Gagal mengecek voucher')
+  } finally {
+    checkingVoucher.value = false
+  }
+}
+
+watch(voucherCode, () => {
+  discountAmount.value = 0
+  isValidVoucher.value = false
+})
 
 const payNow = async () => {
   try {
@@ -152,7 +186,10 @@ watch(nominal, loadQuote)
                     </div>
                   </n-space>
                   <div class="channel-gross">
-                    <n-text strong>Rp {{ ch.gross_amount.toLocaleString('id-ID') }}</n-text>
+                    <n-text strong>Rp {{ Math.max(0, ch.gross_amount - discountAmount).toLocaleString('id-ID') }}</n-text>
+                    <div v-if="discountAmount > 0" style="text-decoration: line-through; font-size: 12px; color: #999">
+                      Rp {{ ch.gross_amount.toLocaleString('id-ID') }}
+                    </div>
                   </div>
                 </n-space>
               </n-card>
@@ -167,8 +204,17 @@ watch(nominal, loadQuote)
 
         <div class="voucher-section" style="margin-top: 24px;">
           <n-form-item label="Kode Voucher (Opsional)">
-            <n-input v-model:value="voucherCode" placeholder="Masukkan kode voucher untuk diskon / gratis" clearable />
+            <n-input-group>
+              <n-input v-model:value="voucherCode" placeholder="Masukkan kode voucher untuk diskon / gratis" clearable />
+              <n-button type="primary" :loading="checkingVoucher" @click="handleCheckVoucher" ghost>
+                Cek Voucher
+              </n-button>
+            </n-input-group>
           </n-form-item>
+          <n-alert v-if="isValidVoucher" type="success" :show-icon="false" style="margin-top: -12px; margin-bottom: 24px;">
+            <template #icon><n-icon :component="CheckCircleRound" /></template>
+            Voucher diterapkan! Diskon Rp {{ discountAmount.toLocaleString('id-ID') }}
+          </n-alert>
         </div>
 
         <div class="pay-action">

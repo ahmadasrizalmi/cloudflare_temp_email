@@ -119,7 +119,7 @@ const handleRefreshChannels = async () => {
 // Vouchers
 const vouchers = ref([])
 const showAddVoucher = ref(false)
-const newVoucher = ref({ code: '', type: 'discount_nominal', value: 0, max_uses: 1 })
+const newVoucher = ref({ code: '', type: 'discount_nominal', value: 0, max_uses: 1, expires_at: null })
 const fetchVouchers = async () => {
   try {
     vouchers.value = await getAdminVouchers()
@@ -132,11 +132,19 @@ const submitVoucher = async () => {
     await createAdminVoucher(newVoucher.value)
     message.success('Voucher added')
     showAddVoucher.value = false
-    newVoucher.value = { code: '', type: 'discount_nominal', value: 0, max_uses: 1 }
+    newVoucher.value = { code: '', type: 'discount_nominal', value: 0, max_uses: 1, expires_at: null }
     await fetchVouchers()
   } catch (err) {
     message.error('Failed to add voucher: ' + err.message)
   }
+}
+const generateVoucherCode = () => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  let result = ''
+  for (let i = 0; i < 8; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length))
+  }
+  newVoucher.value.code = result
 }
 const removeVoucher = async (id) => {
   try {
@@ -210,6 +218,7 @@ const voucherColumns = [
   { title: 'Type', key: 'type' },
   { title: 'Value', key: 'value' },
   { title: 'Uses / Max', key: 'uses_max', render(row) { return `${row.uses} / ${row.max_uses}` } },
+  { title: 'Expires', key: 'expires_at', render(row) { return row.expires_at || '-' } },
   {
     title: 'Active',
     key: 'is_active',
@@ -315,7 +324,10 @@ onMounted(() => {
         <n-modal v-model:show="showAddVoucher" preset="dialog" title="Create Voucher">
           <n-form>
             <n-form-item label="Voucher Code">
-              <n-input v-model:value="newVoucher.code" placeholder="e.g. DISKON50" />
+              <n-input-group>
+                <n-input v-model:value="newVoucher.code" placeholder="e.g. DISKON50" />
+                <n-button @click="generateVoucherCode" ghost type="primary">Random Code</n-button>
+              </n-input-group>
             </n-form-item>
             <n-form-item label="Type">
               <n-select v-model:value="newVoucher.type" :options="[
@@ -329,6 +341,9 @@ onMounted(() => {
             </n-form-item>
             <n-form-item label="Max Uses">
               <n-input-number v-model:value="newVoucher.max_uses" :min="1" />
+            </n-form-item>
+            <n-form-item label="Expires At (Optional)">
+              <n-date-picker v-model:formatted-value="newVoucher.expires_at" value-format="yyyy-MM-dd HH:mm:ss" type="datetime" clearable />
             </n-form-item>
           </n-form>
           <template #action>

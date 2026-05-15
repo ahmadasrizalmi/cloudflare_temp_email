@@ -23,6 +23,9 @@ export const createTopup = async (nominal, channel_code, voucher_code = '') =>
     body: JSON.stringify({ nominal, channel_code, voucher_code }),
   })
 
+export const checkVoucherApi = async (code, nominal) =>
+  api.fetch(`/user_api/billing/voucher/check?code=${encodeURIComponent(code)}&nominal=${encodeURIComponent(nominal)}`)
+
 export const getTopupHistory = async ({ limit = 20, cursor = '', status = '' } = {}) => {
   const q = new URLSearchParams()
   if (limit) q.set('limit', String(limit))

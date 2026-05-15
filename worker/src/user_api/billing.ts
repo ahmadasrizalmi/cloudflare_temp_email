@@ -355,6 +355,44 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
      *       return the user-facing summary
      *   6b. Failure → UPDATE status='cancelled' and return 502 dompetx_unavailable
      */
+    app.get('/user_api/billing/voucher/check', async (c) => {
+        const code = c.req.query('code')?.trim();
+        const nominalStr = c.req.query('nominal')?.trim();
+        if (!code || !nominalStr) {
+            return c.json({ valid: false, message: 'Kode atau nominal tidak valid' });
+        }
+        const nominal = Number(nominalStr);
+
+        const voucher = await c.env.DB.prepare(
+            `SELECT id, type, value, max_uses, uses, expires_at FROM vouchers WHERE code = ? AND is_active = 1`
+        ).bind(code).first<{id: number, type: string, value: number, max_uses: number, uses: number, expires_at: string|null}>();
+
+        if (!voucher) {
+            return c.json({ valid: false, message: 'Voucher tidak valid atau tidak aktif.' });
+        }
+        if (voucher.uses >= voucher.max_uses) {
+            return c.json({ valid: false, message: 'Voucher sudah mencapai batas penggunaan.' });
+        }
+        if (voucher.expires_at && new Date(voucher.expires_at) < new Date()) {
+            return c.json({ valid: false, message: 'Voucher sudah kedaluwarsa.' });
+        }
+
+        let discountAmount = 0;
+        if (voucher.type === 'free_credit') {
+            discountAmount = nominal;
+        } else if (voucher.type === 'discount_nominal') {
+            discountAmount = voucher.value;
+        } else if (voucher.type === 'discount_percent') {
+            discountAmount = Math.floor(nominal * (voucher.value / 100));
+        }
+        
+        if (discountAmount > nominal) {
+            discountAmount = nominal;
+        }
+
+        return c.json({ valid: true, discountAmount });
+    });
+
     app.post('/user_api/topup/create', async (c) => {
         const msgs = i18n.getMessagesbyContext(c);
         const { user_id } = c.get('userPayload');
@@ -450,8 +488,8 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
             if (discountAmount > grossAmount) {
                 discountAmount = grossAmount;
             }
-            // grossAmount = grossAmount - discountAmount;
-            // if (grossAmount <= 0) isFree = true;
+            grossAmount = grossAmount - discountAmount;
+            if (grossAmount <= 0) isFree = true;
         }
 
         if (isFree) {
@@ -527,7 +565,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         let invoice: Awaited<ReturnType<DompetxClient['createInvoice']>>;
         try {
             invoice = await dompetx.createInvoice({
-                amount: nominal,
+                amount: Math.max(0, nominal - discountAmount),
                 channel_code: channelCode,
                 fee_bearer: feeBearer,
                 metadata: {
