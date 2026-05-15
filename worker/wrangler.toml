@@ -5,9 +5,7 @@ compatibility_flags = [ "nodejs_compat" ]
 account_id = "6c18d33071f75f4fa94fc308a1fd4bd8"
 keep_vars = true
 
-routes = [
-	{ pattern = "automation.my.id", custom_domain = true },
-]
+
 
 # Cloudflare Pages / Workers Assets
 [assets]
