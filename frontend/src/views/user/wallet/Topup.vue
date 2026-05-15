@@ -28,6 +28,7 @@ const voucherCode = ref('')
 const discountAmount = ref(0)
 const checkingVoucher = ref(false)
 const isValidVoucher = ref(false)
+const activeTab = ref('')
 
 const groupedChannels = computed(() => {
   const groups = {}
@@ -77,7 +78,14 @@ const loadQuote = async () => {
     quoteLoading.value = true
     channels.value = await quoteTopup(Number(nominal.value))
     if (!selected.value && channels.value.length > 0) {
-      selected.value = channels.value[0].channel_code
+      const qrisChannel = channels.value.find(ch => ch.channel_code === 'QRIS' || ch.name.toUpperCase().includes('QRIS') || (ch.group && ch.group.toUpperCase() === 'QRIS'));
+      if (qrisChannel) {
+        selected.value = qrisChannel.channel_code;
+        activeTab.value = qrisChannel.group || 'Lainnya';
+      } else {
+        selected.value = channels.value[0].channel_code;
+        activeTab.value = channels.value[0].group || 'Lainnya';
+      }
     }
   } catch (err) {
     channels.value = []
@@ -209,7 +217,7 @@ watch(nominal, loadQuote)
         </template>
         
         <n-spin :show="quoteLoading">
-          <n-tabs type="line" animated justify-content="space-evenly" style="margin-bottom: 16px;" v-if="channels.length > 0">
+          <n-tabs v-model:value="activeTab" type="line" animated justify-content="space-evenly" style="margin-bottom: 16px;" v-if="channels.length > 0">
             <n-tab-pane v-for="(groupChannels, groupName) in groupedChannels" :key="groupName" :name="groupName">
               <template #tab>
                 <n-space align="center" :size="4" :wrap="false">
