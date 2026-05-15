@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import {
   darkTheme,
 } from 'naive-ui'
@@ -9,12 +9,13 @@ import { useGlobalState } from './store'
 import { useIsMobile } from './utils/composables'
 import Header from './views/Header.vue';
 import Footer from './views/Footer.vue';
+import InsufficientCreditModal from './components/InsufficientCreditModal.vue';
 import { api } from './api'
 import { getNaiveLocaleConfig } from './i18n/naive-locale'
 import { DEFAULT_LOCALE, isSupportedLocale } from './i18n/utils'
 
 const {
-  isDark, loading, useSideMargin, telegramApp, isTelegram
+  isDark, loading, useSideMargin, telegramApp, isTelegram, showInsufficientCreditModal, freeQuota
 } = useGlobalState()
 const adClient = import.meta.env.VITE_GOOGLE_AD_CLIENT;
 const adSlot = import.meta.env.VITE_GOOGLE_AD_SLOT;
@@ -102,6 +103,11 @@ onMounted(async () => {
               <div class="main">
                 <n-space vertical>
                   <n-layout style="min-height: 80vh;">
+                    <InsufficientCreditModal
+                      v-model:show="showInsufficientCreditModal"
+                      :free-used="freeQuota.used"
+                      :free-limit="freeQuota.limit"
+                    />
                     <Header />
                     <router-view></router-view>
                   </n-layout>

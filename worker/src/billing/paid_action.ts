@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Paid-action billing integration helpers.
  *
  * Feature: saas-topup-billing
@@ -39,6 +39,9 @@ import {
     type WalletService,
 } from './wallet_service';
 import { shouldChargeDebit } from './grandfather';
+
+import { getFreemiumEmailLimit, checkAndIncrementFreeQuota } from './freemium';
+
 
 // ─── Error types ──────────────────────────────────────────────────────────────
 
@@ -103,7 +106,8 @@ export interface CreateAddressBillingContext {
 
 export type CreateAddressPreCheck =
     | { skipped: true; reason: 'billing_disabled' | 'anonymous' }
-    | { skipped: false; context: CreateAddressBillingContext };
+    | { skipped: false; isFreeQuota: true }        // free tier — no debit needed
+    | { skipped: false; isFreeQuota?: false; context: CreateAddressBillingContext };
 
 export interface SendMailBillingContext {
     userId: number;
@@ -211,6 +215,19 @@ export async function preCheckCreateAddress(
     // 4. Resolve the credit cost via the pricing engine.
     const pricingEngine = resolvePricingEngine(c, deps);
     const walletService = resolveWalletService(c, deps);
+
+    // --- FREEMIUM CHECK ---
+    // Before charging credits, check if user still has free quota.
+    const freemiumLimit = await getFreemiumEmailLimit(c.env.DB);
+    if (freemiumLimit > 0) {
+        const usedFreeSlot = await checkAndIncrementFreeQuota(c.env.DB, userId, freemiumLimit);
+        if (usedFreeSlot) {
+            // User consumed a free slot - no credit charge needed
+            return { skipped: false, isFreeQuota: true };
+        }
+    }
+    // --- END FREEMIUM CHECK ---
+
     const requiredCredit = await pricingEngine.resolve({
         actionKey: 'create_address',
         domain: normalizedDomain,

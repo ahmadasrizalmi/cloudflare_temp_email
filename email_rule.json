@@ -1,0 +1,17 @@
+{
+  "actions": [
+    {
+      "type": "worker",
+      "value": [
+        "cloudflare_temp_email"
+      ]
+    }
+  ],
+  "matchers": [
+    {
+      "type": "all"
+    }
+  ],
+  "name": "catch-all-to-worker",
+  "enabled": true
+}

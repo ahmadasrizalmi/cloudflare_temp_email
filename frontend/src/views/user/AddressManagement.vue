@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 import { ref, h, onMounted } from 'vue';
 import { useScopedI18n } from '@/i18n/app'
 import { useRouter } from 'vue-router';
@@ -9,8 +9,13 @@ import { api } from '../../api'
 import { getRouterPathWithLang } from '../../utils'
 
 import Login from '../common/Login.vue';
+import InsufficientCreditModal from '../../components/InsufficientCreditModal.vue';
+import { getFreeQuota } from '../../api/billing';
 
-const { jwt } = useGlobalState()
+const { jwt, openSettings } = useGlobalState()
+const showCreditModal = ref(false)
+const freeQuota.used = ref(0)
+const freeQuota.limit = ref(1)
 const message = useMessage()
 const router = useRouter()
 
@@ -79,6 +84,18 @@ const transferAddress = async () => {
     } catch (error) {
         console.log(error)
         message.error(error.message || "error");
+    }
+}
+
+const fetchFreeQuota = async () => {
+    if (!openSettings.value.billingEnabled) return;
+    try {
+        const quota = await getFreeQuota();
+        if (quota) {
+            freeQuota.value = quota;
+        }
+    } catch (e) {
+        console.warn('fetchFreeQuota failed', e);
     }
 }
 
@@ -177,11 +194,42 @@ const columns = [
 
 onMounted(async () => {
     await fetchData()
+    await fetchFreeQuota()
 })
 </script>
 
 <template>
     <div>
+
+
+        <!-- Free Quota Banner (only when billing enabled) -->
+        <n-alert
+            v-if="openSettings.billingEnabled"
+            :type="freeQuota.used >= freeQuota.limit ? 'warning' : 'success'"
+            class="quota-banner"
+            :bordered="false"
+        >
+            <template #icon>
+                <n-icon>
+                    <span style="font-size:16px">📧</span>
+                </n-icon>
+            </template>
+            <n-space align="center" justify="space-between" style="width:100%">
+                <span>
+                    <strong>Email Gratis:</strong> {{ freeQuota.used }} / {{ freeQuota.limit }} digunakan
+                    <span v-if="freeQuota.used >= freeQuota.limit" style="color:#d03050"> — Habis! Beli kredit untuk email berikutnya.</span>
+                </span>
+                <n-button
+                    v-if="freeQuota.used >= freeQuota.limit"
+                    size="small"
+                    type="warning"
+                    @click="showInsufficientCreditModal = true"
+                >
+                    💳 Beli Kredit
+                </n-button>
+            </n-space>
+        </n-alert>
+
         <n-modal v-model:show="showTranferAddress" preset="dialog" :title="t('transferAddress')">
             <span>
                 <p>{{ t("transferAddressTip") }}</p>
@@ -215,5 +263,10 @@ onMounted(async () => {
 .address-table-scroll {
     max-width: 100%;
     overflow-x: auto;
+}
+
+.quota-banner {
+    margin-bottom: 12px;
+    border-radius: 10px;
 }
 </style>

@@ -56,6 +56,7 @@ export default {
 
             "ENABLE_ANOTHER_WORKER": utils.getBooleanValue(c.env.ENABLE_ANOTHER_WORKER),
             "ANOTHER_WORKER_LIST": utils.getAnotherWorkerList(c),
+            "BILLING_ENABLED": utils.getBooleanValue(c.env.BILLING_ENABLED),
         })
     }
 }

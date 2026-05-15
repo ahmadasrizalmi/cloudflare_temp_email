@@ -1,4 +1,4 @@
-/**
+﻿/**
  * User-facing Billing_API — wallet, ledger, top-up, domain preview.
  *
  * Feature: saas-topup-billing
@@ -48,6 +48,7 @@ import {
     InsufficientCreditError,
     type WalletService,
 } from '../billing/wallet_service';
+import { getFreeQuotaStatus } from '../billing/freemium';
 import type {
     PaymentChannelQuote,
     TopupRow,
@@ -248,6 +249,24 @@ function registerDomainRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps) {
     });
 }
 
+
+function registerFreeQuotaRoute(app: Hono<HonoCustomType>) {
+    /**
+     * GET /user_api/billing/free_quota
+     * Returns the current user's freemium usage: { used, limit, remaining }.
+     * Used by the frontend to show quota indicators and trigger topup CTAs.
+     */
+    app.get('/user_api/billing/free_quota', async (c) => {
+        const { user_id } = c.get('userPayload');
+        const { used, limit } = await getFreeQuotaStatus(c.env.DB, user_id);
+        return c.json({
+            used,
+            limit,
+            remaining: Math.max(0, limit - used),
+            exhausted: used >= limit,
+        });
+    });
+}
 function registerTopupQuoteRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps) {
     /**
      * POST /user_api/topup/quote { nominal }
@@ -691,6 +710,7 @@ export function createBillingApi(
     const app = new Hono<HonoCustomType>();
 
     registerWalletRoutes(app, deps);
+    registerFreeQuotaRoute(app);
     registerDomainRoute(app, deps);
     registerTopupQuoteRoute(app, deps);
     registerTopupCreateRoute(app, deps);

@@ -1,0 +1,7 @@
+{
+  "type": "A",
+  "name": "test",
+  "content": "1.1.1.1",
+  "ttl": 1,
+  "proxied": true
+}

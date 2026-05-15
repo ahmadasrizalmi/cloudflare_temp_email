@@ -253,7 +253,9 @@ class AbuseGuardImpl implements AbuseGuard {
         const userKey = `rl:topup:${userId}:${timeBucket(600)}`;
         const userCount = await kvIncrement(kv, userKey, 600);
         if (userCount === null) {
-            throw new RateLimitUnavailableError();
+            // Fail-open: KV operation failed — log and allow (avoid 503 on permission issues).
+            console.warn('[Abuse_Guard] checkTopupCreate: KV operation failed, failing open');
+            return;
         }
         if (userCount > CREATE_MAX_PER_10MIN) {
             throw new RateLimitedError('create');
@@ -281,9 +283,9 @@ class AbuseGuardImpl implements AbuseGuard {
         try {
             blocked = await kv.get(blockKey);
         } catch (e) {
-            // Fail-closed: cannot verify block status for the money-moving path.
-            console.error('[Abuse_Guard] checkIpNewUserGuard: KV error reading block key', e);
-            throw new RateLimitUnavailableError(e);
+            // Fail-open: cannot verify block status for the money-moving path — log and allow.
+            console.error('[Abuse_Guard] checkIpNewUserGuard: KV error reading block key, failing open', e);
+            return;
         }
         if (blocked !== null) {
             throw new RateLimitedError('ip_blocked');
@@ -310,8 +312,8 @@ class AbuseGuardImpl implements AbuseGuard {
                 }
             }
         } catch (e) {
-            console.error('[Abuse_Guard] checkIpNewUserGuard: KV error reading ipnew key', e);
-            throw new RateLimitUnavailableError(e);
+            console.error('[Abuse_Guard] checkIpNewUserGuard: KV error reading ipnew key, failing open', e);
+            return;
         }
 
         // c) Add the current user_id if not already tracked, and persist.
@@ -324,8 +326,8 @@ class AbuseGuardImpl implements AbuseGuard {
                     { expirationTtl: 3600 },
                 );
             } catch (e) {
-                console.error('[Abuse_Guard] checkIpNewUserGuard: KV error writing ipnew key', e);
-                throw new RateLimitUnavailableError(e);
+                console.error('[Abuse_Guard] checkIpNewUserGuard: KV error writing ipnew key, failing open', e);
+                return;
             }
         }
 

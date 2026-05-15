@@ -2,7 +2,12 @@ name = "cloudflare_temp_email"
 main = "src/worker.ts"
 compatibility_date = "2025-04-01"
 compatibility_flags = [ "nodejs_compat" ]
+account_id = "6c18d33071f75f4fa94fc308a1fd4bd8"
 keep_vars = true
+
+routes = [
+	{ pattern = "automation.my.id", custom_domain = true },
+]
 
 # Cloudflare Pages / Workers Assets
 [assets]
@@ -20,11 +25,10 @@ JWT_SECRET = "0b58e2d4f3c1a8e9d0b7f6e5d4c3b2a1" # Generated secret
 ENABLE_USER_CREATE_EMAIL = true
 ENABLE_USER_DELETE_EMAIL = true
 ENABLE_AUTO_REPLY = false
-BILLING_ENABLED = false
-
-routes = [
-	{ pattern = "automation.my.id/*", zone_id = "e63a194fe4a2da31188b6cce0f6d2d95" },
-]
+BILLING_ENABLED = true
+BILLING_LAUNCH_AT = "2024-01-01"
+ADMIN_USER_ROLE = "admin"
+USER_DEFAULT_ROLE = "user"
 
 [[d1_databases]]
 binding = "DB"

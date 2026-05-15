@@ -1,4 +1,4 @@
-import { useGlobalState } from '../store'
+﻿import { useGlobalState } from '../store'
 import { h } from 'vue'
 import axios from 'axios'
 
@@ -10,7 +10,7 @@ const API_BASE = import.meta.env.VITE_API_BASE || "";
 const {
     loading, auth, jwt, settings, openSettings,
     userOpenSettings, userSettings, announcement,
-    showAuth, adminAuth, showAdminAuth, userJwt, wallet
+    showAuth, adminAuth, showAdminAuth, userJwt, wallet, showInsufficientCreditModal, freeQuota
 } = useGlobalState();
 
 const instance = axios.create({
@@ -124,6 +124,7 @@ const getOpenSettings = async (message, notification) => {
             smtpImapProxyConfig: res["smtpImapProxyConfig"] || openSettings.value.smtpImapProxyConfig,
             statusUrl: res["statusUrl"] || "",
             enableGlobalTurnstileCheck: res["enableGlobalTurnstileCheck"] || false,
+            billingEnabled: res["billingEnabled"] || false,
         });
         if (openSettings.value.needAuth) {
             showAuth.value = true;

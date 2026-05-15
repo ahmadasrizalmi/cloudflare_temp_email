@@ -64,7 +64,8 @@ api.get('/open_api/settings', async (c) => {
             },
         },
         "statusUrl": utils.getStringValue(c.env.STATUS_URL),
-        "enableGlobalTurnstileCheck": utils.isGlobalTurnstileEnabled(c)
+        "enableGlobalTurnstileCheck": utils.isGlobalTurnstileEnabled(c),
+        "billingEnabled": utils.getBooleanValue(c.env.BILLING_ENABLED)
     });
 })
 

@@ -175,14 +175,15 @@ export class DompetxClientImpl implements DompetxClient {
 
     constructor(opts: {
         apiKey: string;
-        apiSecret: string;
-        webhookSecret: string;
+        apiSecret?: string;
+        webhookSecret?: string;
         baseUrl?: string;
     }) {
         this.apiKey = opts.apiKey;
-        this.apiSecret = opts.apiSecret;
-        this.webhookSecret = opts.webhookSecret;
-        this.baseUrl = opts.baseUrl ?? 'https://api.dompetx.id/v1';
+        // Per docs: apiKey is used as the secret for signature generation
+        this.apiSecret = opts.apiSecret || opts.apiKey;
+        this.webhookSecret = opts.webhookSecret || opts.apiKey;
+        this.baseUrl = opts.baseUrl ?? 'https://api.dompetx.com/v1';
     }
 
     // ── Outbound request signing ──────────────────────────────────────────────
@@ -198,9 +199,9 @@ export class DompetxClientImpl implements DompetxClient {
 
         return {
             'Content-Type': 'application/json',
-            'X-Api-Key': this.apiKey,
-            'X-Timestamp': timestamp,
-            'X-Signature': signature,
+            'X-DOMPAY-API-Key': this.apiKey,
+            'X-DOMPAY-Timestamp': timestamp,
+            'X-DOMPAY-Signature': signature,
         };
     }
 
@@ -281,41 +282,78 @@ export class DompetxClientImpl implements DompetxClient {
     // ── Public API methods ────────────────────────────────────────────────────
 
     async createInvoice(req: CreateInvoiceRequest): Promise<CreateInvoiceResponse> {
-        const rawBody = JSON.stringify(req);
+        // Map to DompetX v1 payload
+        const dompayBody = {
+            method: req.channel_code,
+            amount: req.amount,
+            currency: 'IDR',
+            reference: req.metadata?.invoice_id || `inv_${Date.now()}`,
+        };
+        const rawBody = JSON.stringify(dompayBody);
         const response = await this.fetchWithRetry(
-            `${this.baseUrl}/invoices`,
+            `${this.baseUrl}/payments`,
             { method: 'POST', body: rawBody },
             rawBody,
         );
 
-        const data = await response.json() as CreateInvoiceResponse;
-        return data;
+        const data = await response.json() as any;
+        // Map back to our internal response shape
+        return {
+            invoice_id: dompayBody.reference,
+            checkout_url: data.data?.checkoutUrl || data.data?.paymentUrl,
+            provider_reference: data.data?.id || null,
+            amount: dompayBody.amount,
+            fee: 0, // Fee resolution happens in pricing engine
+            gross_amount: dompayBody.amount,
+            status: 'pending',
+            expiry_minutes: 30
+        };
     }
 
     async getInvoiceStatus(invoiceId: string): Promise<InvoiceStatusResponse> {
         const rawBody = '';
         const response = await this.fetchWithRetry(
-            `${this.baseUrl}/invoices/${encodeURIComponent(invoiceId)}`,
+            `${this.baseUrl}/payments/${encodeURIComponent(invoiceId)}`,
             { method: 'GET' },
             rawBody,
         );
 
-        const data = await response.json() as InvoiceStatusResponse;
-        return data;
+        const data = await response.json() as any;
+        return {
+            invoice_id: invoiceId,
+            provider_reference: data.data?.id || null,
+            status: data.data?.status || 'pending',
+            amount: data.data?.amount || 0,
+            fee: 0,
+            gross_amount: data.data?.amount || 0,
+            paid_at: data.data?.paidAt || null,
+            channel_code: data.data?.method || ''
+        };
     }
 
     async listChannels(): Promise<DompetxChannel[]> {
         const rawBody = '';
         const response = await this.fetchWithRetry(
-            `${this.baseUrl}/channels`,
+            `${this.baseUrl}/payments/channel`,
             { method: 'GET' },
             rawBody,
         );
 
-        const data = await response.json() as { channels: DompetxChannel[] } | DompetxChannel[];
-        // Handle both wrapped and unwrapped response shapes
-        if (Array.isArray(data)) return data;
-        return (data as { channels: DompetxChannel[] }).channels ?? [];
+        const data = await response.json() as any;
+        const channels = data.data || [];
+        return channels.map((c: any) => ({
+            channel_code: c.code,
+            name: c.name,
+            group: c.group || 'E-Wallet',
+            min: c.minAmount || 1000,
+            max: c.maxAmount || null,
+            fee_type: 'fixed',
+            fee_value: 0,
+            fee_fixed: 0,
+            fee_bearer: 'customer',
+            is_active: true,
+            icon_url: c.iconUrl
+        }));
     }
 
     /**
@@ -371,12 +409,6 @@ export function createDompetxClient(env: {
 }): DompetxClient {
     if (!env.DOMPETX_API_KEY) {
         throw new Error('DOMPETX_API_KEY secret is not set');
-    }
-    if (!env.DOMPETX_API_SECRET) {
-        throw new Error('DOMPETX_API_SECRET secret is not set');
-    }
-    if (!env.DOMPETX_WEBHOOK_SECRET) {
-        throw new Error('DOMPETX_WEBHOOK_SECRET secret is not set');
     }
 
     return new DompetxClientImpl({

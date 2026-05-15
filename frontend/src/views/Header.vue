@@ -7,7 +7,8 @@ import { useIsMobile } from '../utils/composables'
 import {
     DarkModeFilled, LightModeFilled, MenuFilled,
     AdminPanelSettingsFilled, MonitorHeartFilled,
-    KeyboardArrowDownOutlined, OpenInNewOutlined
+    KeyboardArrowDownOutlined, OpenInNewOutlined,
+    AccountBalanceWalletOutlined
 } from '@vicons/material'
 import { GithubAlt, Language, User, Home } from '@vicons/fa'
 
@@ -24,8 +25,14 @@ const notification = useNotification()
 
 const {
     toggleDark, isDark, isTelegram, showAdminPage,
-    showAuth, auth, loading, openSettings, preferredLocale, userSettings
+    showAuth, auth, loading, openSettings, preferredLocale, userSettings,
+    wallet, refreshWallet
 } = useGlobalState()
+
+// Show credit badge when user is logged in and billing is enabled
+const showCreditBadge = computed(() =>
+    !!userSettings.value.user_id && !!openSettings.value.billingEnabled
+)
 const route = useRoute()
 const router = useRouter()
 const isMobile = useIsMobile()
@@ -237,6 +244,10 @@ onMounted(async () => {
     await api.getOpenSettings(message, notification);
     // make sure user_id is fetched
     if (!userSettings.value.user_id) await api.getUserSettings(message);
+    // auto-fetch wallet balance if user is logged in
+    if (userSettings.value.user_id && openSettings.value.billingEnabled) {
+        await refreshWallet();
+    }
 });
 </script>
 
@@ -260,6 +271,31 @@ onMounted(async () => {
                         </template>
                         {{ t('menu') }}
                     </n-button>
+                    <!-- Credit Balance Badge -->
+                    <n-tooltip v-if="showCreditBadge" trigger="hover" placement="bottom">
+                        <template #trigger>
+                            <n-button
+                                text
+                                size="small"
+                                class="header-credit-button"
+                                @click="router.push(getRouterPathWithLang('/user/wallet', locale.value))"
+                            >
+                                <template #icon>
+                                    <n-icon :component="AccountBalanceWalletOutlined" />
+                                </template>
+                                <n-badge
+                                    :value="wallet.balance_credit"
+                                    :max="99999"
+                                    :show-zero="true"
+                                    :color="wallet.balance_credit > 0 ? '#18a058' : '#d03050'"
+                                    class="credit-badge-inner"
+                                >
+                                    <span class="credit-label">{{ wallet.balance_credit }}</span>
+                                </n-badge>
+                            </n-button>
+                        </template>
+                        {{ wallet.balance_credit }} Coins — klik untuk top up
+                    </n-tooltip>
                     <n-dropdown v-if="!isMobile" :options="languageOptions" @select="changeLocale" trigger="click" class="header-locale-dropdown">
                         <n-button text size="small" class="header-locale-button" style="padding: 0 10px;">
                             <template #icon>
@@ -289,6 +325,17 @@ onMounted(async () => {
         <n-drawer v-model:show="showMobileMenu" placement="top" style="height: 100vh;">
             <n-drawer-content :title="t('menu')" closable>
                 <n-menu :options="menuOptions" />
+                <!-- Mobile Credit Badge -->
+                <div v-if="showCreditBadge" class="mobile-credit-section">
+                    <n-button
+                        block
+                        :type="wallet.balance_credit > 0 ? 'success' : 'warning'"
+                        @click="() => { router.push(getRouterPathWithLang('/user/wallet', locale.value)); showMobileMenu = false; }"
+                    >
+                        <template #icon><n-icon :component="AccountBalanceWalletOutlined" /></template>
+                        💰 {{ wallet.balance_credit }} Coins — Top Up
+                    </n-button>
+                </div>
                 <div class="mobile-menu-actions">
                     <n-dropdown :options="languageOptions" @select="changeLocale" trigger="click" class="header-locale-dropdown">
                         <button type="button" class="mobile-menu-utility-button">
@@ -365,6 +412,41 @@ onMounted(async () => {
 .header-version-button :deep(.n-button__content) {
     display: inline-flex;
     align-items: center;
+}
+
+.header-credit-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    border-radius: 20px;
+    border: 1.5px solid rgba(24, 160, 88, 0.35);
+    background: rgba(24, 160, 88, 0.06);
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.header-credit-button:hover {
+    background: rgba(24, 160, 88, 0.15);
+    border-color: rgba(24, 160, 88, 0.6);
+    transform: translateY(-1px);
+}
+
+.credit-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    min-width: 24px;
+    text-align: center;
+    letter-spacing: 0.02em;
+}
+
+.credit-badge-inner {
+    line-height: 1;
+}
+
+.mobile-credit-section {
+    margin: 8px 0 4px;
+    padding: 0 0 8px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.16);
 }
 
 .mobile-menu-actions {

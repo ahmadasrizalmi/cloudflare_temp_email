@@ -1,4 +1,4 @@
-import { computed, ref } from "vue";
+﻿import { computed, ref } from "vue";
 import {
     createGlobalState, useStorage, useDark, useToggle,
     useLocalStorage, useSessionStorage
@@ -142,6 +142,8 @@ export const useGlobalState = createGlobalState(
         });
 
         const browserFingerprint = ref('');
+        const showInsufficientCreditModal = ref(false);
+        const freeQuota = ref({ used: 0, limit: 1 });
         const wallet = useStorage('wallet', {
             balance_credit: 0,
             balance_idr_ref: 0,
@@ -202,6 +204,8 @@ export const useGlobalState = createGlobalState(
             useSimpleIndex,
             addressPassword,
             browserFingerprint,
+            showInsufficientCreditModal,
+            freeQuota,
             wallet,
             refreshWallet,
             clearWallet,

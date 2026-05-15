@@ -39,9 +39,6 @@ const BILLING_PATH_PREFIXES = [
 
 const BILLING_REQUIRED_SECRETS = [
 	"DOMPETX_API_KEY",
-	"DOMPETX_API_SECRET",
-	"DOMPETX_WEBHOOK_SECRET",
-	"CLOUDFLARE_EMAIL_ROUTING_TOKEN",
 ] as const;
 
 function isBillingPath(path: string): boolean {
@@ -93,9 +90,10 @@ app.use('/*', async (c, next) => {
 	if (isBillingEnabled(c.env) && isBillingPath(c.req.path)) {
 		const missing = getMissingBillingSecrets(c.env);
 		if (missing.length > 0) {
+			console.error(`Billing misconfigured: missing secrets: ${missing.join(", ")}`);
 			return c.json({
 				code: "billing_misconfigured",
-				message: `${msgs.OperationFailedMsg}: missing secrets: ${missing.join(", ")}`,
+				message: `Billing Misconfigured: Missing secrets [${missing.join(", ")}]. Please check your Cloudflare Secrets.`,
 			}, 503);
 		}
 	}

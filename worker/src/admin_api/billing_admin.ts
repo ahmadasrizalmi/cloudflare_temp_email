@@ -127,16 +127,10 @@ api.get('/admin/billing/pricing_rules', async (c) => {
 //   1. UPDATE pricing_rules SET is_active=0 WHERE rule_key=? AND is_active=1
 //   2. INSERT new row with version = MAX(version)+1 and is_active=1
 //   3. INSERT billing_audit_logs row (event_type='pricing_update')
-//
-// After commit, invalidates the Pricing_Engine module-level cache so the new
-// value propagates immediately within the isolate (other isolates pick it up
-// via the 60s TTL).
-// Requirements: 7.1, 7.3, 7.4, 7.5, 7.6, 7.7, 9.6
-
-api.put('/admin/billing/pricing_rules', async (c) => {
+api.post('/admin/billing/pricing_rules', async (c) => {
     const msgs = i18n.getMessagesbyContext(c);
 
-    // ── Body parsing ─────────────────────────────────────────────────────────
+    // -- Body parsing ---------------------------------------------------------
     let body: { rule_key?: string; rule_value_json?: unknown };
     try {
         body = await c.req.json();
@@ -362,7 +356,7 @@ api.get('/admin/billing/topup_transactions/:id', async (c) => {
 });
 
 // ─── POST /admin/billing/channels/refresh ─────────────────────────────────────
-api.post('/admin/billing/channels/refresh', async (c) => {
+api.post('/admin/billing/refresh_channels', async (c) => {
     const msgs = i18n.getMessagesbyContext(c);
     try {
         const dompetx = createDompetxClient(c.env);
@@ -432,7 +426,7 @@ api.post('/admin/billing/credit_adjust', async (c) => {
 });
 
 // ─── GET /admin/billing/kpi ───────────────────────────────────────────────────
-api.get('/admin/billing/kpi', async (c) => {
+api.get('/admin/billing/kpis', async (c) => {
     const from = c.req.query('from') || "1970-01-01";
     const to = c.req.query('to') || "2999-12-31";
 
@@ -551,7 +545,7 @@ api.post('/admin/billing/domains', async (c) => {
 // ─── GET /admin/billing/domains ───────────────────────────────────────────────
 api.get('/admin/billing/domains', async (c) => {
     const { results } = await c.env.DB.prepare(
-        `SELECT id, domain, is_active, created_at, created_by
+        `SELECT domain, is_active, created_at, created_by
            FROM allowed_domains
           ORDER BY domain ASC`,
     ).all<Record<string, unknown>>();

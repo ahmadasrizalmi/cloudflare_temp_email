@@ -1,4 +1,4 @@
-import { api } from './index'
+﻿import { api } from './index'
 
 export const getWallet = async () => api.fetch('/user_api/wallet')
 
@@ -31,3 +31,31 @@ export const getTopupHistory = async ({ limit = 20, cursor = '', status = '' } =
   return api.fetch(`/user_api/topup/history?${q.toString()}`)
 }
 
+// Admin API
+export const getAdminPricingRules = async () => api.fetch('/admin/billing/pricing_rules')
+export const saveAdminPricingRule = async (rule) => api.fetch('/admin/billing/pricing_rules', {
+  method: 'POST',
+  body: JSON.stringify(rule)
+})
+export const getAdminTransactions = async ({ limit = 20, offset = 0, query = '' } = {}) => {
+  const q = new URLSearchParams()
+  if (limit) q.set('limit', String(limit))
+  if (offset) q.set('offset', String(offset))
+  if (query) q.set('query', query)
+  return api.fetch(`/admin/billing/topup_transactions?${q.toString()}`)
+}
+export const refreshAdminChannels = async () => api.fetch('/admin/billing/refresh_channels', { method: 'POST' })
+export const adjustAdminCredit = async ({ user_id, amount_credits, reason }) => api.fetch('/admin/billing/credit_adjust', {
+  method: 'POST',
+  body: JSON.stringify({ user_id, amount_credits, reason })
+})
+export const getAdminKPIs = async () => api.fetch('/admin/billing/kpis')
+export const getAdminDomains = async () => api.fetch('/admin/billing/domains')
+export const addAdminDomain = async (domain) => api.fetch('/admin/billing/domains', {
+  method: 'POST',
+  body: JSON.stringify({ domain })
+})
+export const deleteAdminDomain = async (id) => api.fetch(`/admin/billing/domains/${id}`, { method: 'DELETE' })
+
+
+export const getFreeQuota = async () => api.fetch('/user_api/billing/free_quota')

@@ -30,6 +30,7 @@ import MailWebhook from './admin/MailWebhook.vue';
 import WorkerConfig from './admin/WorkerConfig.vue';
 import IpBlacklistSettings from './admin/IpBlacklistSettings.vue';
 import AiExtractSettings from './admin/AiExtractSettings.vue';
+import Billing from './admin/Billing.vue';
 
 const {
   adminAuth, showAdminAuth, adminTab, loading,
@@ -213,6 +214,9 @@ onMounted(async () => {
             <Maintenance />
           </n-tab-pane>
         </n-tabs>
+      </n-tab-pane>
+      <n-tab-pane v-if="openSettings.billingEnabled" name="billing" tab="Billing">
+        <Billing />
       </n-tab-pane>
       <n-tab-pane name="appearance" :tab="t('appearance')">
         <Appearance />

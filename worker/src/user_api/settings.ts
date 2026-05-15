@@ -28,6 +28,7 @@ export default {
             enable: settings.enable,
             enableMailVerify: settings.enableMailVerify,
             oauth2ClientIDs: oauth2ClientIDs,
+            billingEnabled: !!c.env.BILLING_ENABLED,
         })
     },
     settings: async (c: Context<HonoCustomType>) => {

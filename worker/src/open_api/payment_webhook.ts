@@ -42,8 +42,8 @@ function maskRawPayload(rawBody: string): string {
 api.post('/open_api/payment/webhook/dompetx', async (c) => {
     const msgs = i18n.getMessagesbyContext(c);
     const rawBody = await c.req.text();
-    const timestamp = c.req.header('x-dompetx-timestamp') || '';
-    const signature = c.req.header('x-dompetx-signature') || '';
+    const timestamp = c.req.header('x-dompay-timestamp') || '';
+    const signature = c.req.header('x-dompay-signature') || '';
 
     let dompetx;
     try {
@@ -81,8 +81,8 @@ api.post('/open_api/payment/webhook/dompetx', async (c) => {
         return jsonError(c, 'invalid_input', msgs.InvalidInputMsg, 400);
     }
 
-    const invoiceId: string = body?.invoice_id;
-    const providerStatus: string = body?.status;
+    const invoiceId: string = body?.data?.reference;
+    const providerStatus: string = body?.data?.status;
     if (!invoiceId || typeof invoiceId !== 'string') {
         return jsonError(c, 'invalid_input', msgs.InvalidInputMsg, 400);
     }

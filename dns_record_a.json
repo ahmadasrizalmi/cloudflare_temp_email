@@ -1,0 +1,7 @@
+{
+  "type": "A",
+  "name": "automation.my.id",
+  "content": "192.0.2.1",
+  "ttl": 1,
+  "proxied": true
+}

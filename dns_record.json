@@ -1,0 +1,7 @@
+{
+  "type": "CNAME",
+  "name": "automation.my.id",
+  "content": "cloudflare_temp_email.content-factory-dna.workers.dev",
+  "ttl": 1,
+  "proxied": true
+}
