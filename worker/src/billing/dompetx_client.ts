@@ -282,31 +282,36 @@ export class DompetxClientImpl implements DompetxClient {
     // ── Public API methods ────────────────────────────────────────────────────
 
     async createInvoice(req: CreateInvoiceRequest): Promise<CreateInvoiceResponse> {
-        // Map to DompetX v1 payload
-        const dompayBody = {
-            method: req.channel_code,
+        // Use DompetX checkout endpoint — returns payment_link for user redirect
+        const dompayBody: Record<string, unknown> = {
             amount: req.amount,
             currency: 'IDR',
-            reference: req.metadata?.invoice_id || `inv_${Date.now()}`,
+            reference: req.metadata?.local_invoice_id || `inv_${Date.now()}`,
         };
+        // Only include metadata if present
+        if (req.metadata) {
+            dompayBody.metadata = req.metadata;
+        }
         const rawBody = JSON.stringify(dompayBody);
         const response = await this.fetchWithRetry(
-            `${this.baseUrl}/payments`,
+            `${this.baseUrl}/payments/checkout`,
             { method: 'POST', body: rawBody },
             rawBody,
         );
 
         const data = await response.json() as any;
-        // Map back to our internal response shape
+        console.log('[dompetx] createInvoice raw response', JSON.stringify(data));
+        // Map DompetX checkout response to our internal shape
+        // Docs: { id, status, amount, currency, payment_link, createdAt, expiresAt }
         return {
-            invoice_id: data.reference || dompayBody.reference || null,
-            checkout_url: data.paymentUrl || data.checkoutUrl || null,
+            invoice_id: data.id || dompayBody.reference as string,
+            checkout_url: data.payment_link || data.paymentUrl || data.checkoutUrl || null,
             provider_reference: data.id || null,
-            amount: data.amount || dompayBody.amount,
-            fee: (data.fee || 0) + (data.additionalFee || 0),
-            gross_amount: data.totalAmount || (dompayBody.amount + (data.fee || 0) + (data.additionalFee || 0)),
-            status: 'pending',
-            expiry_minutes: 30
+            amount: data.amount || req.amount,
+            fee: 0,
+            gross_amount: data.amount || req.amount,
+            status: data.status || 'pending',
+            expiry_minutes: 1440, // checkout expires in 24h per docs
         };
     }
 

@@ -566,7 +566,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         try {
             console.log('[billing] createInvoice payload', { nominal, grossAmount, discountAmount, channelCode, user_id });
             invoice = await dompetx.createInvoice({
-                amount: nominal,
+                amount: grossAmount,
                 channel_code: channelCode,
                 fee_bearer: feeBearer,
                 metadata: {
