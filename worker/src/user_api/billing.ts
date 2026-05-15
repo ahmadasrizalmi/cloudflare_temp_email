@@ -565,7 +565,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         let invoice: Awaited<ReturnType<DompetxClient['createInvoice']>>;
         try {
             invoice = await dompetx.createInvoice({
-                amount: Math.max(0, nominal - discountAmount),
+                amount: grossAmount,
                 channel_code: channelCode,
                 fee_bearer: feeBearer,
                 metadata: {
