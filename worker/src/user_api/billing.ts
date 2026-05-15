@@ -108,23 +108,15 @@ function getClientIp(c: Context<HonoCustomType>): string | null {
 function getExpiryMinutes(env: Bindings): number {
     const raw = (env as unknown as Record<string, unknown>).BILLING_TOPUP_EXPIRY_MINUTES;
     const parsed = typeof raw === 'number' ? raw : typeof raw === 'string' ? Number(raw) : NaN;
-    if (Number.isFinite(parsed) && Number.isInteger(parsed) && parsed > 0) {
-        return parsed;
-    }
+    if (Number.isFinite(parsed) && Number.isInteger(parsed) && parsed > 0) return parsed;
     return 30;
 }
 
 function handleAbuseError(c: Context<HonoCustomType>, err: unknown): Response | null {
     const msgs = i18n.getMessagesbyContext(c);
-    if (err instanceof FingerprintRequiredError) {
-        return c.json({ code: err.code, message: msgs.FingerprintRequiredMsg }, 400);
-    }
-    if (err instanceof RateLimitedError) {
-        return c.json({ code: err.code, message: msgs.RateLimitedMsg }, 429);
-    }
-    if (err instanceof RateLimitUnavailableError) {
-        return c.json({ code: err.code, message: msgs.RateLimitedMsg }, 503);
-    }
+    if (err instanceof FingerprintRequiredError) return c.json({ code: err.code, message: msgs.FingerprintRequiredMsg }, 400);
+    if (err instanceof RateLimitedError) return c.json({ code: err.code, message: msgs.RateLimitedMsg }, 429);
+    if (err instanceof RateLimitUnavailableError) return c.json({ code: err.code, message: msgs.RateLimitedMsg }, 503);
     return null;
 }
 
@@ -166,11 +158,7 @@ function registerDomainRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps) {
         const pricing = resolvePricingEngine(c, deps);
         try {
             const rows = await pricing.listDomainCosts('create_address');
-            return c.json(rows.map((r) => ({
-                domain: r.domain,
-                domain_suffix: r.domainSuffix,
-                credit_cost: r.creditCost,
-            })));
+            return c.json(rows.map((r) => ({ domain: r.domain, domain_suffix: r.domainSuffix, credit_cost: r.creditCost })));
         } catch (err) {
             const code = (err instanceof PricingRuleNotFoundError || err instanceof UnknownActionError) ? 'unknown_action' : 'error';
             return c.json({ code, message: msgs.UnknownActionMsg }, 400);
@@ -182,12 +170,7 @@ function registerFreeQuotaRoute(app: Hono<HonoCustomType>) {
     app.get('/user_api/billing/free_quota', async (c) => {
         const { user_id } = c.get('userPayload');
         const { used, limit } = await getFreeQuotaStatus(c.env.DB, user_id);
-        return c.json({
-            used,
-            limit,
-            remaining: Math.max(0, limit - used),
-            exhausted: used >= limit,
-        });
+        return c.json({ used, limit, remaining: Math.max(0, limit - used), exhausted: used >= limit });
     });
 }
 
@@ -203,20 +186,13 @@ function registerTopupQuoteRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps
             if (res) return res;
             throw err;
         }
-
         let body: any;
         try { body = await c.req.json(); } catch { return c.json({ code: 'invalid_input', message: msgs.InvalidInputMsg }, 400); }
         const nominal = Number(body.nominal);
-        if (!Number.isFinite(nominal) || !Number.isInteger(nominal) || nominal <= 0) {
-            return c.json({ code: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
-        }
-
+        if (!Number.isFinite(nominal) || nominal <= 0) return c.json({ code: 'invalid_input', message: msgs.InvalidInputMsg }, 400);
         const pricing = resolvePricingEngine(c, deps);
         const minTopup = await pricing.getNumber('min_topup_idr');
-        if (nominal < minTopup) {
-            return c.json({ code: 'nominal_below_minimum', message: msgs.NominalBelowMinimumMsg }, 400);
-        }
-
+        if (nominal < minTopup) return c.json({ code: 'nominal_below_minimum', message: msgs.NominalBelowMinimumMsg }, 400);
         const bonusThreshold = await pricing.getNumber('bonus_threshold_idr');
         const qualifiesForBonus = nominal >= bonusThreshold;
         const channels = await resolveChannelCache(c, deps).listForQuote(nominal);
@@ -225,7 +201,6 @@ function registerTopupQuoteRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps
 }
 
 function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps) {
-    // Helper to check voucher
     app.get('/user_api/billing/voucher/check', async (c) => {
         const code = c.req.query('code')?.trim();
         const nominalStr = c.req.query('nominal')?.trim();
@@ -256,6 +231,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
 
         let body: any;
         try { body = await c.req.json(); } catch { return c.json({ code: 'invalid_input', message: msgs.InvalidInputMsg }, 400); }
+        
         const nominal = Number(body.nominal);
         const channelCode = typeof body.channel_code === 'string' ? body.channel_code : '';
         const voucherCode = typeof body.voucher_code === 'string' ? body.voucher_code.trim() : '';
@@ -266,7 +242,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         const minTopup = await pricing.getNumber('min_topup_idr');
         if (nominal < minTopup) return c.json({ code: 'nominal_below_minimum', message: msgs.NominalBelowMinimumMsg }, 400);
 
-        // Calculate discount
+        // --- STEP 1: CALCULATE DISCOUNT & CHECK IF FREE ---
         let discountAmount = 0;
         let voucherId = null;
         if (voucherCode) {
@@ -294,33 +270,33 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         const ip = getClientIp(c);
         const expiryMinutes = getExpiryMinutes(c.env);
 
-        // Create transaction row
+        // --- STEP 2: CREATE PENDING TRANSACTION ---
         const { id: pendingRowId } = await c.env.DB.prepare(
             `INSERT INTO topup_transactions (user_id, invoice_id, channel_code, amount, voucher_code, discount_amount, fee, gross_amount, fee_bearer, status, fingerprint_hash, ip, expiry_minutes, created_at, updated_at)
              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?, ?, datetime('now'), datetime('now')) RETURNING id`
         ).bind(user_id, localInvoiceId, channelCode || 'VOUCHER', nominal, voucherCode, discountAmount, selected?.estimated_fee ?? 0, grossAmount, selected?.fee_bearer ?? 'customer', fingerprintHash, ip, expiryMinutes).first<any>();
 
-        // HANDLE FREE TOPUP
+        // --- STEP 3: HANDLE FREE TOPUP (STOP HERE) ---
         if (isFree || grossAmount <= 0) {
             try {
                 const wallet = resolveWalletService(c, deps);
-                const [rate, threshold, bonus] = await Promise.all([pricing.getNumber('credit_idr_rate'), pricing.getNumber('bonus_threshold_idr'), pricing.getNumber('bonus_rate_percent')]);
+                const pricingEngine = resolvePricingEngine(c, deps);
+                const [rate, threshold, bonus] = await Promise.all([pricingEngine.getNumber('credit_idr_rate'), pricingEngine.getNumber('bonus_threshold_idr'), pricingEngine.getNumber('bonus_rate_percent')]);
                 await wallet.creditTopup({ userId: user_id, amountIdr: nominal, creditIdrRate: rate, bonusThresholdIdr: threshold, bonusRatePercent: bonus, invoiceId: localInvoiceId });
                 if (voucherId) await c.env.DB.prepare(`UPDATE vouchers SET uses = uses + 1 WHERE id = ?`).bind(voucherId).run();
                 await c.env.DB.prepare(`UPDATE topup_transactions SET status = 'paid', paid_at = datetime('now'), updated_at = datetime('now') WHERE id = ?`).bind(pendingRowId).run();
                 return c.json({ is_free: true, amount: nominal, invoice_id: localInvoiceId });
             } catch (err) {
-                console.error('[free-topup] failed', err);
+                console.error('[free-topup] error', err);
                 return c.text(msgs.OperationFailedMsg, 500);
             }
         }
 
-
-        // Call DompetX
+        // --- STEP 4: CALL PAYMENT GATEWAY ---
         try {
             const dompetx = resolveDompetxClient(c, deps);
             const invoice = await dompetx.createInvoice({
-                amount: nominal, // Use nominal for stability in direct payment
+                amount: grossAmount,
                 channel_code: channelCode,
                 metadata: { user_id, local_invoice_id: localInvoiceId, topup_row_id: pendingRowId },
                 webhook_url: buildWebhookUrl(c),
@@ -345,7 +321,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
     });
 }
 
-function registerTopupHistoryRoute(app: Hono<HonoCustomType>, deps: BillingApiDeps) {
+function registerTopupHistoryRoute(app: Hono<HonoCustomType>) {
     app.get('/user_api/topup/history', async (c) => {
         const { user_id } = c.get('userPayload');
         const limit = clampLimit(c.req.query('limit'));
@@ -367,7 +343,7 @@ export function createBillingApi(deps: BillingApiDeps = {}): Hono<HonoCustomType
     registerDomainRoute(app, deps);
     registerTopupQuoteRoute(app, deps);
     registerTopupCreateRoute(app, deps);
-    registerTopupHistoryRoute(app, deps);
+    registerTopupHistoryRoute(app);
     return app;
 }
 
