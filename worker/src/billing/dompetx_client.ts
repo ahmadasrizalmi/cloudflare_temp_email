@@ -282,42 +282,36 @@ export class DompetxClientImpl implements DompetxClient {
     // ── Public API methods ────────────────────────────────────────────────────
 
     async createInvoice(req: CreateInvoiceRequest): Promise<CreateInvoiceResponse> {
-        // Use DompetX checkout endpoint — returns payment_link for user redirect
-        const dompayBody: Record<string, unknown> = {
+        // Reverting to /payments (Direct Transaction) as requested, but with 502 fixes
+        const dompayBody = {
+            method: req.channel_code,
             amount: req.amount,
             currency: 'IDR',
             reference: req.metadata?.local_invoice_id || `inv_${Date.now()}`,
         };
-        // Only include metadata if present
-        if (req.metadata) {
-            dompayBody.metadata = req.metadata;
-        }
         const rawBody = JSON.stringify(dompayBody);
         const response = await this.fetchWithRetry(
-            `${this.baseUrl}/payments/checkout`,
+            `${this.baseUrl}/payments`,
             { method: 'POST', body: rawBody },
             rawBody,
         );
 
         const raw = await response.json() as any;
-        console.log('[dompetx] createInvoice raw response', JSON.stringify(raw));
-        
         const data = raw.data || raw;
-        const id = data.id || raw.id;
-        
-        // Construct the URL manually as a foolproof fallback
-        const checkoutUrl = data.payment_link || data.paymentUrl || data.checkoutUrl || 
-                            (id ? `https://checkout.dompetx.com/checkout/${id}` : null);
+
+        // Map back to our internal response shape with various fallbacks
+        // DompetX Direct Payment might return paymentUrl, qr_url, or checkoutUrl
+        const checkoutUrl = data.paymentUrl || data.payment_url || data.checkoutUrl || data.qr_url || data.pdf_url || null;
 
         return {
-            invoice_id: id || dompayBody.reference as string,
+            invoice_id: data.reference || data.id || dompayBody.reference,
             checkout_url: checkoutUrl,
-            provider_reference: id || null,
-            amount: data.amount || raw.amount || req.amount,
-            fee: 0,
-            gross_amount: data.amount || raw.amount || req.amount,
-            status: data.status || raw.status || 'pending',
-            expiry_minutes: 1440,
+            provider_reference: data.id || null,
+            amount: data.amount || dompayBody.amount,
+            fee: data.fee || 0,
+            gross_amount: data.totalAmount || data.amount || dompayBody.amount,
+            status: data.status || 'pending',
+            expiry_minutes: 60
         };
     }
 
