@@ -44,4 +44,4 @@ api.post('/user_api/passkey/authenticate_request', passkey.authenticateRequest);
 api.post('/user_api/passkey/authenticate_response', passkey.authenticateResponse);
 
 // billing api
-api.route('/billing', billing);
+api.route('/', billing);
