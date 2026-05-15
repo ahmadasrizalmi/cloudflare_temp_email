@@ -449,7 +449,7 @@ function registerTopupCreateRoute(app: Hono<HonoCustomType>, deps: BillingApiDep
         }
 
         const fee = selected.estimated_fee;
-        const grossAmount = selected.gross_amount;
+        let grossAmount = selected.gross_amount;
         const feeBearer = selected.fee_bearer;
         const expiryMinutes = getExpiryMinutes(c.env);
         const ip = getClientIp(c);
