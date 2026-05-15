@@ -33,7 +33,7 @@ import type { Context } from 'hono';
 const QUOTE_MAX_PER_MIN = 30;
 
 /** Create endpoint: max requests per user per 600-second window (Req 10.1). */
-const CREATE_MAX_PER_10MIN = 5;
+const CREATE_MAX_PER_10MIN = 30;
 
 /** IP guard: threshold of unique user_ids from the same IP in a 1-hour window (Req 10.4). */
 const IP_NEW_USER_BLOCK_THRESHOLD = 10;
