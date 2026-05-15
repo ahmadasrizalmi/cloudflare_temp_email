@@ -29,8 +29,14 @@ BILLING_ENABLED = true
 BILLING_LAUNCH_AT = "2024-01-01"
 ADMIN_USER_ROLE = "admin"
 USER_DEFAULT_ROLE = "user"
+DOMPETX_BASE_URL = "https://api.dompetx.com/v1"
+DISABLE_ANONYMOUS_USER_CREATE_EMAIL = true
 
 [[d1_databases]]
 binding = "DB"
 database_name = "temp_email_db"
 database_id = "c9242574-791b-406b-b722-9149546a5d5d"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "2852a415e0024430ab5df926b560b253"

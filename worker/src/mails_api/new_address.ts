@@ -1,4 +1,4 @@
-import { Context } from 'hono'
+﻿import { Context } from 'hono'
 
 import i18n from '../i18n';
 import { getBooleanValue, getJsonSetting, checkCfTurnstile, isAddressCountLimitReached } from '../utils';
@@ -73,7 +73,7 @@ const createNewAddress = async (c: Context<HonoCustomType>) => {
             sourceMeta
         });
 
-        if (!billingPre.skipped && billingPre.context.shouldCharge) {
+        if (!billingPre.skipped && !billingPre.isFreeQuota && billingPre.context?.shouldCharge) {
             try {
                 await executeCreateAddressDebit(
                     billingPre.context,

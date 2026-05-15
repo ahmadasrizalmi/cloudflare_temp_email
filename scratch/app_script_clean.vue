@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import {
   darkTheme,
 } from 'naive-ui'
@@ -66,82 +66,3 @@ onMounted(async () => {
   }
 });
 </script>
-
-
-<template>
-  <n-config-provider :locale="localeConfig.locale" :date-locale="localeConfig.dateLocale" :theme="theme">
-    <n-global-style />
-    <n-spin description="loading..." :show="loading">
-      <n-notification-provider container-style="margin-top: 60px;">
-        <n-message-provider container-style="margin-top: 20px;">
-          <n-grid x-gap="12" :cols="gridMaxCols">
-            <n-gi v-if="showSideMargin" span="1">
-              <div class="side"></div>
-            </n-gi>
-            <n-gi :span="!showSideMargin ? gridMaxCols : (gridMaxCols - 2)">
-              <div class="main">
-                <n-space vertical>
-                  <n-layout style="min-height: 80vh;">
-                    <InsufficientCreditModal
-                      v-model:show="showInsufficientCreditModal"
-                      :free-used="freeQuota.used"
-                      :free-limit="freeQuota.limit"
-                    />
-                    <Header />
-                    <router-view></router-view>
-                  </n-layout>
-                  <Footer />
-                </n-space>
-              </div>
-            </n-gi>
-            <n-gi v-if="showSideMargin" span="1">
-              <div class="side"></div>
-            </n-gi>
-          </n-grid>
-          <n-back-top />
-        </n-message-provider>
-      </n-notification-provider>
-    </n-spin>
-  </n-config-provider>
-</template>
-
-
-<style>
-.n-switch {
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-@media (hover: none) and (pointer: coarse) and (max-width: 1024px) {
-  :where(input, textarea, select, [contenteditable="true"]) {
-    font-size: 16px !important;
-  }
-
-  :where(.n-input, .n-input-number, .n-base-selection, .n-input-group-label) {
-    --n-font-size: 16px !important;
-  }
-}
-</style>
-
-<style scoped>
-.side {
-  height: 100vh;
-}
-
-.main {
-  height: 100vh;
-  text-align: center;
-}
-
-.n-grid {
-  height: 100%;
-}
-
-.n-gi {
-  height: 100%;
-}
-
-.n-space {
-  height: 100%;
-}
-</style>

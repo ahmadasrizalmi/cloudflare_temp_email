@@ -1,4 +1,4 @@
-<script setup>
+﻿<script setup>
 /**
  * InsufficientCreditModal.vue
  * Shows a friendly "you've run out of credits" dialog with a CTA to topup.
@@ -7,12 +7,12 @@
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import { useGlobalState } from '../../store'
-import { getRouterPathWithLang } from '../../utils'
+import { useGlobalState } from '../store'
+import { getRouterPathWithLang } from '../utils'
 import {
   AccountBalanceWalletOutlined,
   AddCircleOutlined,
-  CloseRounded,
+  CloseOutlined,
   ShoppingCartOutlined
 } from '@vicons/material'
 
@@ -108,7 +108,7 @@ const currentBalance = computed(() => wallet.value.balance_credit || 0)
     <template #footer>
       <n-space justify="end" class="modal-footer">
         <n-button secondary @click="close">
-          <template #icon><n-icon :component="CloseRounded" /></template>
+          <template #icon><n-icon :component="CloseOutlined" /></template>
           Nanti Saja
         </n-button>
         <n-button type="primary" @click="goTopup" class="topup-cta-btn">

@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Paid-action billing integration helpers.
  *
  * Feature: saas-topup-billing
@@ -276,7 +276,9 @@ export async function preCheckSendMail(
     }
     const userPayload = c.get('userPayload');
     if (!userPayload) {
-        return { skipped: true, reason: 'anonymous' };
+        // Requirement: Anonymous users should NOT bypass billing.
+        // If billing is enabled, we require an authenticated user to track quota.
+        throw new Error("Login required to create address (Billing Enabled)");
     }
     const userId = userPayload.user_id;
     const normalizedAddress = typeof senderAddress === 'string' ? senderAddress.trim().toLowerCase() : '';

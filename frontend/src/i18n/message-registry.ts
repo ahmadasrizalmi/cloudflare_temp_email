@@ -2,289 +2,289 @@
   "components.WebhookComponent": {
     "enable": {
       "en": "Enable",
-      "zh": "å¯ç”¨"
+      "zh": "Enable"
     },
     "fillInDemoTip": {
       "en": "Please modify the URL and other settings to your own",
-      "zh": "è¯·ä¿®æ”¹URLå’Œå…¶ä»–è®¾ç½®ä¸ºæ‚¨è‡ªå·±çš„é…ç½®"
+      "zh": "Please modify the URL and other settings to your own"
     },
     "notEnabled": {
       "en": "Webhook is not enabled for you",
-      "zh": "Webhook æœªå¼€å¯ï¼Œè¯·è”ç³»ç®¡ç†å‘˜å¼€å¯"
+      "zh": "Webhook is not enabled for you"
     },
     "presets": {
       "en": "Presets",
-      "zh": "ç¤ºä¾‹æ¨¡æ¿"
+      "zh": "Presets"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "successTip": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     },
     "test": {
       "en": "Test",
-      "zh": "æµ‹è¯•"
+      "zh": "Test"
     },
     "urlMissing": {
       "en": "URL is required",
-      "zh": "URL ä¸èƒ½ä¸ºç©º"
+      "zh": "URL is required"
     }
   },
   "components.MailBox": {
     "attachments": {
       "en": "Show Attachments",
-      "zh": "æŸ¥çœ‹é™„ä»¶"
+      "zh": "Show Attachments"
     },
     "autoRefresh": {
       "en": "Auto Refresh",
-      "zh": "è‡ªåŠ¨åˆ·æ–°"
+      "zh": "Auto Refresh"
     },
     "cancelMultiAction": {
       "en": "Cancel Multi Action",
-      "zh": "å–æ¶ˆå¤šé€‰"
+      "zh": "Cancel Multi Action"
     },
     "delete": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "deleteMailTip": {
       "en": "Are you sure you want to delete mail?",
-      "zh": "ç¡®å®šè¦åˆ é™¤é‚®ä»¶å—?"
+      "zh": "Are you sure you want to delete mail?"
     },
     "downloadMail": {
       "en": "Download Mail",
-      "zh": "ä¸‹è½½é‚®ä»¶"
+      "zh": "Download Mail"
     },
     "emptyInbox": {
       "en": "Your inbox is empty",
-      "zh": "æ”¶ä»¶ç®±ä¸ºç©º"
+      "zh": "Your inbox is empty"
     },
     "forwardMail": {
       "en": "Forward",
-      "zh": "è½¬å‘"
+      "zh": "Forward"
     },
     "keywordQueryTip": {
       "en": "Filter current page",
-      "zh": "è¿‡æ»¤å½“å‰é¡µ"
+      "zh": "Filter current page"
     },
     "multiAction": {
       "en": "Multi Action",
-      "zh": "å¤šé€‰"
+      "zh": "Multi Action"
     },
     "nextMail": {
       "en": "Next",
-      "zh": "ä¸‹ä¸€å°"
+      "zh": "Next"
     },
     "pleaseSelectMail": {
       "en": "Please select mail",
-      "zh": "è¯·é€‰æ‹©é‚®ä»¶"
+      "zh": "Please select mail"
     },
     "prevMail": {
       "en": "Previous",
-      "zh": "ä¸Šä¸€å°"
+      "zh": "Previous"
     },
     "query": {
       "en": "Query",
-      "zh": "æŸ¥è¯¢"
+      "zh": "Query"
     },
     "refresh": {
       "en": "Refresh",
-      "zh": "åˆ·æ–°"
+      "zh": "Refresh"
     },
     "refreshAfter": {
       "en": "Refresh After {msg} Seconds",
-      "zh": "{msg}ç§’åŽåˆ·æ–°"
+      "zh": "Refresh After {msg} Seconds"
     },
     "reply": {
       "en": "Reply",
-      "zh": "å›žå¤"
+      "zh": "Reply"
     },
     "saveToS3": {
       "en": "Save to S3",
-      "zh": "ä¿å­˜åˆ°S3"
+      "zh": "Save to S3"
     },
     "selectAll": {
       "en": "Select All of This Page",
-      "zh": "å…¨é€‰æœ¬é¡µ"
+      "zh": "Select All of This Page"
     },
     "showHtmlMail": {
       "en": "Show Html Mail",
-      "zh": "æ˜¾ç¤ºHTMLé‚®ä»¶"
+      "zh": "Show Html Mail"
     },
     "showTextMail": {
       "en": "Show Text Mail",
-      "zh": "æ˜¾ç¤ºçº¯æ–‡æœ¬é‚®ä»¶"
+      "zh": "Show Text Mail"
     },
     "success": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     },
     "unselectAll": {
       "en": "Unselect All",
-      "zh": "å–æ¶ˆå…¨é€‰"
+      "zh": "Unselect All"
     }
   },
   "components.AiExtractInfo": {
     "authCode": {
       "en": "Verification Code",
-      "zh": "éªŒè¯ç "
+      "zh": "Verification Code"
     },
     "authLink": {
       "en": "Authentication Link",
-      "zh": "è®¤è¯é“¾æŽ¥"
+      "zh": "Authentication Link"
     },
     "copyFailed": {
       "en": "Copy failed",
-      "zh": "å¤åˆ¶å¤±è´¥"
+      "zh": "Copy failed"
     },
     "copySuccess": {
       "en": "Copied successfully",
-      "zh": "å¤åˆ¶æˆåŠŸ"
+      "zh": "Copied successfully"
     },
     "open": {
       "en": "Open",
-      "zh": "æ‰“å¼€"
+      "zh": "Open"
     },
     "otherLink": {
       "en": "Other Link",
-      "zh": "å…¶ä»–é“¾æŽ¥"
+      "zh": "Other Link"
     },
     "serviceLink": {
       "en": "Service Link",
-      "zh": "æœåŠ¡é“¾æŽ¥"
+      "zh": "Service Link"
     },
     "subscriptionLink": {
       "en": "Subscription Link",
-      "zh": "è®¢é˜…é“¾æŽ¥"
+      "zh": "Subscription Link"
     }
   },
   "components.MailContentRenderer": {
     "attachments": {
       "en": "View Attachments",
-      "zh": "æŸ¥çœ‹é™„ä»¶"
+      "zh": "View Attachments"
     },
     "delete": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "deleteMailTip": {
       "en": "Are you sure you want to delete mail?",
-      "zh": "ç¡®å®šè¦åˆ é™¤é‚®ä»¶å—?"
+      "zh": "Are you sure you want to delete mail?"
     },
     "downloadMail": {
       "en": "Download Mail",
-      "zh": "ä¸‹è½½é‚®ä»¶"
+      "zh": "Download Mail"
     },
     "forward": {
       "en": "Forward",
-      "zh": "è½¬å‘"
+      "zh": "Forward"
     },
     "fullscreen": {
       "en": "Fullscreen",
-      "zh": "å…¨å±"
+      "zh": "Fullscreen"
     },
     "reply": {
       "en": "Reply",
-      "zh": "å›žå¤"
+      "zh": "Reply"
     },
     "saveToS3": {
       "en": "Save to S3",
-      "zh": "ä¿å­˜åˆ°S3"
+      "zh": "Save to S3"
     },
     "showHtmlMail": {
       "en": "Show HTML Mail",
-      "zh": "æ˜¾ç¤ºHTMLé‚®ä»¶"
+      "zh": "Show HTML Mail"
     },
     "showTextMail": {
       "en": "Show Text Mail",
-      "zh": "æ˜¾ç¤ºçº¯æ–‡æœ¬é‚®ä»¶"
+      "zh": "Show Text Mail"
     },
     "size": {
       "en": "Size",
-      "zh": "å¤§å°"
+      "zh": "Size"
     }
   },
   "components.Turnstile": {
     "refresh": {
       "en": "Refresh",
-      "zh": "åˆ·æ–°"
+      "zh": "Refresh"
     }
   },
   "components.SendBox": {
     "cancelMultiAction": {
       "en": "Cancel Multi Action",
-      "zh": "å–æ¶ˆå¤šé€‰"
+      "zh": "Cancel Multi Action"
     },
     "delete": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "deleteMailTip": {
       "en": "Are you sure you want to delete mail?",
-      "zh": "ç¡®å®šè¦åˆ é™¤é‚®ä»¶å—?"
+      "zh": "Are you sure you want to delete mail?"
     },
     "emptySent": {
       "en": "No sent emails",
-      "zh": "å‘ä»¶ç®±ä¸ºç©º"
+      "zh": "No sent emails"
     },
     "multiAction": {
       "en": "Multi Action",
-      "zh": "å¤šé€‰"
+      "zh": "Multi Action"
     },
     "pleaseSelectMail": {
       "en": "Please select a mail to view.",
-      "zh": "è¯·é€‰æ‹©ä¸€å°é‚®ä»¶æŸ¥çœ‹ã€‚"
+      "zh": "Please select a mail to view."
     },
     "refresh": {
       "en": "Refresh",
-      "zh": "åˆ·æ–°"
+      "zh": "Refresh"
     },
     "selectAll": {
       "en": "Select All of This Page",
-      "zh": "å…¨é€‰æœ¬é¡µ"
+      "zh": "Select All of This Page"
     },
     "showCode": {
       "en": "Change View Original Code",
-      "zh": "åˆ‡æ¢æŸ¥çœ‹å…ƒæ•°æ®"
+      "zh": "Change View Original Code"
     },
     "success": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     },
     "unselectAll": {
       "en": "Unselect All",
-      "zh": "å–æ¶ˆå…¨é€‰"
+      "zh": "Unselect All"
     }
   },
   "components.AddressSelect": {
     "address": {
       "en": "Address",
-      "zh": "åœ°å€"
+      "zh": "Address"
     },
     "copied": {
       "en": "Copied",
-      "zh": "å·²å¤åˆ¶"
+      "zh": "Copied"
     },
     "copy": {
       "en": "Copy",
-      "zh": "å¤åˆ¶"
+      "zh": "Copy"
     },
     "localAddresses": {
       "en": "Local Addresses",
-      "zh": "æœ¬åœ°åœ°å€"
+      "zh": "Local Addresses"
     },
     "userAddresses": {
       "en": "User Addresses",
-      "zh": "ç”¨æˆ·åœ°å€"
+      "zh": "User Addresses"
     }
   },
   "components.AddressCredentialModal": {
     "addressCredential": {
       "en": "Address Credential",
-      "zh": "åœ°å€å‡­è¯"
+      "zh": "Address Credential"
     },
     "addressCredentialLabel": {
       "en": "Address JWT",
@@ -292,7 +292,7 @@
     },
     "addressPassword": {
       "en": "Address Password",
-      "zh": "åœ°å€å¯†ç "
+      "zh": "Address Password"
     },
     "agentAccess": {
       "en": "AI Agent",
@@ -300,11 +300,11 @@
     },
     "agentAccessTip": {
       "en": "Use this mailbox from an AI agent with the Address JWT and parsed-mail APIs.",
-      "zh": "AI Agent å¯ä½¿ç”¨ Address JWT å’Œ parsed-mail API è¯»å–è¿™ä¸ªé‚®ç®±ã€‚"
+      "zh": "Use this mailbox from an AI agent with the Address JWT and parsed-mail APIs."
     },
     "agentConfig": {
       "en": "Agent config",
-      "zh": "Agent é…ç½®"
+      "zh": "Agent config"
     },
     "agentSkill": {
       "en": "Agent skill",
@@ -312,55 +312,55 @@
     },
     "apiBase": {
       "en": "API Base",
-      "zh": "API åœ°å€"
+      "zh": "API Base"
     },
     "autoLoginLink": {
       "en": "Auto-login link",
-      "zh": "è‡ªåŠ¨ç™»å½•é“¾æŽ¥"
+      "zh": "Auto-login link"
     },
     "copyFailed": {
       "en": "Copy failed",
-      "zh": "å¤åˆ¶å¤±è´¥"
+      "zh": "Copy failed"
     },
     "copySection": {
       "en": "Copy",
-      "zh": "å¤åˆ¶"
+      "zh": "Copy"
     },
     "copySuccess": {
       "en": "Copied",
-      "zh": "å·²å¤åˆ¶"
+      "zh": "Copied"
     },
     "currentAddress": {
       "en": "Current address",
-      "zh": "å½“å‰é‚®ç®±"
+      "zh": "Current address"
     },
     "docs": {
       "en": "Docs",
-      "zh": "æ–‡æ¡£"
+      "zh": "Docs"
     },
     "imapHost": {
       "en": "IMAP host",
-      "zh": "IMAP ä¸»æœº"
+      "zh": "IMAP host"
     },
     "imapPort": {
       "en": "IMAP port",
-      "zh": "IMAP ç«¯å£"
+      "zh": "IMAP port"
     },
     "password": {
       "en": "Password",
-      "zh": "å¯†ç "
+      "zh": "Password"
     },
     "plainOrProxyTls": {
       "en": "Plain or proxy TLS",
-      "zh": "æ˜Žæ–‡æˆ–ä»£ç†å±‚ TLS"
+      "zh": "Plain or proxy TLS"
     },
     "security": {
       "en": "Security",
-      "zh": "å®‰å…¨"
+      "zh": "Security"
     },
     "smtpHost": {
       "en": "SMTP host",
-      "zh": "SMTP ä¸»æœº"
+      "zh": "SMTP host"
     },
     "smtpImapAccess": {
       "en": "SMTP / IMAP",
@@ -368,11 +368,11 @@
     },
     "smtpImapTip": {
       "en": "Use these values in mail clients after the administrator configures the SMTP/IMAP proxy. The password can be the Address JWT shown here, or the address password when you have it.",
-      "zh": "ç®¡ç†å‘˜é…ç½® SMTP/IMAP ä»£ç†åŽï¼Œå¯åœ¨é‚®ä»¶å®¢æˆ·ç«¯ä¸­ä½¿ç”¨è¿™äº›ä¿¡æ¯ã€‚å¯†ç å¯ä½¿ç”¨è¿™é‡Œå±•ç¤ºçš„ Address JWTï¼Œä¹Ÿå¯ä½¿ç”¨ä½ æŒæœ‰çš„åœ°å€å¯†ç ã€‚"
+      "zh": "Use these values in mail clients after the administrator configures the SMTP/IMAP proxy. The password can be the Address JWT shown here, or the address password when you have it."
     },
     "smtpPort": {
       "en": "SMTP port",
-      "zh": "SMTP ç«¯å£"
+      "zh": "SMTP port"
     },
     "starttls": {
       "en": "STARTTLS",
@@ -380,871 +380,871 @@
     },
     "tip": {
       "en": "Use these credentials only with clients and agents you trust.",
-      "zh": "è¯·åªåœ¨å¯ä¿¡çš„å®¢æˆ·ç«¯å’Œ Agent ä¸­ä½¿ç”¨è¿™äº›å‡­è¯ã€‚"
+      "zh": "Use these credentials only with clients and agents you trust."
     },
     "title": {
       "en": "Address Credentials & Connection Methods",
-      "zh": "åœ°å€å‡­è¯ä¸Žè¿žæŽ¥æ–¹å¼"
+      "zh": "Address Credentials & Connection Methods"
     },
     "username": {
       "en": "Username",
-      "zh": "ç”¨æˆ·å"
+      "zh": "Username"
     }
   },
   "views.user.UserMailBox": {
     "addressQueryTip": {
       "en": "Leave blank to query all addresses",
-      "zh": "ç•™ç©ºæŸ¥è¯¢æ‰€æœ‰åœ°å€"
+      "zh": "Leave blank to query all addresses"
     },
     "query": {
       "en": "Query",
-      "zh": "æŸ¥è¯¢"
+      "zh": "Query"
     }
   },
   "views.Index": {
     "about": {
       "en": "About",
-      "zh": "å…³äºŽ"
+      "zh": "About"
     },
     "accountSettings": {
       "en": "Account Settings",
-      "zh": "è´¦æˆ·"
+      "zh": "Account Settings"
     },
     "appearance": {
       "en": "Appearance",
-      "zh": "å¤–è§‚"
+      "zh": "Appearance"
     },
     "auto_reply": {
       "en": "Auto Reply",
-      "zh": "è‡ªåŠ¨å›žå¤"
+      "zh": "Auto Reply"
     },
     "enterSimpleMode": {
       "en": "Simple Mode",
-      "zh": "æžç®€æ¨¡å¼"
+      "zh": "Simple Mode"
     },
     "mailbox": {
       "en": "Mail Box",
-      "zh": "æ”¶ä»¶ç®±"
+      "zh": "Mail Box"
     },
     "query": {
       "en": "Query",
-      "zh": "æŸ¥è¯¢"
+      "zh": "Query"
     },
     "s3Attachment": {
       "en": "S3 Attachment",
-      "zh": "S3é™„ä»¶"
+      "zh": "S3 Attachment"
     },
     "saveToS3Success": {
       "en": "save to s3 success",
-      "zh": "ä¿å­˜åˆ°s3æˆåŠŸ"
+      "zh": "save to s3 success"
     },
     "sendbox": {
       "en": "Send Box",
-      "zh": "å‘ä»¶ç®±"
+      "zh": "Send Box"
     },
     "sendmail": {
       "en": "Send Mail",
-      "zh": "å‘é€é‚®ä»¶"
+      "zh": "Send Mail"
     },
     "webhookSettings": {
       "en": "Webhook Settings",
-      "zh": "Webhook è®¾ç½®"
+      "zh": "Webhook Settings"
     }
   },
   "views.Footer": {
     "copyright": {
       "en": "Copyright",
-      "zh": "ç‰ˆæƒæ‰€æœ‰"
+      "zh": "Copyright"
     }
   },
   "views.user.UserSettings": {
     "actions": {
       "en": "Actions",
-      "zh": "æ“ä½œ"
+      "zh": "Actions"
     },
     "createPasskey": {
       "en": "Create Passkey",
-      "zh": "åˆ›å»º Passkey"
+      "zh": "Create Passkey"
     },
     "created_at": {
       "en": "Created At",
-      "zh": "åˆ›å»ºæ—¶é—´"
+      "zh": "Created At"
     },
     "deletePasskey": {
       "en": "Delete Passkey",
-      "zh": "åˆ é™¤ Passkey"
+      "zh": "Delete Passkey"
     },
     "logout": {
       "en": "Logout",
-      "zh": "é€€å‡ºç™»å½•"
+      "zh": "Logout"
     },
     "logoutConfirm": {
       "en": "Are you sure you want to logout?",
-      "zh": "ç¡®å®šè¦é€€å‡ºç™»å½•å—ï¼Ÿ"
+      "zh": "Are you sure you want to logout?"
     },
     "passkeyCreated": {
       "en": "Passkey created successfully",
-      "zh": "Passkey åˆ›å»ºæˆåŠŸ"
+      "zh": "Passkey created successfully"
     },
     "passkeyNamePlaceholder": {
       "en": "Please enter the passkey name or leave it empty to generate a random one",
-      "zh": "è¯·è¾“å…¥ Passkey åç§°æˆ–è€…ç•™ç©ºè‡ªåŠ¨ç”Ÿæˆ"
+      "zh": "Please enter the passkey name or leave it empty to generate a random one"
     },
     "passkey_name": {
       "en": "Passkey Name",
-      "zh": "Passkey åç§°"
+      "zh": "Passkey Name"
     },
     "passordTip": {
       "en": "The server will only receive the hash value of the password, and will not receive the plaintext password, so it cannot view or retrieve your password. If the administrator enables email verification, you can reset the password in incognito mode",
-      "zh": "æœåŠ¡å™¨åªä¼šæŽ¥æ”¶åˆ°å¯†ç çš„å“ˆå¸Œå€¼ï¼Œä¸ä¼šæŽ¥æ”¶åˆ°æ˜Žæ–‡å¯†ç ï¼Œå› æ­¤æ— æ³•æŸ¥çœ‹æˆ–è€…æ‰¾å›žæ‚¨çš„å¯†ç , å¦‚æžœç®¡ç†å‘˜å¯ç”¨äº†é‚®ä»¶éªŒè¯æ‚¨å¯ä»¥åœ¨æ— ç—•æ¨¡å¼é‡ç½®å¯†ç "
+      "zh": "The server will only receive the hash value of the password, and will not receive the plaintext password, so it cannot view or retrieve your password. If the administrator enables email verification, you can reset the password in incognito mode"
     },
     "renamePasskey": {
       "en": "Rename Passkey",
-      "zh": "é‡å‘½å Passkey"
+      "zh": "Rename Passkey"
     },
     "renamePasskeyNamePlaceholder": {
       "en": "Please enter the new passkey name",
-      "zh": "è¯·è¾“å…¥æ–°çš„ Passkey åç§°"
+      "zh": "Please enter the new passkey name"
     },
     "showPasskeyList": {
       "en": "Show Passkey List",
-      "zh": "æŸ¥çœ‹ Passkey åˆ—è¡¨"
+      "zh": "Show Passkey List"
     },
     "updated_at": {
       "en": "Updated At",
-      "zh": "æ›´æ–°æ—¶é—´"
+      "zh": "Updated At"
     }
   },
   "views.Header": {
     "accessHeader": {
       "en": "Access Password",
-      "zh": "è®¿é—®å¯†ç "
+      "zh": "Access Password"
     },
     "accessTip": {
       "en": "Please enter the correct access password",
-      "zh": "è¯·è¾“å…¥ç«™ç‚¹è®¿é—®å¯†ç "
+      "zh": "Please enter the correct access password"
     },
     "dark": {
       "en": "Dark",
-      "zh": "æš—è‰²"
+      "zh": "Dark"
     },
     "home": {
       "en": "Home",
-      "zh": "ä¸»é¡µ"
+      "zh": "Home"
     },
     "light": {
       "en": "Light",
-      "zh": "äº®è‰²"
+      "zh": "Light"
     },
     "menu": {
       "en": "Menu",
-      "zh": "èœå•"
+      "zh": "Menu"
     },
     "ok": {
       "en": "OK",
-      "zh": "ç¡®å®š"
+      "zh": "OK"
     },
     "status": {
       "en": "Status",
-      "zh": "çŠ¶æ€"
+      "zh": "Status"
     },
     "title": {
       "en": "Temp Mail",
-      "zh": "Cloudflare ä¸´æ—¶é‚®ä»¶"
+      "zh": "Temp Mail"
     },
     "user": {
       "en": "User",
-      "zh": "ç”¨æˆ·"
+      "zh": "User"
     }
   },
   "views.user.BindAddress": {
     "logout": {
       "en": "Logout",
-      "zh": "é€€å‡ºç™»å½•"
+      "zh": "Logout"
     }
   },
   "views.Admin": {
     "about": {
       "en": "About",
-      "zh": "å…³äºŽ"
+      "zh": "About"
     },
     "accessHeader": {
       "en": "Admin Password",
-      "zh": "Admin å¯†ç "
+      "zh": "Admin Password"
     },
     "accessTip": {
       "en": "Please enter the admin password",
-      "zh": "è¯·è¾“å…¥ Admin å¯†ç "
+      "zh": "Please enter the admin password"
     },
     "account": {
       "en": "Account",
-      "zh": "è´¦å·"
+      "zh": "Account"
     },
     "account_create": {
       "en": "Create Account",
-      "zh": "åˆ›å»ºè´¦å·"
+      "zh": "Create Account"
     },
     "account_settings": {
       "en": "Account Settings",
-      "zh": "è´¦å·è®¾ç½®"
+      "zh": "Account Settings"
     },
     "adminAccount": {
       "en": "Admin",
-      "zh": "ç®¡ç†å‘˜"
+      "zh": "Admin"
     },
     "aiExtractSettings": {
       "en": "AI Extract Settings",
-      "zh": "AI æå–è®¾ç½®"
+      "zh": "AI Extract Settings"
     },
     "appearance": {
       "en": "Appearance",
-      "zh": "å¤–è§‚"
+      "zh": "Appearance"
     },
     "confirm": {
       "en": "Confirm",
-      "zh": "ç¡®è®¤"
+      "zh": "Confirm"
     },
     "database": {
       "en": "Database",
-      "zh": "æ•°æ®åº“"
+      "zh": "Database"
     },
     "ipBlacklistSettings": {
       "en": "IP Blacklist",
-      "zh": "IP é»‘åå•"
+      "zh": "IP Blacklist"
     },
     "loginMethod": {
       "en": "Login Method",
-      "zh": "ç™»å½•æ–¹å¼"
+      "zh": "Login Method"
     },
     "loginViaDisabledCheck": {
       "en": "Disabled Password Check",
-      "zh": "å·²ç¦ç”¨å¯†ç æ£€æŸ¥"
+      "zh": "Disabled Password Check"
     },
     "loginViaPassword": {
       "en": "Admin Password Login",
-      "zh": "Admin å¯†ç ç™»å½•"
+      "zh": "Admin Password Login"
     },
     "loginViaUserAdmin": {
       "en": "User Admin Permission",
-      "zh": "ç”¨æˆ·ç®¡ç†å‘˜æƒé™"
+      "zh": "User Admin Permission"
     },
     "logout": {
       "en": "Logout",
-      "zh": "é€€å‡ºç™»å½•"
+      "zh": "Logout"
     },
     "logoutConfirmContent": {
       "en": "Are you sure you want to logout from admin panel?",
-      "zh": "ç¡®å®šè¦é€€å‡ºç®¡ç†å‘˜é¢æ¿å—ï¼Ÿ"
+      "zh": "Are you sure you want to logout from admin panel?"
     },
     "logoutConfirmTitle": {
       "en": "Confirm Logout",
-      "zh": "ç¡®è®¤é€€å‡º"
+      "zh": "Confirm Logout"
     },
     "logoutSuccess": {
       "en": "Logout successful",
-      "zh": "é€€å‡ºæˆåŠŸ"
+      "zh": "Logout successful"
     },
     "mailWebhook": {
       "en": "Mail Webhook",
-      "zh": "é‚®ä»¶ Webhook"
+      "zh": "Mail Webhook"
     },
     "mails": {
       "en": "Emails",
-      "zh": "é‚®ä»¶"
+      "zh": "Emails"
     },
     "maintenance": {
       "en": "Maintenance",
-      "zh": "ç»´æŠ¤"
+      "zh": "Maintenance"
     },
     "ok": {
       "en": "OK",
-      "zh": "ç¡®å®š"
+      "zh": "OK"
     },
     "qucickSetup": {
       "en": "Quick Setup",
-      "zh": "å¿«é€Ÿè®¾ç½®"
+      "zh": "Quick Setup"
     },
     "roleAddressConfig": {
       "en": "Role Address Config",
-      "zh": "è§’è‰²åœ°å€é…ç½®"
+      "zh": "Role Address Config"
     },
     "sendBox": {
       "en": "Send Box",
-      "zh": "å‘ä»¶ç®±"
+      "zh": "Send Box"
     },
     "sendMail": {
       "en": "Send Mail",
-      "zh": "å‘é€é‚®ä»¶"
+      "zh": "Send Mail"
     },
     "senderAccess": {
       "en": "Sender Access Control",
-      "zh": "å‘ä»¶æƒé™æŽ§åˆ¶"
+      "zh": "Sender Access Control"
     },
     "statistics": {
       "en": "Statistics",
-      "zh": "ç»Ÿè®¡"
+      "zh": "Statistics"
     },
     "telegram": {
       "en": "Telegram Bot",
-      "zh": "ç”µæŠ¥æœºå™¨äºº"
+      "zh": "Telegram Bot"
     },
     "unknow": {
       "en": "Mails with unknow receiver",
-      "zh": "æ— æ”¶ä»¶äººé‚®ä»¶"
+      "zh": "Mails with unknow receiver"
     },
     "user": {
       "en": "User",
-      "zh": "ç”¨æˆ·"
+      "zh": "User"
     },
     "userOauth2Settings": {
       "en": "Oauth2 Settings",
-      "zh": "Oauth2 è®¾ç½®"
+      "zh": "Oauth2 Settings"
     },
     "user_management": {
       "en": "User Management",
-      "zh": "ç”¨æˆ·ç®¡ç†"
+      "zh": "User Management"
     },
     "user_settings": {
       "en": "User Settings",
-      "zh": "ç”¨æˆ·è®¾ç½®"
+      "zh": "User Settings"
     },
     "webhookSettings": {
       "en": "Webhook Settings",
-      "zh": "Webhook è®¾ç½®"
+      "zh": "Webhook Settings"
     },
     "workerconfig": {
       "en": "Worker Config",
-      "zh": "Worker é…ç½®"
+      "zh": "Worker Config"
     }
   },
   "views.User": {
     "address_management": {
       "en": "Address Management",
-      "zh": "åœ°å€ç®¡ç†"
+      "zh": "Address Management"
     },
     "bind_address": {
       "en": "Bind Mail Address",
-      "zh": "ç»‘å®šé‚®ç®±åœ°å€"
+      "zh": "Bind Mail Address"
     },
     "wallet": {
       "en": "Coin Wallet",
-      "zh": "é‡‘å¸é’±åŒ…"
+      "zh": "Coin Wallet"
     },
     "user_mail_box_tab": {
       "en": "Mail Box",
-      "zh": "æ”¶ä»¶ç®±"
+      "zh": "Mail Box"
     },
     "user_settings": {
       "en": "User Settings",
-      "zh": "ç”¨æˆ·è®¾ç½®"
+      "zh": "User Settings"
     }
   },
   "views.user.UserLogin": {
     "cannotForgotPassword": {
       "en": "Mail verification is disabled or register is disabled, cannot reset password, please contact administrator",
-      "zh": "æœªå¼€å¯é‚®ç®±éªŒè¯æˆ–æœªå¼€å¯æ³¨å†ŒåŠŸèƒ½ï¼Œæ— æ³•é‡ç½®å¯†ç ï¼Œè¯·è”ç³»ç®¡ç†å‘˜"
+      "zh": "Mail verification is disabled or register is disabled, cannot reset password, please contact administrator"
     },
     "email": {
       "en": "Email",
-      "zh": "é‚®ç®±"
+      "zh": "Email"
     },
     "forgotPassword": {
       "en": "Forgot Password",
-      "zh": "å¿˜è®°å¯†ç "
+      "zh": "Forgot Password"
     },
     "login": {
       "en": "Login",
-      "zh": "ç™»å½•"
+      "zh": "Login"
     },
     "loginWith": {
       "en": "Login with {provider}",
-      "zh": "ä½¿ç”¨ {provider} ç™»å½•"
+      "zh": "Login with {provider}"
     },
     "loginWithPasskey": {
       "en": "Login with Passkey",
-      "zh": "ä½¿ç”¨ Passkey ç™»å½•"
+      "zh": "Login with Passkey"
     },
     "password": {
       "en": "Password",
-      "zh": "å¯†ç "
+      "zh": "Password"
     },
     "pleaseCompleteTurnstile": {
       "en": "Please complete turnstile",
-      "zh": "è¯·å®ŒæˆäººæœºéªŒè¯"
+      "zh": "Please complete turnstile"
     },
     "pleaseInput": {
       "en": "Please input email and password",
-      "zh": "è¯·è¾“å…¥é‚®ç®±å’Œå¯†ç "
+      "zh": "Please input email and password"
     },
     "pleaseInputCode": {
       "en": "Please input code",
-      "zh": "è¯·è¾“å…¥éªŒè¯ç "
+      "zh": "Please input code"
     },
     "pleaseInputEmail": {
       "en": "Please input email",
-      "zh": "è¯·è¾“å…¥é‚®ç®±"
+      "zh": "Please input email"
     },
     "pleaseLogin": {
       "en": "Please login",
-      "zh": "è¯·ç™»å½•"
+      "zh": "Please login"
     },
     "register": {
       "en": "Register",
-      "zh": "æ³¨å†Œ"
+      "zh": "Register"
     },
     "resetPassword": {
       "en": "Reset Password",
-      "zh": "é‡ç½®å¯†ç "
+      "zh": "Reset Password"
     },
     "sendVerificationCode": {
       "en": "Send Verification Code",
-      "zh": "å‘é€éªŒè¯ç "
+      "zh": "Send Verification Code"
     },
     "verifyCode": {
       "en": "Verification Code",
-      "zh": "éªŒè¯ç "
+      "zh": "Verification Code"
     },
     "verifyCodeSent": {
       "en": "Verification Code Sent, expires in {timeout} seconds",
-      "zh": "éªŒè¯ç å·²å‘é€, {timeout} ç§’åŽå¤±æ•ˆ"
+      "zh": "Verification Code Sent, expires in {timeout} seconds"
     },
     "waitforVerifyCode": {
       "en": "Wait for {timeout} seconds",
-      "zh": "ç­‰å¾…{timeout}ç§’"
+      "zh": "Wait for {timeout} seconds"
     }
   },
   "views.user.UserBar": {
     "currentUser": {
       "en": "Current Login User",
-      "zh": "å½“å‰ç™»å½•ç”¨æˆ·"
+      "zh": "Current Login User"
     },
     "fetchUserSettingsError": {
       "en": "Login password is invalid or account not exist, it may be network connection issue, please try again later.",
-      "zh": "ç™»å½•ä¿¡æ¯å·²è¿‡æœŸæˆ–è´¦å·ä¸å­˜åœ¨ï¼Œä¹Ÿå¯èƒ½æ˜¯ç½‘ç»œè¿žæŽ¥å¼‚å¸¸ï¼Œè¯·ç¨åŽå†å°è¯•ã€‚"
+      "zh": "Login password is invalid or account not exist, it may be network connection issue, please try again later."
     }
   },
   "views.user.wallet.WalletHome": {
     "wallet": {
       "en": "Coin Wallet",
-      "zh": "é‡‘å¸é’±åŒ…"
+      "zh": "Coin Wallet"
     },
     "credit": {
       "en": "Coin",
-      "zh": "é‡‘å¸"
+      "zh": "Coin"
     },
     "idrRef": {
       "en": "IDR Ref",
-      "zh": "å°å°¼ç›¾å‚è€ƒå€¼"
+      "zh": "IDR Ref"
     },
     "updated": {
       "en": "Updated",
-      "zh": "æ›´æ–°æ—¶é—´"
+      "zh": "Updated"
     },
     "topup": {
       "en": "Top-up",
-      "zh": "å……å€¼"
+      "zh": "Top-up"
     },
     "ledger": {
       "en": "Ledger",
-      "zh": "æµæ°´"
+      "zh": "Ledger"
     },
     "topupHistory": {
       "en": "Top-up History",
-      "zh": "å……å€¼è®°å½•"
+      "zh": "Top-up History"
     },
     "latestLedger": {
       "en": "Latest Ledger (10)",
-      "zh": "æœ€è¿‘æµæ°´ï¼ˆ10æ¡ï¼‰"
+      "zh": "Latest Ledger (10)"
     },
     "type": {
       "en": "Type",
-      "zh": "ç±»åž‹"
+      "zh": "Type"
     },
     "delta": {
       "en": "Delta",
-      "zh": "å˜åŠ¨"
+      "zh": "Delta"
     },
     "coinDelta": {
       "en": "Coin Delta",
-      "zh": "é‡‘å¸å˜åŠ¨"
+      "zh": "Coin Delta"
     },
     "at": {
       "en": "At",
-      "zh": "æ—¶é—´"
+      "zh": "At"
     },
     "loadWalletFailed": {
       "en": "Failed to load wallet",
-      "zh": "åŠ è½½é’±åŒ…å¤±è´¥"
+      "zh": "Failed to load wallet"
     },
     "viewAll": {
       "en": "View All",
-      "zh": "æŸ¥çœ‹å…¨éƒ¨"
+      "zh": "View All"
     },
     "noActivity": {
       "en": "No recent activity",
-      "zh": "æš‚æ— æœ€è¿‘æµæ°´"
+      "zh": "No recent activity"
     }
   },
   "views.user.wallet.Topup": {
     "topup": {
       "en": "Top-up",
-      "zh": "å……å€¼"
+      "zh": "Top-up"
     },
     "channels": {
       "en": "Channels",
-      "zh": "æ”¯ä»˜é€šé“"
+      "zh": "Channels"
     },
     "fee": {
       "en": "fee",
-      "zh": "æ‰‹ç»­è´¹"
+      "zh": "fee"
     },
     "gross": {
       "en": "gross",
-      "zh": "æ€»é¢"
+      "zh": "gross"
     },
     "payNow": {
       "en": "Pay Now",
-      "zh": "ç«‹å³æ”¯ä»˜"
+      "zh": "Pay Now"
     },
     "topupUpdated": {
       "en": "Top-up status updated",
-      "zh": "å……å€¼çŠ¶æ€å·²æ›´æ–°"
+      "zh": "Top-up status updated"
     },
     "quoteFailed": {
       "en": "Failed to quote",
-      "zh": "èŽ·å–æŠ¥ä»·å¤±è´¥"
+      "zh": "Failed to quote"
     },
     "createTopupFailed": {
       "en": "Failed to create topup",
-      "zh": "åˆ›å»ºå……å€¼å¤±è´¥"
+      "zh": "Failed to create topup"
     },
     "customNominal": {
       "en": "Custom Nominal",
-      "zh": "è‡ªå®šä¹‰é‡‘é¢"
+      "zh": "Custom Nominal"
     },
     "noChannels": {
       "en": "No payment channels available for this nominal",
-      "zh": "è¯¥é‡‘é¢æš‚æ— å¯ç”¨æ”¯ä»˜é€šé“"
+      "zh": "No payment channels available for this nominal"
     },
     "payTip": {
       "en": "You will be redirected to the payment gateway to complete the transaction.",
-      "zh": "æ‚¨å°†è¢«é‡å®šå‘åˆ°æ”¯ä»˜ç½‘å…³å®Œæˆäº¤æ˜“ã€‚"
+      "zh": "You will be redirected to the payment gateway to complete the transaction."
     }
   },
   "views.user.wallet.TopupHistory": {
     "all": {
       "en": "All",
-      "zh": "å…¨éƒ¨"
+      "zh": "All"
     },
     "invoice": {
       "en": "Invoice",
-      "zh": "è®¢å•å·"
+      "zh": "Invoice"
     },
     "amount": {
       "en": "Amount",
-      "zh": "é‡‘é¢"
+      "zh": "Amount"
     },
     "fee": {
       "en": "Fee",
-      "zh": "æ‰‹ç»­è´¹"
+      "zh": "Fee"
     },
     "gross": {
       "en": "Gross",
-      "zh": "æ€»é¢"
+      "zh": "Gross"
     },
     "channel": {
       "en": "Channel",
-      "zh": "æ¸ é“"
+      "zh": "Channel"
     },
     "status": {
       "en": "Status",
-      "zh": "çŠ¶æ€"
+      "zh": "Status"
     },
     "pending": {
       "en": "Pending",
-      "zh": "å¾…å¤„ç†"
+      "zh": "Pending"
     },
     "paidStatus": {
       "en": "Paid",
-      "zh": "å·²æ”¯ä»˜"
+      "zh": "Paid"
     },
     "failed": {
       "en": "Failed",
-      "zh": "å¤±è´¥"
+      "zh": "Failed"
     },
     "expired": {
       "en": "Expired",
-      "zh": "å·²è¿‡æœŸ"
+      "zh": "Expired"
     },
     "cancelled": {
       "en": "Cancelled",
-      "zh": "å·²å–æ¶ˆ"
+      "zh": "Cancelled"
     },
     "created": {
       "en": "Created",
-      "zh": "åˆ›å»ºæ—¶é—´"
+      "zh": "Created"
     },
     "paid": {
       "en": "Paid",
-      "zh": "æ”¯ä»˜æ—¶é—´"
+      "zh": "Paid"
     },
     "loadMore": {
       "en": "Load More",
-      "zh": "åŠ è½½æ›´å¤š"
+      "zh": "Load More"
     },
     "loadTopupHistoryFailed": {
       "en": "Failed to load topup history",
-      "zh": "åŠ è½½å……å€¼è®°å½•å¤±è´¥"
+      "zh": "Failed to load topup history"
     },
     "noHistory": {
       "en": "No top-up history found.",
-      "zh": "æš‚æ— å……å€¼è®°å½•ã€‚"
+      "zh": "No top-up history found."
     }
   },
   "views.user.wallet.Ledger": {
     "type": {
       "en": "Type",
-      "zh": "ç±»åž‹"
+      "zh": "Type"
     },
     "delta": {
       "en": "Delta",
-      "zh": "å˜åŠ¨"
+      "zh": "Delta"
     },
     "coinDelta": {
       "en": "Coin Delta",
-      "zh": "é‡‘å¸å˜åŠ¨"
+      "zh": "Coin Delta"
     },
     "idrRef": {
       "en": "IDR Ref",
-      "zh": "å°å°¼ç›¾å‚è€ƒå€¼"
+      "zh": "IDR Ref"
     },
     "metadata": {
       "en": "Metadata",
-      "zh": "å…ƒæ•°æ®"
+      "zh": "Metadata"
     },
     "created": {
       "en": "Created",
-      "zh": "åˆ›å»ºæ—¶é—´"
+      "zh": "Created"
     },
     "loadMore": {
       "en": "Load More",
-      "zh": "åŠ è½½æ›´å¤š"
+      "zh": "Load More"
     },
     "loadLedgerFailed": {
       "en": "Failed to load ledger",
-      "zh": "åŠ è½½æµæ°´å¤±è´¥"
+      "zh": "Failed to load ledger"
     },
     "noLedger": {
       "en": "No transaction records found.",
-      "zh": "æš‚æ— äº¤æ˜“æµæ°´ã€‚"
+      "zh": "No transaction records found."
     }
   },
   "views.user.AddressManagement": {
     "actions": {
       "en": "Actions",
-      "zh": "æ“ä½œ"
+      "zh": "Actions"
     },
     "address": {
       "en": "Address",
-      "zh": "åœ°å€"
+      "zh": "Address"
     },
     "changeMailAddress": {
       "en": "Change Address",
-      "zh": "åˆ‡æ¢åœ°å€"
+      "zh": "Change Address"
     },
     "create_or_bind": {
       "en": "Create or Bind",
-      "zh": "åˆ›å»ºæˆ–ç»‘å®š"
+      "zh": "Create or Bind"
     },
     "mail_count": {
       "en": "Mail Count",
-      "zh": "é‚®ä»¶æ•°é‡"
+      "zh": "Mail Count"
     },
     "name": {
       "en": "Name",
-      "zh": "åç§°"
+      "zh": "Name"
     },
     "send_count": {
       "en": "Send Count",
-      "zh": "å‘é€æ•°é‡"
+      "zh": "Send Count"
     },
     "success": {
       "en": "success",
-      "zh": "æˆåŠŸ"
+      "zh": "success"
     },
     "targetUserEmail": {
       "en": "Target User Email",
-      "zh": "ç›®æ ‡ç”¨æˆ·é‚®ç®±"
+      "zh": "Target User Email"
     },
     "transferAddress": {
       "en": "Transfer Address",
-      "zh": "è½¬ç§»åœ°å€"
+      "zh": "Transfer Address"
     },
     "transferAddressTip": {
       "en": "Transfer address to another user will remove the address from your account and transfer it to another user. Are you sure to transfer the address?",
-      "zh": "è½¬ç§»åœ°å€åˆ°å…¶ä»–ç”¨æˆ·å°†ä¼šä»Žä½ çš„è´¦æˆ·ä¸­ç§»é™¤æ­¤åœ°å€å¹¶è½¬ç§»ç»™å…¶ä»–ç”¨æˆ·ã€‚ç¡®å®šè¦è½¬ç§»åœ°å€å—ï¼Ÿ"
+      "zh": "Transfer address to another user will remove the address from your account and transfer it to another user. Are you sure to transfer the address?"
     },
     "unbindAddress": {
       "en": "Unbind Address",
-      "zh": "è§£ç»‘åœ°å€"
+      "zh": "Unbind Address"
     },
     "unbindAddressTip": {
       "en": "Before unbinding, please switch to this email address and save the email address credential.",
-      "zh": "è§£ç»‘å‰è¯·åˆ‡æ¢åˆ°æ­¤é‚®ç®±åœ°å€å¹¶ä¿å­˜é‚®ç®±åœ°å€å‡­è¯ã€‚"
+      "zh": "Before unbinding, please switch to this email address and save the email address credential."
     }
   },
   "views.index.AccountSettings": {
     "changePassword": {
       "en": "Change Password",
-      "zh": "ä¿®æ”¹å¯†ç "
+      "zh": "Change Password"
     },
     "clearInbox": {
       "en": "Clear Inbox",
-      "zh": "æ¸…ç©ºæ”¶ä»¶ç®±"
+      "zh": "Clear Inbox"
     },
     "clearInboxConfirm": {
       "en": "Are you sure to clear all emails in your inbox?",
-      "zh": "ç¡®å®šè¦æ¸…ç©ºä½ æ”¶ä»¶ç®±ä¸­çš„æ‰€æœ‰é‚®ä»¶å—ï¼Ÿ"
+      "zh": "Are you sure to clear all emails in your inbox?"
     },
     "clearSentItems": {
       "en": "Clear Sent Items",
-      "zh": "æ¸…ç©ºå‘ä»¶ç®±"
+      "zh": "Clear Sent Items"
     },
     "clearSentItemsConfirm": {
       "en": "Are you sure to clear all emails in your sent items?",
-      "zh": "ç¡®å®šè¦æ¸…ç©ºä½ å‘ä»¶ç®±ä¸­çš„æ‰€æœ‰é‚®ä»¶å—ï¼Ÿ"
+      "zh": "Are you sure to clear all emails in your sent items?"
     },
     "confirmPassword": {
       "en": "Confirm Password",
-      "zh": "ç¡®è®¤å¯†ç "
+      "zh": "Confirm Password"
     },
     "deleteAccount": {
       "en": "Delete Account",
-      "zh": "åˆ é™¤è´¦æˆ·"
+      "zh": "Delete Account"
     },
     "deleteAccountConfirm": {
       "en": "Are you sure to delete your account and all emails for this account?",
-      "zh": "ç¡®å®šè¦åˆ é™¤ä½ çš„è´¦æˆ·å’Œå…¶ä¸­çš„æ‰€æœ‰é‚®ä»¶å—?"
+      "zh": "Are you sure to delete your account and all emails for this account?"
     },
     "logout": {
       "en": "Logout",
-      "zh": "é€€å‡ºç™»å½•"
+      "zh": "Logout"
     },
     "logoutConfirm": {
       "en": "Are you sure to logout?",
-      "zh": "ç¡®å®šè¦é€€å‡ºç™»å½•å—ï¼Ÿ"
+      "zh": "Are you sure to logout?"
     },
     "newPassword": {
       "en": "New Password",
-      "zh": "æ–°å¯†ç "
+      "zh": "New Password"
     },
     "passwordChanged": {
       "en": "Password changed successfully",
-      "zh": "å¯†ç ä¿®æ”¹æˆåŠŸ"
+      "zh": "Password changed successfully"
     },
     "passwordMismatch": {
       "en": "Passwords do not match",
-      "zh": "å¯†ç ä¸åŒ¹é…"
+      "zh": "Passwords do not match"
     },
     "showAddressCredential": {
       "en": "Credentials & Connection Methods",
-      "zh": "åœ°å€å‡­è¯ä¸Žè¿žæŽ¥æ–¹å¼"
+      "zh": "Credentials & Connection Methods"
     },
     "success": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     }
   },
   "views.user.UserOauth2Callback": {
     "codeNotFound": {
       "en": "code not found",
-      "zh": "æœªæ‰¾åˆ°æŽˆæƒç "
+      "zh": "code not found"
     },
     "logging": {
       "en": "Logging in...",
-      "zh": "ç™»å½•ä¸­..."
+      "zh": "Logging in..."
     },
     "stateNotMatch": {
       "en": "state not match",
-      "zh": "state ä¸åŒ¹é…"
+      "zh": "state not match"
     }
   },
   "views.index.Attachment": {
     "action": {
       "en": "Action",
-      "zh": "æ“ä½œ"
+      "zh": "Action"
     },
     "delete": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "deleteConfirm": {
       "en": "Are you sure to delete this attachment?",
-      "zh": "ç¡®å®šè¦åˆ é™¤æ­¤é™„ä»¶å—ï¼Ÿ"
+      "zh": "Are you sure to delete this attachment?"
     },
     "deleteSuccess": {
       "en": "Deleted successfully",
-      "zh": "åˆ é™¤æˆåŠŸ"
+      "zh": "Deleted successfully"
     },
     "download": {
       "en": "Download",
-      "zh": "ä¸‹è½½"
+      "zh": "Download"
     }
   },
   "views.index.AutoReply": {
     "autoReply": {
       "en": "Auto Reply",
-      "zh": "è‡ªåŠ¨å›žå¤"
+      "zh": "Auto Reply"
     },
     "enableAutoReply": {
       "en": "Enable Auto Reply",
-      "zh": "å¯ç”¨è‡ªåŠ¨å›žå¤"
+      "zh": "Enable Auto Reply"
     },
     "name": {
       "en": "Name",
-      "zh": "åç§°"
+      "zh": "Name"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "settings": {
       "en": "Settings",
-      "zh": "è®¾ç½®"
+      "zh": "Settings"
     },
     "sourcePrefix": {
       "en": "Sender Filter",
-      "zh": "å‘ä»¶äººè¿‡æ»¤"
+      "zh": "Sender Filter"
     },
     "sourcePrefixPlaceholder": {
       "en": "Empty=all, prefix match, or /regex/",
-      "zh": "ç•™ç©º=å…¨éƒ¨åŒ¹é…ï¼Œå‰ç¼€åŒ¹é…ï¼Œæˆ– /æ­£åˆ™/"
+      "zh": "Empty=all, prefix match, or /regex/"
     },
     "subject": {
       "en": "Subject",
-      "zh": "ä¸»é¢˜"
+      "zh": "Subject"
     },
     "success": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     }
   },
   "views.index.SendMail": {
     "content": {
       "en": "Content",
-      "zh": "å†…å®¹"
+      "zh": "Content"
     },
     "contentEmpty": {
       "en": "Content is empty",
-      "zh": "å†…å®¹ä¸èƒ½ä¸ºç©º"
+      "zh": "Content is empty"
     },
     "edit": {
       "en": "Edit",
-      "zh": "ç¼–è¾‘"
+      "zh": "Edit"
     },
     "fromName": {
       "en": "Your Name and Address, leave Name blank to use email address",
-      "zh": "ä½ çš„åç§°å’Œåœ°å€ï¼Œåç§°ä¸å¡«å†™åˆ™ä½¿ç”¨é‚®ç®±åœ°å€"
+      "zh": "Your Name and Address, leave Name blank to use email address"
     },
     "html": {
       "en": "HTML",
@@ -1252,251 +1252,251 @@
     },
     "options": {
       "en": "Options",
-      "zh": "é€‰é¡¹"
+      "zh": "Options"
     },
     "preview": {
       "en": "Preview",
-      "zh": "é¢„è§ˆ"
+      "zh": "Preview"
     },
     "requestAccess": {
       "en": "Request Access",
-      "zh": "ç”³è¯·æƒé™"
+      "zh": "Request Access"
     },
     "requestAccessTip": {
       "en": "No send balance yet. If your admin enabled a default balance it should be assigned automatically; otherwise request access or contact the admin.",
-      "zh": "å½“å‰è¿˜æ²¡æœ‰å¯ç”¨çš„å‘ä¿¡é¢åº¦ã€‚å¦‚æžœç®¡ç†å‘˜å¯ç”¨äº†é»˜è®¤é¢åº¦ï¼Œä¼šè‡ªåŠ¨å‘æ”¾ï¼›å¦åˆ™è¯·ç”³è¯·æƒé™æˆ–è”ç³»ç®¡ç†å‘˜å¤„ç†ã€‚"
+      "zh": "No send balance yet. If your admin enabled a default balance it should be assigned automatically; otherwise request access or contact the admin."
     },
     "rich text": {
       "en": "Rich Text",
-      "zh": "å¯Œæ–‡æœ¬"
+      "zh": "Rich Text"
     },
     "send": {
       "en": "Send",
-      "zh": "å‘é€"
+      "zh": "Send"
     },
     "send_balance": {
       "en": "Send Mail Balance Left",
-      "zh": "å‰©ä½™å‘é€é‚®ä»¶é¢åº¦"
+      "zh": "Send Mail Balance Left"
     },
     "subject": {
       "en": "Subject",
-      "zh": "ä¸»é¢˜"
+      "zh": "Subject"
     },
     "subjectEmpty": {
       "en": "Subject is empty",
-      "zh": "ä¸»é¢˜ä¸èƒ½ä¸ºç©º"
+      "zh": "Subject is empty"
     },
     "successSend": {
       "en": "Please check your sendbox. If failed, please check your balance or try again later.",
-      "zh": "è¯·æŸ¥çœ‹æ‚¨çš„å‘ä»¶ç®±, å¦‚æžœå¤±è´¥, è¯·æ£€æŸ¥æ‚¨çš„ä½™é¢æˆ–ç¨åŽé‡è¯•ã€‚"
+      "zh": "Please check your sendbox. If failed, please check your balance or try again later."
     },
     "text": {
       "en": "Text",
-      "zh": "æ–‡æœ¬"
+      "zh": "Text"
     },
     "toMailEmpty": {
       "en": "Recipient address is empty",
-      "zh": "æ”¶ä»¶äººåœ°å€ä¸èƒ½ä¸ºç©º"
+      "zh": "Recipient address is empty"
     },
     "toName": {
       "en": "Recipient Name and Address, leave Name blank to use email address",
-      "zh": "æ”¶ä»¶äººåç§°å’Œåœ°å€ï¼Œåç§°ä¸å¡«å†™åˆ™ä½¿ç”¨é‚®ç®±åœ°å€"
+      "zh": "Recipient Name and Address, leave Name blank to use email address"
     },
     "tooLarge": {
       "en": "Too large file, please upload file less than 1MB.",
-      "zh": "æ–‡ä»¶è¿‡å¤§, è¯·ä¸Šä¼ å°äºŽ1MBçš„æ–‡ä»¶ã€‚"
+      "zh": "Too large file, please upload file less than 1MB."
     }
   },
   "views.index.SimpleIndex": {
     "accountSettings": {
       "en": "Account Settings",
-      "zh": "è´¦æˆ·è®¾ç½®"
+      "zh": "Account Settings"
     },
     "addressCopied": {
       "en": "Address copied successfully",
-      "zh": "åœ°å€å¤åˆ¶æˆåŠŸ"
+      "zh": "Address copied successfully"
     },
     "addressCredential": {
       "en": "Mail Address Credential",
-      "zh": "é‚®ç®±åœ°å€å‡­è¯"
+      "zh": "Mail Address Credential"
     },
     "addressCredentialTip": {
       "en": "Please copy the Mail Address Credential and you can use it to login",
-      "zh": "è¯·å¤åˆ¶é‚®ç®±åœ°å€å‡­è¯ï¼Œä½ å¯ä»¥ä½¿ç”¨å®ƒç™»å½•ä½ çš„é‚®ç®±ã€‚"
+      "zh": "Please copy the Mail Address Credential and you can use it to login"
     },
     "copyAddress": {
       "en": "Copy",
-      "zh": "å¤åˆ¶"
+      "zh": "Copy"
     },
     "deleteSuccess": {
       "en": "Mail deleted successfully",
-      "zh": "é‚®ä»¶åˆ é™¤æˆåŠŸ"
+      "zh": "Mail deleted successfully"
     },
     "exitSimpleIndex": {
       "en": "Exit Simple",
-      "zh": "é€€å‡ºæžç®€"
+      "zh": "Exit Simple"
     },
     "mailCount": {
       "en": "{current} / {total} emails",
-      "zh": "{current} / {total} å°é‚®ä»¶"
+      "zh": "{current} / {total} emails"
     },
     "nextPage": {
       "en": "Next",
-      "zh": "ä¸‹ä¸€é¡µ"
+      "zh": "Next"
     },
     "noMails": {
       "en": "No mails found",
-      "zh": "æš‚æ— é‚®ä»¶"
+      "zh": "No mails found"
     },
     "prevPage": {
       "en": "Previous",
-      "zh": "ä¸Šä¸€é¡µ"
+      "zh": "Previous"
     },
     "refreshAfter": {
       "en": "Refresh After {msg} Seconds",
-      "zh": "{msg}ç§’åŽåˆ·æ–°"
+      "zh": "Refresh After {msg} Seconds"
     },
     "refreshMails": {
       "en": "Refresh",
-      "zh": "åˆ·æ–°"
+      "zh": "Refresh"
     },
     "refreshSuccess": {
       "en": "Mails refreshed successfully",
-      "zh": "é‚®ä»¶åˆ·æ–°æˆåŠŸ"
+      "zh": "Mails refreshed successfully"
     }
   },
   "views.index.TelegramAddress": {
     "actions": {
       "en": "Actions",
-      "zh": "æ“ä½œ"
+      "zh": "Actions"
     },
     "address": {
       "en": "Address",
-      "zh": "åœ°å€"
+      "zh": "Address"
     },
     "bind": {
       "en": "Bind",
-      "zh": "ç»‘å®š"
+      "zh": "Bind"
     },
     "bindAddressSuccess": {
       "en": "Bind Address Success",
-      "zh": "ç»‘å®šåœ°å€æˆåŠŸ"
+      "zh": "Bind Address Success"
     },
     "changeMailAddress": {
       "en": "Change Mail Address",
-      "zh": "åˆ‡æ¢é‚®ç®±åœ°å€"
+      "zh": "Change Mail Address"
     },
     "success": {
       "en": "success",
-      "zh": "æˆåŠŸ"
+      "zh": "success"
     },
     "unbindMailAddress": {
       "en": "Unbind Mail Address",
-      "zh": "è§£ç»‘é‚®ç®±åœ°å€"
+      "zh": "Unbind Mail Address"
     }
   },
   "views.index.AddressBar": {
     "addressCredential": {
       "en": "Mail Address Credential",
-      "zh": "é‚®ç®±åœ°å€å‡­è¯"
+      "zh": "Mail Address Credential"
     },
     "addressCredentialTip": {
       "en": "Please copy the Mail Address Credential and you can use it to login to your email account.",
-      "zh": "è¯·å¤åˆ¶é‚®ç®±åœ°å€å‡­è¯ï¼Œä½ å¯ä»¥ä½¿ç”¨å®ƒç™»å½•ä½ çš„é‚®ç®±ã€‚"
+      "zh": "Please copy the Mail Address Credential and you can use it to login to your email account."
     },
     "addressManage": {
       "en": "Manage",
-      "zh": "åœ°å€ç®¡ç†"
+      "zh": "Manage"
     },
     "addressPassword": {
       "en": "Address Password",
-      "zh": "åœ°å€å¯†ç "
+      "zh": "Address Password"
     },
     "fetchAddressError": {
       "en": "Mail address credential is invalid or account not exist, it may be network connection issue, please try again later.",
-      "zh": "é‚®ç®±åœ°å€å‡­è¯æ— æ•ˆæˆ–é‚®ç®±åœ°å€ä¸å­˜åœ¨ï¼Œä¹Ÿå¯èƒ½æ˜¯ç½‘ç»œè¿žæŽ¥å¼‚å¸¸ï¼Œè¯·ç¨åŽå†å°è¯•ã€‚"
+      "zh": "Mail address credential is invalid or account not exist, it may be network connection issue, please try again later."
     },
     "linkWithAddressCredential": {
       "en": "Open to auto login email link",
-      "zh": "æ‰“å¼€å³å¯è‡ªåŠ¨ç™»å½•é‚®ç®±çš„é“¾æŽ¥"
+      "zh": "Open to auto login email link"
     },
     "ok": {
       "en": "OK",
-      "zh": "ç¡®å®š"
+      "zh": "OK"
     },
     "userLogin": {
       "en": "User Login",
-      "zh": "ç”¨æˆ·ç™»å½•"
+      "zh": "User Login"
     }
   },
   "views.admin.SendBox": {
     "query": {
       "en": "Query",
-      "zh": "æŸ¥è¯¢"
+      "zh": "Query"
     },
     "queryTip": {
       "en": "Please input address to query, leave blank to query all",
-      "zh": "è¯·è¾“å…¥åœ°å€æŸ¥è¯¢, ç•™ç©ºåˆ™æŸ¥è¯¢æ‰€æœ‰"
+      "zh": "Please input address to query, leave blank to query all"
     }
   },
   "views.admin.AiExtractSettings": {
     "allowList": {
       "en": "Address Allowlist (Enter address and press Enter, wildcards supported)",
-      "zh": "åœ°å€ç™½åå• (è¯·è¾“å…¥åœ°å€å¹¶å›žè½¦ï¼Œæ”¯æŒé€šé…ç¬¦)"
+      "zh": "Address Allowlist (Enter address and press Enter, wildcards supported)"
     },
     "allowListTip": {
       "en": "Wildcard * matches any characters, e.g. *{'@'}example.com matches all addresses under example.com domain",
-      "zh": "é€šé…ç¬¦ * å¯åŒ¹é…ä»»æ„å­—ç¬¦ï¼Œå¦‚ *{'@'}example.com å¯åŒ¹é… example.com åŸŸåä¸‹çš„æ‰€æœ‰åœ°å€"
+      "zh": "Wildcard * matches any characters, e.g. *{'@'}example.com matches all addresses under example.com domain"
     },
     "disabledTip": {
       "en": "When disabled, AI extraction will process all email addresses",
-      "zh": "æœªå¯ç”¨æ—¶ï¼Œæ‰€æœ‰é‚®ç®±åœ°å€éƒ½å¯ä½¿ç”¨ AI æå–åŠŸèƒ½"
+      "zh": "When disabled, AI extraction will process all email addresses"
     },
     "enableAllowList": {
       "en": "Enable Address Allowlist",
-      "zh": "å¯ç”¨åœ°å€ç™½åå•"
+      "zh": "Enable Address Allowlist"
     },
     "enableAllowListTip": {
       "en": "When enabled, AI extraction will only process emails sent to addresses in the allowlist",
-      "zh": "å¯ç”¨åŽï¼ŒAI æå–åŠŸèƒ½ä»…å¯¹ç™½åå•ä¸­çš„é‚®ç®±åœ°å€ç”Ÿæ•ˆ"
+      "zh": "When enabled, AI extraction will only process emails sent to addresses in the allowlist"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
+      "zh": "Type and press Enter to add"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "successTip": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     },
     "title": {
       "en": "AI Email Extraction Settings",
-      "zh": "AI é‚®ä»¶æå–è®¾ç½®"
+      "zh": "AI Email Extraction Settings"
     }
   },
   "views.admin.SendMail": {
     "content": {
       "en": "Content",
-      "zh": "å†…å®¹"
+      "zh": "Content"
     },
     "contentEmpty": {
       "en": "Content is empty",
-      "zh": "å†…å®¹ä¸èƒ½ä¸ºç©º"
+      "zh": "Content is empty"
     },
     "edit": {
       "en": "Edit",
-      "zh": "ç¼–è¾‘"
+      "zh": "Edit"
     },
     "fromMailEmpty": {
       "en": "Sender address is empty",
-      "zh": "å‘ä»¶äººåœ°å€ä¸èƒ½ä¸ºç©º"
+      "zh": "Sender address is empty"
     },
     "fromName": {
       "en": "Your Name and Address, leave Name blank to use email address",
-      "zh": "ä½ çš„åç§°å’Œåœ°å€ï¼Œåç§°ä¸å¡«å†™åˆ™ä½¿ç”¨é‚®ç®±åœ°å€"
+      "zh": "Your Name and Address, leave Name blank to use email address"
     },
     "html": {
       "en": "HTML",
@@ -1504,949 +1504,949 @@
     },
     "options": {
       "en": "Options",
-      "zh": "é€‰é¡¹"
+      "zh": "Options"
     },
     "preview": {
       "en": "Preview",
-      "zh": "é¢„è§ˆ"
+      "zh": "Preview"
     },
     "rich text": {
       "en": "Rich Text",
-      "zh": "å¯Œæ–‡æœ¬"
+      "zh": "Rich Text"
     },
     "send": {
       "en": "Send",
-      "zh": "å‘é€"
+      "zh": "Send"
     },
     "subject": {
       "en": "Subject",
-      "zh": "ä¸»é¢˜"
+      "zh": "Subject"
     },
     "subjectEmpty": {
       "en": "Subject is empty",
-      "zh": "ä¸»é¢˜ä¸èƒ½ä¸ºç©º"
+      "zh": "Subject is empty"
     },
     "successSend": {
       "en": "Please check your sendbox. If failed, please try again later.",
-      "zh": "è¯·æŸ¥çœ‹æ‚¨çš„å‘ä»¶ç®±, å¦‚æžœå¤±è´¥, è¯·æ£€æŸ¥ç¨åŽé‡è¯•ã€‚"
+      "zh": "Please check your sendbox. If failed, please try again later."
     },
     "text": {
       "en": "Text",
-      "zh": "æ–‡æœ¬"
+      "zh": "Text"
     },
     "toMailEmpty": {
       "en": "Recipient address is empty",
-      "zh": "æ”¶ä»¶äººåœ°å€ä¸èƒ½ä¸ºç©º"
+      "zh": "Recipient address is empty"
     },
     "toName": {
       "en": "Recipient Name and Address, leave Name blank to use email address",
-      "zh": "æ”¶ä»¶äººåç§°å’Œåœ°å€ï¼Œåç§°ä¸å¡«å†™åˆ™ä½¿ç”¨é‚®ç®±åœ°å€"
+      "zh": "Recipient Name and Address, leave Name blank to use email address"
     },
     "tooLarge": {
       "en": "Too large file, please upload file less than 1MB.",
-      "zh": "æ–‡ä»¶è¿‡å¤§, è¯·ä¸Šä¼ å°äºŽ1MBçš„æ–‡ä»¶ã€‚"
+      "zh": "Too large file, please upload file less than 1MB."
     }
   },
   "views.admin.Account": {
     "actions": {
       "en": "Actions",
-      "zh": "æ“ä½œ"
+      "zh": "Actions"
     },
     "addressCredential": {
       "en": "Mail Address Credential",
-      "zh": "é‚®ç®±åœ°å€å‡­è¯"
+      "zh": "Mail Address Credential"
     },
     "addressCredentialTip": {
       "en": "Please copy the Mail Address Credential and you can use it to login to your email account.",
-      "zh": "è¯·å¤åˆ¶é‚®ç®±åœ°å€å‡­è¯ï¼Œä½ å¯ä»¥ä½¿ç”¨å®ƒç™»å½•ä½ çš„é‚®ç®±ã€‚"
+      "zh": "Please copy the Mail Address Credential and you can use it to login to your email account."
     },
     "addressQueryTip": {
       "en": "Leave blank to query all addresses",
-      "zh": "ç•™ç©ºæŸ¥è¯¢æ‰€æœ‰åœ°å€"
+      "zh": "Leave blank to query all addresses"
     },
     "clearInbox": {
       "en": "Clear Inbox",
-      "zh": "æ¸…ç©ºæ”¶ä»¶ç®±"
+      "zh": "Clear Inbox"
     },
     "clearInboxTip": {
       "en": "Are you sure to clear inbox for this email?",
-      "zh": "ç¡®å®šè¦æ¸…ç©ºè¿™ä¸ªé‚®ç®±çš„æ”¶ä»¶ç®±å—ï¼Ÿ"
+      "zh": "Are you sure to clear inbox for this email?"
     },
     "clearSentItems": {
       "en": "Clear Sent Items",
-      "zh": "æ¸…ç©ºå‘ä»¶ç®±"
+      "zh": "Clear Sent Items"
     },
     "clearSentItemsTip": {
       "en": "Are you sure to clear sent items for this email?",
-      "zh": "ç¡®å®šè¦æ¸…ç©ºè¿™ä¸ªé‚®ç®±çš„å‘ä»¶ç®±å—ï¼Ÿ"
+      "zh": "Are you sure to clear sent items for this email?"
     },
     "created_at": {
       "en": "Created At",
-      "zh": "åˆ›å»ºæ—¶é—´"
+      "zh": "Created At"
     },
     "delete": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "deleteAccount": {
       "en": "Delete Account",
-      "zh": "åˆ é™¤é‚®ç®±"
+      "zh": "Delete Account"
     },
     "deleteTip": {
       "en": "Are you sure to delete this email?",
-      "zh": "ç¡®å®šè¦åˆ é™¤è¿™ä¸ªé‚®ç®±å—ï¼Ÿ"
+      "zh": "Are you sure to delete this email?"
     },
     "itemCount": {
       "en": "itemCount",
-      "zh": "æ€»æ•°"
+      "zh": "itemCount"
     },
     "mail_count": {
       "en": "Mail Count",
-      "zh": "é‚®ä»¶æ•°é‡"
+      "zh": "Mail Count"
     },
     "multiClearInbox": {
       "en": "Multi Clear Inbox",
-      "zh": "æ‰¹é‡æ¸…ç©ºæ”¶ä»¶ç®±"
+      "zh": "Multi Clear Inbox"
     },
     "multiClearInboxTip": {
       "en": "Are you sure to clear inbox for selected addresses?",
-      "zh": "ç¡®å®šè¦æ¸…ç©ºé€‰ä¸­é‚®ç®±çš„æ”¶ä»¶ç®±å—ï¼Ÿ"
+      "zh": "Are you sure to clear inbox for selected addresses?"
     },
     "multiClearSentItems": {
       "en": "Multi Clear Sent Items",
-      "zh": "æ‰¹é‡æ¸…ç©ºå‘ä»¶ç®±"
+      "zh": "Multi Clear Sent Items"
     },
     "multiClearSentItemsTip": {
       "en": "Are you sure to clear sent items for selected addresses?",
-      "zh": "ç¡®å®šè¦æ¸…ç©ºé€‰ä¸­é‚®ç®±çš„å‘ä»¶ç®±å—ï¼Ÿ"
+      "zh": "Are you sure to clear sent items for selected addresses?"
     },
     "multiDelete": {
       "en": "Multi Delete",
-      "zh": "æ‰¹é‡åˆ é™¤"
+      "zh": "Multi Delete"
     },
     "multiDeleteTip": {
       "en": "Are you sure to delete selected addresses?",
-      "zh": "ç¡®å®šè¦åˆ é™¤é€‰ä¸­çš„é‚®ç®±å—ï¼Ÿ"
+      "zh": "Are you sure to delete selected addresses?"
     },
     "name": {
       "en": "Name",
-      "zh": "åç§°"
+      "zh": "Name"
     },
     "newPassword": {
       "en": "New Password",
-      "zh": "æ–°å¯†ç "
+      "zh": "New Password"
     },
     "passwordResetSuccess": {
       "en": "Password reset successfully",
-      "zh": "å¯†ç é‡ç½®æˆåŠŸ"
+      "zh": "Password reset successfully"
     },
     "pleaseSelectAddress": {
       "en": "Please select address",
-      "zh": "è¯·é€‰æ‹©åœ°å€"
+      "zh": "Please select address"
     },
     "query": {
       "en": "Query",
-      "zh": "æŸ¥è¯¢"
+      "zh": "Query"
     },
     "resetPassword": {
       "en": "Reset Password",
-      "zh": "é‡ç½®å¯†ç "
+      "zh": "Reset Password"
     },
     "selectAll": {
       "en": "Select All of This Page",
-      "zh": "å…¨é€‰æœ¬é¡µ"
+      "zh": "Select All of This Page"
     },
     "selectedItems": {
       "en": "Selected",
-      "zh": "å·²é€‰æ‹©"
+      "zh": "Selected"
     },
     "send_count": {
       "en": "Send Count",
-      "zh": "å‘é€æ•°é‡"
+      "zh": "Send Count"
     },
     "showCredential": {
       "en": "Show Mail Address Credential",
-      "zh": "æŸ¥çœ‹é‚®ç®±åœ°å€å‡­è¯"
+      "zh": "Show Mail Address Credential"
     },
     "source_meta": {
       "en": "Source",
-      "zh": "æ¥æº"
+      "zh": "Source"
     },
     "success": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     },
     "unselectAll": {
       "en": "Unselect All",
-      "zh": "å–æ¶ˆå…¨é€‰"
+      "zh": "Unselect All"
     },
     "updated_at": {
       "en": "Update At",
-      "zh": "æ›´æ–°æ—¶é—´"
+      "zh": "Update At"
     },
     "viewMails": {
       "en": "View Mails",
-      "zh": "æŸ¥çœ‹é‚®ä»¶"
+      "zh": "View Mails"
     },
     "viewSendBox": {
       "en": "View SendBox",
-      "zh": "æŸ¥çœ‹å‘ä»¶ç®±"
+      "zh": "View SendBox"
     }
   },
   "views.admin.UserOauth2Settings": {
     "addOauth2": {
       "en": "Add Oauth2",
-      "zh": "æ·»åŠ  Oauth2"
+      "zh": "Add Oauth2"
     },
     "delete": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "enable": {
       "en": "Enable",
-      "zh": "å¯ç”¨"
+      "zh": "Enable"
     },
     "enableEmailFormat": {
       "en": "Enable Email Format",
-      "zh": "å¯ç”¨é‚®ç®±æ ¼å¼è½¬æ¢"
+      "zh": "Enable Email Format"
     },
     "enableMailAllowList": {
       "en": "Enable Mail Address Allow List(Manually enterable)",
-      "zh": "å¯ç”¨é‚®ä»¶åœ°å€ç™½åå•(å¯æ‰‹åŠ¨è¾“å…¥, å›žè½¦å¢žåŠ )"
+      "zh": "Enable Mail Address Allow List(Manually enterable)"
     },
     "icon": {
       "en": "Icon (SVG, please ensure trusted source)",
-      "zh": "å›¾æ ‡ (SVG, è¯·ç¡®ä¿æ¥æºå¯ä¿¡)"
+      "zh": "Icon (SVG, please ensure trusted source)"
     },
     "iconPreview": {
       "en": "Preview",
-      "zh": "é¢„è§ˆ"
+      "zh": "Preview"
     },
     "mailAllowList": {
       "en": "Mail Address Allow List",
-      "zh": "é‚®ä»¶åœ°å€ç™½åå•"
+      "zh": "Mail Address Allow List"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
+      "zh": "Type and press Enter to add"
     },
     "name": {
       "en": "Name",
-      "zh": "åç§°"
+      "zh": "Name"
     },
     "oauth2Type": {
       "en": "Oauth2 Type",
-      "zh": "Oauth2 ç±»åž‹"
+      "zh": "Oauth2 Type"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "successTip": {
       "en": "Save Success",
-      "zh": "ä¿å­˜æˆåŠŸ"
+      "zh": "Save Success"
     },
     "tip": {
       "en": "Third-party login will automatically use the user's email to register an account (the same email will be regarded as the same account), this account is the same as the registered account, and you can also set the password through the forget password",
-      "zh": "ç¬¬ä¸‰æ–¹ç™»å½•ä¼šè‡ªåŠ¨ä½¿ç”¨ç”¨æˆ·é‚®ç®±æ³¨å†Œè´¦å·(é‚®ç®±ç›¸åŒå°†è§†ä¸ºåŒä¸€è´¦å·), æ­¤è´¦å·å’Œæ³¨å†Œçš„è´¦å·ç›¸åŒ, ä¹Ÿå¯ä»¥é€šè¿‡å¿˜è®°å¯†ç è®¾ç½®å¯†ç "
+      "zh": "Third-party login will automatically use the user's email to register an account (the same email will be regarded as the same account), this account is the same as the registered account, and you can also set the password through the forget password"
     },
     "userEmailFormat": {
       "en": "Email Regex Pattern",
-      "zh": "é‚®ç®±æ­£åˆ™è¡¨è¾¾å¼"
+      "zh": "Email Regex Pattern"
     },
     "userEmailFormatTip": {
       "en": "Use regex to transform email. Example: ^(.+)@old\\.com$ with $1@new.com",
-      "zh": "ä½¿ç”¨æ­£åˆ™è½¬æ¢é‚®ç®±ã€‚ç¤ºä¾‹: ^(.+)@old\\.com$ é…åˆ $1@new.com"
+      "zh": "Use regex to transform email. Example: ^(.+)@old\\.com$ with $1@new.com"
     },
     "userEmailReplace": {
       "en": "Replace Template",
-      "zh": "æ›¿æ¢æ¨¡æ¿"
+      "zh": "Replace Template"
     }
   },
   "views.admin.Statistics": {
     "activeAddressCount30days": {
       "en": "30 days Active Address Count",
-      "zh": "30å¤©æ´»è·ƒé‚®ç®±åœ°å€æ€»æ•°"
+      "zh": "30 days Active Address Count"
     },
     "activeAddressCount7days": {
       "en": "7 days Active Address Count",
-      "zh": "7å¤©æ´»è·ƒé‚®ç®±åœ°å€æ€»æ•°"
+      "zh": "7 days Active Address Count"
     },
     "addressCount": {
       "en": "Address Count",
-      "zh": "é‚®ç®±åœ°å€æ€»æ•°"
+      "zh": "Address Count"
     },
     "mailCount": {
       "en": "Mail Count",
-      "zh": "é‚®ä»¶æ€»æ•°"
+      "zh": "Mail Count"
     },
     "sendMailCount": {
       "en": "Send Mail Count",
-      "zh": "å‘é€é‚®ä»¶æ€»æ•°"
+      "zh": "Send Mail Count"
     },
     "userCount": {
       "en": "User Count",
-      "zh": "ç”¨æˆ·æ€»æ•°"
+      "zh": "User Count"
     }
   },
   "views.admin.SenderAccess": {
     "action": {
       "en": "Action",
-      "zh": "æ“ä½œ"
+      "zh": "Action"
     },
     "address": {
       "en": "Address",
-      "zh": "åœ°å€"
+      "zh": "Address"
     },
     "balance": {
       "en": "Balance",
-      "zh": "ä½™é¢"
+      "zh": "Balance"
     },
     "created_at": {
       "en": "Created At",
-      "zh": "åˆ›å»ºæ—¶é—´"
+      "zh": "Created At"
     },
     "delete": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "deleteTip": {
       "en": "Are you sure to delete this?",
-      "zh": "ç¡®å®šåˆ é™¤å—ï¼Ÿ"
+      "zh": "Are you sure to delete this?"
     },
     "disable": {
       "en": "Disable",
-      "zh": "ç¦ç”¨"
+      "zh": "Disable"
     },
     "enable": {
       "en": "Enable",
-      "zh": "å¯ç”¨"
+      "zh": "Enable"
     },
     "is_enabled": {
       "en": "Is Enabled",
-      "zh": "æ˜¯å¦å¯ç”¨"
+      "zh": "Is Enabled"
     },
     "itemCount": {
       "en": "itemCount",
-      "zh": "æ€»æ•°"
+      "zh": "itemCount"
     },
     "modalTip": {
       "en": "Please input the sender balance",
-      "zh": "è¯·è¾“å…¥å‘ä»¶é¢åº¦"
+      "zh": "Please input the sender balance"
     },
     "modify": {
       "en": "Modify",
-      "zh": "ä¿®æ”¹"
+      "zh": "Modify"
     },
     "ok": {
       "en": "OK",
-      "zh": "ç¡®å®š"
+      "zh": "OK"
     },
     "query": {
       "en": "Query",
-      "zh": "æŸ¥è¯¢"
+      "zh": "Query"
     },
     "success": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     }
   },
   "views.index.LocalAddress": {
     "actions": {
       "en": "Actions",
-      "zh": "æ“ä½œ"
+      "zh": "Actions"
     },
     "address": {
       "en": "Address",
-      "zh": "åœ°å€"
+      "zh": "Address"
     },
     "bindAddressSuccess": {
       "en": "Bind Address Success",
-      "zh": "ç»‘å®šåœ°å€æˆåŠŸ"
+      "zh": "Bind Address Success"
     },
     "changeMailAddress": {
       "en": "Change Mail Address",
-      "zh": "åˆ‡æ¢é‚®ç®±åœ°å€"
+      "zh": "Change Mail Address"
     },
     "create_or_bind": {
       "en": "Create or Bind",
-      "zh": "åˆ›å»ºæˆ–ç»‘å®š"
+      "zh": "Create or Bind"
     },
     "success": {
       "en": "success",
-      "zh": "æˆåŠŸ"
+      "zh": "success"
     },
     "tip": {
       "en": "These addresses are stored in your browser, maybe loss if you clear the browser cache.",
-      "zh": "è¿™äº›åœ°å€å­˜å‚¨åœ¨æ‚¨çš„æµè§ˆå™¨ä¸­ï¼Œå¦‚æžœæ‚¨æ¸…é™¤æµè§ˆå™¨ç¼“å­˜ï¼Œå¯èƒ½ä¼šä¸¢å¤±ã€‚"
+      "zh": "These addresses are stored in your browser, maybe loss if you clear the browser cache."
     },
     "unbindMailAddress": {
       "en": "Unbind Mail Address credential",
-      "zh": "è§£ç»‘é‚®ç®±åœ°å€"
+      "zh": "Unbind Mail Address credential"
     }
   },
   "views.admin.DatabaseManager": {
     "code_db_version": {
       "en": "Code Needed DB Version",
-      "zh": "éœ€è¦çš„æ•°æ®åº“ç‰ˆæœ¬"
+      "zh": "Code Needed DB Version"
     },
     "current_db_version": {
       "en": "Current DB Version",
-      "zh": "å½“å‰æ•°æ®åº“ç‰ˆæœ¬"
+      "zh": "Current DB Version"
     },
     "init": {
       "en": "Initialize Database",
-      "zh": "åˆå§‹åŒ–æ•°æ®åº“"
+      "zh": "Initialize Database"
     },
     "initializationSuccess": {
       "en": "Database initialized successfully",
-      "zh": "æ•°æ®åº“åˆå§‹åŒ–æˆåŠŸ"
+      "zh": "Database initialized successfully"
     },
     "migration": {
       "en": "Migrate Database",
-      "zh": "å‡çº§æ•°æ®åº“ Schema"
+      "zh": "Migrate Database"
     },
     "migrationSuccess": {
       "en": "Database migrated successfully",
-      "zh": "æ•°æ®åº“å‡çº§æˆåŠŸ"
+      "zh": "Database migrated successfully"
     },
     "need_initialization_tip": {
       "en": "Database initialization is required. Please initialize the database.",
-      "zh": "éœ€è¦åˆå§‹åŒ–æ•°æ®åº“ï¼Œè¯·åˆå§‹åŒ–æ•°æ®åº“"
+      "zh": "Database initialization is required. Please initialize the database."
     },
     "need_migration_tip": {
       "en": "Database migration is required. Please migrate the database.",
-      "zh": "éœ€è¦è¿ç§»æ•°æ®åº“ï¼Œè¯·è¿ç§»æ•°æ®åº“"
+      "zh": "Database migration is required. Please migrate the database."
     }
   },
   "views.admin.IpBlacklistSettings": {
     "asn_blacklist": {
       "en": "ASN Organization Blacklist",
-      "zh": "ASN ç»„ç»‡ï¼ˆè¿è¥å•†ï¼‰é»‘åå•"
+      "zh": "ASN Organization Blacklist"
     },
     "asn_blacklist_placeholder": {
       "en": "Enter ASN organization (e.g., Google, Amazon)",
-      "zh": "è¾“å…¥ ASN ç»„ç»‡åç§°ï¼ˆä¾‹å¦‚ï¼šGoogle, Amazonï¼‰"
+      "zh": "Enter ASN organization (e.g., Google, Amazon)"
     },
     "daily_request_limit": {
       "en": "Daily Request Limit",
-      "zh": "æ¯æ—¥è¯·æ±‚æ¬¡æ•°ä¸Šé™"
+      "zh": "Daily Request Limit"
     },
     "daily_request_limit_placeholder": {
       "en": "Enter limit (e.g., 1000)",
-      "zh": "è¾“å…¥é™åˆ¶æ¬¡æ•°ï¼ˆä¾‹å¦‚ï¼š1000ï¼‰"
+      "zh": "Enter limit (e.g., 1000)"
     },
     "enable_daily_limit": {
       "en": "Enable Daily Request Limit",
-      "zh": "å¯ç”¨æ¯æ—¥è¯·æ±‚é™æµ"
+      "zh": "Enable Daily Request Limit"
     },
     "enable_daily_limit_tip": {
       "en": "Limit the number of API requests per IP address per day",
-      "zh": "é™åˆ¶æ¯ä¸ª IP åœ°å€æ¯å¤©çš„ API è¯·æ±‚æ¬¡æ•°"
+      "zh": "Limit the number of API requests per IP address per day"
     },
     "enable_ip_blacklist": {
       "en": "Enable IP Blacklist",
-      "zh": "å¯ç”¨ IP é»‘åå•"
+      "zh": "Enable IP Blacklist"
     },
     "enable_ip_whitelist": {
       "en": "Enable IP Whitelist (Strict)",
-      "zh": "å¯ç”¨ IP ç™½åå•ï¼ˆä¸¥æ ¼æ¨¡å¼ï¼‰"
+      "zh": "Enable IP Whitelist (Strict)"
     },
     "enable_tip": {
       "en": "Block IPs matching blacklist patterns from accessing rate-limited APIs",
-      "zh": "é˜»æ­¢åŒ¹é…é»‘åå•çš„ IP è®¿é—®é™æµ API"
+      "zh": "Block IPs matching blacklist patterns from accessing rate-limited APIs"
     },
     "enable_whitelist_tip": {
       "en": "Strict mode: ONLY IPs matching the whitelist can access rate-limited APIs. All other IPs will be denied.",
-      "zh": "ä¸¥æ ¼æ¨¡å¼ï¼šä»…å…è®¸åŒ¹é…ç™½åå•çš„ IP è®¿é—®é™æµ APIï¼Œå…¶ä»–æ‰€æœ‰ IP å°†è¢«æ‹’ç»"
+      "zh": "Strict mode: ONLY IPs matching the whitelist can access rate-limited APIs. All other IPs will be denied."
     },
     "fingerprint_blacklist": {
       "en": "Browser Fingerprint Blacklist",
-      "zh": "æµè§ˆå™¨æŒ‡çº¹é»‘åå•"
+      "zh": "Browser Fingerprint Blacklist"
     },
     "fingerprint_blacklist_placeholder": {
       "en": "Enter fingerprint ID (e.g., a1b2c3d4e5f6g7h8)",
-      "zh": "è¾“å…¥æŒ‡çº¹ IDï¼ˆä¾‹å¦‚ï¼ša1b2c3d4e5f6g7h8ï¼‰"
+      "zh": "Enter fingerprint ID (e.g., a1b2c3d4e5f6g7h8)"
     },
     "ip_blacklist": {
       "en": "IP Blacklist Patterns",
-      "zh": "IP é»‘åå•åŒ¹é…æ¨¡å¼"
+      "zh": "IP Blacklist Patterns"
     },
     "ip_blacklist_placeholder": {
       "en": "Enter pattern (e.g., 192.168.1 or ^10\\.0\\.0\\.5$)",
-      "zh": "è¾“å…¥åŒ¹é…æ¨¡å¼ï¼ˆä¾‹å¦‚ï¼š192.168.1 æˆ– ^10\\.0\\.0\\.5$ï¼‰"
+      "zh": "Enter pattern (e.g., 192.168.1 or ^10\\.0\\.0\\.5$)"
     },
     "ip_whitelist": {
       "en": "IP Whitelist Patterns",
-      "zh": "IP ç™½åå•åŒ¹é…æ¨¡å¼"
+      "zh": "IP Whitelist Patterns"
     },
     "ip_whitelist_placeholder": {
       "en": "Exact IP (e.g., 1.2.3.4) or anchored regex (e.g., ^192\\.168\\.1\\.\\d+$)",
-      "zh": "ç²¾ç¡® IP(å¦‚ 1.2.3.4)æˆ–é”šå®šæ­£åˆ™(å¦‚ ^192\\.168\\.1\\.\\d+$)"
+      "zh": "Exact IP (e.g., 1.2.3.4) or anchored regex (e.g., ^192\\.168\\.1\\.\\d+$)"
     },
     "manualInputPrompt": {
       "en": "Type pattern and press Enter to add",
-      "zh": "è¾“å…¥åŒ¹é…æ¨¡å¼åŽæŒ‰å›žè½¦é”®æ·»åŠ "
+      "zh": "Type pattern and press Enter to add"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "successTip": {
       "en": "Save Success",
-      "zh": "ä¿å­˜æˆåŠŸ"
+      "zh": "Save Success"
     },
     "tip_asn": {
       "en": "ASN Organization: Block by ISP/provider. Case-insensitive text matching or regex.",
-      "zh": "ASN ç»„ç»‡ï¼šæ ¹æ®è¿è¥å•†/ISP æ‹‰é»‘ã€‚æ”¯æŒä¸åŒºåˆ†å¤§å°å†™çš„æ–‡æœ¬åŒ¹é…æˆ–æ­£åˆ™è¡¨è¾¾å¼ã€‚"
+      "zh": "ASN Organization: Block by ISP/provider. Case-insensitive text matching or regex."
     },
     "tip_daily_limit": {
       "en": "Daily Limit: Restrict the maximum number of requests per IP address per day (1-1000000).",
-      "zh": "æ¯æ—¥é™æµï¼šé™åˆ¶å•ä¸ª IP åœ°å€æ¯å¤©æœ€å¤šè¯·æ±‚æ¬¡æ•°ï¼ˆ1-1000000ï¼‰ã€‚"
+      "zh": "Daily Limit: Restrict the maximum number of requests per IP address per day (1-1000000)."
     },
     "tip_fingerprint": {
       "en": "Browser Fingerprint: Block by browser fingerprint. Supports exact matching or regex patterns.",
-      "zh": "æµè§ˆå™¨æŒ‡çº¹ï¼šæ ¹æ®æµè§ˆå™¨æŒ‡çº¹æ‹‰é»‘ã€‚æ”¯æŒå®Œå…¨åŒ¹é…æˆ–æ­£åˆ™è¡¨è¾¾å¼ã€‚"
+      "zh": "Browser Fingerprint: Block by browser fingerprint. Supports exact matching or regex patterns."
     },
     "tip_ip": {
       "en": "IP Blacklist: Supports text matching (e.g., \"192.168.1\") or regex (e.g., \"^10\\.0\\.0\\.5$\").",
-      "zh": "IP é»‘åå•ï¼šæ”¯æŒæ–‡æœ¬åŒ¹é…ï¼ˆå¦‚ \"192.168.1\"ï¼‰æˆ–æ­£åˆ™è¡¨è¾¾å¼ï¼ˆå¦‚ \"^10\\.0\\.0\\.5$\"ï¼‰ã€‚"
+      "zh": "IP Blacklist: Supports text matching (e.g., \"192.168.1\") or regex (e.g., \"^10\\.0\\.0\\.5$\")."
     },
     "tip_scope": {
       "en": "Applies to: Create Address, Send Mail, External Send Mail API, User Registration, Verify Code",
-      "zh": "ä½œç”¨èŒƒå›´ï¼šåˆ›å»ºé‚®ç®±åœ°å€ã€å‘é€é‚®ä»¶ã€å¤–éƒ¨å‘é€é‚®ä»¶ APIã€ç”¨æˆ·æ³¨å†Œã€éªŒè¯ç éªŒè¯"
+      "zh": "Applies to: Create Address, Send Mail, External Send Mail API, User Registration, Verify Code"
     },
     "tip_whitelist": {
       "en": "IP Whitelist: Strict allowlist â€” plain entries must be EXACT IP matches (no substring). Use anchored regex (^...$) for ranges. Whitelisted IPs skip blacklist checks.",
-      "zh": "IP ç™½åå•: ä¸¥æ ¼æ”¾è¡Œåå•â€”â€”çº¯æ–‡æœ¬å¿…é¡»æ˜¯ç²¾ç¡® IP(ä¸æ”¯æŒå­ä¸²åŒ¹é…), æ‰¹é‡æ”¾è¡Œè¯·ç”¨é”šå®šæ­£åˆ™ ^...$. å‘½ä¸­ç™½åå•çš„ IP å°†è·³è¿‡é»‘åå•æ£€æŸ¥."
+      "zh": "IP Whitelist: Strict allowlist â€” plain entries must be EXACT IP matches (no substring). Use anchored regex (^...$) for ranges. Whitelisted IPs skip blacklist checks."
     },
     "title": {
       "en": "IP Blacklist Settings",
-      "zh": "IP é»‘åå•è®¾ç½®"
+      "zh": "IP Blacklist Settings"
     },
     "whitelist_empty_warning": {
       "en": "IP whitelist is enabled but the list is empty. This is ignored by the server to prevent lockout. Please add at least one entry before enabling.",
-      "zh": "IP ç™½åå•å·²å¯ç”¨ä½†åˆ—è¡¨ä¸ºç©ºï¼ŒæœåŠ¡ç«¯å°†å¿½ç•¥è¯¥å¼€å…³ä»¥é˜²æ­¢é”æ­»ã€‚è¯·å…ˆæ·»åŠ è‡³å°‘ä¸€æ¡ç™½åå•æ¡ç›®å†å¯ç”¨ã€‚"
+      "zh": "IP whitelist is enabled but the list is empty. This is ignored by the server to prevent lockout. Please add at least one entry before enabling."
     }
   },
   "views.admin.UserAddressManagement": {
     "mail_count": {
       "en": "Mail Count",
-      "zh": "é‚®ä»¶æ•°é‡"
+      "zh": "Mail Count"
     },
     "name": {
       "en": "Name",
-      "zh": "åç§°"
+      "zh": "Name"
     },
     "send_count": {
       "en": "Send Count",
-      "zh": "å‘é€æ•°é‡"
+      "zh": "Send Count"
     },
     "success": {
       "en": "success",
-      "zh": "æˆåŠŸ"
+      "zh": "success"
     }
   },
   "views.admin.UserManagement": {
     "actions": {
       "en": "Actions",
-      "zh": "æ“ä½œ"
+      "zh": "Actions"
     },
     "address_count": {
       "en": "Address Count",
-      "zh": "åœ°å€æ•°é‡"
+      "zh": "Address Count"
     },
     "changeRole": {
       "en": "Change Role",
-      "zh": "æ›´æ”¹è§’è‰²"
+      "zh": "Change Role"
     },
     "createUser": {
       "en": "Create User",
-      "zh": "åˆ›å»ºç”¨æˆ·"
+      "zh": "Create User"
     },
     "created_at": {
       "en": "Created At",
-      "zh": "åˆ›å»ºæ—¶é—´"
+      "zh": "Created At"
     },
     "delete": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "deleteUser": {
       "en": "Delete User",
-      "zh": "åˆ é™¤ç”¨æˆ·"
+      "zh": "Delete User"
     },
     "deleteUserTip": {
       "en": "Are you sure you want to delete this user?",
-      "zh": "ç¡®å®šè¦åˆ é™¤æ­¤ç”¨æˆ·å—ï¼Ÿ"
+      "zh": "Are you sure you want to delete this user?"
     },
     "domains": {
       "en": "Domains",
-      "zh": "åŸŸå"
+      "zh": "Domains"
     },
     "email": {
       "en": "Email",
-      "zh": "é‚®ç®±"
+      "zh": "Email"
     },
     "itemCount": {
       "en": "itemCount",
-      "zh": "æ€»æ•°"
+      "zh": "itemCount"
     },
     "password": {
       "en": "Password",
-      "zh": "å¯†ç "
+      "zh": "Password"
     },
     "pleaseInput": {
       "en": "Please input complete information",
-      "zh": "è¯·è¾“å…¥å®Œæ•´ä¿¡æ¯"
+      "zh": "Please input complete information"
     },
     "prefix": {
       "en": "Prefix",
-      "zh": "å‰ç¼€"
+      "zh": "Prefix"
     },
     "query": {
       "en": "Query",
-      "zh": "æŸ¥è¯¢"
+      "zh": "Query"
     },
     "resetPassword": {
       "en": "Reset Password",
-      "zh": "é‡ç½®å¯†ç "
+      "zh": "Reset Password"
     },
     "role": {
       "en": "Role",
-      "zh": "è§’è‰²"
+      "zh": "Role"
     },
     "roleDonotExist": {
       "en": "Current Role does not exist",
-      "zh": "å½“å‰è§’è‰²ä¸å­˜åœ¨"
+      "zh": "Current Role does not exist"
     },
     "success": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     },
     "userAddressManagement": {
       "en": "Address Management",
-      "zh": "åœ°å€ç®¡ç†"
+      "zh": "Address Management"
     },
     "user_email": {
       "en": "User Email",
-      "zh": "ç”¨æˆ·é‚®ç®±"
+      "zh": "User Email"
     }
   },
   "views.admin.Telegram": {
     "enable": {
       "en": "Enable",
-      "zh": "å¯ç”¨"
+      "zh": "Enable"
     },
     "enableGlobalMailPush": {
       "en": "Enable Global Mail Push(Manually input telegram Chat ID)",
-      "zh": "å¯ç”¨å…¨å±€é‚®ä»¶æŽ¨é€(æ‰‹åŠ¨è¾“å…¥é‚®ç®±ç®¡ç†å‘˜çš„ telegram Chat ID, å›žè½¦å¢žåŠ )"
+      "zh": "Enable Global Mail Push(Manually input telegram Chat ID)"
     },
     "enableTelegramAllowList": {
       "en": "Enable Telegram Allow List(Manually input Chat ID)",
-      "zh": "å¯ç”¨ Telegram ç™½åå•(æ‰‹åŠ¨è¾“å…¥ Chat ID, å›žè½¦å¢žåŠ )"
+      "zh": "Enable Telegram Allow List(Manually input Chat ID)"
     },
     "globalMailPushList": {
       "en": "Global Mail Push Chat ID List",
-      "zh": "å…¨å±€é‚®ä»¶æŽ¨é€ Chat ID åˆ—è¡¨"
+      "zh": "Global Mail Push Chat ID List"
     },
     "globalMailPushListTip": {
       "en": "Support chat_id of private chat/group/channel. You can send a message to your bot, then visit this link to see chat_id, https://api.telegram.org/bot<Replace with your BOT TOKEN>/getUpdates",
-      "zh": "æ”¯æŒå¯¹è¯/ç¾¤ç»„/é¢‘é“çš„ Chat ID, æ‚¨å¯ä»¥å‘é€ä¸€æ¡æ¶ˆæ¯ç»™æ‚¨çš„æœºå™¨äººï¼Œç„¶åŽè®¿é—®æ­¤é“¾æŽ¥æ¥æŸ¥çœ‹ chat_id, https://api.telegram.org/bot<è¿™é‡Œæ›¿æ¢æˆæ‚¨çš„ BOT TOKEN>/getUpdates"
+      "zh": "Support chat_id of private chat/group/channel. You can send a message to your bot, then visit this link to see chat_id, https://api.telegram.org/bot<Replace with your BOT TOKEN>/getUpdates"
     },
     "init": {
       "en": "Init",
-      "zh": "åˆå§‹åŒ–"
+      "zh": "Init"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
+      "zh": "Type and press Enter to add"
     },
     "miniAppUrl": {
       "en": "Telegram Mini App URL",
-      "zh": "ç”µæŠ¥å°ç¨‹åº URL(è¯·è¾“å…¥ä½ éƒ¨ç½²çš„ç”µæŠ¥å°ç¨‹åºç½‘é¡µåœ°å€)"
+      "zh": "Telegram Mini App URL"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "status": {
       "en": "Check Status",
-      "zh": "æŸ¥çœ‹çŠ¶æ€"
+      "zh": "Check Status"
     },
     "successTip": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     },
     "telegramAllowList": {
       "en": "Telegram Allow List(Manually input telegram Chat ID)",
-      "zh": "Telegram ç™½åå•(æ‰‹åŠ¨è¾“å…¥ Chat ID, å›žè½¦å¢žåŠ )"
+      "zh": "Telegram Allow List(Manually input telegram Chat ID)"
     }
   },
   "views.admin.CreateAccount": {
     "address": {
       "en": "Address",
-      "zh": "åœ°å€"
+      "zh": "Address"
     },
     "addressCredential": {
       "en": "Mail Address Credential",
-      "zh": "é‚®ç®±åœ°å€å‡­è¯"
+      "zh": "Mail Address Credential"
     },
     "addressCredentialTip": {
       "en": "Please copy the Mail Address Credential and you can use it to login to your email account.",
-      "zh": "è¯·å¤åˆ¶é‚®ç®±åœ°å€å‡­è¯ï¼Œä½ å¯ä»¥ä½¿ç”¨å®ƒç™»å½•ä½ çš„é‚®ç®±ã€‚"
+      "zh": "Please copy the Mail Address Credential and you can use it to login to your email account."
     },
     "addressPassword": {
       "en": "Address Password",
-      "zh": "åœ°å€å¯†ç "
+      "zh": "Address Password"
     },
     "creatNewEmail": {
       "en": "Create New Email",
-      "zh": "åˆ›å»ºæ–°é‚®ç®±"
+      "zh": "Create New Email"
     },
     "enablePrefix": {
       "en": "If enable Prefix",
-      "zh": "æ˜¯å¦å¯ç”¨å‰ç¼€"
+      "zh": "If enable Prefix"
     },
     "enableRandomSubdomain": {
       "en": "Use Random Subdomain",
-      "zh": "å¯ç”¨éšæœºå­åŸŸå"
+      "zh": "Use Random Subdomain"
     },
     "fillInAllFields": {
       "en": "Please fill in all fields",
-      "zh": "è¯·å¡«å†™å®Œæ•´ä¿¡æ¯"
+      "zh": "Please fill in all fields"
     },
     "linkWithAddressCredential": {
       "en": "Open to auto login email link",
-      "zh": "æ‰“å¼€å³å¯è‡ªåŠ¨ç™»å½•é‚®ç®±çš„é“¾æŽ¥"
+      "zh": "Open to auto login email link"
     },
     "randomSubdomainTip": {
       "en": "When enabled, the created address will use a random subdomain. Subdomain addresses are recommended for receiving only.",
-      "zh": "å¯ç”¨åŽï¼Œåˆ›å»ºå‡ºæ¥çš„åœ°å€ä¼šè‡ªåŠ¨æŒ‚åœ¨éšæœºå­åŸŸåä¸‹ã€‚å­åŸŸååœ°å€æ›´å»ºè®®ä»…ç”¨äºŽæ”¶ä»¶ã€‚"
+      "zh": "When enabled, the created address will use a random subdomain. Subdomain addresses are recommended for receiving only."
     },
     "successTip": {
       "en": "Success Created",
-      "zh": "åˆ›å»ºæˆåŠŸ"
+      "zh": "Success Created"
     }
   },
   "views.admin.UserSettings": {
     "emailCheckRegex": {
       "en": "Email Check Regex (e.g. ^[^.]+{'@'}.+$ to disallow dots before {'@'})",
-      "zh": "é‚®ç®±æ­£åˆ™æ ¡éªŒ (ä¾‹å¦‚ ^[^.]+{'@'}.+$ ç¦æ­¢{'@'}å‰é¢æœ‰.)"
+      "zh": "Email Check Regex (e.g. ^[^.]+{'@'}.+$ to disallow dots before {'@'})"
     },
     "enable": {
       "en": "Enable",
-      "zh": "å¯ç”¨"
+      "zh": "Enable"
     },
     "enableEmailCheckRegex": {
       "en": "Enable Email Check Regex",
-      "zh": "å¯ç”¨é‚®ç®±æ­£åˆ™æ ¡éªŒ"
+      "zh": "Enable Email Check Regex"
     },
     "enableMailAllowList": {
       "en": "Enable Mail Address Allow List(Manually enterable)",
-      "zh": "å¯ç”¨é‚®ä»¶åœ°å€ç™½åå•(å¯æ‰‹åŠ¨è¾“å…¥, å›žè½¦å¢žåŠ )"
+      "zh": "Enable Mail Address Allow List(Manually enterable)"
     },
     "enableMailVerify": {
       "en": "Enable Mail Verify (Send address must be an address in the system with a balance and can send mail normally)",
-      "zh": "å¯ç”¨é‚®ä»¶éªŒè¯(å‘é€åœ°å€å¿…é¡»æ˜¯ç³»ç»Ÿä¸­èƒ½æœ‰ä½™é¢ä¸”èƒ½æ­£å¸¸å‘é€é‚®ä»¶çš„åœ°å€)"
+      "zh": "Enable Mail Verify (Send address must be an address in the system with a balance and can send mail normally)"
     },
     "enableUserRegister": {
       "en": "Allow User Register",
-      "zh": "å…è®¸ç”¨æˆ·æ³¨å†Œ"
+      "zh": "Allow User Register"
     },
     "mailAllowList": {
       "en": "Mail Address Allow List",
-      "zh": "é‚®ä»¶åœ°å€ç™½åå•"
+      "zh": "Mail Address Allow List"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
+      "zh": "Type and press Enter to add"
     },
     "maxAddressCount": {
       "en": "Maximum number of email addresses that can be binded (0 = Unlimited)",
-      "zh": "å¯ç»‘å®šæœ€å¤§é‚®ç®±åœ°å€æ•°é‡ï¼ˆ0 ä¸ºä¸é™åˆ¶ï¼‰"
+      "zh": "Maximum number of email addresses that can be binded (0 = Unlimited)"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "successTip": {
       "en": "Save Success",
-      "zh": "ä¿å­˜æˆåŠŸ"
+      "zh": "Save Success"
     },
     "verifyMailSender": {
       "en": "Verify Mail Sender",
-      "zh": "éªŒè¯é‚®ä»¶å‘é€åœ°å€"
+      "zh": "Verify Mail Sender"
     }
   },
   "views.admin.RoleAddressConfig": {
     "maxAddressCount": {
       "en": "Max Address Count (0 = Unlimited)",
-      "zh": "æœ€å¤§åœ°å€æ•°é‡ï¼ˆ0 ä¸ºä¸é™åˆ¶ï¼‰"
+      "zh": "Max Address Count (0 = Unlimited)"
     },
     "noRolesAvailable": {
       "en": "No roles available in system config",
-      "zh": "ç³»ç»Ÿé…ç½®ä¸­æ²¡æœ‰å¯ç”¨çš„è§’è‰²"
+      "zh": "No roles available in system config"
     },
     "notConfigured": {
       "en": "Not Configured (Use Global Settings)",
-      "zh": "æœªé…ç½®ï¼ˆä½¿ç”¨å…¨å±€è®¾ç½®ï¼‰"
+      "zh": "Not Configured (Use Global Settings)"
     },
     "role": {
       "en": "Role",
-      "zh": "è§’è‰²"
+      "zh": "Role"
     },
     "roleConfigDesc": {
       "en": "Configure maximum address count for each user role. Role-based limits take priority over global settings. Set 0 for unlimited.",
-      "zh": "ä¸ºæ¯ä¸ªç”¨æˆ·è§’è‰²é…ç½®æœ€å¤§åœ°å€æ•°é‡ã€‚è§’è‰²é…ç½®ä¼˜å…ˆäºŽå…¨å±€è®¾ç½®ã€‚è®¾ç½®ä¸º 0 è¡¨ç¤ºä¸é™åˆ¶ã€‚"
+      "zh": "Configure maximum address count for each user role. Role-based limits take priority over global settings. Set 0 for unlimited."
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "successTip": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     }
   },
   "views.common.Appearance": {
     "autoRefreshInterval": {
       "en": "Auto Refresh Interval(Sec)",
-      "zh": "è‡ªåŠ¨åˆ·æ–°é—´éš”(ç§’)"
+      "zh": "Auto Refresh Interval(Sec)"
     },
     "bottom": {
       "en": "bottom",
-      "zh": "åº•éƒ¨"
+      "zh": "bottom"
     },
     "globalTabplacement": {
       "en": "Global Tab Placement",
-      "zh": "å…¨å±€é€‰é¡¹å¡ä½ç½®"
+      "zh": "Global Tab Placement"
     },
     "left": {
       "en": "left",
-      "zh": "å·¦ä¾§"
+      "zh": "left"
     },
     "mailboxSplitSize": {
       "en": "Mailbox Split Size",
-      "zh": "é‚®ç®±ç•Œé¢åˆ†æ å¤§å°"
+      "zh": "Mailbox Split Size"
     },
     "preferShowTextMail": {
       "en": "Display text Mail by default",
-      "zh": "é»˜è®¤ä»¥æ–‡æœ¬æ˜¾ç¤ºé‚®ä»¶"
+      "zh": "Display text Mail by default"
     },
     "right": {
       "en": "right",
-      "zh": "å³ä¾§"
+      "zh": "right"
     },
     "top": {
       "en": "top",
-      "zh": "é¡¶éƒ¨"
+      "zh": "top"
     },
     "useIframeShowMail": {
       "en": "Use iframe Show HTML Mail",
-      "zh": "ä½¿ç”¨iframeæ˜¾ç¤ºHTMLé‚®ä»¶"
+      "zh": "Use iframe Show HTML Mail"
     },
     "useSideMargin": {
       "en": "Turn on the side margins on the left and right sides of the page",
-      "zh": "å¼€å¯é¡µé¢å·¦å³ä¸¤ä¾§ä¾§è¾¹è·"
+      "zh": "Turn on the side margins on the left and right sides of the page"
     },
     "useSimpleIndex": {
       "en": "Use Simple Index",
-      "zh": "ä½¿ç”¨æžç®€ä¸»é¡µ"
+      "zh": "Use Simple Index"
     },
     "useUTCDate": {
       "en": "Use UTC Date",
-      "zh": "ä½¿ç”¨ UTC æ—¶é—´"
+      "zh": "Use UTC Date"
     }
   },
   "views.admin.AccountSettings": {
     "actions": {
       "en": "Actions",
-      "zh": "æ“ä½œ"
+      "zh": "Actions"
     },
     "add": {
       "en": "Add",
-      "zh": "æ·»åŠ "
+      "zh": "Add"
     },
     "address_block_list": {
       "en": "Address Block Keywords for Users(Admin can skip)",
-      "zh": "é‚®ä»¶åœ°å€å±è”½å…³é”®è¯(ç®¡ç†å‘˜å¯è·³è¿‡æ£€æŸ¥)"
+      "zh": "Address Block Keywords for Users(Admin can skip)"
     },
     "address_block_list_placeholder": {
       "en": "Please enter the keywords you want to block",
-      "zh": "è¯·è¾“å…¥æ‚¨æƒ³è¦å±è”½çš„å…³é”®è¯"
+      "zh": "Please enter the keywords you want to block"
     },
     "block_receive_unknow_address_email": {
       "en": "Block receive unknow address email",
-      "zh": "ç¦æ­¢æŽ¥æ”¶æœªçŸ¥åœ°å€é‚®ä»¶"
+      "zh": "Block receive unknow address email"
     },
     "cancel": {
       "en": "Cancel",
-      "zh": "å–æ¶ˆ"
+      "zh": "Cancel"
     },
     "config": {
       "en": "Config",
-      "zh": "é…ç½®"
+      "zh": "Config"
     },
     "create_address_subdomain_match": {
       "en": "Allow Subdomain Suffix Match When Creating Address",
-      "zh": "åˆ›å»ºé‚®ç®±æ—¶å…è®¸å­åŸŸååŽç¼€åŒ¹é…"
+      "zh": "Allow Subdomain Suffix Match When Creating Address"
     },
     "create_address_subdomain_match_env_locked": {
       "en": "Worker env ENABLE_CREATE_ADDRESS_SUBDOMAIN_MATCH is currently false. The saved admin switch can be modified, but it will not take effect until env is enabled or removed.",
-      "zh": "å½“å‰ Worker çŽ¯å¢ƒå˜é‡ ENABLE_CREATE_ADDRESS_SUBDOMAIN_MATCH ä¸º falseã€‚åŽå°å¼€å…³ä»å¯ä¿å­˜ï¼Œä½†åœ¨ env æ‰“å¼€æˆ–ç§»é™¤å‰ä¸ä¼šç”Ÿæ•ˆã€‚"
+      "zh": "Worker env ENABLE_CREATE_ADDRESS_SUBDOMAIN_MATCH is currently false. The saved admin switch can be modified, but it will not take effect until env is enabled or removed."
     },
     "create_address_subdomain_match_follow_env": {
       "en": "Follow Environment Variable",
-      "zh": "è·ŸéšçŽ¯å¢ƒå˜é‡"
+      "zh": "Follow Environment Variable"
     },
     "create_address_subdomain_match_follow_env_note": {
       "en": "Choosing \"Follow Environment Variable\" clears the admin override and returns to the unset state. The effective result is still controlled by the Worker env and the precedence rules.",
-      "zh": "é€‰æ‹©â€œè·ŸéšçŽ¯å¢ƒå˜é‡â€ä¼šæ¸…ç©ºåŽå°è¦†ç›–ï¼Œæ¢å¤ä¸ºæœªè®¾ç½®çŠ¶æ€ï¼›æœ€ç»ˆæ˜¯å¦å¼€å¯ä»ç”± Worker env å’Œä¼˜å…ˆçº§è§„åˆ™å†³å®šã€‚"
+      "zh": "Choosing \"Follow Environment Variable\" clears the admin override and returns to the unset state. The effective result is still controlled by the Worker env and the precedence rules."
     },
     "create_address_subdomain_match_force_disable": {
       "en": "Force Disable",
-      "zh": "å¼ºåˆ¶å…³é—­"
+      "zh": "Force Disable"
     },
     "create_address_subdomain_match_force_enable": {
       "en": "Force Enable",
-      "zh": "å¼ºåˆ¶å¼€å¯"
+      "zh": "Force Enable"
     },
     "create_address_subdomain_match_note": {
       "en": "This is different from RANDOM_SUBDOMAIN_DOMAINS: this switch allows API callers to specify custom subdomains directly, while random subdomain only auto-generates one during creation.",
-      "zh": "è¿™ä¸Ž RANDOM_SUBDOMAIN_DOMAINS ä¸åŒï¼šè¿™é‡Œå…è®¸ API è°ƒç”¨æ–¹ç›´æŽ¥æŒ‡å®šè‡ªå®šä¹‰å­åŸŸåï¼›éšæœºå­åŸŸååŠŸèƒ½åªæ˜¯åœ¨åˆ›å»ºæ—¶è‡ªåŠ¨è¡¥ä¸€ä¸ªéšæœºå­åŸŸåã€‚"
+      "zh": "This is different from RANDOM_SUBDOMAIN_DOMAINS: this switch allows API callers to specify custom subdomains directly, while random subdomain only auto-generates one during creation."
     },
     "create_address_subdomain_match_tip": {
       "en": "Only affects /api/new_address and /admin/new_address domain validation. Example: when enabled, foo.example.com can match configured base domain example.com.",
-      "zh": "ä»…å½±å“ /api/new_address å’Œ /admin/new_address çš„åŸŸåæ ¡éªŒã€‚ä¾‹å¦‚å¼€å¯åŽï¼Œfoo.example.com å¯ä»¥åŒ¹é…å·²é…ç½®çš„åŸºç¡€åŸŸå example.comã€‚"
+      "zh": "Only affects /api/new_address and /admin/new_address domain validation. Example: when enabled, foo.example.com can match configured base domain example.com."
     },
     "delete_rule": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "delete_rule_confirm": {
       "en": "Are you sure you want to delete this rule?",
-      "zh": "ç¡®å®šè¦åˆ é™¤è¿™æ¡è§„åˆ™å—ï¼Ÿ"
+      "zh": "Are you sure you want to delete this rule?"
     },
     "delete_success": {
       "en": "Delete Success",
-      "zh": "åˆ é™¤æˆåŠŸ"
+      "zh": "Delete Success"
     },
     "domain_list": {
       "en": "Domain List (Optional)",
-      "zh": "åŸŸååˆ—è¡¨ï¼ˆå¯é€‰ï¼‰"
+      "zh": "Domain List (Optional)"
     },
     "email_forwarding_config": {
       "en": "Email Forwarding Configuration",
-      "zh": "é‚®ä»¶è½¬å‘é…ç½®"
+      "zh": "Email Forwarding Configuration"
     },
     "forward_address": {
       "en": "Forward Address",
-      "zh": "è½¬å‘åœ°å€"
+      "zh": "Forward Address"
     },
     "forward_address_required": {
       "en": "Forward address is required",
-      "zh": "è½¬å‘åœ°å€ä¸èƒ½ä¸ºç©º"
+      "zh": "Forward address is required"
     },
     "forward_placeholder": {
       "en": "forward@example.com",
@@ -2454,341 +2454,341 @@
     },
     "forwarding_rule_warning": {
       "en": "Each rule will run independently. Forward address needs to be a verified address.",
-      "zh": "æ¯æ¡è§„åˆ™ç‹¬ç«‹è¿è¡Œï¼Œè½¬å‘åœ°å€éœ€è¦ä¸ºå·²éªŒè¯çš„åœ°å€ã€‚"
+      "zh": "Each rule will run independently. Forward address needs to be a verified address."
     },
     "fromBlockList": {
       "en": "Block Keywords for receive email",
-      "zh": "æŽ¥æ”¶é‚®ä»¶åœ°å€å±è”½å…³é”®è¯"
+      "zh": "Block Keywords for receive email"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
+      "zh": "Type and press Enter to add"
     },
     "match_all": {
       "en": "All",
-      "zh": "å…¨éƒ¨"
+      "zh": "All"
     },
     "match_any": {
       "en": "Any",
-      "zh": "ä»»ä¸€"
+      "zh": "Any"
     },
     "noLimitSendAddressList": {
       "en": "No Balance Limit Send Address List",
-      "zh": "æ— ä½™é¢é™åˆ¶å‘é€åœ°å€åˆ—è¡¨"
+      "zh": "No Balance Limit Send Address List"
     },
     "regex_invalid": {
       "en": "Invalid regex pattern",
-      "zh": "æ— æ•ˆçš„æ­£åˆ™è¡¨è¾¾å¼"
+      "zh": "Invalid regex pattern"
     },
     "regex_too_long": {
       "en": "Regex pattern too long (max 200 characters)",
-      "zh": "æ­£åˆ™è¡¨è¾¾å¼è¿‡é•¿ï¼ˆæœ€å¤§200å­—ç¬¦ï¼‰"
+      "zh": "Regex pattern too long (max 200 characters)"
     },
     "rule_index": {
       "en": "Rule",
-      "zh": "è§„åˆ™"
+      "zh": "Rule"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "select_domain": {
       "en": "Select Domain",
-      "zh": "é€‰æ‹©åŸŸå"
+      "zh": "Select Domain"
     },
     "send_address_block_list": {
       "en": "Address Block Keywords for send email",
-      "zh": "å‘é€é‚®ä»¶åœ°å€å±è”½å…³é”®è¯"
+      "zh": "Address Block Keywords for send email"
     },
     "send_mail_daily_limit": {
       "en": "Daily Limit",
-      "zh": "æ¯æ—¥é¢åº¦"
+      "zh": "Daily Limit"
     },
     "send_mail_daily_limit_invalid": {
       "en": "Daily limit must be an integer greater than or equal to -1",
-      "zh": "æ¯æ—¥é¢åº¦å¿…é¡»æ˜¯å¤§äºŽç­‰äºŽ -1 çš„æ•´æ•°"
+      "zh": "Daily limit must be an integer greater than or equal to -1"
     },
     "send_mail_limit": {
       "en": "Send Mail Limit",
-      "zh": "å‘ä¿¡é¢åº¦"
+      "zh": "Send Mail Limit"
     },
     "send_mail_limit_tip": {
       "en": "This applies to all send channels. Use -1 for unlimited and 0 to block sending.",
-      "zh": "å¯¹å…¨éƒ¨å‘ä¿¡æ¸ é“ç”Ÿæ•ˆã€‚-1 è¡¨ç¤ºæ— é™ï¼Œ0 è¡¨ç¤ºç¦æ­¢å‘é€ã€‚"
+      "zh": "This applies to all send channels. Use -1 for unlimited and 0 to block sending."
     },
     "send_mail_monthly_limit": {
       "en": "Monthly Limit",
-      "zh": "æ¯æœˆé¢åº¦"
+      "zh": "Monthly Limit"
     },
     "send_mail_monthly_limit_invalid": {
       "en": "Monthly limit must be an integer greater than or equal to -1",
-      "zh": "æ¯æœˆé¢åº¦å¿…é¡»æ˜¯å¤§äºŽç­‰äºŽ -1 çš„æ•´æ•°"
+      "zh": "Monthly limit must be an integer greater than or equal to -1"
     },
     "source_match_mode": {
       "en": "Match Mode",
-      "zh": "åŒ¹é…æ¨¡å¼"
+      "zh": "Match Mode"
     },
     "source_patterns": {
       "en": "Source Address Regex (Optional)",
-      "zh": "æ¥æºåœ°å€æ­£åˆ™ï¼ˆå¯é€‰ï¼‰"
+      "zh": "Source Address Regex (Optional)"
     },
     "source_patterns_placeholder": {
       "en": "e.g. gmail.com",
-      "zh": "ä¾‹å¦‚: gmail.com"
+      "zh": "e.g. gmail.com"
     },
     "source_patterns_tip": {
       "en": "Domain list filters by recipient address, source regex filters by sender address. Both conditions must match for forwarding (AND logic). Leave either empty to skip that filter.",
-      "zh": "åŸŸååˆ—è¡¨æŒ‰æ”¶ä»¶åœ°å€è¿‡æ»¤ï¼Œæ¥æºæ­£åˆ™æŒ‰å‘ä»¶åœ°å€è¿‡æ»¤ï¼Œä¸¤è€…å‡ä¸ºå¯é€‰ã€‚åŒæ—¶é…ç½®æ—¶éœ€åŒæ—¶æ»¡è¶³ï¼ˆAND é€»è¾‘ï¼‰ï¼Œç•™ç©ºåˆ™è·³è¿‡è¯¥æ¡ä»¶ã€‚"
+      "zh": "Domain list filters by recipient address, source regex filters by sender address. Both conditions must match for forwarding (AND logic). Leave either empty to skip that filter."
     },
     "successTip": {
       "en": "Save Success",
-      "zh": "ä¿å­˜æˆåŠŸ"
+      "zh": "Save Success"
     },
     "tip": {
       "en": "You can manually input the following multiple select input and enter",
-      "zh": "æ‚¨å¯ä»¥æ‰‹åŠ¨è¾“å…¥ä»¥ä¸‹å¤šé€‰è¾“å…¥æ¡†, å›žè½¦å¢žåŠ "
+      "zh": "You can manually input the following multiple select input and enter"
     },
     "verified_address_list": {
       "en": "Verified Address List(Can send email by cf internal api)",
-      "zh": "å·²éªŒè¯åœ°å€åˆ—è¡¨(å¯é€šè¿‡ cf å†…éƒ¨ api å‘é€é‚®ä»¶)"
+      "zh": "Verified Address List(Can send email by cf internal api)"
     }
   },
   "views.admin.Mails": {
     "addressQueryTip": {
       "en": "Leave blank to query all addresses",
-      "zh": "ç•™ç©ºæŸ¥è¯¢æ‰€æœ‰åœ°å€"
+      "zh": "Leave blank to query all addresses"
     },
     "query": {
       "en": "Query",
-      "zh": "æŸ¥è¯¢"
+      "zh": "Query"
     }
   },
   "views.admin.Maintenance": {
     "addCustomSql": {
       "en": "Add Custom SQL",
-      "zh": "æ·»åŠ è‡ªå®šä¹‰ SQL"
+      "zh": "Add Custom SQL"
     },
     "addressCreateLabel": {
       "en": "Cleanup the address created before n days",
-      "zh": "æ¸…ç† n å¤©å‰åˆ›å»ºçš„åœ°å€"
+      "zh": "Cleanup the address created before n days"
     },
     "autoCleanup": {
       "en": "Auto cleanup",
-      "zh": "è‡ªåŠ¨æ¸…ç†"
+      "zh": "Auto cleanup"
     },
     "basicCleanup": {
       "en": "Basic Cleanup",
-      "zh": "åŸºç¡€æ¸…ç†"
+      "zh": "Basic Cleanup"
     },
     "cleanupNow": {
       "en": "Cleanup now",
-      "zh": "ç«‹å³æ¸…ç†"
+      "zh": "Cleanup now"
     },
     "cleanupSuccess": {
       "en": "Cleanup success",
-      "zh": "æ¸…ç†æˆåŠŸ"
+      "zh": "Cleanup success"
     },
     "cronTip": {
       "en": "Enable cron cleanup, need to configure [crons] in worker, please refer to the document, setting 0 days means clear all",
-      "zh": "å¯ç”¨å®šæ—¶æ¸…ç†, éœ€åœ¨ worker é…ç½® [crons] å‚æ•°, è¯·å‚è€ƒæ–‡æ¡£, é…ç½®ä¸º 0 å¤©è¡¨ç¤ºå…¨éƒ¨æ¸…ç©º"
+      "zh": "Enable cron cleanup, need to configure [crons] in worker, please refer to the document, setting 0 days means clear all"
     },
     "customSqlCleanup": {
       "en": "Custom SQL Cleanup",
-      "zh": "è‡ªå®šä¹‰ SQL æ¸…ç†"
+      "zh": "Custom SQL Cleanup"
     },
     "customSqlTip": {
       "en": "Add custom DELETE SQL statements for scheduled cleanup. Only single DELETE statement is allowed per entry.",
-      "zh": "æ·»åŠ è‡ªå®šä¹‰ DELETE SQL è¯­å¥è¿›è¡Œå®šæ—¶æ¸…ç†ã€‚æ¯æ¡è®°å½•ä»…å…è®¸å•æ¡ DELETE è¯­å¥ã€‚"
+      "zh": "Add custom DELETE SQL statements for scheduled cleanup. Only single DELETE statement is allowed per entry."
     },
     "deleteCustomSql": {
       "en": "Delete",
-      "zh": "åˆ é™¤"
+      "zh": "Delete"
     },
     "emptyAddressLabel": {
       "en": "Cleanup the empty address before n days",
-      "zh": "æ¸…ç† n å¤©å‰ç©ºé‚®ä»¶çš„é‚®ç®±åœ°å€"
+      "zh": "Cleanup the empty address before n days"
     },
     "inactiveAddressLabel": {
       "en": "Cleanup the inactive address before n days",
-      "zh": "æ¸…ç† n å¤©å‰çš„æœªæ´»è·ƒåœ°å€"
+      "zh": "Cleanup the inactive address before n days"
     },
     "mailBoxLabel": {
       "en": "Cleanup the inbox before n days",
-      "zh": "æ¸…ç† n å¤©å‰çš„æ”¶ä»¶ç®±"
+      "zh": "Cleanup the inbox before n days"
     },
     "mailUnknowLabel": {
       "en": "Cleanup the unknow mail before n days",
-      "zh": "æ¸…ç† n å¤©å‰çš„æ— æ”¶ä»¶äººé‚®ä»¶"
+      "zh": "Cleanup the unknow mail before n days"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "saveSuccess": {
       "en": "Save success",
-      "zh": "ä¿å­˜æˆåŠŸ"
+      "zh": "Save success"
     },
     "sendBoxLabel": {
       "en": "Cleanup the sendbox before n days",
-      "zh": "æ¸…ç† n å¤©å‰çš„å‘ä»¶ç®±"
+      "zh": "Cleanup the sendbox before n days"
     },
     "sqlName": {
       "en": "Name",
-      "zh": "åç§°"
+      "zh": "Name"
     },
     "sqlNamePlaceholder": {
       "en": "e.g. Clean old logs",
-      "zh": "ä¾‹å¦‚: æ¸…ç†æ—§æ—¥å¿—"
+      "zh": "e.g. Clean old logs"
     },
     "sqlPlaceholder": {
       "en": "e.g. DELETE FROM raw_mails WHERE source GLOB '*{'@'}example.com' AND created_at < datetime('now', '-3 day')",
-      "zh": "ä¾‹å¦‚: DELETE FROM raw_mails WHERE source GLOB '*{'@'}example.com' AND created_at < datetime('now', '-3 day')"
+      "zh": "e.g. DELETE FROM raw_mails WHERE source GLOB '*{'@'}example.com' AND created_at < datetime('now', '-3 day')"
     },
     "sqlStatement": {
       "en": "SQL Statement (DELETE only)",
-      "zh": "SQL è¯­å¥ (ä»…é™ DELETE)"
+      "zh": "SQL Statement (DELETE only)"
     },
     "tip": {
       "en": "Please input the days",
-      "zh": "è¯·è¾“å…¥å¤©æ•°"
+      "zh": "Please input the days"
     },
     "unboundAddressLabel": {
       "en": "Cleanup the unbound address before n days",
-      "zh": "æ¸…ç† n å¤©å‰çš„æœªç»‘å®šç”¨æˆ·åœ°å€"
+      "zh": "Cleanup the unbound address before n days"
     }
   },
   "views.common.Login": {
     "autoGeneratedName": {
       "en": "Auto-generated name",
-      "zh": "è‡ªåŠ¨ç”Ÿæˆåç§°"
+      "zh": "Auto-generated name"
     },
     "bindUserAddressError": {
       "en": "Error when bind email address to user",
-      "zh": "ç»‘å®šé‚®ç®±åœ°å€åˆ°ç”¨æˆ·æ—¶é”™è¯¯"
+      "zh": "Error when bind email address to user"
     },
     "bindUserInfo": {
       "en": "Logged in user, login without binding email or create new email address will bind to current user",
-      "zh": "å·²ç™»å½•ç”¨æˆ·, ç™»å½•æœªç»‘å®šé‚®ç®±æˆ–åˆ›å»ºæ–°é‚®ç®±åœ°å€å°†ç»‘å®šåˆ°å½“å‰ç”¨æˆ·"
+      "zh": "Logged in user, login without binding email or create new email address will bind to current user"
     },
     "credential": {
       "en": "Email Address Credential",
-      "zh": "é‚®ç®±åœ°å€å‡­æ®"
+      "zh": "Email Address Credential"
     },
     "credentialInput": {
       "en": "Please input the Mail Address Credential",
-      "zh": "è¯·è¾“å…¥é‚®ç®±åœ°å€å‡­æ®"
+      "zh": "Please input the Mail Address Credential"
     },
     "credentialLogin": {
       "en": "Credential Login",
-      "zh": "å‡­æ®ç™»å½•"
+      "zh": "Credential Login"
     },
     "coinUnit": {
       "en": "coin",
-      "zh": "é‡‘å¸"
+      "zh": "coin"
     },
     "domainCostHint": {
       "en": "Domain cost: {cost} {coin}",
-      "zh": "åŸŸåæˆæœ¬ï¼š{cost}{coin}"
+      "zh": "Domain cost: {cost} {coin}"
     },
     "email": {
       "en": "Email",
-      "zh": "é‚®ç®±"
+      "zh": "Email"
     },
     "emailPasswordRequired": {
       "en": "Email and password are required",
-      "zh": "é‚®ç®±å’Œå¯†ç ä¸èƒ½ä¸ºç©º"
+      "zh": "Email and password are required"
     },
     "enableRandomSubdomain": {
       "en": "Use Random Subdomain",
-      "zh": "å¯ç”¨éšæœºå­åŸŸå"
+      "zh": "Use Random Subdomain"
     },
     "generateName": {
       "en": "Generate Fake Name",
-      "zh": "ç”Ÿæˆéšæœºåå­—"
+      "zh": "Generate Fake Name"
     },
     "getNewEmail": {
       "en": "Create New Email",
-      "zh": "åˆ›å»ºæ–°é‚®ç®±"
+      "zh": "Create New Email"
     },
     "getNewEmailTip1": {
       "en": "Please input the email you want to use. only allow: ",
-      "zh": "è¯·è¾“å…¥ä½ æƒ³è¦ä½¿ç”¨çš„é‚®ç®±åœ°å€, åªå…è®¸: "
+      "zh": "Please input the email you want to use. only allow: "
     },
     "getNewEmailTip2": {
       "en": "Levaing it blank will generate a random email address.",
-      "zh": "ç•™ç©ºå°†ä¼šç”Ÿæˆä¸€ä¸ªéšæœºçš„é‚®ç®±åœ°å€ã€‚"
+      "zh": "Levaing it blank will generate a random email address."
     },
     "getNewEmailTip3": {
       "en": "You can choose a domain from the dropdown list.",
-      "zh": "ä½ å¯ä»¥ä»Žä¸‹æ‹‰åˆ—è¡¨ä¸­é€‰æ‹©ä¸€ä¸ªåŸŸåã€‚"
+      "zh": "You can choose a domain from the dropdown list."
     },
     "help": {
       "en": "Help",
-      "zh": "å¸®åŠ©"
+      "zh": "Help"
     },
     "insufficientCoinForDomain": {
       "en": "Insufficient coin. Need {need}, available {have}.",
-      "zh": "é‡‘å¸ä¸è¶³ã€‚éœ€è¦ {need}ï¼Œå½“å‰ä»…æœ‰ {have}ã€‚"
+      "zh": "Insufficient coin. Need {need}, available {have}."
     },
     "login": {
       "en": "Login",
-      "zh": "ç™»å½•"
+      "zh": "Login"
     },
     "loginAndBind": {
       "en": "Login and Bind",
-      "zh": "ç™»å½•å¹¶ç»‘å®š"
+      "zh": "Login and Bind"
     },
     "ok": {
       "en": "OK",
-      "zh": "ç¡®å®š"
+      "zh": "OK"
     },
     "password": {
       "en": "Password",
-      "zh": "å¯†ç "
+      "zh": "Password"
     },
     "passwordLogin": {
       "en": "Password Login",
-      "zh": "å¯†ç ç™»å½•"
+      "zh": "Password Login"
     },
     "pleaseGetNewEmail": {
       "en": "Please login or click \"Get New Email\" button to get a new email address",
-      "zh": "è¯·\"ç™»å½•\"æˆ–ç‚¹å‡» \"æ³¨å†Œæ–°é‚®ç®±\" æŒ‰é’®æ¥èŽ·å–ä¸€ä¸ªæ–°çš„é‚®ç®±åœ°å€"
+      "zh": "Please login or click \"Get New Email\" button to get a new email address"
     },
     "randomSubdomainTip": {
       "en": "When enabled, the created address will use a random subdomain. Subdomain addresses are recommended for receiving only.",
-      "zh": "å¯ç”¨åŽï¼Œåˆ›å»ºå‡ºæ¥çš„åœ°å€ä¼šè‡ªåŠ¨æŒ‚åœ¨éšæœºå­åŸŸåä¸‹ã€‚å­åŸŸååœ°å€æ›´å»ºè®®ä»…ç”¨äºŽæ”¶ä»¶ã€‚"
+      "zh": "When enabled, the created address will use a random subdomain. Subdomain addresses are recommended for receiving only."
     }
   },
   "views.admin.Webhook": {
     "enableAllowList": {
       "en": "Enable Allow List (Restrict webhook access to specific users)",
-      "zh": "å¯ç”¨ç™½åå• (é™åˆ¶ webhook è®¿é—®æƒé™ï¼Œåªæœ‰ç™½åå•ä¸­çš„ç”¨æˆ·å¯ä»¥ä½¿ç”¨)"
+      "zh": "Enable Allow List (Restrict webhook access to specific users)"
     },
     "manualInputPrompt": {
       "en": "Type and press Enter to add",
-      "zh": "è¾“å…¥åŽæŒ‰å›žè½¦é”®æ·»åŠ "
+      "zh": "Type and press Enter to add"
     },
     "notEnabled": {
       "en": "Webhook is not enabled",
-      "zh": "Webhook æœªå¼€å¯"
+      "zh": "Webhook is not enabled"
     },
     "save": {
       "en": "Save",
-      "zh": "ä¿å­˜"
+      "zh": "Save"
     },
     "successTip": {
       "en": "Success",
-      "zh": "æˆåŠŸ"
+      "zh": "Success"
     },
     "webhookAllowList": {
       "en": "Webhook Allow List(Enter the mail address that is allowed to use webhook and enter)",
-      "zh": "Webhook ç™½åå•(è¯·è¾“å…¥å…è®¸ä½¿ç”¨webhook çš„é‚®ç®±åœ°å€, å›žè½¦å¢žåŠ )"
+      "zh": "Webhook Allow List(Enter the mail address that is allowed to use webhook and enter)"
     }
   },
   "views.common.AdminContact": {
     "adminContact": {
       "en": "If you need help, please contact the administrator ({msg})",
-      "zh": "å¦‚æžœä½ éœ€è¦å¸®åŠ©ï¼Œè¯·è”ç³»ç®¡ç†å‘˜ ({msg})"
+      "zh": "If you need help, please contact the administrator ({msg})"
     }
   }
 } as const
